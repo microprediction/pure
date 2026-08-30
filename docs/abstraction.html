@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Pure: The Protocol Argument</title>
-  <meta name="description" content="Nine documented cases where the same result was independently reinvented under incompatible field-specific names, and what a common abstraction bought back each time.">
+  <meta name="description" content="Nine documented cases where the same result was independently reinvented under incompatible field-specific names, why building the abstraction ahead of demand is the efficient policy, and a personal postscript.">
   <link rel="stylesheet" href="./style.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
@@ -21,7 +21,7 @@
     <div class="nav-inner">
       <a class="brand" href="./index.html">pure</a>
       <nav>
-        <a href="./intro.html">Introduction</a>
+        <a href="./intro.html">Methodology</a>
         <span class="menu" tabindex="0">
           <span class="menu-label">Explore</span>
           <span class="drop">
@@ -33,7 +33,7 @@
             </span>
           </span>
         </span>
-        <a href="./editorial.html">Editorial</a>
+        <a href="./abstraction.html">Abstraction</a>
         <a href="./sources.html">Sources</a>
         <a href="https://github.com/microprediction/pure">GitHub</a>
       </nav>
@@ -41,7 +41,7 @@
   </header>
 
   <main>
-    <p class="pagenav"><a href="./editorial.html">&larr; Editorial</a></p>
+    <p class="pagenav"><a href="./index.html">&larr; Home</a></p>
     <h1>The Protocol Argument</h1>
     <p class="subtitle">Abstraction does for intellectual traffic what a common protocol does for a communications network: it replaces an unmanageable collection of pairwise translations with a single interoperable language.</p>
 
@@ -322,11 +322,86 @@
       propagate to every field that realizes the same structure.
     </p>
 
-    <h2>A personal postscript</h2>
+    <h2>Look, the case is bloody obvious</h2>
+    <p>
+      It's more efficient for those with skill and momentum to build the machinery before it is needed
+      than to wait for the right person to need exactly the right result at exactly the right time.
+      Abstraction is the extraction of invariants; generalization is the weakening of assumptions; rigor
+      is what makes conclusions transportable. A concrete solution settles one problem; a rigorous
+      abstract theorem settles every problem, known or unknown, that realizes the same structure. Its
+      future usefulness isn't an accidental exception to its abstraction &mdash; it's a consequence of
+      abstraction's ability to separate reusable structure from the circumstances in which that structure
+      was first noticed. None of this denies that applied work supplies plenty of its own impetus. It just
+      means waiting for it is the inefficient policy, not the safe one.
+    </p>
+
+    <h3>The stakes are not abstract</h3>
+    <p>
+      In 2021 the University of Leicester moved to make all eight of its permanent pure mathematics staff
+      redundant, offering to replace them with three teaching-only positions; ten members of the School of
+      Informatics working on theoretical and foundational topics faced the same threat. Administrators
+      justified it by citing demand for AI and data science &mdash; the exact fields the Ledger keeps
+      finding downstream of the mathematics being cut. The London Mathematical Society condemned the
+      decision. Timothy Gowers campaigned publicly against it from January of that year. Alison Parker, an
+      external examiner at the University of Leeds, resigned her position over it and donated her
+      examiner's fee to the resulting legal fund. A petition, &ldquo;Mathematics is not redundant,&rdquo;
+      drew 8,500 signatures. None of it changed the outcome: three staff were dismissed outright, three
+      were moved into teaching-only roles, and the rest took early retirement or severance. The University
+      and College Union called for an international academic boycott. (This account is drawn from a
+      detailed, widely circulated contemporaneous record naming the people and organizations above, not
+      checked here against primary university or LMS documents.)
+    </p>
+    <p>
+      I bring this up because the myth isn't only a historical curiosity about mathematicians being wrong
+      in print. It has a live version, and the live version costs people their jobs. Nobody at Leicester
+      argued, the way Hardy did, that a specific branch of mathematics would never see practical use. They
+      argued that pure mathematics had no near-term institutional value next to AI &mdash; the same AI
+      that runs on linear algebra, optimization, and probability, built on results that were once dismissed
+      exactly the same way.
+    </p>
+    <p>
+      The Ledger runs on named dates and cited applications on purpose, aimed at readers who aren't
+      naturally comfortable reasoning in the abstract. In my experience, the readers who are comfortable
+      reasoning in the abstract are not likely to call for funding cuts to mathematics departments. The
+      dates and citations are for everyone else.
+    </p>
+
+    <h3>The name is doing the opposite of its job</h3>
+    <p>
+      &ldquo;Pure&rdquo; sounds like an indulgence &mdash; a luxury version of mathematics, done for its
+      own sake, maybe at the expense of something more useful. But &ldquo;pure&rdquo; is close to a
+      synonym for <em>efficient</em>, or <em>non-duplicative</em>. Call the field Efficient Mathematics,
+      or Non-Duplicative Thinking, and nobody questions the funding.
+    </p>
+    <p>
+      Meanwhile every branch of science keeps reinventing the same underlying structure and renaming it,
+      field by field, oblivious to the fact that someone settled the general case decades or centuries
+      earlier. A tidy example: the probability integral transform &mdash; push data through its own
+      cumulative distribution function and it becomes uniform; pull a uniform back through an inverse CDF
+      and it becomes anything you like &mdash; is one simple idea from classical statistics. It has been
+      independently rediscovered and renamed as the chi-squared and Kolmogorov&ndash;Smirnov tests,
+      inverse-transform sampling and Monte Carlo simulation, copulas, the time-rescaling theorem for point
+      processes, histogram equalization in image processing, rank histograms and Talagrand diagrams in
+      weather forecasting, normalizing flows in deep learning, and conformal prediction &mdash; most
+      without citing the others. Full history:
+      <a href="https://skaters.microprediction.org/heritage.html">skaters.microprediction.org/heritage.html</a>.
+    </p>
+    <p>
+      Abstraction is what avoids paying that cost twice. It maps the world the way a zip code maps a
+      location: a short, general-purpose address that lets you skip re-deriving the whole route every
+      time you need to refer to the same place.
+    </p>
+    <p>
+      None of this is an objection to renaming as such. An economist calling a Lagrange multiplier a
+      shadow price has added real interpretive content. The failure mode is the rename that happens
+      because nobody realized there was already a name.
+    </p>
+
+    <h3>A personal postscript</h3>
     <p class="muted">
       The nine cases above are cited literature, checked against named papers. What follows isn't
-      &mdash; it's six instances from my own work where the same pattern showed up, offered as testimony,
-      not evidence.
+      &mdash; it's seven instances from my own work where the same pattern showed up, offered as
+      testimony, not evidence.
     </p>
     <p>
       Despite starting out in pure mathematics, and despite a career spent entirely in industry since
@@ -385,8 +460,8 @@
     <div class="next-steps">
       <h2>Continue to</h2>
       <ul>
-        <li><a href="./editorial.html">Editorial</a> &mdash; the rest of the argument: why the name &ldquo;pure&rdquo; undersells this, and why building ahead of demand is the efficient policy.</li>
-        <li><a href="./intro.html">Introduction</a> &mdash; the Hardy story and the 34-field survey this essay complements.</li>
+        <li><a href="./intro.html">Methodology</a> &mdash; the Hardy story and the 34-field survey this essay complements.</li>
+        <li><a href="./ledger.html">The Ledger</a> &mdash; the 34-field survey itself.</li>
       </ul>
     </div>
   </main>

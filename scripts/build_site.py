@@ -516,7 +516,7 @@ NAV = """  <header class="site-header">
     <div class="nav-inner">
       <a class="brand" href="{root}index.html">pure</a>
       <nav>
-        <a href="{root}intro.html">Introduction</a>
+        <a href="{root}intro.html">Methodology</a>
         <span class="menu" tabindex="0">
           <span class="menu-label">Explore</span>
           <span class="drop">
@@ -528,7 +528,7 @@ NAV = """  <header class="site-header">
             </span>
           </span>
         </span>
-        <a href="{root}editorial.html">Editorial</a>
+        <a href="{root}abstraction.html">Abstraction</a>
         <a href="{root}sources.html">Sources</a>
         <a href="https://github.com/microprediction/pure">GitHub</a>
       </nav>
