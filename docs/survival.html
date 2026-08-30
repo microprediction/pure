@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Pure: How Long Until Useful?</title>
+  <meta name="description" content="A Kaplan-Meier survival analysis of time-to-first-application across 33 pure-math fields, treating fields with no known application as right-censored observations rather than failures.">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+  <style>
+    #sv-wrap { max-width: 900px; margin: 0 auto; padding: 16px 24px 40px; }
+    #chart { width: 100%; height: 460px; border: 1px solid #ddd; background: #fdfdfc; border-radius: 4px; }
+    .legend { font-size: 0.85em; color: #444; display: flex; flex-wrap: wrap; gap: 14px 22px; margin: 10px 0; }
+    .legend span { display: inline-flex; align-items: center; gap: 6px; }
+    #tooltip { position: absolute; pointer-events: none; background: rgba(34,34,34,0.95); color: #eee;
+        padding: 8px 11px; border-radius: 4px; font-size: 13px; max-width: 340px; display: none; line-height: 1.35; }
+    text.axislabel { font: 11px sans-serif; fill: #888; }
+    .hint { color:#666; font-size: 0.9em; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-inner">
+      <a class="brand" href="./index.html">pure</a>
+      <nav>
+        <a href="./intro.html">Introduction</a>
+        <span class="menu" tabindex="0">
+          <span class="menu-label">Explore</span>
+          <span class="drop">
+            <a href="./ledger.html">The Ledger</a>
+            <a href="./map.html">Map</a>
+            <a href="./timeline.html">Timeline</a>
+            <a href="./survival.html">Survival</a>
+          </span>
+        </span>
+        <a href="./editorial.html">Editorial</a>
+        <a href="./sources.html">Sources</a>
+        <a href="https://github.com/microprediction/pure">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+<div id="sv-wrap">
+  <p class="pagenav"><a href="./index.html">&larr; Home</a></p>
+  <h1>How long until useful?</h1>
+  <p class="subtitle">The organizing question isn't &ldquo;is this field useful,&rdquo; it's &ldquo;how long does it take, and how do you count the ones that haven't happened yet.&rdquo;</p>
+
+  <p class="lead">
+    A field with no documented application today is not a failure of the thesis. It's a censored
+    observation: set theory's distinctive machinery hasn't found an external use in the 152 years since
+    Cantor's first paper, which means its true time-to-application is <em>greater than</em> 152 years, not
+    infinite. Treated this way, the 33 fields with a known founding date (combinatorics is excluded here
+    &mdash; its founding has no single event to measure from) form a standard survival-analysis dataset:
+    32 observed events (a year when a first application appeared) and 1 right-censored observation (still
+    waiting, as of 2026).
+  </p>
+
+  <div class="scoreboard">
+    <div class="stat"><div class="n">33</div><div class="label">fields with a measurable founding date</div></div>
+    <div class="stat"><div class="n">32</div><div class="label">observed events (application found)</div></div>
+    <div class="stat"><div class="n zero">1</div><div class="label">right-censored (set theory, T &gt; 152 yrs)</div></div>
+  </div>
+
+  <h2>The Kaplan&ndash;Meier curve</h2>
+  <p>
+    \(S(t)\) is the estimated probability that a field is still without a major application \(t\) years
+    after its founding. It starts at 1 and drops at each observed event; the censored observation is
+    marked with a plus sign and doesn't cause a drop, since set theory hasn't failed to be applied &mdash;
+    it just hasn't been resolved yet. Hover a step for the field that dropped there; click to open its
+    page.
+  </p>
+  <div class="legend" id="chart-legend">
+    <span><span style="width:20px;height:2px;background:#4a3aff;display:inline-block;"></span> S(t): still unapplied</span>
+    <span><span style="color:#c0392b;font-weight:700;">+</span> right-censored (set theory)</span>
+  </div>
+  <div id="chart"></div>
+  <p class="hint">
+    Six fields &mdash; potential theory, ODEs, PDEs, integral equations, calculus of variations, probability
+    &mdash; drop at \(t=0\): they were tied to physics or gambling from their first page and were never
+    really &ldquo;pure&rdquo; in the sense this survey is testing. That single step accounts for most of
+    the early drop in the curve.
+  </p>
+
+  <h2>What this does and doesn't show</h2>
+  <p>
+    With one censored observation out of 33, this is a small, almost degenerate survival dataset &mdash;
+    call it a crude, improvable empirical sketch, not a validated statistical result. The interesting
+    question it raises, though, is real: does the hazard of &ldquo;becoming useful&rdquo; decline with a
+    field's age, the way unrepaired equipment gets less likely to ever be fixed the longer it sits broken
+    &mdash; or does each new wave of technology reopen the question for fields that looked exhausted?
+    Thirty-three data points, nearly all of them events, can't settle that. They can at least state it as a
+    question instead of leaving it as folklore.
+  </p>
+  <p>
+    The selection question underneath all of this is the same one <a href="./intro.html">the
+    Introduction</a> raises: this dataset is the fields the 1959 Mathematics Subject Classification
+    thought worth naming, which already excludes whatever genuinely went nowhere and left no trace before
+    1959. A survival analysis over a survivorship-biased sample is still useful &mdash; it's just a
+    different, narrower question than &ldquo;how often does mathematics in general become useful,&rdquo;
+    and it should be read as one.
+  </p>
+
+  <div class="next-steps">
+    <h2>Continue to</h2>
+    <ul>
+      <li><a href="./ledger.html">The Ledger</a> &mdash; the 34 fields this curve is built from.</li>
+      <li><a href="./timeline.html">Timeline</a> &mdash; the same gaps, laid out by calendar year instead of years-since-founding.</li>
+      <li><a href="./holdouts.html">The Holdouts</a> &mdash; the right-censored field, and the three closest calls.</li>
+    </ul>
+  </div>
+</div>
+<div id="tooltip"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script src="./fields-data.js"></script>
+<script>
+renderMathInElement(document.body, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}]});
+
+const CURRENT_YEAR = 2026;
+const EXCLUDED = new Set(["combinatorics"]); // no single founding event to measure from
+
+const DATA = FIELDS.filter(f => !EXCLUDED.has(f.slug)).map(f => {
+  if (f.gap_years !== null && f.gap_years !== undefined) {
+    return {slug: f.slug, name: f.name, t: f.gap_years, event: true};
+  }
+  return {slug: f.slug, name: f.name, t: CURRENT_YEAR - f.founded.year, event: false};
+});
+DATA.sort((a,b) => a.t - b.t);
+
+const n0 = DATA.length;
+const eventTimes = [...new Set(DATA.filter(d=>d.event).map(d=>d.t))].sort((a,b)=>a-b);
+let S = 1.0;
+const steps = [{t:0, S:1.0}];
+eventTimes.forEach(t => {
+  const dAt = DATA.filter(d => d.event && d.t === t).length;
+  const atRisk = DATA.filter(d => d.t >= t).length;
+  const fieldsHere = DATA.filter(d => d.event && d.t === t).map(d => d.name);
+  steps.push({t, S, fieldsHere, before:true}); // flat line up to just before drop
+  S = S * (1 - dAt/atRisk);
+  steps.push({t, S, fieldsHere, before:false}); // vertical drop
+});
+const censorPoints = DATA.filter(d => !d.event).map(d => ({...d, S: stepAt(d.t)}));
+function stepAt(t) {
+  let s = 1.0;
+  for (const et of eventTimes) {
+    if (et > t) break;
+    const dAt = DATA.filter(d => d.event && d.t === et).length;
+    const atRisk = DATA.filter(d => d.t >= et).length;
+    s = s * (1 - dAt/atRisk);
+  }
+  return s;
+}
+
+const W = document.getElementById("chart").clientWidth, H = 460, M = {l:44, r:24, t:20, b:40};
+const svg = d3.select("#chart").append("svg").attr("width","100%").attr("height",H).attr("viewBox",[0,0,W,H]);
+const maxT = Math.max(...DATA.map(d=>d.t));
+const x = d3.scaleLinear().domain([0, maxT]).range([M.l, W-M.r]);
+const y = d3.scaleLinear().domain([0, 1]).range([H-M.b, M.t]);
+
+svg.append("g").selectAll("line").data(d3.range(0, maxT+1, 50)).join("line")
+  .attr("x1", d=>x(d)).attr("x2", d=>x(d)).attr("y1", M.t).attr("y2", H-M.b).attr("stroke", "#eee");
+svg.append("g").selectAll("text").data(d3.range(0, maxT+1, 50)).join("text")
+  .attr("class","axislabel").attr("x", d=>x(d)).attr("y", H-M.b+16).attr("text-anchor","middle").text(d=>d);
+svg.append("text").attr("class","axislabel").attr("x", W/2).attr("y", H-4).attr("text-anchor","middle").text("years since founding");
+
+[0, 0.25, 0.5, 0.75, 1].forEach(v => {
+  svg.append("line").attr("x1",M.l).attr("x2",W-M.r).attr("y1",y(v)).attr("y2",y(v)).attr("stroke","#eee");
+  svg.append("text").attr("class","axislabel").attr("x",M.l-6).attr("y",y(v)+4).attr("text-anchor","end").text(v);
+});
+
+const line = d3.line().x(d=>x(d.t)).y(d=>y(d.S));
+svg.append("path").datum(steps).attr("fill","none").attr("stroke","#4a3aff").attr("stroke-width",2.2).attr("d", line);
+
+const tooltip = d3.select("#tooltip");
+svg.append("g").selectAll("circle").data(steps.filter(d=>d.before===false && d.fieldsHere)).join("circle")
+  .attr("cx", d=>x(d.t)).attr("cy", d=>y(d.S)).attr("r", 5).attr("fill", "#4a3aff")
+  .style("cursor","pointer")
+  .on("mousemove",(ev,d)=>{ tooltip.style("display","block")
+      .style("left",(ev.pageX+14)+"px").style("top",(ev.pageY+8)+"px")
+      .html(`<b>t = ${d.t} years</b><br>${d.fieldsHere.join(", ")}<br>S(t) = ${d.S.toFixed(3)}`); })
+  .on("mouseout", ()=>tooltip.style("display","none"))
+  .on("click", (ev,d) => {
+    const f = DATA.find(x => x.event && x.t === d.t);
+    if (f) window.open("./fields/"+f.slug+".html", "_blank");
+  });
+
+svg.append("g").selectAll("text").data(censorPoints).join("text")
+  .attr("x", d=>x(d.t)).attr("y", d=>y(d.S)+5).attr("text-anchor","middle")
+  .attr("fill","#c0392b").style("font-weight","700").style("font-size","16px").style("cursor","pointer")
+  .text("+")
+  .on("mousemove",(ev,d)=>{ tooltip.style("display","block")
+      .style("left",(ev.pageX+14)+"px").style("top",(ev.pageY+8)+"px")
+      .html(`<b>${d.name}</b> &mdash; right-censored<br>No application in ${d.t} years so far (T &gt; ${d.t})`); })
+  .on("mouseout", ()=>tooltip.style("display","none"))
+  .on("click", (ev,d) => window.open("./fields/"+d.slug+".html", "_blank"));
+</script>
+</body>
+</html>

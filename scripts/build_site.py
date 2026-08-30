@@ -523,6 +523,7 @@ NAV = """  <header class="site-header">
             <a href="{root}ledger.html">The Ledger</a>
             <a href="{root}map.html">Map</a>
             <a href="{root}timeline.html">Timeline</a>
+            <a href="{root}survival.html">Survival</a>
           </span>
         </span>
         <a href="{root}editorial.html">Editorial</a>
@@ -787,6 +788,8 @@ def render_ledger():
       <ul>
         <li><a href="./map.html">Map</a> &mdash; every field and application above, as a graph, with the surprising cross-field convergences.</li>
         <li><a href="./timeline.html">Timeline</a> &mdash; the same fields laid out by year.</li>
+        <li><a href="./survival.html">Survival</a> &mdash; time-to-application as a right-censored survival curve.</li>
+        <li><a href="./holdouts.html">The Holdouts</a> &mdash; the four fields where the application search came back thin or empty.</li>
         <li><a href="./sources.html">Sources</a> &mdash; full citations.</li>
       </ul>
     </div>
