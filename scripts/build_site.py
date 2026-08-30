@@ -517,9 +517,15 @@ NAV = """  <header class="site-header">
       <a class="brand" href="{root}index.html">pure</a>
       <nav>
         <a href="{root}intro.html">Introduction</a>
-        <a href="{root}ledger.html">The Ledger</a>
-        <a href="{root}map.html">Map</a>
-        <a href="{root}timeline.html">Timeline</a>
+        <span class="menu" tabindex="0">
+          <span class="menu-label">Explore</span>
+          <span class="drop">
+            <a href="{root}ledger.html">The Ledger</a>
+            <a href="{root}map.html">Map</a>
+            <a href="{root}timeline.html">Timeline</a>
+          </span>
+        </span>
+        <a href="{root}editorial.html">Editorial</a>
         <a href="{root}sources.html">Sources</a>
         <a href="https://github.com/microprediction/pure">GitHub</a>
       </nav>

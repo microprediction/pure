@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pure: Editorial</title>
+  <meta name="description" content="Opinions from the site's author on why the myth matters and why abstraction pays for itself — kept separate from the sourced survey.">
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-inner">
+      <a class="brand" href="./index.html">pure</a>
+      <nav>
+        <a href="./intro.html">Introduction</a>
+        <span class="menu" tabindex="0">
+          <span class="menu-label">Explore</span>
+          <span class="drop">
+            <a href="./ledger.html">The Ledger</a>
+            <a href="./map.html">Map</a>
+            <a href="./timeline.html">Timeline</a>
+          </span>
+        </span>
+        <a href="./editorial.html">Editorial</a>
+        <a href="./sources.html">Sources</a>
+        <a href="https://github.com/microprediction/pure">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <p class="pagenav"><a href="./index.html">&larr; Home</a></p>
+    <h1>Editorial</h1>
+    <p class="subtitle">Peter Cotton's opinions, not the site's findings. The Ledger is the evidence; this is where I argue about what it means.</p>
+
+    <h2>Who the empirical case is actually for</h2>
+    <p>
+      The Ledger runs on named dates and cited applications on purpose. That kind of evidence works on
+      readers who aren't naturally comfortable reasoning in the abstract &mdash; and, in my experience,
+      the readers who are comfortable reasoning in the abstract already have a pretty good grip on the
+      structure of physical, commercial, and scientific reality. They don't need the course-correction.
+      The dates and citations are for everyone else.
+    </p>
+
+    <h2>Build the machinery before someone asks for it</h2>
+    <p>
+      It's more efficient to build abstract machinery on top of existing abstract machinery than to wait
+      and extend the stock of mathematical results only when some applied problem happens to need the
+      next piece. The alternative &mdash; add to the body of abstract truths strictly just-in-time,
+      incrementally, whenever an application demands it &mdash; assumes the person standing there with
+      the need has the background, the ability, and the drive to produce the result themselves. The odds
+      of that are strictly less than unity. Not zero: applied work supplies plenty of its own impetus, and
+      none of this is written to deny that. Just reliably less than one. Maintaining a standing supply of
+      general-purpose structure, built ahead of demand, is the efficient policy. Waiting for exactly the
+      right person to need exactly the right result at exactly the right time is not.
+    </p>
+
+    <h2>The name is doing the opposite of its job</h2>
+    <p>
+      &ldquo;Pure&rdquo; sounds like an indulgence &mdash; a luxury version of mathematics, done for its
+      own sake, maybe at the expense of something more useful. But &ldquo;pure&rdquo; is close to a
+      synonym for <em>efficient</em>, or <em>non-duplicative</em>. Call the field Efficient Mathematics,
+      or Non-Duplicative Thinking, and nobody questions the funding.
+    </p>
+    <p>
+      Meanwhile every branch of science keeps reinventing the same underlying structure and renaming it,
+      field by field, oblivious to the fact that someone settled the general case decades or centuries
+      earlier. A tidy example: the probability integral transform &mdash; push data through its own
+      cumulative distribution function and it becomes uniform; pull a uniform back through an inverse CDF
+      and it becomes anything you like &mdash; is one simple idea from classical statistics. It has been
+      independently rediscovered and renamed as the chi-squared and Kolmogorov&ndash;Smirnov tests,
+      inverse-transform sampling and Monte Carlo simulation, copulas, the time-rescaling theorem for point
+      processes, histogram equalization in image processing, rank histograms and Talagrand diagrams in
+      weather forecasting, normalizing flows in deep learning, and conformal prediction &mdash; most
+      without citing the others. Full history:
+      <a href="https://skaters.microprediction.org/heritage.html">skaters.microprediction.org/heritage.html</a>.
+    </p>
+    <p>
+      Abstraction is what avoids paying that cost twice. It maps the world the way a zip code maps a
+      location: a short, general-purpose address that lets you skip re-deriving the whole route every
+      time you need to refer to the same place.
+    </p>
+    <p>
+      None of this is an objection to renaming as such. An economist calling a Lagrange multiplier a
+      shadow price has added real interpretive content; that rename earns its keep. The failure mode is
+      the rename that happens because nobody realized there was already a name.
+    </p>
+
+    <div class="next-steps">
+      <h2>Continue to</h2>
+      <ul>
+        <li><a href="./intro.html">Introduction</a> &mdash; the sourced case this page argues about.</li>
+        <li><a href="./ledger.html">The Ledger</a> &mdash; the 34-field survey itself.</li>
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    Corrections and additional fields welcome &mdash; file an issue on
+    <a href="https://github.com/microprediction/pure">microprediction/pure</a>.
+  </footer>
+</body>
+</html>

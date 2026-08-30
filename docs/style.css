@@ -30,9 +30,25 @@ header.site-header .nav-inner {
   display: flex; gap: 18px; align-items: center; flex-wrap: wrap;
 }
 header.site-header .brand { font-weight: 600; font-size: 1.1rem; color: #fff; }
-header.site-header nav { display: flex; flex-wrap: wrap; gap: 0 18px; }
+header.site-header nav { display: flex; flex-wrap: wrap; gap: 0 18px; align-items: center; }
 header.site-header nav a { color: #fff; opacity: 0.85; font-size: 0.95rem; }
 header.site-header nav a:hover { opacity: 1; }
+header.site-header .menu { position: relative; }
+header.site-header .menu-label {
+  color: #fff; opacity: 0.85; font-size: 0.95rem; cursor: pointer; user-select: none;
+}
+header.site-header .menu-label::after { content: " \25BE"; font-size: 0.75em; opacity: 0.8; }
+header.site-header .menu:hover .menu-label,
+header.site-header .menu:focus-within .menu-label { opacity: 1; }
+header.site-header .drop {
+  display: none; position: absolute; top: 100%; left: 0; margin-top: 10px;
+  background: var(--ink); border: 1px solid rgba(255,255,255,0.15); border-radius: 6px;
+  padding: 6px 0; min-width: 150px; z-index: 20; box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+header.site-header .menu:hover .drop,
+header.site-header .menu:focus-within .drop { display: block; }
+header.site-header .drop a { display: block; padding: 7px 16px; white-space: nowrap; font-size: 0.95rem; }
+header.site-header .drop a:hover { background: rgba(255,255,255,0.08); }
 
 main { max-width: 900px; margin: 32px auto; padding: 0 24px 60px; }
 h1 { font-size: 2.1rem; margin: 0 0 4px; line-height: 1.2; }
