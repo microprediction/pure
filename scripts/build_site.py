@@ -520,10 +520,12 @@ NAV = """  <header class="site-header">
         <span class="menu" tabindex="0">
           <span class="menu-label">Explore</span>
           <span class="drop">
-            <a href="{root}ledger.html">The Ledger</a>
-            <a href="{root}map.html">Map</a>
-            <a href="{root}timeline.html">Timeline</a>
-            <a href="{root}survival.html">Survival</a>
+            <span class="drop-panel">
+              <a href="{root}ledger.html">The Ledger</a>
+              <a href="{root}map.html">Map</a>
+              <a href="{root}timeline.html">Timeline</a>
+              <a href="{root}survival.html">Survival</a>
+            </span>
           </span>
         </span>
         <a href="{root}editorial.html">Editorial</a>
