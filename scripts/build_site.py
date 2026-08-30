@@ -49,13 +49,14 @@ FIELDS = [
 
     dict(slug="set-theory", msc="04", name="Set theory",
          cluster="logic",
-         one_liner="Cantor's theory of infinite sets: cardinals, ordinals, the continuum hypothesis, forcing.",
+         one_liner="Cantor's theory of infinite sets — and the standard foundational language modern mathematics is written in.",
          founded=dict(year=1874, event="Cantor's first paper on the uncountability of the reals"),
          dismissed=None,
          dismissed_note="The famous “set theory is a disease” line usually pinned on Poincaré is documented as apocryphal (Jeremy Gray, *The Mathematical Intelligencer*, 1991). Kronecker's attacks on Cantor (“corrupter of youth”) target set theory's *legitimacy* — whether actual infinities exist at all — not its *utility*.",
          applications=[],
-         applications_note="None well-documented outside pure mathematics for the field's distinctive content (cardinal/ordinal arithmetic, forcing, large cardinals). Turing's 1936 reuse of Cantor's diagonalization is a reuse of a *proof technique*, not an application of transfinite set theory itself.",
+         applications_note="Split by what “application” means. Elementary set theory is enabling infrastructure for essentially all of modern mathematics: functions are sets of ordered pairs, spaces are sets with structure, probability spaces are sets equipped with σ-algebras and measures. That's a real transmission mechanism, just an indirect one — it doesn't put set-theoretic notation into a GPS receiver, it puts a foundational language under the mathematician who writes the receiver's equations. Application of mathematics is not the same thing as its notation appearing in the final result. The narrower, genuinely open question is whether the *distinctive* machinery of research set theory — forcing, measurable and large cardinals, independence results, inner models, none of which ordinary mathematics actually needs — has any application outside mathematics. There, the answer is still no. Descriptive set theory comes closest (Borel equivalence relations have been used to establish measurable equilibria in Bayesian and stochastic games), but it sits close enough to analysis and topology that it isn't a clean vindication of forcing or large-cardinal set theory specifically. Turing's 1936 reuse of Cantor's diagonalization is a reuse of a *proof technique*, not an application of transfinite set theory itself.",
          verdict="d", gap_basis=None, gap_years=None,
+         note="Cantor began in 1874; Cohen's forcing is from 1963. This may simply be a field sitting inside its own waiting period, the same one every other field on this page eventually left.",
          confidence="medium"),
 
     dict(slug="combinatorics", msc="05", name="Combinatorics",
@@ -199,12 +200,12 @@ FIELDS = [
          one_liner="Vector bundles (or their algebraic analogues) classified via stable-isomorphism groups.",
          founded=dict(year=1957, event="Grothendieck's algebraic K-theory (K₀); topological K-theory follows with Atiyah–Hirzebruch, 1959–61 — right at the 1960 boundary"),
          dismissed=None,
-         dismissed_note="",
+         dismissed_note="No credible dismissal found.",
          applications=[
-             dict(name="Topological insulators", year=2009, note="Kitaev's K-theory classification of topological phases of matter — experimentally real (HgTe wells, Bi₂Se₃), but working physicists mostly use Chern numbers/Z₂ invariants directly rather than invoking K-theory by name.", url="https://en.wikipedia.org/wiki/Topological_insulator"),
+             dict(name="Classification of topological phases of matter", year=2009, note="Kitaev's K-theory classification of topological insulators and superconductors, later sharpened via KR-theory for the Z₂ invariants of time-reversal-invariant topological insulators, and extended to numerical K-theory for nonlinear topological materials (2023), motivated partly by photonic devices such as topological lasers and frequency combs. Experimentally real (HgTe wells, Bi₂Se₃) and an active, named use of K-theory as the classification language — not just borrowed vocabulary.", url="https://en.wikipedia.org/wiki/Topological_insulator"),
          ],
-         verdict="d", gap_basis="founding (1957) to the thin, physics-only application (2009)", gap_years=52,
-         note="The other commonly cited application, D-branes in string theory, doesn't clear the real-world bar — string theory is experimentally unconfirmed. Flagged as one of the survey's genuinely tenuous cases.",
+         verdict="s", gap_basis="founding (1957) to the topological-insulator classification (2009)", gap_years=52,
+         note="Working physicists often compute a Chern number or Z₂ invariant without saying “K-theory” — but that's not a good reason to say K-theory has no application, any more than compiled arithmetic disqualifies calculus. It is real and scientifically important, but not yet mass-market infrastructure: commercial/technological importance remains emergent. D-branes in string theory, the other commonly cited tie, still doesn't clear this bar — string theory is experimentally unconfirmed.",
          confidence="medium"),
 
     dict(slug="group-theory", msc="20/22", name="Group theory & Lie groups",
@@ -262,12 +263,12 @@ FIELDS = [
          one_liner="Holomorphic functions of two or more complex variables — genuinely new obstructions appear.",
          founded=dict(year=1906, event="Hartogs's extension phenomenon"),
          dismissed=None,
-         dismissed_note="",
+         dismissed_note="No credible dismissal found.",
          applications=[
-             dict(name="Multidimensional digital filter stability", year=1975, note="Stability of m-D digital filters is governed by domain-of-holomorphy conditions with no 1-D analogue — real, but narrow and technical.", url="https://en.wikipedia.org/wiki/Multidimensional_filter_design"),
+             dict(name="Multidimensional systems engineering", year=1975, note="Stability of m-D digital filters is governed by domain-of-holomorphy conditions with no 1-D analogue. Bose's Applied Multidimensional Systems Theory documents functions and polynomials of several complex variables underlying image processing, multidimensional control, iterative learning control, network synthesis, geophysical signal processing, and multidimensional convolutional coding — genuinely several-variable phenomena, not just notation borrowed from one-variable theory, since stability, realization, and interpolation behave differently once there's more than one complex variable. A related literature connects multidimensional robust control with multivariable Nevanlinna–Pick interpolation and H^∞ theory.", url="https://en.wikipedia.org/wiki/Multidimensional_filter_design"),
          ],
-         verdict="d", gap_basis="founding (1906) to the one real but narrow application (1975)", gap_years=69,
-         note="The weakest application in the whole survey: string theory's Calabi–Yau connection and twistor theory both use this machinery but don't clear the real-world bar (unconfirmed physics).",
+         verdict="s", gap_basis="founding (1906) to multidimensional filter/control theory (1975)", gap_years=69,
+         note="Definitely applied, but niche: not RSA or GPS. “No major application” is defensible only under a narrow reading of “major” as “visible in mass-market infrastructure” — “no known application” would be false. String theory's Calabi–Yau connection and twistor theory also use this machinery but don't clear the real-world bar on their own (unconfirmed physics). This entry's specific citations (Bose's textbook, the robust-control/Nevanlinna–Pick literature) were supplied via detailed review, not independently re-verified by search this session.",
          confidence="medium"),
 
     dict(slug="special-functions", msc="33", name="Special functions",
@@ -350,11 +351,13 @@ FIELDS = [
          one_liner="Fourier analysis generalized to representation theory on locally compact groups (Pontryagin duality).",
          founded=dict(year=1934, event="Pontryagin duality"),
          dismissed=None,
-         dismissed_note="",
-         applications=[],
-         applications_note="No well-documented external application distinct from ordinary Fourier analysis was found. It remains almost entirely an internal tool for pure mathematics and theoretical physics (Lie-group representation theory, atomic spectra) — a clean null result, not stretched.",
-         verdict="d", gap_basis=None, gap_years=None,
-         confidence="high"),
+         dismissed_note="No credible dismissal found.",
+         applications=[
+             dict(name="Fast SO(3) Fourier transforms", year=2000, note="Harmonic analysis on SO(3), built from irreducible representations and Wigner D-matrices — compact-group harmonic analysis, not ordinary scalar Fourier analysis. Fast SO(3) transforms are an active numerical topic, used in computational structural biology to calculate rigid-body rotational correlations of three-dimensional objects.", url="https://en.wikipedia.org/wiki/Wigner_D-matrix"),
+         ],
+         verdict="s", gap_basis="founding (1934) to fast SO(3) transform methods (~2000)", gap_years=66,
+         note="The AMS itself describes commutative and noncommutative harmonic analysis as feeding applications in signal processing, multiplexing, cosmology, and astrophysics. Calling this “just generalized Fourier analysis” is a fair description, not a disqualification — that's what abstract harmonic analysis is; excluding an application because it manifests as a Fourier transform on a non-Euclidean group comes close to excluding its applications by definition. No mass-market application has yet been identified where the group-theoretic machinery is unmistakably indispensable, which is why this stays “specialized” rather than “infrastructure.” The SO(3)-transform and AMS characterizations here were supplied via detailed review, not independently re-verified by search this session.",
+         confidence="medium"),
 
     dict(slug="integral-equations", msc="44/45", name="Integral transforms & integral equations",
          cluster="analysis",
@@ -486,7 +489,8 @@ FIELDS = [
 VERDICT_LABELS = {
     "a": "Named dismissal, later applied",
     "b": "Never dismissed, applied anyway",
-    "d": "No major application documented",
+    "s": "Real application, but specialized — not mass-market infrastructure",
+    "d": "No external application documented",
     "x": "Mixed / doesn't fit cleanly",
 }
 
@@ -676,6 +680,7 @@ def compute_stats():
         total=n,
         dismissed_applied=len(by_verdict.get("a", [])),
         never_dismissed_applied=len(by_verdict.get("b", [])),
+        specialized=len(by_verdict.get("s", [])),
         no_application=len(by_verdict.get("d", [])),
         mixed=len(by_verdict.get("x", [])),
         avg_gap=round(avg_gap),
@@ -689,7 +694,9 @@ def render_ledger():
     rows = []
     for f in sorted(FIELDS, key=lambda f: f["msc"]):
         dismissed_str = "Yes" if f.get("dismissed") else "No"
-        if f["verdict"] == "d":
+        if f["verdict"] == "s":
+            app_str = "Yes (specialized)"
+        elif f["verdict"] == "d":
             app_str = "Thin/speculative" if f.get("applications") else "No"
         else:
             app_str = "Yes" if f.get("applications") else "No"
@@ -736,7 +743,8 @@ def render_ledger():
       <div class="stat"><div class="n">{stats['total']}</div><div class="label">fields surveyed</div></div>
       <div class="stat"><div class="n">{stats['dismissed_applied']}</div><div class="label">named dismissal, later applied</div></div>
       <div class="stat"><div class="n">{stats['never_dismissed_applied']}</div><div class="label">never dismissed, applied anyway</div></div>
-      <div class="stat"><div class="n zero">{stats['no_application']}</div><div class="label">no major application documented today</div></div>
+      <div class="stat"><div class="n">{stats['specialized']}</div><div class="label">real application, but specialized</div></div>
+      <div class="stat"><div class="n zero">{stats['no_application']}</div><div class="label">no external application documented</div></div>
     </div>
 
     <p>
@@ -750,7 +758,8 @@ def render_ledger():
       <button data-filter="all" class="active">All ({stats['total']})</button>
       <button data-filter="a">Named dismissal, later applied ({stats['dismissed_applied']})</button>
       <button data-filter="b">Never dismissed, applied anyway ({stats['never_dismissed_applied']})</button>
-      <button data-filter="d">No application documented ({stats['no_application']})</button>
+      <button data-filter="s">Real application, but specialized ({stats['specialized']})</button>
+      <button data-filter="d">No external application documented ({stats['no_application']})</button>
       <button data-filter="x">Mixed ({stats['mixed']})</button>
     </div>
 

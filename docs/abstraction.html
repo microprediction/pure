@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pure: The Protocol Argument</title>
+  <meta name="description" content="Nine documented cases where the same result was independently reinvented under incompatible field-specific names, and what a common abstraction bought back each time.">
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+    onload="renderMathInElement(document.body, {delimiters:[
+      {left:'$$',right:'$$',display:true},
+      {left:'$',right:'$',display:false},
+      {left:'\\(',right:'\\)',display:false},
+      {left:'\\[',right:'\\]',display:true}
+    ]});"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-inner">
+      <a class="brand" href="./index.html">pure</a>
+      <nav>
+        <a href="./intro.html">Introduction</a>
+        <span class="menu" tabindex="0">
+          <span class="menu-label">Explore</span>
+          <span class="drop">
+            <a href="./ledger.html">The Ledger</a>
+            <a href="./map.html">Map</a>
+            <a href="./timeline.html">Timeline</a>
+          </span>
+        </span>
+        <a href="./editorial.html">Editorial</a>
+        <a href="./sources.html">Sources</a>
+        <a href="https://github.com/microprediction/pure">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <p class="pagenav"><a href="./editorial.html">&larr; Editorial</a></p>
+    <h1>The Protocol Argument</h1>
+    <p class="subtitle">Abstraction does for intellectual traffic what a common protocol does for a communications network: it replaces an unmanageable collection of pairwise translations with a single interoperable language.</p>
+
+    <p class="lead">
+      &ldquo;Failure to abstract&rdquo; is difficult to establish directly, because the counterfactual
+      &mdash; how quickly ideas would have travelled under a better vocabulary &mdash; can't be observed.
+      The strongest evidence comes from cases with at least one of these signatures: the same object or
+      algorithm was independently reinvented in several fields; the same invariant acquired several
+      unrelated names; important theory remained buried in special cases; or a later common abstraction
+      immediately transferred proofs, algorithms, complexity results, or applications. By those standards,
+      the following are unusually strong.
+    </p>
+
+    <h2>1. Matroid girth, compressed-sensing spark, Kruskal rank, and coding-theoretic stability were the same invariant</h2>
+    <p>This is perhaps the cleanest exact example. Given a matrix \(X\), several communities independently defined closely related quantities:</p>
+    <ul>
+      <li>matroid theory: girth of the vector matroid;</li>
+      <li>compressed sensing: spark;</li>
+      <li>tensor decomposition: Kruskal rank, or \(k\)-rank;</li>
+      <li>coding theory: \(k\)-stability.</li>
+    </ul>
+    <p>The identities are exact:</p>
+    <div class="equation-card">\[ \operatorname{girth}(X) = \operatorname{spark}(X) = \operatorname{krank}(X)+1, \]</div>
+    <p>with a corresponding equivalence for \(k\)-stability. Lim and Comon observe that vector-matroid girth appeared only
+    rarely in conventional linear-algebra discourse and was consequently reinvented under different names.
+    Once the identification is made, results transfer immediately: hardness results for computing
+    vector-matroid girth become hardness results for spark, Kruskal rank, and stability; uniqueness
+    conditions for sparse recovery can be compared directly with uniqueness conditions for tensor
+    decompositions.</p>
+    <div class="equation-card">\[ \boxed{ \text{One invariant} \quad\longrightarrow\quad \text{four literatures, four names, repeated theorems} } \]</div>
+    <p>The matroid abstraction acts as a lossless translation layer. It doesn't merely reveal a poetic
+    resemblance; it proves that a theorem stated in one vocabulary has already answered a question being
+    posed in another. For an essay defending pure abstraction, this may be the best opening example
+    because the transfer is mathematically indisputable.</p>
+
+    <h2>2. Factor graphs unified algorithms that several fields had separately invented</h2>
+    <p>
+      Coding theory had trellises, the Viterbi algorithm, BCJR decoding, Tanner graphs, turbo decoding, and
+      LDPC decoding. Statistics and signal processing had hidden Markov models, the forward&ndash;backward
+      algorithm, Kalman filtering, and smoothing. Artificial intelligence had Bayesian networks and belief
+      propagation. These were not merely analogous techniques &mdash; at an appropriate level of
+      abstraction, they were instances of essentially the same operation: factor a global function into
+      local factors and pass messages that successively eliminate variables.
+    </p>
+    <p>
+      Hans-Andrea Loeliger's historical account notes that the BCJR algorithm remained relatively obscure
+      and was independently reinvented several times, and describes the later recognition that coding
+      theory's sum-product algorithm and artificial intelligence's belief propagation were the same
+      fundamental procedure. The factor-graph formulation then made connections to hidden Markov models,
+      Kalman filtering, recursive least squares, FFTs, and iterative receiver design explicit; some new
+      receiver architectures became almost mechanically derivable once the common representation existed.
+    </p>
+    <p>
+      The information failure here was not absence of intelligence or results. It was absence of a
+      canonical intermediate language. Each community stored the same computation in field-specific
+      coordinates:
+    </p>
+    <div class="equation-card">\[ \text{trellis},\qquad \text{Bayesian network},\qquad \text{state-space model},\qquad \text{parity-check graph}. \]</div>
+    <p>
+      A paper indexed under one vocabulary was functionally invisible to researchers searching under
+      another. Why this is a particularly strong example: the abstraction did more than rename existing
+      algorithms. It exposed interchangeable modules, made combinations of algorithms natural, and allowed
+      practical lessons from one field &mdash; such as the usefulness of iterative message passing on
+      graphs with cycles &mdash; to migrate into another.
+    </p>
+
+    <h2>3. Reverse-mode automatic differentiation was repeatedly rediscovered</h2>
+    <p>
+      Reverse-mode automatic differentiation is the general computational principle underlying
+      backpropagation. Given a scalar output computed by a potentially enormous program, it propagates
+      derivatives backward through the program's computational graph. Its decisive property: the cost of
+      obtaining the complete gradient can remain a small multiple of the cost of evaluating the original
+      program, largely independent of the number of inputs.
+    </p>
+    <p>The same basic method appeared separately in:</p>
+    <ul>
+      <li>control theory, as adjoint or costate methods;</li>
+      <li>chemical engineering and circuit optimization;</li>
+      <li>numerical analysis and roundoff-error analysis;</li>
+      <li>computer science, through the Baur&ndash;Strassen result;</li>
+      <li>neural networks, as backpropagation;</li>
+      <li>meteorology and oceanography, as adjoint data assimilation;</li>
+      <li>compiler work, as automatically generated derivative code.</li>
+    </ul>
+    <p>
+      Andreas Griewank's historical study explicitly describes numerous independent incarnations and even
+      says that he himself rediscovered the method. Seppo Linnainmaa had already represented a calculation
+      as a computational graph and reversed its chain rule, but his work initially received little
+      attention and wasn't presented primarily as a general &ldquo;cheap gradient&rdquo; method.
+    </p>
+    <p>The missing abstraction was:</p>
+    <div class="equation-card">\[ \text{arbitrary computation} \longrightarrow \text{directed acyclic computational graph} \longrightarrow \text{reverse accumulation of local derivatives}. \]</div>
+    <p>
+      Without that formulation, every field encountered a local story: sensitivity of an engineering
+      system, adjoint equations for a differential model, training weights in a neural network,
+      differentiating a computer program. With it, these become the same algorithm. This example is
+      especially consequential because fragmentation did not merely duplicate terminology &mdash; it
+      delayed the circulation of a powerful complexity fact: a high-dimensional gradient is not
+      necessarily \(n\) times as expensive as the function whose gradient is required.
+    </p>
+
+    <h2>4. The EM algorithm existed as many disconnected special procedures before its general formulation</h2>
+    <p>
+      Before Dempster, Laird, and Rubin's 1977 paper, procedures now recognized as
+      expectation&ndash;maximization had appeared in problems involving missing observations; censored or
+      truncated data; finite mixtures; variance components; latent variables; and some Bayesian and
+      robust-estimation problems. The authors explicitly noted that the algorithm had been proposed
+      repeatedly in special circumstances. Their contribution was to formulate the common
+      incomplete-data structure and prove general properties, including monotonic improvement of the
+      likelihood under the EM update &mdash; theory they described as having remained buried in
+      special-example literatures.
+    </p>
+    <p>
+      The discussion accompanying the paper is especially revealing: one discussant explained that
+      convergence arguments that had been difficult in particular models became strikingly simple after
+      the problem was generalized. The broad formulation also taught statisticians how to recognize EM in
+      problems that did not superficially resemble the familiar missing-data examples.
+    </p>
+    <p>This case undermines the common idea that abstraction necessarily makes a problem harder or less usable. Here:</p>
+    <div class="equation-card">\[ \text{greater generality} \quad\Rightarrow\quad \text{simpler proof} + \text{broader recognizability}. \]</div>
+    <p>
+      The special cases contained too much irrelevant detail. Generalization removed the details and
+      exposed the monotonicity mechanism that all the applications shared.
+    </p>
+
+    <h2>5. Mendelian genetics and biometry were treated as rivals until a more general model reconciled them</h2>
+    <p>
+      Around the beginning of the twentieth century, Mendelian researchers emphasized discrete hereditary
+      factors and apparently discontinuous traits, while biometricians studied continuously varying traits
+      using correlation, regression, and population statistics. The two approaches were frequently
+      presented as conflicting accounts of heredity &mdash; but the opposition was mathematically
+      unnecessary. A quantitative trait influenced by many Mendelian factors of individually small effect,
+      together with environmental variation, can appear approximately continuous. Yule had already
+      discussed compatibility early in the controversy, but the synthesis was not fully absorbed; Fisher's
+      1918 work gave a much more comprehensive account relating Mendelian inheritance to correlations among
+      relatives and the statistical decomposition of variation.
+    </p>
+    <p>The missing generalization was from:</p>
+    <div class="equation-card">\[ \text{one gene producing a conspicuous categorical difference} \]</div>
+    <p>to:</p>
+    <div class="equation-card">\[ \text{many discrete inherited factors jointly producing continuous variation}. \]</div>
+    <p>
+      That generalization showed that the two fields had often been observing different scales of the same
+      system. This case should be presented with care &mdash; the historical divide involved experimental
+      evidence, personalities, institutions, and competing scientific programs, not mathematics alone, and
+      modern historians regard the tidy &ldquo;Mendelians versus biometricians&rdquo; story as somewhat
+      stylized. Even so, it remains an important example of a false interdisciplinary conflict sustained by
+      failure to recognize that a broader model contained both local descriptions.
+    </p>
+
+    <h2>6. Iterative proportional fitting was rediscovered as Sinkhorn scaling, RAS, raking, and other methods</h2>
+    <p>
+      Consider the elementary-looking iteration that alternately rescales the rows and columns of a
+      nonnegative matrix to obtain prescribed marginals. Versions of this procedure appeared under several
+      names: iterative proportional fitting in statistics; raking in survey estimation; RAS in economics
+      and input&ndash;output analysis; biproportional fitting; Sinkhorn or Sinkhorn&ndash;Knopp scaling in
+      numerical analysis; alternating projection in information geometry; Fortet iterations and related
+      procedures in transport and Schr&ouml;dinger-bridge theory. Historical and technical accounts
+      explicitly describe repeated independent rediscovery. The common abstraction is matrix scaling, or
+      more generally alternating information projections minimizing a Kullback&ndash;Leibler or Bregman
+      divergence subject to marginal constraints.
+    </p>
+    <p>
+      Once expressed this way, convergence theory, computational techniques, and modeling insights become
+      transferable among contingency-table estimation, economics, optimal transport, network models, choice
+      models, and machine learning. Recent work connecting choice models to matrix balancing illustrates
+      the continuing dividend: familiar choice-estimation algorithms can be recognized as Sinkhorn
+      procedures, and existing matrix-balancing theory can settle convergence questions that appear
+      specialized in the choice-modeling vocabulary. This is an excellent example of search failure caused
+      by naming &mdash; a statistician looking for &ldquo;raking,&rdquo; an economist looking for
+      &ldquo;RAS,&rdquo; and an optimization researcher looking for &ldquo;Bregman projections&rdquo; could
+      be studying the same iteration without finding one another's literature.
+    </p>
+
+    <h2>7. Wavelets, quadrature-mirror filter banks, and image pyramids developed in partially separate languages</h2>
+    <p>
+      Applied mathematicians studied wavelet bases and multiresolution analysis. Digital-signal-processing
+      researchers studied two-channel perfect-reconstruction filter banks and quadrature-mirror filters.
+      Computer-vision researchers studied multiscale image pyramids. The mathematical overlap was
+      substantial: compactly supported orthonormal wavelets corresponded to particular
+      perfect-reconstruction finite-impulse-response filter banks, and the coefficients used in wavelet
+      constructions were already familiar to signal-processing researchers as quadrature-mirror-filter
+      sequences. Mallat's multiresolution framework and pyramidal algorithm provided a particularly
+      effective bridge among wavelet theory, filter-bank implementation, and computer-vision scale spaces.
+    </p>
+    <p>
+      The history here is more a case of partial duplication and delayed synthesis than total isolation.
+      Nevertheless, the abstraction mattered. Multiresolution analysis separated three questions that had
+      been entangled in local terminology:
+    </p>
+    <div class="equation-card">\[ \begin{aligned} &amp;\text{What nested approximation spaces exist?}\\ &amp;\text{What basis functions represent their differences?}\\ &amp;\text{What filters implement the transformation efficiently?} \end{aligned} \]</div>
+    <p>
+      Once those were connected, regularity theory from analysis, perfect-reconstruction conditions from
+      engineering, and fast pyramidal computations from image processing could reinforce one another.
+    </p>
+
+    <h2>8. Kriging, Gaussian-process regression, splines, and kernel machines remain divided by vocabulary</h2>
+    <p>
+      Geostatistics speaks of kriging, variograms, spatial covariance, and nuggets. Machine learning speaks
+      of Gaussian-process regression, kernels, and observation noise. Statistics speaks of smoothing
+      splines and penalized function estimation. Learning theory speaks of reproducing-kernel Hilbert
+      spaces and support-vector machines. In many standard settings, kriging and Gaussian-process
+      regression produce the same predictor from closely corresponding assumptions, yet comparative work
+      explicitly reports that differences in terminology inhibit knowledge transfer and can conceal the
+      underlying equivalence. &ldquo;Kernel,&rdquo; &ldquo;covariance function,&rdquo; and the
+      variogram-related formulation are often alternative coordinates for closely connected objects,
+      although the fields may estimate parameters differently or interpret the model differently.
+    </p>
+    <p>
+      A related literature shows how placing penalized splines inside the reproducing-kernel Hilbert-space
+      framework connects classical statistical smoothing to kernel machines &mdash; a unification that
+      transfers ideas about interpretation, structured effects, computation, model diagnosis, and
+      regularization between statistics and machine learning, and can produce substantial computational
+      simplifications. This is a useful contemporary example because the barrier hasn't completely
+      disappeared: the mathematics may already be known, yet discipline-specific semantics still determine
+      which papers researchers encounter and which methods they regard as relevant.
+    </p>
+    <p>
+      The appropriate caution is that these methods are not universally identical &mdash; different
+      parameter-estimation procedures, prior interpretations, uncertainty treatments, and asymptotic
+      traditions matter. The point is that a common covariance-kernel/RKHS abstraction tells us precisely
+      which parts are the same and which parts are not.
+    </p>
+
+    <h2>9. Polynomial spectral factorization was rediscovered across operator theory, control, signal processing, and algebra</h2>
+    <p>Closely related factorization results have appeared as: the matrix Fej&eacute;r&ndash;Riesz theorem; Wiener&ndash;Hopf
+    factorization; spectral factorization; polynomial matrix sum-of-squares factorization.</p>
+    <p>
+      A modern synthesis notes that polynomial spectral factorization was rediscovered repeatedly and that
+      symbolic and numerical approaches developed largely separately in different fields for decades.
+      Connecting those literatures made it possible to combine algebraic existence theory, numerical
+      algorithms, and computational-complexity analysis, including stronger bit-complexity results. This is
+      a more specialized example, but it is unusually direct: the lost information was not just conceptual
+      inspiration &mdash; symbolic mathematicians and numerical analysts possessed complementary parts of
+      the solution while field-specific formulations prevented those parts from being assembled
+      efficiently.
+    </p>
+
+    <h2>What these examples show</h2>
+    <p>
+      The central information-theoretic advantage of abstraction is not merely compression. It is the
+      creation of a shared address space for knowledge. Suppose \(k\) disciplines possess local
+      formulations \(F_1,F_2,\ldots,F_k\) of the same underlying structure \(S\). Without \(S\), useful
+      transfer may require a separate translation between every pair of fields, \(F_i\longleftrightarrow
+      F_j\). There are
+    </p>
+    <div class="equation-card">\[ \binom{k}{2}=\frac{k(k-1)}2 \]</div>
+    <p>possible pairwise interfaces. In practice, most are never built. A common abstraction changes the architecture:</p>
+    <div class="equation-card">\[ F_i\longrightarrow S\longleftarrow F_j. \]</div>
+    <p>Each field needs only to establish how its objects realize \(S\). The translation burden becomes approximately linear rather than quadratic:</p>
+    <div class="equation-card">\[ O(k^2)\quad\longrightarrow\quad O(k). \]</div>
+    <p>
+      That is a stylized coordination model rather than an empirical law, but it captures what happened in
+      the examples above. Matroids became the hub for several rank-like invariants; factor graphs became
+      the hub for message-passing algorithms; computational graphs became the hub for adjoint
+      differentiation; latent-variable likelihood became the hub for EM; and matrix scaling became the hub
+      for IPF, RAS, raking, and Sinkhorn iteration.
+    </p>
+
+    <h2>Five mechanisms of loss</h2>
+    <p>These histories reveal five distinct mechanisms:</p>
+    <ul>
+      <li><strong>Search failure.</strong> The theorem exists, but under vocabulary another field would never query. Spark versus matroid girth is the purest case.</li>
+      <li><strong>Duplicated invention and proof.</strong> Several communities independently derive the same algorithm. Reverse-mode differentiation, BCJR-like recursions, EM procedures, and iterative proportional fitting all display this pattern.</li>
+      <li><strong>Failure to import negative results.</strong> A hardness theorem, impossibility theorem, or counterexample in one representation isn't recognized as applying elsewhere. The transfer of matroid-girth hardness to spark and Kruskal rank is a precise example.</li>
+      <li><strong>Failure to compose methods.</strong> Researchers know the components but don't recognize they share an interface. Factor graphs made combinations of estimators, channels, constraints, and decoders systematically constructible.</li>
+      <li><strong>False intellectual conflict.</strong> Two fields mistake different projections of a broader model for incompatible theories. The Mendelian&ndash;biometric dispute is the clearest case here.</li>
+    </ul>
+
+    <h2>The strongest formulation</h2>
+    <p>
+      Not that abstraction merely makes knowledge more elegant or more future-proof. The stronger
+      defensible claim: without a common abstraction, structurally identical results are stored under
+      incompatible field-specific coordinates. They become difficult to search for, difficult to
+      recognize, and costly to transfer. Each community may repeat the same discovery while remaining
+      unaware that another community already possesses its proofs, algorithms, counterexamples, or
+      complexity bounds. Rigorous abstraction constructs a canonical interface through which one result can
+      propagate to every field that realizes the same structure.
+    </p>
+
+    <div class="next-steps">
+      <h2>Continue to</h2>
+      <ul>
+        <li><a href="./editorial.html">Editorial</a> &mdash; the rest of the argument: why the name &ldquo;pure&rdquo; undersells this, and why building ahead of demand is the efficient policy.</li>
+        <li><a href="./intro.html">Introduction</a> &mdash; the Hardy story and the 34-field survey this essay complements.</li>
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    Corrections and additional cases welcome &mdash; file an issue on
+    <a href="https://github.com/microprediction/pure">microprediction/pure</a>.
+  </footer>
+</body>
+</html>
