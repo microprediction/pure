@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Pure: Timeline</title>
-  <meta name="description" content="Twelve pure-math results, plotted from the year each was declared useless or simply ignored to the year it became essential infrastructure.">
+  <meta name="description" content="34 pure-math fields from the 1959 Mathematics Subject Classification, plotted from founding to first documented real-world application.">
   <link rel="stylesheet" href="./style.css">
   <style>
-    #tl-wrap { max-width: 1100px; margin: 0 auto; padding: 16px 24px 40px; }
-    #timeline { width: 100%; height: 820px; border: 1px solid #ddd; background: #fdfdfc; border-radius: 4px; }
+    #tl-wrap { max-width: 1140px; margin: 0 auto; padding: 16px 24px 40px; }
+    #timeline { width: 100%; border: 1px solid #ddd; background: #fdfdfc; border-radius: 4px; }
     .legend { font-size: 0.85em; color: #444; display: flex; flex-wrap: wrap; gap: 14px 22px; margin: 10px 0; }
     .legend span { display: inline-flex; align-items: center; gap: 6px; }
     .dot { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
@@ -40,13 +40,15 @@
 <div id="tl-wrap">
   <p class="pagenav"><a href="./index.html">&larr; Home</a></p>
   <h1>Timeline</h1>
-  <p>One row per case, grouped by field. Hollow dots are the dismissal or the year the field was
-  simply left alone; solid dots are what it became, sized up for the result that mattered most.
-  The line between them is the wait. Hover for the story; click to open a source.</p>
+  <p>One row per field, grouped by cluster, packed so rows are reused whenever two fields' time spans
+  don't overlap. Hollow rings are the founding date (or a named dismissal, where one exists); solid dots
+  are what the field became. A dashed red ring around a dot means no major application is documented even
+  today. Hover for the story; click to open a source.</p>
   <div class="legend" id="lane-legend"></div>
   <div class="legend">
-    <span><span class="ring"></span> declared useless / ignored</span>
-    <span><span class="dot" style="background:#888"></span> became essential infrastructure</span>
+    <span><span class="ring"></span> founded / dismissed</span>
+    <span><span class="dot" style="background:#888"></span> became this application</span>
+    <span><span class="dot" style="background:#fff;border:2px dashed #c0392b;box-sizing:border-box;"></span> no application documented</span>
   </div>
   <div id="timeline"></div>
   <p class="hint">Full citations for every point are on the <a href="./sources.html">Sources</a> page.</p>
@@ -54,161 +56,127 @@
 <div id="tooltip"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="./fields-data.js"></script>
 <script>
-const LANES = {
-  numtheory: {label:"Number theory",       color:"#2980b9", y0:40,  rows:2},
-  algebra:   {label:"Algebra",             color:"#8e44ad", y0:160, rows:3},
-  geometry:  {label:"Geometry",            color:"#16a085", y0:325, rows:1},
-  topology:  {label:"Topology",            color:"#d68910", y0:400, rows:2},
-  logic:     {label:"Logic & foundations", color:"#c0392b", y0:520, rows:2},
-  analysis:  {label:"Analysis",            color:"#27ae60", y0:640, rows:2},
-};
-Object.values(LANES).forEach(l => l.h = 20 + l.rows*45);
+const W = document.getElementById("tl-wrap").clientWidth, M = {l: 34, r: 34, b: 40, t: 30};
+const x = d3.scaleLinear().domain([1600, 2028]).range([M.l, W - M.r]);
 
-// each CASE is a row within its lane; POINTS run chronologically: dismissal (or neglect) -> application(s)
-const CASES = [
- {id:"numtheory", lane:"numtheory", row:0, points:[
-   {year:1915, kind:"dismissal", label:"Hardy: “obviously useless”", url:"./intro.html",
-    note:"British Association address, 1915: number theory “has always been regarded as one of the most obviously useless branches of Pure Mathematics.” Repeated three times in the 1940 Apology."},
-   {year:1977, kind:"application", big:true, label:"RSA", url:"https://dl.acm.org/doi/10.1145/359340.359342",
-    note:"Rivest–Shamir–Adleman public-key cryptography. 62 years after Hardy's lecture."},
- ]},
- {id:"elliptic", lane:"numtheory", row:1, points:[
-   {year:1901, kind:"dismissal", label:"Elliptic curves formalized", url:"./ledger.html",
-    note:"Weierstrass/Poincaré-era group law. Pursued ‘mainly for aesthetic reasons’ (Koblitz et al., 2008)."},
-   {year:1985, kind:"application", big:true, label:"ECC", url:"https://en.wikipedia.org/wiki/Elliptic-curve_cryptography",
-    note:"Koblitz & Miller, independently. Now secures Bitcoin, TLS, Signal."},
- ]},
- {id:"galois", lane:"algebra", row:0, points:[
-   {year:1831, kind:"dismissal", label:"Galois's memoir rejected", url:"./ledger.html",
-    note:"Poisson, for the Paris Academy: ‘neither sufficiently clear nor sufficiently developed to allow us to judge its rigour.’"},
-   {year:1960, kind:"application", big:true, label:"Reed–Solomon codes", url:"https://en.wikipedia.org/wiki/Reed%E2%80%93Solomon_error_correction",
-    note:"Finite-field arithmetic. Now inside CDs, QR codes, and Voyager's telemetry."},
- ]},
- {id:"groups", lane:"algebra", row:1, points:[
-   {year:1897, kind:"dismissal", label:"Burnside doubts rep. theory", url:"./ledger.html",
-    note:"Preface to Theory of Groups of Finite Order: doubted the year-old theory would yield another result."},
-   {year:1928, kind:"application", label:"‘Gruppenpest’ in QM", url:"https://en.wikipedia.org/wiki/Standard_Model",
-    note:"Wigner, Weyl, Hund apply group representation theory to quantum mechanics; some physicists mock it as the ‘group-plague.’"},
-   {year:1973, kind:"application", big:true, label:"Standard Model", url:"https://en.wikipedia.org/wiki/Standard_Model",
-    note:"Electroweak unification. Gauge symmetry is representation theory."},
- ]},
- {id:"quaternions", lane:"algebra", row:2, points:[
-   {year:1892, kind:"dismissal", label:"Kelvin: ‘unmixed evil’", url:"./ledger.html",
-    note:"Letter to Robert Baldwin Hayward, on quaternions."},
-   {year:1969, kind:"application", label:"Apollo 11 gimbal lock", url:"https://en.wikipedia.org/wiki/Gimbal_lock",
-    note:"The exact failure mode quaternions would later fix, hitting in real time."},
-   {year:1985, kind:"application", big:true, label:"Quaternion SLERP", url:"https://en.wikipedia.org/wiki/Slerp",
-    note:"Shoemake, SIGGRAPH. Standard in every game engine since."},
- ]},
- {id:"noneuclidean", lane:"geometry", row:0, points:[
-   {year:1829, kind:"dismissal", label:"Gauss fears ‘the Boeotians’", url:"./ledger.html",
-    note:"Letter to Bessel, explaining why he won't publish non-Euclidean geometry."},
-   {year:1915, kind:"application", label:"General Relativity", url:"https://en.wikipedia.org/wiki/General_relativity",
-    note:"Einstein. Requires Riemann's 1854 geometry of curved manifolds."},
-   {year:1977, kind:"application", big:true, label:"GPS relativity confirmed", url:"https://en.wikipedia.org/wiki/Error_analysis_for_the_Global_Positioning_System",
-    note:"NTS-2 satellite: correction switched off for three weeks, confirming ~10km/day drift."},
- ]},
- {id:"knots", lane:"topology", row:0, points:[
-   {year:1867, kind:"dismissal", label:"Kelvin's vortex atoms", url:"./ledger.html",
-    note:"Wrong physics — atoms are not knotted vortices — but it motivated Tait's knot tables."},
-   {year:1990, kind:"application", label:"DNA topology", url:"https://en.wikipedia.org/wiki/Topoisomerase",
-    note:"Sumners et al. Topoisomerases manage DNA knotting and supercoiling."},
-   {year:1997, kind:"application", big:true, label:"Topological quantum computing", url:"https://en.wikipedia.org/wiki/Topological_quantum_computer",
-    note:"Kitaev. Anyons braid the way knots tangle."},
- ]},
- {id:"topology", lane:"topology", row:1, points:[
-   {year:1895, kind:"dismissal", label:"Poincaré's Analysis Situs", url:"./ledger.html",
-    note:"Built to discard exactly the distances and coordinates data analysis needs."},
-   {year:2002, kind:"application", label:"Persistent homology", url:"https://en.wikipedia.org/wiki/Topological_data_analysis",
-    note:"Edelsbrunner–Letscher–Zomorodian's founding algorithm."},
-   {year:2011, kind:"application", big:true, label:"Breast-cancer subtype found", url:"https://doi.org/10.1073/pnas.1102826108",
-    note:"Nicolau–Levine–Carlsson, PNAS. 295 tumors as points in 24,479 dimensions."},
- ]},
- {id:"boolean", lane:"logic", row:0, points:[
-   {year:1854, kind:"dismissal", label:"Boole: ‘laws of thought’", url:"./ledger.html",
-    note:"No recorded critic; no anticipated engineering use either — the technology didn't exist yet."},
-   {year:1937, kind:"application", big:true, label:"Shannon's switching circuits", url:"https://en.wikipedia.org/wiki/A_Symbolic_Analysis_of_Relay_and_Switching_Circuits",
-    note:"MIT master's thesis. The theoretical foundation of digital circuit design."},
- ]},
- {id:"category", lane:"logic", row:1, points:[
-   {year:1945, kind:"dismissal", label:"‘Abstract nonsense’", url:"./ledger.html",
-    note:"Eilenberg–Mac Lane's category theory, nicknamed by its own practitioners — an in-joke, not a hostile dismissal."},
-   {year:1989, kind:"application", label:"Moggi's monads", url:"https://en.wikipedia.org/wiki/Monad_(functional_programming)",
-    note:"Category-theoretic monads applied to programming-language semantics."},
-   {year:1996, kind:"application", big:true, label:"Haskell 1.3 monadic IO", url:"https://en.wikipedia.org/wiki/Haskell",
-    note:"Wadler, Peyton Jones. The standard mechanism for handling side effects."},
- ]},
- {id:"poincare", lane:"analysis", row:0, points:[
-   {year:1890, kind:"dismissal", label:"Poincaré's 3-body memoir", url:"./ledger.html",
-    note:"Treated as a narrow celestial-mechanics curiosity; obscure enough that Smale rediscovered it independently in the 1950s."},
-   {year:1963, kind:"application", big:true, label:"Lorenz: deterministic chaos", url:"https://en.wikipedia.org/wiki/Chaos_theory",
-    note:"Independently rediscovered in a weather model. Founds the modern forecast-limit theory."},
- ]},
- {id:"hilbert", lane:"analysis", row:1, points:[
-   {year:1908, kind:"dismissal", label:"Hilbert's spectral theory", url:"./ledger.html",
-    note:"On his own work: ‘no presentiment’ it would apply to physics."},
-   {year:1932, kind:"application", big:true, label:"Von Neumann's QM formalism", url:"https://en.wikipedia.org/wiki/Mathematical_formulation_of_quantum_mechanics",
-    note:"Quantum states are vectors in Hilbert space."},
- ]},
-];
-
-const H = document.getElementById("timeline").clientHeight || 820;
-const W = document.getElementById("timeline").clientWidth, M = {l: 34, r: 34, b: 40};
-const svg = d3.select("#timeline").append("svg").attr("width","100%").attr("height",H).attr("viewBox",[0,0,W,H]);
-
-const x = d3.scaleLinear().domain([1820, 2020]).range([M.l, W - M.r]);
-const gridYears = d3.range(1820, 2021, 20);
-svg.append("g").selectAll("line").data(gridYears).join("line")
-  .attr("x1", d=>x(d)).attr("x2", d=>x(d)).attr("y1", 30).attr("y2", H-M.b)
-  .attr("stroke", "#eee");
-svg.append("g").selectAll("text").data(gridYears).join("text")
-  .attr("class","yearlabel").attr("x", d=>x(d)).attr("y", H-14).attr("text-anchor","middle").text(d=>d);
-
-Object.values(LANES).forEach(l => {
-  svg.append("rect").attr("x", M.l).attr("y", l.y0).attr("width", W-M.l-M.r).attr("height", l.h)
-     .attr("fill", l.color).attr("opacity", 0.05);
-  svg.append("text").attr("class","lanelabel").attr("x", M.l+2).attr("y", l.y0-6).attr("fill", l.color).text(l.label);
+// Build one "thread" per field: founded -> (dismissed, if distinct) -> applications, in year order.
+const THREADS = FIELDS.map(f => {
+  const pts = [];
+  pts.push({year: f.founded.year, kind: "founded", label: "Founded", url: "./fields/"+f.slug+".html",
+    note: f.founded.event});
+  if (f.dismissed && f.dismissed.year !== f.founded.year) {
+    pts.push({year: f.dismissed.year, kind: "dismissed", label: f.dismissed.who,
+      url: "./fields/"+f.slug+".html", note: f.dismissed.quote});
+  }
+  (f.applications || []).forEach(a => {
+    pts.push({year: a.year, kind: "application", label: a.name, url: a.url, note: a.note});
+  });
+  pts.sort((a,b) => a.year - b.year);
+  return {slug: f.slug, name: f.name, cluster: f.cluster, noApplication: (f.applications||[]).length===0, pts};
 });
 
-const rowY = (lane, row) => LANES[lane].y0 + 32 + row*45;
+// Estimate a label's rendered half-width in px (rough monospace-ish heuristic for an 11px sans font).
+const labelWidth = s => 6.2 * s.length + 14;
 
+THREADS.forEach(t => {
+  t.pts.forEach(p => p.x = x(p.year));
+  t.spanL = t.pts[0].x - labelWidth(t.pts[0].label) - 6;
+  t.spanR = t.pts[t.pts.length-1].x + labelWidth(t.pts[t.pts.length-1].label) + 6;
+});
+
+// Greedy first-fit row packing within each cluster/lane.
+const ROW_H = 30, LANE_GAP = 14, LANE_TOP_PAD = 22;
+const laneOrder = Object.keys(CLUSTERS);
+const laneRows = {};   // cluster -> array of {rightEdge}
+const laneY0 = {};
+let cursorY = M.t;
+laneOrder.forEach(cl => {
+  const threads = THREADS.filter(t => t.cluster === cl).sort((a,b) => a.spanL - b.spanL);
+  const rows = [];
+  threads.forEach(t => {
+    let row = rows.findIndex(r => r.rightEdge < t.spanL);
+    if (row === -1) { row = rows.length; rows.push({rightEdge: -Infinity}); }
+    t.row = row;
+    rows[row].rightEdge = t.spanR;
+  });
+  laneY0[cl] = cursorY;
+  const nRows = Math.max(rows.length, 1);
+  cursorY += LANE_TOP_PAD + nRows * ROW_H + LANE_GAP;
+});
+const H = cursorY + M.b;
+
+document.getElementById("timeline").setAttribute("height", H);
+const svg = d3.select("#timeline").append("svg").attr("width","100%").attr("height",H).attr("viewBox",[0,0,W,H]);
+
+const gridYears = d3.range(1600, 2029, 25);
+svg.append("g").selectAll("line").data(gridYears).join("line")
+  .attr("x1", d=>x(d)).attr("x2", d=>x(d)).attr("y1", M.t).attr("y2", H-M.b)
+  .attr("stroke", "#eee");
+svg.append("g").selectAll("text").data(gridYears).join("text")
+  .attr("class","yearlabel").attr("x", d=>x(d)).attr("y", H-16).attr("text-anchor","middle").text(d=>d);
+
+laneOrder.forEach(cl => {
+  const threads = THREADS.filter(t => t.cluster === cl);
+  const nRows = Math.max(...threads.map(t=>t.row+1), 1);
+  const h = LANE_TOP_PAD + nRows * ROW_H;
+  svg.append("rect").attr("x", M.l).attr("y", laneY0[cl]).attr("width", W-M.l-M.r).attr("height", h)
+     .attr("fill", CLUSTERS[cl].color).attr("opacity", 0.05);
+  svg.append("text").attr("class","lanelabel").attr("x", M.l+2).attr("y", laneY0[cl]-6)
+     .attr("fill", CLUSTERS[cl].color).text(CLUSTERS[cl].label);
+});
+
+const rowY = (cl, row) => laneY0[cl] + LANE_TOP_PAD + row*ROW_H + ROW_H/2;
 const tooltip = d3.select("#tooltip");
 
-CASES.forEach(c => {
-  const y = rowY(c.lane, c.row);
-  const color = LANES[c.lane].color;
-  const pts = c.points.map(p => ({...p, x: x(p.year), y}));
-
-  // connecting line + gap labels between consecutive points
-  for (let i = 0; i < pts.length-1; i++) {
-    svg.append("line").attr("x1",pts[i].x).attr("y1",y).attr("x2",pts[i+1].x).attr("y2",y)
+THREADS.forEach(t => {
+  const y = rowY(t.cluster, t.row);
+  const color = CLUSTERS[t.cluster].color;
+  for (let i = 0; i < t.pts.length-1; i++) {
+    svg.append("line").attr("x1",t.pts[i].x).attr("y1",y).attr("x2",t.pts[i+1].x).attr("y2",y)
        .attr("stroke", color).attr("stroke-width",1.4).attr("opacity",0.45);
-    svg.append("text").attr("class","gaplabel")
-       .attr("x",(pts[i].x+pts[i+1].x)/2).attr("y",y-8).attr("text-anchor","middle")
-       .text(`${pts[i+1].year - pts[i].year} yrs`);
+    const gap = t.pts[i+1].year - t.pts[i].year;
+    if (gap > 0) {
+      svg.append("text").attr("class","gaplabel")
+         .attr("x",(t.pts[i].x+t.pts[i+1].x)/2).attr("y",y-8).attr("text-anchor","middle")
+         .text(`${gap} yrs`);
+    }
   }
+  // alternate label vertical offset when consecutive points on this thread sit close together
+  let lastRight = -Infinity, flip = 1;
+  t.pts.forEach((p, i) => {
+    const w = labelWidth(p.label);
+    const wantLeft = p.x > W - 190;
+    const labelX = wantLeft ? p.x - 11 : p.x + 11;
+    const startEdge = wantLeft ? p.x - w : p.x;
+    if (startEdge < lastRight + 4) { flip = -flip; } else { flip = 1; }
+    p._dy = y + (flip < 0 ? -13 : 4);
+    p._labelX = labelX; p._anchor = wantLeft ? "end" : "start";
+    lastRight = wantLeft ? p.x : p.x + w;
+  });
 
-  const g = svg.append("g").selectAll("g").data(pts).join("g")
+  const gsel = svg.append("g").selectAll("g").data(t.pts).join("g")
     .style("cursor","pointer")
     .on("click",(ev,d)=>{ if(d.url) window.open(d.url,"_blank"); })
     .on("mousemove",(ev,d)=>{ tooltip.style("display","block")
         .style("left",(ev.pageX+14)+"px").style("top",(ev.pageY+8)+"px")
-        .html(`<b>${d.label}</b> — ${d.year}<br>${d.note}`); })
+        .html(`<b>${t.name}</b> &mdash; ${d.label} (${d.year})<br>${d.note||""}`); })
     .on("mouseout",()=>tooltip.style("display","none"));
 
-  g.append("circle").attr("cx",d=>d.x).attr("cy",d=>d.y)
-    .attr("r", d=> d.kind==="dismissal" ? 6 : (d.big?9:6.5))
-    .attr("fill", d=> d.kind==="dismissal" ? "#fff" : color)
-    .attr("stroke", color).attr("stroke-width", d=>d.kind==="dismissal"?2:1.5);
+  gsel.append("circle").attr("cx",d=>d.x).attr("cy",y)
+    .attr("r", d=> d.kind==="application" ? 6.5 : 6)
+    .attr("fill", d=> d.kind==="application" ? color : "#fff")
+    .attr("stroke", d => (d.kind==="application" && t.noApplication) ? "#c0392b" : color)
+    .attr("stroke-width", d=>d.kind==="application"?1.5:2)
+    .attr("stroke-dasharray", d => (d.kind==="application" && t.noApplication) ? "2,2" : null);
 
-  g.append("text").attr("class","evlabel")
-    .attr("x", d=> d.x > W-200 ? d.x-11 : d.x+11)
-    .attr("text-anchor", d=> d.x > W-200 ? "end" : "start")
-    .attr("y", d=>d.y+4).text(d=>d.label);
+  gsel.append("text").attr("class","evlabel")
+    .attr("x", d=>d._labelX).attr("y", d=>d._dy).attr("text-anchor", d=>d._anchor)
+    .text(d=>d.label);
 });
 
-d3.select("#lane-legend").selectAll("span").data(Object.values(LANES)).join("span")
+d3.select("#lane-legend").selectAll("span").data(Object.values(CLUSTERS)).join("span")
   .html(d=>`<span class="dot" style="background:${d.color}"></span>${d.label}`);
 </script>
 </body>

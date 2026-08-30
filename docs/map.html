@@ -4,19 +4,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Pure: Map</title>
-    <meta name="description" content="An interactive map linking twelve pure-math results, once declared useless, to the real applications that falsified the claim.">
+    <meta name="description" content="An interactive map of the 1959 Mathematics Subject Classification's pure-math fields, which ones were ever declared useless, and what each one became — including the surprising cases where unrelated fields converge on the same application.">
     <link rel="stylesheet" href="./style.css">
     <style>
         #map-wrap { max-width: 1100px; margin: 0 auto; padding: 16px 24px 40px; }
-        #graph { width: 100%; height: 760px; border: 1px solid #ddd; background: #fdfdfc; border-radius: 4px; }
+        #graph { width: 100%; height: 800px; border: 1px solid #ddd; background: #fdfdfc; border-radius: 4px; }
         .legend { font-size: 0.85em; color: #444; display: flex; flex-wrap: wrap; gap: 14px 22px; margin: 10px 0; }
         .legend span { display: inline-flex; align-items: center; gap: 6px; }
         .dot { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
         .line { width: 26px; height: 0; border-top: 2.5px solid #999; display: inline-block; }
         #tooltip { position: absolute; pointer-events: none; background: rgba(34,34,34,0.95); color: #eee;
-            padding: 8px 11px; border-radius: 4px; font-size: 13px; max-width: 340px; display: none; line-height: 1.35; }
+            padding: 8px 11px; border-radius: 4px; font-size: 13px; max-width: 360px; display: none; line-height: 1.35; }
         text.nodelabel { font: 11px sans-serif; fill: #222; pointer-events: none; }
         .hint { color:#666; font-size: 0.9em; }
+        .converge-callout { background: var(--accent-soft); border-radius: 8px; padding: 4px 20px; margin: 16px 0; }
     </style>
 </head>
 <body>
@@ -37,181 +38,113 @@
 <div id="map-wrap">
     <p class="pagenav"><a href="./index.html">&larr; Home</a></p>
     <h1>Map</h1>
-    <p>The center is the myth. Each spoke is a field once declared useless or simply ignored (dashed
-    red). Each theorem's green edges are what it actually became &mdash; sometimes two unrelated fields
-    converge on the same application (watch group theory and Hilbert spaces both land on quantum
-    mechanics). Click any node to open its case or source; drag to rearrange; hover for the one-line
-    story.</p>
+    <p>The center is the myth. <b style="color:#c0392b">Dashed red</b> spokes are fields with a named, dated
+    dismissal on record; <b style="color:#888">dotted grey</b> spokes are fields nobody bothered to dismiss
+    &mdash; they were just ignored. Green edges are what each field actually became. Where two or more
+    unrelated fields converge on the <em>same</em> application &mdash; watch for quantum mechanics, reached
+    independently via matrices (1925), groups (1928), and Hilbert spaces (1932) &mdash; the application node
+    has multiple green edges landing on it. Click any node to open its field page or source; drag to
+    rearrange; hover for the one-line story.</p>
+    <div class="converge-callout">
+      <strong>Watch for convergence:</strong> three unrelated pure-math roads reach quantum mechanics within
+      seven years of each other (1925&ndash;1932); two independent roads (Ring-LWE and lattice cryptography)
+      reach the same 2024 NIST post-quantum standard; two reach elliptic-curve cryptography in 1985.
+    </div>
     <div class="legend" id="cluster-legend"></div>
     <div class="legend">
-        <span><span class="line" style="border-top-style:dashed; border-color:#c0392b"></span> declared useless / ignored</span>
-        <span><span class="line" style="border-color:#1e8449"></span> became essential infrastructure</span>
+        <span><span class="line" style="border-top-style:dashed; border-color:#c0392b"></span> named dismissal on record</span>
+        <span><span class="line" style="border-top-style:dotted; border-color:#999"></span> never dismissed, just ignored</span>
+        <span><span class="line" style="border-color:#1e8449"></span> became this application</span>
+        <span><span class="line" style="border-top-style:dotted; border-color:#2471a3"></span> related application (kinship)</span>
+        <span><span class="dot" style="background:#fff;border:2px solid #c0392b;box-sizing:border-box;width:9px;height:9px;"></span> no major application documented today</span>
     </div>
     <div id="graph"></div>
-    <p class="hint">Full citations for every node are on the <a href="./sources.html">Sources</a> page.</p>
+    <p class="hint">Full citations for every node are on the <a href="./sources.html">Sources</a> page. Field
+    detail (founding date, exact dismissal quote or its absence, confidence grade) is on each field's
+    own page, reachable from <a href="./ledger.html">the Ledger</a>.</p>
 </div>
 <div id="tooltip"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="./fields-data.js"></script>
 <script>
-const CLUSTERS = {
-  numtheory: {label: "Number theory",       color: "#2980b9"},
-  algebra:   {label: "Algebra",             color: "#8e44ad"},
-  geometry:  {label: "Geometry",            color: "#16a085"},
-  topology:  {label: "Topology",            color: "#d68910"},
-  logic:     {label: "Logic & foundations", color: "#c0392b"},
-  analysis:  {label: "Analysis",            color: "#27ae60"},
+// Canonical merges: different application names that are, in substance, the same real-world thing.
+const APP_MERGE = {
+  "Matrix mechanics": "Quantum mechanics",
+  "Lattice-based post-quantum cryptography": "Post-quantum cryptography (NIST)",
+  "NIST post-quantum standards": "Post-quantum cryptography (NIST)",
 };
-
-const NODES = [
- {id:"myth", label:"PURE MATH IS USELESS", type:"hub", r:15, url:"./intro.html",
-  note:"The claim this whole site checks, one field at a time. G.H. Hardy's 1940 Apology is its founding document."},
-
- // number theory
- {id:"numtheory", label:"Number theory", type:"theorem", c:"numtheory", url:"./ledger.html",
-  note:"Hardy, 1940: 'almost as useless as the theory of numbers.' Said three times in the same book."},
- {id:"rsa", label:"RSA (1977)", type:"application", c:"numtheory", url:"https://dl.acm.org/doi/10.1145/359340.359342",
-  note:"Rivest–Shamir–Adleman. Security = the difficulty of factoring large primes. Every HTTPS handshake."},
- {id:"elliptic", label:"Elliptic curves", type:"theorem", c:"numtheory", url:"./ledger.html",
-  note:"Studied for over a century (Euler, Abel, Jacobi, Weierstrass) 'mainly for aesthetic reasons.'"},
- {id:"ecc", label:"ECC (1985)", type:"application", c:"numtheory", url:"https://en.wikipedia.org/wiki/Elliptic-curve_cryptography",
-  note:"Koblitz & Miller, independently. Now secures Bitcoin, TLS 1.3, and Signal."},
-
- // algebra
- {id:"galois", label:"Galois theory / finite fields", type:"theorem", c:"algebra", url:"./ledger.html",
-  note:"Rejected by the Paris Academy, 1831 — 'neither sufficiently clear nor sufficiently developed' — not useless, unreadable."},
- {id:"reedsolomon", label:"Reed–Solomon codes (1960)", type:"application", c:"algebra", url:"https://en.wikipedia.org/wiki/Reed%E2%80%93Solomon_error_correction",
-  note:"Finite-field arithmetic. Powers CDs, DVDs, QR codes, and Voyager's interstellar telemetry."},
- {id:"groups", label:"Group representation theory", type:"theorem", c:"algebra", url:"./ledger.html",
-  note:"Burnside, 1897: doubted it would ever yield another result. Physicists later mocked its arrival in QM as the 'Gruppenpest.'"},
- {id:"crystallography", label:"Crystallography (1891)", type:"application", c:"algebra", url:"https://en.wikipedia.org/wiki/Space_group",
-  note:"Fedorov & Schoenflies. The 230 space groups classify every possible crystal structure."},
- {id:"standardmodel", label:"The Standard Model", type:"application", c:"algebra", url:"https://en.wikipedia.org/wiki/Standard_Model",
-  note:"Gauge symmetry, SU(3)×SU(2)×U(1). Representation theory, full stop."},
- {id:"quaternions", label:"Quaternions", type:"theorem", c:"algebra", url:"./ledger.html",
-  note:"Kelvin, 1892: 'an unmixed evil to those who have touched them in any way.'"},
- {id:"graphics", label:"3D graphics (1985)", type:"application", c:"algebra", url:"https://en.wikipedia.org/wiki/Slerp",
-  note:"Shoemake's quaternion SLERP interpolation. Standard in every game engine since."},
- {id:"aerospace", label:"Gimbal-lock-free attitude control", type:"application", c:"algebra", url:"https://en.wikipedia.org/wiki/Gimbal_lock",
-  note:"Fixes the exact failure mode Apollo 11's inertial platform hit in 1969."},
-
- // geometry
- {id:"noneuclidean", label:"Non-Euclidean / Riemannian geometry", type:"theorem", c:"geometry", url:"./ledger.html",
-  note:"Gauss, 1829, on why he wouldn't publish: feared 'the clamor of the Boeotians.'"},
- {id:"generalrelativity", label:"General Relativity (1915)", type:"application", c:"geometry", url:"https://en.wikipedia.org/wiki/General_relativity",
-  note:"Einstein. Requires Riemann's 1854 geometry of curved manifolds as its literal language."},
- {id:"gps", label:"GPS", type:"application", c:"geometry", url:"https://en.wikipedia.org/wiki/Error_analysis_for_the_Global_Positioning_System",
-  note:"Uncorrected relativistic clock drift ⇒ roughly 10km/day position error. Confirmed on NTS-2, 1977."},
-
- // topology
- {id:"knots", label:"Knot theory", type:"theorem", c:"topology", url:"./ledger.html",
-  note:"Born from Kelvin's wrong 1867 theory that atoms were knotted vortices in the aether."},
- {id:"dna", label:"DNA topology", type:"application", c:"topology", url:"https://en.wikipedia.org/wiki/Topoisomerase",
-  note:"Topoisomerases manage the knotting and supercoiling of DNA. Sumners et al., from the late 1980s."},
- {id:"topoqc", label:"Topological quantum computing", type:"application", c:"topology", url:"https://en.wikipedia.org/wiki/Topological_quantum_computer",
-  note:"Kitaev, 1997. Anyons braid the way knots tangle."},
- {id:"topology", label:"Topology (Analysis Situs)", type:"theorem", c:"topology", url:"./ledger.html",
-  note:"Built, by design, to discard exactly the distances and coordinates data analysis depends on."},
- {id:"tda", label:"Topological Data Analysis (2002)", type:"application", c:"topology", url:"https://en.wikipedia.org/wiki/Topological_data_analysis",
-  note:"Edelsbrunner–Letscher–Zomorodian's persistent homology; synthesized by Carlsson, 2009."},
- {id:"cancer", label:"Breast-cancer subtype found (2011)", type:"application", c:"topology", url:"https://doi.org/10.1073/pnas.1102826108",
-  note:"Nicolau–Levine–Carlsson, PNAS. 295 tumors as points in 24,479 dimensions; found a novel, high-survival subtype."},
-
- // logic & foundations
- {id:"boolean", label:"Boolean algebra", type:"theorem", c:"logic", url:"./ledger.html",
-  note:"Boole, 1854: 'the laws of thought.' No critic ever called it useless — no one imagined a use for it either."},
- {id:"circuits", label:"Digital circuit design (1937)", type:"application", c:"logic", url:"https://en.wikipedia.org/wiki/A_Symbolic_Analysis_of_Relay_and_Switching_Circuits",
-  note:"Shannon's MIT thesis. 'One of the most important master's theses ever written' — Goldstine."},
- {id:"category", label:"Category theory", type:"theorem", c:"logic", url:"./ledger.html",
-  note:"Nicknamed 'abstract nonsense' by its own inventors, 1945 — an in-joke, not a hostile dismissal."},
- {id:"monads", label:"Monads in PL semantics (1989)", type:"application", c:"logic", url:"https://en.wikipedia.org/wiki/Monad_(functional_programming)",
-  note:"Moggi. Category-theoretic monads applied to programming-language semantics."},
- {id:"haskell", label:"Haskell IO (1996)", type:"application", c:"logic", url:"https://en.wikipedia.org/wiki/Haskell",
-  note:"Monadic I/O formally standardized in Haskell 1.3, via Wadler and Peyton Jones."},
-
- // analysis
- {id:"poincare", label:"Poincaré's three-body problem", type:"theorem", c:"analysis", url:"./ledger.html",
-  note:"1890: proved three gravitating bodies can be too tangled to predict. Filed away as a curiosity."},
- {id:"lorenz", label:"Chaos theory (1963)", type:"application", c:"analysis", url:"https://en.wikipedia.org/wiki/Chaos_theory",
-  note:"Lorenz independently rediscovers sensitive dependence on initial conditions, in a weather model."},
- {id:"weather", label:"Weather-forecast limits", type:"application", c:"analysis", url:"https://en.wikipedia.org/wiki/Numerical_weather_prediction",
-  note:"Why forecast skill runs out around ten days, no matter how good the model."},
- {id:"hilbert", label:"Hilbert spaces", type:"theorem", c:"analysis", url:"./ledger.html",
-  note:"Hilbert, on his own work: developed it with 'no presentiment' of any physical use."},
- {id:"qm", label:"Quantum mechanics formalism (1932)", type:"application", c:"analysis", url:"https://en.wikipedia.org/wiki/Mathematical_formulation_of_quantum_mechanics",
-  note:"Von Neumann. Quantum states are vectors in Hilbert space — and, independently, representation theory got there too."},
+// Soft "kinship" links between distinct-but-thematically-related application nodes.
+const KINSHIP = [
+  ["Reed–Solomon codes", "Coding theory (Leech lattice)"],
+  ["Actuarial calculations", "Actuarial science & statistical mechanics"],
 ];
 
-// type: dismissed (hub -> theorem) | became (theorem -> application, or application -> application)
-const EDGES = [
- {s:"myth", t:"numtheory", type:"dismissed"}, {s:"myth", t:"elliptic", type:"dismissed"},
- {s:"myth", t:"galois", type:"dismissed"}, {s:"myth", t:"groups", type:"dismissed"},
- {s:"myth", t:"quaternions", type:"dismissed"}, {s:"myth", t:"noneuclidean", type:"dismissed"},
- {s:"myth", t:"knots", type:"dismissed"}, {s:"myth", t:"topology", type:"dismissed"},
- {s:"myth", t:"boolean", type:"dismissed"}, {s:"myth", t:"category", type:"dismissed"},
- {s:"myth", t:"poincare", type:"dismissed"}, {s:"myth", t:"hilbert", type:"dismissed"},
+const canon = name => APP_MERGE[name] || name;
 
- {s:"numtheory", t:"rsa", type:"became"},
- {s:"elliptic", t:"ecc", type:"became"},
- {s:"galois", t:"reedsolomon", type:"became"},
- {s:"groups", t:"crystallography", type:"became"},
- {s:"groups", t:"standardmodel", type:"became"},
- {s:"groups", t:"qm", type:"became", label:"Gruppenpest, 1926–30"},
- {s:"quaternions", t:"graphics", type:"became"},
- {s:"quaternions", t:"aerospace", type:"became"},
- {s:"noneuclidean", t:"generalrelativity", type:"became"},
- {s:"generalrelativity", t:"gps", type:"became"},
- {s:"knots", t:"dna", type:"became"},
- {s:"knots", t:"topoqc", type:"became"},
- {s:"topology", t:"tda", type:"became"},
- {s:"tda", t:"cancer", type:"became"},
- {s:"boolean", t:"circuits", type:"became"},
- {s:"category", t:"monads", type:"became"},
- {s:"monads", t:"haskell", type:"became"},
- {s:"poincare", t:"lorenz", type:"became"},
- {s:"lorenz", t:"weather", type:"became"},
- {s:"hilbert", t:"qm", type:"became", label:"von Neumann, 1932"},
-];
+const NODES = [{id: "myth", label: "PURE MATH IS USELESS", type: "hub"}];
+const EDGES = [];
+const appNodeByName = new Map();
+
+FIELDS.forEach(f => {
+  NODES.push({id: "f:" + f.slug, label: f.name, type: "field", c: f.cluster,
+    url: "./fields/" + f.slug + ".html",
+    note: (f.dismissed ? f.dismissed.who + " (" + f.dismissed.year + "): " + f.dismissed.quote
+                        : "Never dismissed. " + (f.dismissed_note || "")).slice(0, 260),
+    noApplication: (f.applications || []).length === 0});
+  EDGES.push({s: "myth", t: "f:" + f.slug, type: f.dismissed ? "dismissed" : "ignored"});
+  (f.applications || []).forEach(a => {
+    const cname = canon(a.name);
+    const id = "a:" + cname;
+    if (!appNodeByName.has(cname)) {
+      appNodeByName.set(cname, id);
+      NODES.push({id, label: cname, type: "application", c: f.cluster, url: a.url, note: a.note});
+    }
+    EDGES.push({s: "f:" + f.slug, t: id, type: "became"});
+  });
+});
+
+KINSHIP.forEach(([a, b]) => {
+  const ida = appNodeByName.get(canon(a)), idb = appNodeByName.get(canon(b));
+  if (ida && idb) EDGES.push({s: ida, t: idb, type: "kinship"});
+});
 
 const STYLE = {
   dismissed: {stroke:"#c0392b", width:1.6, dash:"3,4"},
+  ignored:   {stroke:"#999",    width:1.2, dash:"1,3"},
   became:    {stroke:"#1e8449", width:2.0, dash:null},
+  kinship:   {stroke:"#2471a3", width:1.3, dash:"2,5"},
 };
+const TYPE_NAMES = {dismissed:"named dismissal on record", ignored:"never dismissed, just ignored",
+  became:"became this application", kinship:"related application"};
 
-const W = document.getElementById("graph").clientWidth, H = 760;
+const W = document.getElementById("graph").clientWidth, H = 800;
 const svg = d3.select("#graph").append("svg").attr("width","100%").attr("height",H).attr("viewBox",[0,0,W,H]);
 const g = svg.append("g");
-svg.call(d3.zoom().scaleExtent([0.4,3]).on("zoom", ev => g.attr("transform", ev.transform)));
+svg.call(d3.zoom().scaleExtent([0.3,3]).on("zoom", ev => g.attr("transform", ev.transform)));
 
-const links = EDGES.map(e => ({source:e.s, target:e.t, ...e}));
+const links = EDGES.map(e => ({source:e.s, target:e.t, type:e.type}));
 
-const cx = W/2, cy = H/2, R_THEOREM = 160, R_APP = 320;
+const cx = W/2, cy = H/2, R_FIELD = 210, R_APP = 380;
 const clusterKeys = Object.keys(CLUSTERS);
 const sectorAngle = {};
 clusterKeys.forEach((k,i) => { sectorAngle[k] = (i/clusterKeys.length)*2*Math.PI - Math.PI/2; });
 
-const theoremsByCluster = {};
-NODES.filter(d=>d.type==="theorem").forEach(d => {
-  (theoremsByCluster[d.c] = theoremsByCluster[d.c] || []).push(d);
-});
-const nodeById = {};
-NODES.forEach(d => nodeById[d.id] = d);
+const fieldsByCluster = {};
+NODES.filter(d=>d.type==="field").forEach(d => { (fieldsByCluster[d.c] = fieldsByCluster[d.c]||[]).push(d); });
+const nodeById = {}; NODES.forEach(d => nodeById[d.id] = d);
 const appParent = {};
-links.filter(l=>l.type==="became").forEach(l => { if(!appParent[l.t]) appParent[l.t]=l.s; });
+links.filter(l=>l.type==="became").forEach(l => { if(!appParent[l.target]) appParent[l.target]=l.source; });
 
 NODES.forEach(d => {
   if (d.type === "hub") { d.fx = cx; d.fy = cy; return; }
-  if (d.type === "theorem") {
-    const list = theoremsByCluster[d.c];
+  if (d.type === "field") {
+    const list = fieldsByCluster[d.c];
     const i = list.indexOf(d);
-    const spread = 0.62;
-    const a = sectorAngle[d.c] + (i - (list.length-1)/2) * spread;
-    d.x = cx + R_THEOREM*Math.cos(a); d.y = cy + R_THEOREM*Math.sin(a);
-    d._angle = a;
+    const a = sectorAngle[d.c] + (i - (list.length-1)/2) * (Math.PI/2/Math.max(list.length,4));
+    d.x = cx + R_FIELD*Math.cos(a); d.y = cy + R_FIELD*Math.sin(a); d._angle = a;
   } else {
-    let parent = nodeById[appParent[d.id]];
-    let hops = 0;
-    while (parent && parent.type === "application" && hops < 4) { parent = nodeById[appParent[parent.id]]; hops++; }
+    const parent = nodeById[appParent[d.id]];
     const a = (parent && parent._angle !== undefined) ? parent._angle : sectorAngle[d.c];
     const jitter = (Math.random()-0.5) * 0.5;
     d.x = cx + R_APP*Math.cos(a+jitter); d.y = cy + R_APP*Math.sin(a+jitter);
@@ -219,30 +152,31 @@ NODES.forEach(d => {
 });
 
 const sim = d3.forceSimulation(NODES)
-  .force("link", d3.forceLink(links).id(d=>d.id).distance(70).strength(0.15))
-  .force("charge", d3.forceManyBody().strength(-260))
-  .force("radial", d3.forceRadial(d => d.type==="hub" ? 0 : (d.type==="theorem" ? R_THEOREM : R_APP), cx, cy)
-                     .strength(d => d.type==="hub" ? 1 : (d.type==="theorem" ? 0.5 : 0.28)))
-  .force("collide", d3.forceCollide().radius(d => (d.r||9)+20));
+  .force("link", d3.forceLink(links).id(d=>d.id).distance(60).strength(0.1))
+  .force("charge", d3.forceManyBody().strength(-170))
+  .force("radial", d3.forceRadial(d => d.type==="hub" ? 0 : (d.type==="field" ? R_FIELD : R_APP), cx, cy)
+                     .strength(d => d.type==="hub" ? 1 : (d.type==="field" ? 0.5 : 0.22)))
+  .force("collide", d3.forceCollide().radius(d => (d.type==="hub"?15:d.type==="field"?9:7)+16));
 
 const tooltip = d3.select("#tooltip");
 
 const link = g.append("g").selectAll("line").data(links).join("line")
   .attr("stroke", d=>STYLE[d.type].stroke).attr("stroke-width", d=>STYLE[d.type].width)
-  .attr("stroke-dasharray", d=>STYLE[d.type].dash).attr("opacity",0.7);
+  .attr("stroke-dasharray", d=>STYLE[d.type].dash).attr("opacity",0.65);
 
 const linkHover = g.append("g").selectAll("line").data(links).join("line")
   .attr("stroke","transparent").attr("stroke-width",12)
   .on("mousemove",(ev,d)=>{ tooltip.style("display","block")
       .style("left",(ev.pageX+14)+"px").style("top",(ev.pageY+8)+"px")
-      .html(`<b>${d.source.label} → ${d.target.label}</b><br><i>${d.type==="dismissed"?"declared useless / ignored":"became essential infrastructure"}</i>${d.label?"<br>"+d.label:""}`); })
+      .html(`<b>${d.source.label} &rarr; ${d.target.label}</b><br><i>${TYPE_NAMES[d.type]}</i>`); })
   .on("mouseout",()=>tooltip.style("display","none"));
 
 const node = g.append("g").selectAll("circle").data(NODES.filter(d=>d.id!=="myth")).join("circle")
-  .attr("r", d=>d.type==="theorem" ? 11 : 8)
-  .attr("fill", d=>d.type==="theorem" ? CLUSTERS[d.c].color : "#ffffff")
-  .attr("stroke", d=>d.type==="theorem" ? "#fff" : CLUSTERS[d.c].color)
-  .attr("stroke-width", d=>d.type==="theorem" ? 1.5 : 2)
+  .attr("r", d=>d.type==="field" ? 9 : 7)
+  .attr("fill", d=>d.type==="field" ? CLUSTERS[d.c].color : "#ffffff")
+  .attr("stroke", d=>d.type==="field" ? (d.noApplication ? "#c0392b" : "#fff") : CLUSTERS[d.c].color)
+  .attr("stroke-width", d=>d.type==="field" ? (d.noApplication?2.5:1.5) : 2)
+  .attr("stroke-dasharray", d=>d.noApplication ? "2,2" : null)
   .style("cursor","pointer")
   .on("click", (ev,d)=>{ if(d.url) window.open(d.url,"_blank"); })
   .on("mousemove", (ev,d)=>{ tooltip.style("display","block")
@@ -257,15 +191,15 @@ const node = g.append("g").selectAll("circle").data(NODES.filter(d=>d.id!=="myth
 const hubNode = g.append("circle").attr("cx",cx).attr("cy",cy).attr("r",15)
   .attr("fill","#1f1d3d").attr("stroke","#fff").attr("stroke-width",2)
   .style("cursor","pointer")
-  .on("click", ()=>window.open(nodeById["myth"].url,"_blank"))
+  .on("click", ()=>window.open("./intro.html","_blank"))
   .on("mousemove",(ev)=>{ tooltip.style("display","block")
       .style("left",(ev.pageX+14)+"px").style("top",(ev.pageY+8)+"px")
-      .html(`<b>${nodeById["myth"].label}</b><br>${nodeById["myth"].note}`); })
+      .html(`<b>The myth</b><br>The claim this whole site checks, one field at a time.`); })
   .on("mouseout",()=>tooltip.style("display","none"));
 
 const label = g.append("g").selectAll("text").data(NODES.filter(d=>d.id!=="myth")).join("text")
   .attr("class","nodelabel").attr("text-anchor","middle")
-  .attr("dy", d=>-((d.type==="theorem"?11:8)+5)).text(d=>d.label);
+  .attr("dy", d=>-((d.type==="field"?9:7)+5)).text(d=>d.label);
 const hubLabel = g.append("text").attr("x",cx).attr("y",cy-15-10).attr("text-anchor","middle")
   .style("font","bold 12px sans-serif").style("letter-spacing","1.5px").attr("fill","#1f1d3d").text("THE MYTH");
 
