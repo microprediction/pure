@@ -268,7 +268,7 @@ FIELDS = [
              dict(name="Multidimensional systems engineering", year=1975, note="Stability of m-D digital filters is governed by domain-of-holomorphy conditions with no 1-D analogue. Bose's Applied Multidimensional Systems Theory documents functions and polynomials of several complex variables underlying image processing, multidimensional control, iterative learning control, network synthesis, geophysical signal processing, and multidimensional convolutional coding — genuinely several-variable phenomena, not just notation borrowed from one-variable theory, since stability, realization, and interpolation behave differently once there's more than one complex variable. A related literature connects multidimensional robust control with multivariable Nevanlinna–Pick interpolation and H^∞ theory.", url="https://en.wikipedia.org/wiki/Multidimensional_filter_design"),
          ],
          verdict="s", gap_basis="founding (1906) to multidimensional filter/control theory (1975)", gap_years=69,
-         note="Definitely applied, but niche: not RSA or GPS. “No major application” is defensible only under a narrow reading of “major” as “visible in mass-market infrastructure” — “no known application” would be false. String theory's Calabi–Yau connection and twistor theory also use this machinery but don't clear the real-world bar on their own (unconfirmed physics). This entry's specific citations (Bose's textbook, the robust-control/Nevanlinna–Pick literature) were supplied via detailed review, not independently re-verified by search this session.",
+         note="Definitely applied, but niche: not RSA or GPS. “No major application” is defensible only under a narrow reading of “major” as “visible in mass-market infrastructure” — “no known application” would be false. String theory's Calabi–Yau connection and twistor theory also use this machinery but don't clear the real-world bar on their own (unconfirmed physics). This entry's specific citations (Bose's textbook, the robust-control/Nevanlinna–Pick literature) were supplied via detailed review, not independently re-verified by search.",
          confidence="medium"),
 
     dict(slug="special-functions", msc="33", name="Special functions",
@@ -288,7 +288,7 @@ FIELDS = [
          one_liner="Equations relating a function of one variable to its derivatives.",
          founded=dict(year=1687, event="Newton's Principia"),
          dismissed=None,
-         dismissed_note="Tied to mechanics and orbital motion from inception. Not independently re-verified by a dedicated search this session; treat this entry's confidence as lower than the others.",
+         dismissed_note="Tied to mechanics and orbital motion from inception. Not independently re-verified by a dedicated search; treat this entry's confidence as lower than the others.",
          applications=[
              dict(name="Orbital mechanics", year=1687, note="Newton derives Kepler's laws in the same work that founds the field.", url="https://en.wikipedia.org/wiki/Ordinary_differential_equation"),
          ],
@@ -356,7 +356,7 @@ FIELDS = [
              dict(name="Fast SO(3) Fourier transforms", year=2000, note="Harmonic analysis on SO(3), built from irreducible representations and Wigner D-matrices — compact-group harmonic analysis, not ordinary scalar Fourier analysis. Fast SO(3) transforms are an active numerical topic, used in computational structural biology to calculate rigid-body rotational correlations of three-dimensional objects.", url="https://en.wikipedia.org/wiki/Wigner_D-matrix"),
          ],
          verdict="s", gap_basis="founding (1934) to fast SO(3) transform methods (~2000)", gap_years=66,
-         note="The AMS itself describes commutative and noncommutative harmonic analysis as feeding applications in signal processing, multiplexing, cosmology, and astrophysics. Calling this “just generalized Fourier analysis” is a fair description, not a disqualification — that's what abstract harmonic analysis is; excluding an application because it manifests as a Fourier transform on a non-Euclidean group comes close to excluding its applications by definition. No mass-market application has yet been identified where the group-theoretic machinery is unmistakably indispensable, which is why this stays “specialized” rather than “infrastructure.” The SO(3)-transform and AMS characterizations here were supplied via detailed review, not independently re-verified by search this session.",
+         note="The AMS itself describes commutative and noncommutative harmonic analysis as feeding applications in signal processing, multiplexing, cosmology, and astrophysics. Calling this “just generalized Fourier analysis” is a fair description, not a disqualification — that's what abstract harmonic analysis is; excluding an application because it manifests as a Fourier transform on a non-Euclidean group comes close to excluding its applications by definition. No mass-market application has yet been identified where the group-theoretic machinery is unmistakably indispensable, which is why this stays “specialized” rather than “infrastructure.” The SO(3)-transform and AMS characterizations here were supplied via detailed review, not independently re-verified by search.",
          confidence="medium"),
 
     dict(slug="integral-equations", msc="44/45", name="Integral transforms & integral equations",
@@ -436,7 +436,7 @@ FIELDS = [
          one_liner="Point-set topology: the abstract study of continuity, compactness, and convergence.",
          founded=dict(year=1914, event="Hausdorff's Grundzüge der Mengenlehre"),
          dismissed=None,
-         dismissed_note="(own synthesis — not independently agent-verified this session; use with appropriate caution). Constructivist/intuitionist objections (Brouwer) concerned foundations, not utility.",
+         dismissed_note="(own synthesis, not independently verified against sources; use with appropriate caution). Constructivist/intuitionist objections (Brouwer) concerned foundations, not utility.",
          applications=[
              dict(name="General equilibrium economics", year=1954, note="Arrow & Debreu's existence proof uses Kakutani's 1941 fixed-point theorem, built on compactness (Tychonoff).", url="https://en.wikipedia.org/wiki/Arrow%E2%80%93Debreu_model"),
          ],

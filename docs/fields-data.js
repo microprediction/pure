@@ -556,7 +556,7 @@ const FIELDS = [
     "verdict": "s",
     "gap_basis": "founding (1906) to multidimensional filter/control theory (1975)",
     "gap_years": 69,
-    "note": "Definitely applied, but niche: not RSA or GPS. “No major application” is defensible only under a narrow reading of “major” as “visible in mass-market infrastructure” — “no known application” would be false. String theory's Calabi–Yau connection and twistor theory also use this machinery but don't clear the real-world bar on their own (unconfirmed physics). This entry's specific citations (Bose's textbook, the robust-control/Nevanlinna–Pick literature) were supplied via detailed review, not independently re-verified by search this session.",
+    "note": "Definitely applied, but niche: not RSA or GPS. “No major application” is defensible only under a narrow reading of “major” as “visible in mass-market infrastructure” — “no known application” would be false. String theory's Calabi–Yau connection and twistor theory also use this machinery but don't clear the real-world bar on their own (unconfirmed physics). This entry's specific citations (Bose's textbook, the robust-control/Nevanlinna–Pick literature) were supplied via detailed review, not independently re-verified by search.",
     "confidence": "medium"
   },
   {
@@ -595,7 +595,7 @@ const FIELDS = [
       "event": "Newton's Principia"
     },
     "dismissed": null,
-    "dismissed_note": "Tied to mechanics and orbital motion from inception. Not independently re-verified by a dedicated search this session; treat this entry's confidence as lower than the others.",
+    "dismissed_note": "Tied to mechanics and orbital motion from inception. Not independently re-verified by a dedicated search; treat this entry's confidence as lower than the others.",
     "applications": [
       {
         "name": "Orbital mechanics",
@@ -739,7 +739,7 @@ const FIELDS = [
     "verdict": "s",
     "gap_basis": "founding (1934) to fast SO(3) transform methods (~2000)",
     "gap_years": 66,
-    "note": "The AMS itself describes commutative and noncommutative harmonic analysis as feeding applications in signal processing, multiplexing, cosmology, and astrophysics. Calling this “just generalized Fourier analysis” is a fair description, not a disqualification — that's what abstract harmonic analysis is; excluding an application because it manifests as a Fourier transform on a non-Euclidean group comes close to excluding its applications by definition. No mass-market application has yet been identified where the group-theoretic machinery is unmistakably indispensable, which is why this stays “specialized” rather than “infrastructure.” The SO(3)-transform and AMS characterizations here were supplied via detailed review, not independently re-verified by search this session.",
+    "note": "The AMS itself describes commutative and noncommutative harmonic analysis as feeding applications in signal processing, multiplexing, cosmology, and astrophysics. Calling this “just generalized Fourier analysis” is a fair description, not a disqualification — that's what abstract harmonic analysis is; excluding an application because it manifests as a Fourier transform on a non-Euclidean group comes close to excluding its applications by definition. No mass-market application has yet been identified where the group-theoretic machinery is unmistakably indispensable, which is why this stays “specialized” rather than “infrastructure.” The SO(3)-transform and AMS characterizations here were supplied via detailed review, not independently re-verified by search.",
     "confidence": "medium"
   },
   {
@@ -918,7 +918,7 @@ const FIELDS = [
       "event": "Hausdorff's Grundzüge der Mengenlehre"
     },
     "dismissed": null,
-    "dismissed_note": "(own synthesis — not independently agent-verified this session; use with appropriate caution). Constructivist/intuitionist objections (Brouwer) concerned foundations, not utility.",
+    "dismissed_note": "(own synthesis, not independently verified against sources; use with appropriate caution). Constructivist/intuitionist objections (Brouwer) concerned foundations, not utility.",
     "applications": [
       {
         "name": "General equilibrium economics",
