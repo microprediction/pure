@@ -671,7 +671,7 @@ const FIELDS = [
     },
     "dismissed": {
       "kind": "hostile",
-      "who": "Niels Henrik Abel; separately, Gösta Mittag-Leffler quoting Weierstrass",
+      "who": "N. H. Abel",
       "year": 1826,
       "quote": "“Divergent series are in general something fatal… you can get whatever result you want when you use them” (Abel, letter to Holmboe, 1826). Separately, Borel's 1899 method was rebuffed with “The Master [Weierstrass] forbids it.”",
       "source": "Abel's *Oeuvres complètes*; Wikipedia's “Borel summation” article for the Mittag-Leffler line.",
@@ -754,7 +754,7 @@ const FIELDS = [
     },
     "dismissed": {
       "kind": "rigor-rejection",
-      "who": "William Burnside (Royal Society referee) & Peter Guthrie Tait",
+      "who": "Burnside & Tait",
       "year": 1893,
       "quote": "Burnside rejected a Heaviside paper for “irredeemable inadequacies in proof”; Tait attacked his methods in *Nature*.",
       "source": "MacTutor History of Mathematics.",

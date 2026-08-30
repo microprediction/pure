@@ -70,48 +70,62 @@
 const W = document.getElementById("tl-wrap").clientWidth, M = {l: 34, r: 34, b: 40, t: 30};
 const x = d3.scaleLinear().domain([1600, 2028]).range([M.l, W - M.r]);
 
+// A handful of dismissal attributions run to a full descriptive sentence rather than a name — far
+// longer than any other label on the chart. Truncated for display only: the full text still shows
+// on hover and on the field's own page.
+const truncateLabel = (s, n=42) => s.length > n ? s.slice(0, n-1).trimEnd() + "…" : s;
+
 // Build one "thread" per field: founded -> (dismissed, if distinct) -> applications, in year order.
 const THREADS = FIELDS.map(f => {
   const pts = [];
   pts.push({year: f.founded.year, kind: "founded", label: "Founded", url: "./fields/"+f.slug+".html",
     note: f.founded.event});
   if (f.dismissed && f.dismissed.year !== f.founded.year) {
-    pts.push({year: f.dismissed.year, kind: "dismissed", label: f.dismissed.who,
-      url: "./fields/"+f.slug+".html", note: f.dismissed.quote});
+    pts.push({year: f.dismissed.year, kind: "dismissed", label: truncateLabel(f.dismissed.who),
+      fullLabel: f.dismissed.who, url: "./fields/"+f.slug+".html", note: f.dismissed.quote});
   }
   (f.applications || []).forEach(a => {
-    pts.push({year: a.year, kind: "application", label: a.name, url: a.url, note: a.note});
+    pts.push({year: a.year, kind: "application", label: truncateLabel(a.name), fullLabel: a.name,
+      url: a.url, note: a.note});
   });
   pts.sort((a,b) => a.year - b.year);
   return {slug: f.slug, name: f.name, cluster: f.cluster, noApplication: (f.applications||[]).length===0, pts};
 });
 
-// Estimate a label's rendered half-width in px (rough monospace-ish heuristic for an 11px sans font).
-const labelWidth = s => 6.2 * s.length + 14;
+// Estimate a label's rendered width in px (generously overestimated for an 11px sans font,
+// since underestimating here is what causes labels from different threads to collide).
+const labelWidth = s => 7 * s.length + 20;
 
+// A point's label runs rightward from its marker, except near the chart's right edge, where it
+// flips to run leftward so it doesn't overshoot the plot area. spanL/spanR must be computed from
+// every point in the thread, not just the first and last, since a flip can make a middle point's
+// label the true left- or rightmost extent.
 THREADS.forEach(t => {
   t.pts.forEach(p => p.x = x(p.year));
-  t.spanL = t.pts[0].x - labelWidth(t.pts[0].label) - 6;
-  t.spanR = t.pts[t.pts.length-1].x + labelWidth(t.pts[t.pts.length-1].label) + 6;
+  let minL = Infinity, maxR = -Infinity;
+  t.pts.forEach(p => {
+    const w = labelWidth(p.label);
+    const wantLeft = p.x > W - 190;
+    minL = Math.min(minL, wantLeft ? p.x - w : p.x);
+    maxR = Math.max(maxR, wantLeft ? p.x : p.x + w);
+  });
+  t.spanL = minL - 10;
+  t.spanR = maxR + 10;
 });
 
-// Greedy first-fit row packing within each cluster/lane.
-const ROW_H = 30, LANE_GAP = 14, LANE_TOP_PAD = 22;
+// One row per field — packing multiple fields' threads into a shared row saves vertical space,
+// but every field can carry a long dismissal or application label, and once two independent
+// threads land on the same row nothing stops one's label from running into the other's. A
+// dedicated row per field costs height, not correctness.
+const ROW_H = 90, LANE_GAP = 14, LANE_TOP_PAD = 22;
 const laneOrder = Object.keys(CLUSTERS);
-const laneRows = {};   // cluster -> array of {rightEdge}
 const laneY0 = {};
 let cursorY = M.t;
 laneOrder.forEach(cl => {
   const threads = THREADS.filter(t => t.cluster === cl).sort((a,b) => a.spanL - b.spanL);
-  const rows = [];
-  threads.forEach(t => {
-    let row = rows.findIndex(r => r.rightEdge < t.spanL);
-    if (row === -1) { row = rows.length; rows.push({rightEdge: -Infinity}); }
-    t.row = row;
-    rows[row].rightEdge = t.spanR;
-  });
+  threads.forEach((t, i) => { t.row = i; });
   laneY0[cl] = cursorY;
-  const nRows = Math.max(rows.length, 1);
+  const nRows = Math.max(threads.length, 1);
   cursorY += LANE_TOP_PAD + nRows * ROW_H + LANE_GAP;
 });
 const H = cursorY + M.b;
@@ -152,17 +166,35 @@ THREADS.forEach(t => {
          .text(`${gap} yrs`);
     }
   }
-  // alternate label vertical offset when consecutive points on this thread sit close together
-  let lastRight = -Infinity, flip = 1;
+  // Stack labels on this thread into vertical levels, greedily reusing a level whenever its
+  // last-placed label doesn't reach as far as this one's start. Tracking each level's own
+  // rightmost (or leftmost) occupied edge independently — rather than a single shared "last
+  // label" pointer — is what stops a label from landing back on a level an earlier label still
+  // occupies once an intervening label happened not to collide with it. Level 0 additionally has
+  // to clear the *next* (or, for a leftward label, the *previous*) point's own marker circle: two
+  // points close together in time can be too near for a label to have collided with anything
+  // placed so far, yet still long enough to run straight through the neighboring circle, which
+  // always sits on the baseline regardless of which level its own label lands on.
+  const LEVEL_DY = [4, -18, 30, -42, 54];
+  const levelEdge = [];
   t.pts.forEach((p, i) => {
     const w = labelWidth(p.label);
     const wantLeft = p.x > W - 190;
-    const labelX = wantLeft ? p.x - 11 : p.x + 11;
     const startEdge = wantLeft ? p.x - w : p.x;
-    if (startEdge < lastRight + 4) { flip = -flip; } else { flip = 1; }
-    p._dy = y + (flip < 0 ? -13 : 4);
-    p._labelX = labelX; p._anchor = wantLeft ? "end" : "start";
-    lastRight = wantLeft ? p.x : p.x + w;
+    const endEdge = wantLeft ? p.x : p.x + w;
+    const nextX = i < t.pts.length - 1 ? t.pts[i+1].x : Infinity;
+    const prevX = i > 0 ? t.pts[i-1].x : -Infinity;
+    let level = LEVEL_DY.length - 1;
+    for (let lvl = 0; lvl < LEVEL_DY.length; lvl++) {
+      const clearsPriorLabels = levelEdge[lvl] === undefined || startEdge >= levelEdge[lvl] + 6;
+      const clearsNeighborMarker = lvl > 0 ||
+        (wantLeft ? startEdge >= prevX + 10 : endEdge <= nextX - 10);
+      if (clearsPriorLabels && clearsNeighborMarker) { level = lvl; break; }
+    }
+    levelEdge[level] = endEdge;
+    p._dy = y + LEVEL_DY[level];
+    p._labelX = wantLeft ? p.x - 11 : p.x + 11;
+    p._anchor = wantLeft ? "end" : "start";
   });
 
   const gsel = svg.append("g").selectAll("g").data(t.pts).join("g")
@@ -170,7 +202,7 @@ THREADS.forEach(t => {
     .on("click",(ev,d)=>{ if(d.url) window.open(d.url,"_blank"); })
     .on("mousemove",(ev,d)=>{ tooltip.style("display","block")
         .style("left",(ev.pageX+14)+"px").style("top",(ev.pageY+8)+"px")
-        .html(`<b>${t.name}</b> &mdash; ${d.label} (${d.year})<br>${d.note||""}`); })
+        .html(`<b>${t.name}</b> &mdash; ${d.fullLabel||d.label} (${d.year})<br>${d.note||""}`); })
     .on("mouseout",()=>tooltip.style("display","none"));
 
   gsel.append("circle").attr("cx",d=>d.x).attr("cy",y)
