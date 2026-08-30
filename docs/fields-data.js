@@ -132,7 +132,7 @@ const FIELDS = [
       "event": "Boole's An Investigation of the Laws of Thought"
     },
     "dismissed": null,
-    "dismissed_note": "No recorded critic. Boole framed the work as logic and philosophy; the switching technology it would describe didn't exist yet, so no one anticipated an engineering use either way.",
+    "dismissed_note": "Not dismissed, and not actually obscure. Boole's algebra spawned an active 19th-century logic tradition (Jevons, Peirce, Schröder), and Charles Sanders Peirce reportedly sketched an electrical-relay reading of logical operations decades before Shannon. What changed in 1937 wasn't the first hint that Boolean algebra could touch circuits — it was Shannon supplying the first systematic engineering theory showing it could design arbitrary switching circuits, turning a live logical tradition into a design method.",
     "applications": [
       {
         "name": "Digital circuit design",
@@ -157,19 +157,19 @@ const FIELDS = [
       "event": "Gauss's Disquisitiones Arithmeticae"
     },
     "dismissed": {
-      "kind": "hostile",
+      "kind": "hedged",
       "who": "G. H. Hardy",
       "year": 1915,
-      "quote": "“The Theory of Numbers has always been regarded as one of the most obviously useless branches of Pure Mathematics” (1915 lecture); repeated three times in *A Mathematician's Apology* (1940).",
+      "quote": "“The Theory of Numbers has always been regarded as one of the most obviously useless branches of Pure Mathematics” (1915 lecture, delivered with sustained irony per the annotated edition); echoed, with explicit hedges (“at present at any rate,” “Time may change all this”), in *A Mathematician's Apology* (1940).",
       "source": "Hardy, *A Mathematician's Apology*, CUP 1940, §21/§25/§28, verified against the primary text.",
-      "note": null,
+      "note": "Hardy's case wasn't purely empirical: he also argued serious mathematics is justified as art, independent of use, and he explicitly allowed that time might prove him wrong about the applications. He was too pessimistic about scope and timescale — that's the real story, not a flat, unhedged prediction.",
       "confidence": "high"
     },
     "applications": [
       {
         "name": "RSA cryptography",
         "year": 1977,
-        "note": "Rivest–Shamir–Adleman. Security rests on the difficulty of factoring large primes.",
+        "note": "Rivest–Shamir–Adleman; publicly circulated 1977, the canonical paper appeared in Communications of the ACM in 1978. Security rests on the difficulty of factoring large primes.",
         "url": "https://dl.acm.org/doi/10.1145/359340.359342"
       }
     ],
@@ -186,17 +186,10 @@ const FIELDS = [
     "one_liner": "Which polynomial equations are solvable by radicals — and the finite-field arithmetic this required.",
     "founded": {
       "year": 1830,
-      "event": "Galois's memoir on solvability by radicals"
+      "event": "Galois's “Sur la théorie des nombres,” developing finite-field arithmetic — published in his lifetime, in the Bulletin des sciences mathématiques, without much incident"
     },
-    "dismissed": {
-      "kind": "rigor-rejection",
-      "who": "Siméon Poisson (Paris Academy)",
-      "year": 1831,
-      "quote": "“Neither sufficiently clear nor sufficiently developed to allow us to judge its rigour.”",
-      "source": "Poisson's 1831 Academy report, as reproduced by MacTutor History of Mathematics.",
-      "note": "A rejection for incomprehensibility, not a claim of uselessness — a different flavor of dismissal than Hardy's. Not published until 1846, 14 years after Galois's death.",
-      "confidence": "medium"
-    },
+    "dismissed": null,
+    "dismissed_note": "No dismissal attaches to this specific paper. A separate, related work fared worse: Galois's 1831 memoir on solvability of equations by radicals was rejected by Siméon Poisson for the Paris Academy (“neither sufficiently clear nor sufficiently developed to allow us to judge its rigour”) and published only posthumously in 1846. That memoir became foundational to group theory through Serret, Betti, and Jordan across the rest of the 19th century — actively developed, not shelved — but its influence runs through group theory broadly, not through the specific finite-field arithmetic that Reed–Solomon codes use. The two papers are often run together; they shouldn't be.",
     "applications": [
       {
         "name": "Reed–Solomon codes",
@@ -205,7 +198,7 @@ const FIELDS = [
         "url": "https://en.wikipedia.org/wiki/Reed%E2%80%93Solomon_error_correction"
       }
     ],
-    "verdict": "a",
+    "verdict": "b",
     "gap_basis": "founding (1830) to Reed–Solomon (1960)",
     "gap_years": 130,
     "confidence": "medium"
@@ -436,15 +429,8 @@ const FIELDS = [
       "year": 1854,
       "event": "Cayley's abstract definition of a group"
     },
-    "dismissed": {
-      "kind": "hostile",
-      "who": "William Burnside",
-      "year": 1897,
-      "quote": "Doubted Frobenius's year-old representation theory would ever yield another result (Preface, *Theory of Groups of Finite Order*, 1st ed.). He reversed this completely by the 1911 2nd edition. A generation later, physicists (reportedly including Schrödinger) mocked the theory's arrival in quantum mechanics as the “Gruppenpest” — the group-plague.",
-      "source": "Burnside's 1897 preface, read directly; Gruppenpest anecdote corroborated across physics-history sources.",
-      "note": "Burnside's doubt was about representation theory specifically, not group theory as a whole.",
-      "confidence": "high"
-    },
+    "dismissed": null,
+    "dismissed_note": "Weaker than it's often told. Burnside's 1897 preface to *Theory of Groups of Finite Order* explains an omission — given the results then known to him, he found it hard to name a result more directly reached via linear-transformation groups than via substitution groups — which is a narrow, time-qualified editorial judgment, not a forecast that the topic would never produce anything. Scholarship also cautions he may not even have meant Frobenius's brand-new representation theory: the relevant Frobenius paper connecting character theory to linear substitutions appears to have followed Burnside's preface within the same year. By the 1911 second edition, new results had changed Burnside's assessment. Separately, physicists in the late 1920s coined “Gruppenpest” (the group-plague) for group-representation methods arriving in quantum mechanics, commonly traced to Paul Ehrenfest's circle in Leiden (1928) — but Ehrenfest himself did not reject the theory and ran seminars on it; the episode was a mix of enthusiasm, skepticism, fashion, and pedagogical frustration, not a clean dismissal.",
     "applications": [
       {
         "name": "Crystallography",
@@ -455,7 +441,7 @@ const FIELDS = [
       {
         "name": "Quantum mechanics",
         "year": 1928,
-        "note": "Wigner, Weyl, Hund apply group representation theory to QM — the “Gruppenpest” episode.",
+        "note": "Wigner, Weyl, Hund apply group representation theory to QM, amid the mixed reception nicknamed “Gruppenpest.”",
         "url": "https://en.wikipedia.org/wiki/Standard_Model"
       },
       {
@@ -465,10 +451,10 @@ const FIELDS = [
         "url": "https://en.wikipedia.org/wiki/Standard_Model"
       }
     ],
-    "verdict": "a",
+    "verdict": "b",
     "gap_basis": "founding (1854) to crystallography (1891)",
     "gap_years": 37,
-    "confidence": "high"
+    "confidence": "medium"
   },
   {
     "slug": "measure-theory",
@@ -885,12 +871,12 @@ const FIELDS = [
       "event": "Riemann's habilitation lecture on the geometry of curved manifolds"
     },
     "dismissed": {
-      "kind": "hostile",
+      "kind": "anticipated-hostility",
       "who": "Carl Friedrich Gauss",
       "year": 1829,
       "quote": "“It may take very long before I make public my investigations on this issue… for I fear the clamor of the Boeotians.”",
       "source": "Letter to Bessel, 1829.",
-      "note": "Gauss privately feared publishing his own non-Euclidean results; the field was widely regarded as a logical exercise with no physical relevance until the 1860s–70s.",
+      "note": "A different failure mode from Hardy's or Kelvin's: Gauss valued this mathematics highly and wasn't calling it useless — he feared hostile reception from unsympathetic contemporaries (“Boeotians,” a classical slur for the intellectually dull), not that the work lacked value. The field was nonetheless widely regarded as a logical exercise with no physical relevance until the 1860s–70s.",
       "confidence": "high"
     },
     "applications": [
@@ -973,10 +959,10 @@ const FIELDS = [
     "msc": "57/58",
     "name": "Manifolds & low-dimensional topology (knot theory)",
     "cluster": "topology",
-    "one_liner": "Kelvin's wrong theory that atoms were knotted vortices spawned a genuine mathematical field.",
+    "one_liner": "Kelvin's wrong theory that atoms were knotted vortices accelerated a mathematical field that already existed.",
     "founded": {
-      "year": 1867,
-      "event": "Kelvin's “On Vortex Atoms” and Tait's resulting knot tabulation"
+      "year": 1847,
+      "event": "Johann Benedict Listing's Vorstudien zur Topologie, with earlier linking-number work by Gauss (1833) — knot theory predates Kelvin by two decades"
     },
     "dismissed": {
       "kind": "wrong-physics",
@@ -984,7 +970,7 @@ const FIELDS = [
       "year": 1867,
       "quote": "Proposed atoms were knotted vortices in the luminiferous aether — completely wrong physics, abandoned within decades.",
       "source": "Kelvin, “On Vortex Atoms,” Proc. Royal Society of Edinburgh, 1867.",
-      "note": "An unusual case: the dismissal isn't of the math but of a physical theory that happened to leave knot theory behind as its accidental, then-abandoned byproduct.",
+      "note": "Kelvin's theory didn't originate knot theory — Gauss and Listing got there first — but it accelerated and systematized it, motivating Tait's exhaustive tabulation of knots once the physics collapsed.",
       "confidence": "high"
     },
     "applications": [
@@ -1002,8 +988,8 @@ const FIELDS = [
       }
     ],
     "verdict": "a",
-    "gap_basis": "founding (1867) to DNA topology (1990)",
-    "gap_years": 123,
+    "gap_basis": "founding (1847) to DNA topology (1990)",
+    "gap_years": 143,
     "confidence": "high"
   },
   {

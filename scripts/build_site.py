@@ -76,7 +76,7 @@ FIELDS = [
          one_liner="Boole's algebra of logic: propositions manipulated as 0/1 algebraic quantities.",
          founded=dict(year=1854, event="Boole's An Investigation of the Laws of Thought"),
          dismissed=None,
-         dismissed_note="No recorded critic. Boole framed the work as logic and philosophy; the switching technology it would describe didn't exist yet, so no one anticipated an engineering use either way.",
+         dismissed_note="Not dismissed, and not actually obscure. Boole's algebra spawned an active 19th-century logic tradition (Jevons, Peirce, Schröder), and Charles Sanders Peirce reportedly sketched an electrical-relay reading of logical operations decades before Shannon. What changed in 1937 wasn't the first hint that Boolean algebra could touch circuits — it was Shannon supplying the first systematic engineering theory showing it could design arbitrary switching circuits, turning a live logical tradition into a design method.",
          applications=[
              dict(name="Digital circuit design", year=1937, note="Claude Shannon's MIT master's thesis proved Boolean algebra maps exactly onto relay/switching circuits — the theoretical foundation of all digital computing.", url="https://en.wikipedia.org/wiki/A_Symbolic_Analysis_of_Relay_and_Switching_Circuits"),
          ],
@@ -87,12 +87,13 @@ FIELDS = [
          cluster="numtheory",
          one_liner="The study of integers, primes, and modular arithmetic.",
          founded=dict(year=1801, event="Gauss's Disquisitiones Arithmeticae"),
-         dismissed=dict(kind="hostile", who="G. H. Hardy", year=1915,
-             quote="“The Theory of Numbers has always been regarded as one of the most obviously useless branches of Pure Mathematics” (1915 lecture); repeated three times in *A Mathematician's Apology* (1940).",
+         dismissed=dict(kind="hedged", who="G. H. Hardy", year=1915,
+             quote="“The Theory of Numbers has always been regarded as one of the most obviously useless branches of Pure Mathematics” (1915 lecture, delivered with sustained irony per the annotated edition); echoed, with explicit hedges (“at present at any rate,” “Time may change all this”), in *A Mathematician's Apology* (1940).",
              source="Hardy, *A Mathematician's Apology*, CUP 1940, §21/§25/§28, verified against the primary text.",
-             note=None, confidence="high"),
+             note="Hardy's case wasn't purely empirical: he also argued serious mathematics is justified as art, independent of use, and he explicitly allowed that time might prove him wrong about the applications. He was too pessimistic about scope and timescale — that's the real story, not a flat, unhedged prediction.",
+             confidence="high"),
          applications=[
-             dict(name="RSA cryptography", year=1977, note="Rivest–Shamir–Adleman. Security rests on the difficulty of factoring large primes.", url="https://dl.acm.org/doi/10.1145/359340.359342"),
+             dict(name="RSA cryptography", year=1977, note="Rivest–Shamir–Adleman; publicly circulated 1977, the canonical paper appeared in Communications of the ACM in 1978. Security rests on the difficulty of factoring large primes.", url="https://dl.acm.org/doi/10.1145/359340.359342"),
          ],
          verdict="a", gap_basis="founding (1801) to RSA (1977)", gap_years=176,
          confidence="high"),
@@ -100,16 +101,13 @@ FIELDS = [
     dict(slug="galois-theory", msc="12", name="Field theory & Galois theory",
          cluster="algebra",
          one_liner="Which polynomial equations are solvable by radicals — and the finite-field arithmetic this required.",
-         founded=dict(year=1830, event="Galois's memoir on solvability by radicals"),
-         dismissed=dict(kind="rigor-rejection", who="Siméon Poisson (Paris Academy)", year=1831,
-             quote="“Neither sufficiently clear nor sufficiently developed to allow us to judge its rigour.”",
-             source="Poisson's 1831 Academy report, as reproduced by MacTutor History of Mathematics.",
-             note="A rejection for incomprehensibility, not a claim of uselessness — a different flavor of dismissal than Hardy's. Not published until 1846, 14 years after Galois's death.",
-             confidence="medium"),
+         founded=dict(year=1830, event="Galois's “Sur la théorie des nombres,” developing finite-field arithmetic — published in his lifetime, in the Bulletin des sciences mathématiques, without much incident"),
+         dismissed=None,
+         dismissed_note="No dismissal attaches to this specific paper. A separate, related work fared worse: Galois's 1831 memoir on solvability of equations by radicals was rejected by Siméon Poisson for the Paris Academy (“neither sufficiently clear nor sufficiently developed to allow us to judge its rigour”) and published only posthumously in 1846. That memoir became foundational to group theory through Serret, Betti, and Jordan across the rest of the 19th century — actively developed, not shelved — but its influence runs through group theory broadly, not through the specific finite-field arithmetic that Reed–Solomon codes use. The two papers are often run together; they shouldn't be.",
          applications=[
              dict(name="Reed–Solomon codes", year=1960, note="Finite-field (“Galois field”) arithmetic. Voyager's telemetry, CDs, QR codes.", url="https://en.wikipedia.org/wiki/Reed%E2%80%93Solomon_error_correction"),
          ],
-         verdict="a", gap_basis="founding (1830) to Reed–Solomon (1960)", gap_years=130,
+         verdict="b", gap_basis="founding (1830) to Reed–Solomon (1960)", gap_years=130,
          confidence="medium"),
 
     dict(slug="commutative-algebra", msc="13", name="Commutative rings & algebras",
@@ -213,17 +211,15 @@ FIELDS = [
          cluster="algebra",
          one_liner="The algebra of symmetry, and its continuous (Lie) generalization.",
          founded=dict(year=1854, event="Cayley's abstract definition of a group"),
-         dismissed=dict(kind="hostile", who="William Burnside", year=1897,
-             quote="Doubted Frobenius's year-old representation theory would ever yield another result (Preface, *Theory of Groups of Finite Order*, 1st ed.). He reversed this completely by the 1911 2nd edition. A generation later, physicists (reportedly including Schrödinger) mocked the theory's arrival in quantum mechanics as the “Gruppenpest” — the group-plague.",
-             source="Burnside's 1897 preface, read directly; Gruppenpest anecdote corroborated across physics-history sources.",
-             note="Burnside's doubt was about representation theory specifically, not group theory as a whole.", confidence="high"),
+         dismissed=None,
+         dismissed_note="Weaker than it's often told. Burnside's 1897 preface to *Theory of Groups of Finite Order* explains an omission — given the results then known to him, he found it hard to name a result more directly reached via linear-transformation groups than via substitution groups — which is a narrow, time-qualified editorial judgment, not a forecast that the topic would never produce anything. Scholarship also cautions he may not even have meant Frobenius's brand-new representation theory: the relevant Frobenius paper connecting character theory to linear substitutions appears to have followed Burnside's preface within the same year. By the 1911 second edition, new results had changed Burnside's assessment. Separately, physicists in the late 1920s coined “Gruppenpest” (the group-plague) for group-representation methods arriving in quantum mechanics, commonly traced to Paul Ehrenfest's circle in Leiden (1928) — but Ehrenfest himself did not reject the theory and ran seminars on it; the episode was a mix of enthusiasm, skepticism, fashion, and pedagogical frustration, not a clean dismissal.",
          applications=[
              dict(name="Crystallography", year=1891, note="Fedorov & Schoenflies's 230 space groups classify every possible crystal structure.", url="https://en.wikipedia.org/wiki/Space_group"),
-             dict(name="Quantum mechanics", year=1928, note="Wigner, Weyl, Hund apply group representation theory to QM — the “Gruppenpest” episode.", url="https://en.wikipedia.org/wiki/Standard_Model"),
+             dict(name="Quantum mechanics", year=1928, note="Wigner, Weyl, Hund apply group representation theory to QM, amid the mixed reception nicknamed “Gruppenpest.”", url="https://en.wikipedia.org/wiki/Standard_Model"),
              dict(name="The Standard Model", year=1973, note="Gauge symmetry, SU(3)×SU(2)×U(1), is representation theory.", url="https://en.wikipedia.org/wiki/Standard_Model"),
          ],
-         verdict="a", gap_basis="founding (1854) to crystallography (1891)", gap_years=37,
-         confidence="high"),
+         verdict="b", gap_basis="founding (1854) to crystallography (1891)", gap_years=37,
+         confidence="medium"),
 
     dict(slug="measure-theory", msc="26/28", name="Real analysis & measure theory",
          cluster="analysis",
@@ -420,10 +416,10 @@ FIELDS = [
          cluster="geometry",
          one_liner="Non-Euclidean and Riemannian geometry: the mathematics of curved space.",
          founded=dict(year=1854, event="Riemann's habilitation lecture on the geometry of curved manifolds"),
-         dismissed=dict(kind="hostile", who="Carl Friedrich Gauss", year=1829,
+         dismissed=dict(kind="anticipated-hostility", who="Carl Friedrich Gauss", year=1829,
              quote="“It may take very long before I make public my investigations on this issue… for I fear the clamor of the Boeotians.”",
              source="Letter to Bessel, 1829.",
-             note="Gauss privately feared publishing his own non-Euclidean results; the field was widely regarded as a logical exercise with no physical relevance until the 1860s–70s.",
+             note="A different failure mode from Hardy's or Kelvin's: Gauss valued this mathematics highly and wasn't calling it useless — he feared hostile reception from unsympathetic contemporaries (“Boeotians,” a classical slur for the intellectually dull), not that the work lacked value. The field was nonetheless widely regarded as a logical exercise with no physical relevance until the 1860s–70s.",
              confidence="high"),
          applications=[
              dict(name="General Relativity", year=1915, note="Einstein. Requires Riemann's geometry of curved manifolds as its literal language.", url="https://en.wikipedia.org/wiki/General_relativity"),
@@ -459,18 +455,18 @@ FIELDS = [
 
     dict(slug="knot-theory", msc="57/58", name="Manifolds & low-dimensional topology (knot theory)",
          cluster="topology",
-         one_liner="Kelvin's wrong theory that atoms were knotted vortices spawned a genuine mathematical field.",
-         founded=dict(year=1867, event="Kelvin's “On Vortex Atoms” and Tait's resulting knot tabulation"),
+         one_liner="Kelvin's wrong theory that atoms were knotted vortices accelerated a mathematical field that already existed.",
+         founded=dict(year=1847, event="Johann Benedict Listing's Vorstudien zur Topologie, with earlier linking-number work by Gauss (1833) — knot theory predates Kelvin by two decades"),
          dismissed=dict(kind="wrong-physics", who="Lord Kelvin", year=1867,
              quote="Proposed atoms were knotted vortices in the luminiferous aether — completely wrong physics, abandoned within decades.",
              source="Kelvin, “On Vortex Atoms,” Proc. Royal Society of Edinburgh, 1867.",
-             note="An unusual case: the dismissal isn't of the math but of a physical theory that happened to leave knot theory behind as its accidental, then-abandoned byproduct.",
+             note="Kelvin's theory didn't originate knot theory — Gauss and Listing got there first — but it accelerated and systematized it, motivating Tait's exhaustive tabulation of knots once the physics collapsed.",
              confidence="high"),
          applications=[
              dict(name="DNA topology", year=1990, note="Topoisomerases manage DNA knotting and supercoiling (Sumners et al.).", url="https://en.wikipedia.org/wiki/Topoisomerase"),
              dict(name="Topological quantum computing", year=1997, note="Kitaev's proposal to use anyons — particles that braid like knots.", url="https://en.wikipedia.org/wiki/Topological_quantum_computer"),
          ],
-         verdict="a", gap_basis="founding (1867) to DNA topology (1990)", gap_years=123,
+         verdict="a", gap_basis="founding (1847) to DNA topology (1990)", gap_years=143,
          confidence="high"),
 
     dict(slug="probability-theory", msc="60", name="Probability theory",
@@ -864,17 +860,14 @@ def render_sources():
     <h1>Sources</h1>
     <p class="subtitle">Every dismissal and every application, field by field.</p>
     <p>
-      Confidence grades are on each <a href="./ledger.html">field's own page</a>, along with the exact
-      wording of every quote and, where sourcing is thin, a note on exactly what's thin about it. This
-      page just collects the links and citations in one place.
+      Links and citations, in one place, matched to <a href="./ledger.html">each field's own page</a>.
     </p>
 {body}
     <div class="next-steps">
       <h2>See something wrong?</h2>
       <p>
-        Every quote here is graded by confidence for a reason. If you can tighten a citation, correct a
-        date, or supply the missing provenance for one of the medium-confidence quotes, open an issue or
-        a PR on <a href="https://github.com/microprediction/pure">microprediction/pure</a>.
+        Tighten a citation, correct a date, or supply the missing provenance for a medium-confidence
+        quote: open an issue or a PR on <a href="https://github.com/microprediction/pure">microprediction/pure</a>.
       </p>
     </div>
   </main>
