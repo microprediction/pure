@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pure: The Uselessness Ledger</title>
+  <meta name="description" content="Twelve branches of pure mathematics, each declared useless, pointless, or purely aesthetic by name and date. Twelve receipts showing exactly what they became. Zero survivors.">
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+    onload="renderMathInElement(document.body, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-inner">
+      <a class="brand" href="./index.html">pure</a>
+      <nav>
+        <a href="./intro.html">Introduction</a>
+        <a href="./ledger.html">The Ledger</a>
+        <a href="./map.html">Map</a>
+        <a href="./timeline.html">Timeline</a>
+        <a href="./sources.html">Sources</a>
+        <a href="https://github.com/microprediction/pure">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h1>Pure mathematics has never once been useless.</h1>
+    <p class="subtitle">Twelve branches of it were declared useless, by name, in writing. Here is what happened to each one.</p>
+
+    <p class="lead">
+      For two centuries, the same claim has been made about whatever branch of mathematics looked
+      furthest from any machine: <em>this is beautiful, and it will never be used for anything.</em>
+      Sometimes a specific person said so, on the record, in a specific year. Sometimes nobody bothered
+      to say it &mdash; the field was simply left alone, unfunded and unread, because everyone assumed
+      it obviously had no use. Either way, the claim was falsifiable. This site checks it, case by case,
+      against dates, patents, and DOIs rather than vibes.
+    </p>
+
+    <div class="scoreboard">
+      <div class="stat"><div class="n">12</div><div class="label">branches of &ldquo;useless&rdquo; math examined</div></div>
+      <div class="stat"><div class="n">12</div><div class="label">now load-bearing infrastructure</div></div>
+      <div class="stat"><div class="n zero">0</div><div class="label">claims of uselessness still standing</div></div>
+      <div class="stat"><div class="n">&sim;84 yrs</div><div class="label">average time from &ldquo;pointless&rdquo; to essential</div></div>
+    </div>
+
+    <p>
+      The founding document of the myth is G. H. Hardy's <em>A Mathematician's Apology</em> (1940), which
+      states three times that number theory has no practical or military value &mdash; and, for good measure,
+      that relativity doesn't either. Hardy's own two examples were both wrong within a lifetime: relativity
+      became the correction GPS satellites need every day to stay accurate to within meters, and number theory
+      became the padlock icon in every browser. <a href="./intro.html">The Introduction</a> tells that story
+      in full; <a href="./ledger.html">the Ledger</a> tells the other eleven.
+    </p>
+
+    <h2>The pattern</h2>
+    <div class="diagram">
+      <svg viewBox="0 0 760 200" role="img"
+           aria-label="A pure result, declared useless, sits idle for decades, then becomes essential infrastructure">
+        <defs>
+          <marker id="arrow" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto">
+            <path d="M0,0 L6.5,3 L0,6 Z" fill="#4a3aff"/>
+          </marker>
+        </defs>
+        <rect x="8" y="20" width="230" height="100" rx="12" fill="#ffffff" stroke="#e2e2e2"/>
+        <text x="123" y="52" text-anchor="middle" font-size="13" font-weight="700" fill="#1f1d3d">PURE RESULT</text>
+        <text x="123" y="72" text-anchor="middle" font-size="11.5" fill="#5a5a5a">proved for its own sake</text>
+        <text x="123" y="90" text-anchor="middle" font-size="11.5" fill="#c0392b">&ldquo;this will never be used&rdquo;</text>
+
+        <line x1="242" y1="70" x2="516" y2="70" stroke="#bbb" stroke-width="1.6" stroke-dasharray="3,4" marker-end="url(#arrow)"/>
+        <text x="379" y="58" text-anchor="middle" font-size="11" fill="#9a9a9a" font-style="italic">28&ndash;142 years, unread</text>
+
+        <rect x="522" y="20" width="230" height="100" rx="12" fill="#ecebfb" stroke="#4a3aff"/>
+        <text x="637" y="52" text-anchor="middle" font-size="13" font-weight="700" fill="#1f1d3d">LOAD-BEARING</text>
+        <text x="637" y="72" text-anchor="middle" font-size="11.5" fill="#5a5a5a">underlies a system billions rely on</text>
+        <text x="637" y="90" text-anchor="middle" font-size="11.5" fill="#1e8449">daily, without anyone noticing</text>
+
+        <text x="380" y="150" text-anchor="middle" font-size="11.5" fill="#5a5a5a">
+          RSA &middot; GPS &middot; Bitcoin &middot; the CD in a scratched car stereo &middot; every video-game character&rsquo;s rotation
+        </text>
+        <text x="380" y="170" text-anchor="middle" font-size="11.5" fill="#5a5a5a">
+          all run, unmodified, on math someone was certain would never be used for anything
+        </text>
+      </svg>
+      <p class="caption">Twelve times, independently, in fields that never spoke to each other.</p>
+    </div>
+
+    <h2>What counts as &ldquo;declared useless&rdquo;</h2>
+    <p>
+      Some of these are a named person, on the record, saying the field was pointless &mdash;
+      Hardy on number theory, Lord Kelvin on quaternions <em>and</em>, separately, on knot theory,
+      Gauss privately fearing to publish non-Euclidean geometry, Burnside doubting representation
+      theory would ever produce another result. Others are worse than a dismissal: nobody thought
+      the field was even worth criticizing. Boolean algebra, point-set topology, and Hilbert space
+      theory sat for decades with no recorded critic and no recorded champion, because no one could
+      imagine a use for them either way. Both patterns count, and each case on
+      <a href="./ledger.html">the Ledger</a> is tagged with which one applies, and how well the
+      quote or claim is sourced &mdash; nothing here is asserted that couldn't be pinned to a book,
+      a paper, or a primary document.
+    </p>
+
+    <div class="next-steps">
+      <h2>Where to go next</h2>
+      <ul>
+        <li><a href="./intro.html">Introduction</a> &mdash; the Hardy problem, in full, with the exact
+          quotes and the one commonly attributed to Gauss that turns out to be fake.</li>
+        <li><a href="./ledger.html">The Ledger</a> &mdash; all twelve cases: the claim, the receipt, the gap.</li>
+        <li><a href="./map.html">Map</a> &mdash; an interactive graph linking every theorem to what it became.</li>
+        <li><a href="./timeline.html">Timeline</a> &mdash; when each field was dismissed, and when it stopped being ignorable.</li>
+        <li><a href="./sources.html">Sources</a> &mdash; full citations, so you can check all of this yourself.</li>
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    Corrections and additional cases welcome &mdash; file an issue on
+    <a href="https://github.com/microprediction/pure">microprediction/pure</a>. Every quote here is sourced;
+    where the sourcing is thin, the page says so.
+  </footer>
+</body>
+</html>

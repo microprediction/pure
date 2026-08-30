@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pure: The Ledger</title>
+  <meta name="description" content="Twelve pure-math results declared useless, and the receipts: what each one became, when, and how well-sourced the original dismissal actually is.">
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-inner">
+      <a class="brand" href="./index.html">pure</a>
+      <nav>
+        <a href="./intro.html">Introduction</a>
+        <a href="./ledger.html">The Ledger</a>
+        <a href="./map.html">Map</a>
+        <a href="./timeline.html">Timeline</a>
+        <a href="./sources.html">Sources</a>
+        <a href="https://github.com/microprediction/pure">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <p class="pagenav"><a href="./index.html">&larr; Home</a></p>
+    <h1>The Ledger</h1>
+    <p class="subtitle">Twelve cases. The claim, the receipt, the gap, and how sure we actually are about the quote.</p>
+    <p>
+      Each card names the dismissal or the neglect, on the left in red, and the application that
+      falsified it, on the right in green. The grey badge in the middle is how many years passed
+      between them. The line under each card marks the confidence tier &mdash; see
+      <a href="./intro.html">the Introduction</a> for what the tiers mean, and
+      <a href="./sources.html">Sources</a> for full citations.
+    </p>
+
+    <h2>Number theory</h2>
+
+    <div class="case">
+      <span class="field-tag">Number theory</span>
+      <h3>Prime numbers &amp; modular arithmetic &rarr; RSA cryptography</h3>
+      <div class="dismissal">
+        <span class="who">G. H. Hardy</span>, <em>A Mathematician's Apology</em> (1940), &sect;28:
+        &ldquo;Real mathematics has no effects on war. No one has yet discovered any warlike purpose
+        to be served by the theory of numbers or relativity.&rdquo; Said three separate times in the
+        same book (&sect;21, &sect;25, &sect;28); traced by Hardy himself to his own 1915 lecture:
+        &ldquo;The Theory of Numbers has always been regarded as one of the most obviously useless
+        branches of Pure Mathematics.&rdquo;
+      </div>
+      <div class="application">
+        <strong>RSA public-key cryptography</strong>, Rivest, Shamir &amp; Adleman, 1977
+        (<em>CACM</em> 21(2), 1978) &mdash; security rests directly on the difficulty of factoring
+        large primes and on modular exponentiation. Now runs every HTTPS handshake and every
+        credit-card transaction on the internet.
+      </div>
+      <span class="gap-badge">37 years (62 from the 1915 lecture)</span>
+      <p class="verdict">Hardy insisted, in writing, three times, that this exact branch of mathematics
+        was militarily and practically inert. It is now the padlock icon in your browser.</p>
+      <p class="confidence">Confidence: high &mdash; all quotes verified against the primary text with section numbers.
+        (The famous companion quote, that Gauss called number theory the &ldquo;queen of mathematics&rdquo;
+        for its <em>supreme uselessness</em>, is apocryphal &mdash; Hardy says so himself in the same book.)</p>
+    </div>
+
+    <div class="case">
+      <span class="field-tag">Number theory</span>
+      <h3>Elliptic curves &rarr; Elliptic-curve cryptography (ECC)</h3>
+      <div class="dismissal">
+        <span class="who">No named critic</span> &mdash; over a century of study (Euler, Legendre,
+        Abel, Jacobi on elliptic integrals; Weierstrass and Poincaré formalizing the group law by
+        ~1901) with no anticipated application. In ECC's own inventors' words: &ldquo;Research into
+        number theoretic questions concerning elliptic curves was originally pursued mainly for
+        aesthetic reasons&rdquo; (Koblitz et al., 2008).
+      </div>
+      <div class="application">
+        <strong>Elliptic-curve cryptography</strong>, independently proposed by Neal Koblitz and
+        Victor Miller, 1985. Now the reason Bitcoin signatures (secp256k1), HTTPS key exchange
+        (Curve25519, TLS 1.3), and Signal's end-to-end encryption work at all.
+      </div>
+      <span class="gap-badge">&sim;85&ndash;150 years, depending on start date</span>
+      <p class="verdict">A hobby pursued for beauty alone, for a century, is now what stops your
+        Bitcoin from being stolen.</p>
+      <p class="confidence">Confidence: medium-high on the quotes (verified primary text); note the
+        framing differs from Hardy's &mdash; this is the field's own retrospective self-description,
+        not a contemporary skeptic's dismissal.</p>
+    </div>
+
+    <h2>Algebra</h2>
+
+    <div class="case">
+      <span class="field-tag">Algebra</span>
+      <h3>Galois theory &amp; finite fields &rarr; Reed&ndash;Solomon codes</h3>
+      <div class="dismissal">
+        <span class="who">Sim&eacute;on Poisson</span>, reporting to the Paris Academy of Sciences,
+        1831, rejecting Galois's memoir on solvability by radicals: &ldquo;neither sufficiently clear
+        nor sufficiently developed to allow us to judge its rigour.&rdquo; Not published until 1846,
+        fourteen years after Galois's death in a duel &mdash; and rejected for incomprehensibility,
+        not for uselessness.
+      </div>
+      <div class="application">
+        <strong>Reed&ndash;Solomon error-correcting codes</strong>, Irving Reed &amp; Gustave Solomon,
+        1960 (<em>J. SIAM</em> 8(2)) &mdash; built directly on finite-field (&ldquo;Galois field&rdquo;)
+        arithmetic. Designed into Voyager's telemetry at launch (1977), the compact disc (1982), and
+        QR codes (1994), which tolerate up to ~30% physical damage.
+      </div>
+      <span class="gap-badge">~130 years to Reed&ndash;Solomon; ~150+ to CDs and QR codes</span>
+      <p class="verdict">The Paris Academy couldn't parse Galois's arithmetic in 1831. A century and
+        a half later it's why a scratched CD doesn't skip and Voyager can still phone home from
+        interstellar space.</p>
+      <p class="confidence">Confidence: medium &mdash; the Poisson quote is well-attested via
+        academic secondary sources (MacTutor), not independently primary-verified word-for-word.
+        This is a rejection for rigor, a different flavor from a &ldquo;useless&rdquo; dismissal.</p>
+    </div>
+
+    <div class="case">
+      <span class="field-tag">Algebra</span>
+      <h3>Group representation theory &rarr; crystallography &amp; the Standard Model</h3>
+      <div class="dismissal">
+        <span class="who">William Burnside</span>, preface to <em>Theory of Groups of Finite Order</em>
+        (1897), on the representation theory Frobenius had invented the year before: doubted
+        it could produce a result &ldquo;that could be most directly obtained by the consideration of
+        groups of linear transformations.&rdquo; He reversed this completely in his 1911 second
+        edition. A generation later, physicists including Erwin Schr&ouml;dinger reportedly mocked
+        the same theory's arrival in quantum mechanics as the <em>Gruppenpest</em> &mdash; the
+        &ldquo;group-plague.&rdquo;
+      </div>
+      <div class="application">
+        <strong>Crystallography</strong>: the 230 space groups (Fedorov &amp; Schoenflies, 1891) that
+        classify every possible crystal structure. <strong>Particle physics</strong>: Noether's
+        theorem (1918) ties symmetry to conservation laws; the Standard Model's gauge symmetries
+        (SU(3)&times;SU(2)&times;U(1), 1960s&ndash;70s) are representation theory, full stop.
+      </div>
+      <span class="gap-badge">~30 years to quantum mechanics; ~75&ndash;80 to the Standard Model</span>
+      <p class="verdict">The man who wrote the textbook doubted his field's most important branch
+        would ever produce another result. That branch became the grammar of the Standard Model.</p>
+      <p class="confidence">Confidence: high on the Burnside preface (read directly); medium-high
+        on the <em>Gruppenpest</em> anecdote (corroborated across multiple physics-history sources).
+        Scope note: Burnside's doubt was about representation theory specifically, not group theory
+        as a whole.</p>
+    </div>
+
+    <div class="case">
+      <span class="field-tag">Algebra</span>
+      <h3>Quaternions &rarr; 3D graphics, aerospace &amp; robotics</h3>
+      <div class="dismissal">
+        <span class="who">Lord Kelvin</span> (William Thomson), letter to Robert Baldwin Hayward,
+        1892: &ldquo;Quaternions came from Hamilton after his really good work had been done, and
+        though beautifully ingenious, have been an unmixed evil to those who have touched them in
+        any way.&rdquo; By the 1890s quaternions had genuinely lost ground to Gibbs's and Heaviside's
+        simpler vector calculus, following a public &ldquo;vector war&rdquo; fought out in
+        <em>Nature</em>, 1890&ndash;94.
+      </div>
+      <div class="application">
+        <strong>3D computer graphics</strong>: Ken Shoemake's quaternion SLERP interpolation
+        (SIGGRAPH 1985), now standard in every game engine. <strong>Aerospace</strong>: quaternion
+        attitude representation became the standard fix for gimbal lock &mdash; the exact failure
+        mode Apollo 11's inertial platform hit in 1969. <strong>Robotics</strong>: standard
+        orientation representation since the 1990s.
+      </div>
+      <span class="gap-badge">93 years from Kelvin's verdict; 142 from Hamilton's 1843 discovery</span>
+      <p class="verdict">Lord Kelvin called them &ldquo;an unmixed evil.&rdquo; Every video-game
+        character and every spacecraft that has ever pointed itself at anything owes its orientation
+        to them.</p>
+      <p class="confidence">Confidence: high &mdash; the quote's wording is consistent across every
+        independent source checked; standard citation is Silvanus Thompson's 1910 biography of Kelvin.</p>
+    </div>
+
+    <h2>Geometry</h2>
+
+    <div class="case">
+      <span class="field-tag">Geometry</span>
+      <h3>Non-Euclidean &amp; Riemannian geometry &rarr; General Relativity &amp; GPS</h3>
+      <div class="dismissal">
+        <span class="who">Carl Friedrich Gauss</span>, letter to Bessel, 1829, explaining why he
+        wouldn't publish his own non-Euclidean results: &ldquo;It may take very long before I make
+        public my investigations on this issue; in fact, this may not happen in my lifetime, for I
+        fear the clamor of the Boeotians.&rdquo; The field was widely regarded as a logical exercise
+        with no physical meaning until roughly the 1860s&ndash;70s.
+      </div>
+      <div class="application">
+        <strong>General Relativity</strong> (Einstein, 1915) required exactly Riemann's geometry of
+        curved manifolds (1854) as its literal language. <strong>GPS</strong>: satellite clocks run
+        about 38 microseconds/day fast net from combined special- and general-relativistic effects;
+        left uncorrected, this produces position drift of roughly 10&ndash;11 km per day. This was
+        confirmed empirically &mdash; the 1977 NTS-2 satellite carried a switchable correction, and
+        engineers ran it off for three weeks to verify the predicted drift before switching it on.
+      </div>
+      <span class="gap-badge">61 years to relativity; ~150 to operational GPS</span>
+      <p class="verdict">A mathematician too afraid of ridicule to publish spent a career on geometry
+        he thought no one would ever need. Without it, your phone would put you on the wrong street
+        by dinnertime.</p>
+      <p class="confidence">Confidence: high on the Gauss letter. Caveat: Riemann's own 1854 lecture
+        explicitly speculated that physical space itself might be curved &mdash; he didn't treat his
+        own geometry as disconnected from physics, so the &ldquo;no anticipated use&rdquo; framing is
+        the field's general reception, not Riemann's personal view.</p>
+    </div>
+
+    <h2>Topology</h2>
+
+    <div class="case">
+      <span class="field-tag">Topology</span>
+      <h3>Knot theory &rarr; DNA topology &amp; topological quantum computing</h3>
+      <div class="dismissal">
+        <span class="who">Lord Kelvin</span> again &mdash; in 1867 he proposed that atoms were
+        knotted vortices in the luminiferous aether (&ldquo;On Vortex Atoms&rdquo;). The physics was
+        completely wrong and was abandoned within a few decades. What survived was an accident:
+        Peter Guthrie Tait had started tabulating every possible knot, trying to catalogue the
+        atoms Kelvin's theory predicted. When the physics died, the knot tables remained &mdash; a
+        century-long &ldquo;pure curiosity&rdquo; with no known use.
+      </div>
+      <div class="application">
+        <strong>DNA topology</strong>: enzymes called topoisomerases manipulate the knotting and
+        supercoiling of DNA; De Witt Sumners' work (from the late 1980s) made knot theory a genuine
+        molecular-biology tool. <strong>Topological quantum computing</strong>: Alexei Kitaev's 1997
+        proposal to use anyons &mdash; particles whose statistics are governed by braiding, i.e. knot
+        theory &mdash; for fault-tolerant quantum computation.
+      </div>
+      <span class="gap-badge">~110&ndash;130 years</span>
+      <p class="verdict">Kelvin's atoms were never real. The knot tables built to catalogue his
+        fantasy sat around as pure math for a century, until biologists found DNA tangled the same
+        way and physicists found a path to fault-tolerant quantum computers in the braids.</p>
+      <p class="confidence">Confidence: high on Kelvin's 1867 paper, Tait's tables, and Kitaev's 1997
+        paper. Medium-high on the specific DNA-topology dating &mdash; pin to a single Sumners paper
+        before citing a precise year.</p>
+    </div>
+
+    <div class="case">
+      <span class="field-tag">Topology</span>
+      <h3>Topology &rarr; Topological Data Analysis</h3>
+      <div class="dismissal">
+        <span class="who">No named critic</span> &mdash; there is no single quote to hang this on,
+        and none is claimed here. What's well documented is topology's own founding self-understanding:
+        it is, by design, the branch of mathematics built to discard exactly the quantitative
+        information &mdash; distance, coordinates &mdash; that data analysis depends on. Gunnar
+        Carlsson's 2009 paper <em>Topology and Data</em> opens by arguing, from first principles, why
+        anyone should even think to apply it to data, since no one had.
+      </div>
+      <div class="application">
+        <strong>Topological Data Analysis</strong>: Edelsbrunner, Letscher &amp; Zomorodian's
+        persistent-homology algorithm (2000/2002); Carlsson's synthesizing 2009 paper; and, concretely,
+        Nicolau, Levine &amp; Carlsson (<em>PNAS</em>, 2011), who used it on gene-expression data from
+        295 breast tumors &mdash; each a point in 24,479-dimensional space &mdash; to identify a novel,
+        high-survival cancer subtype.
+      </div>
+      <span class="gap-badge">107 years to the founding algorithm; 116 to the cancer result</span>
+      <p class="verdict">Topology was built by throwing away every number that measures anything. A
+        century later it found a new subtype of breast cancer hiding in a 24,479-dimensional pile of
+        numbers.</p>
+      <p class="confidence">Confidence: low on any &ldquo;dismissal&rdquo; framing &mdash; presented
+        honestly here as a fact pattern (built to ignore measurement &rarr; became a measurement tool),
+        not a quote. High on all the TDA dates and citations.</p>
+    </div>
+
+    <h2>Logic &amp; foundations</h2>
+
+    <div class="case">
+      <span class="field-tag">Logic</span>
+      <h3>Boolean algebra &rarr; digital circuit design</h3>
+      <div class="dismissal">
+        <span class="who">No recorded critic.</span> George Boole published <em>An Investigation of
+        the Laws of Thought</em> in 1854, framed explicitly as an inquiry into logic and philosophy.
+        Bertrand Russell's assessment captures the field's self-image: &ldquo;Pure mathematics was
+        discovered by Boole... He was also mistaken in supposing that he was dealing with the laws of
+        thought: the question how people actually think was quite irrelevant to him.&rdquo; No one
+        called it useless. No one imagined a use for it either &mdash; the switching technology it
+        would eventually describe didn't exist yet.
+      </div>
+      <div class="application">
+        <strong>Claude Shannon</strong>'s MIT master's thesis, <em>A Symbolic Analysis of Relay and
+        Switching Circuits</em> (1937), proved Boole's two-valued algebra maps exactly onto relay
+        and switching circuits &mdash; becoming the theoretical foundation of all digital circuit
+        design. Herman Goldstine later called it &ldquo;surely... one of the most important master's
+        theses ever written... a landmark in that it helped to change digital circuit design from an
+        art to a science.&rdquo;
+      </div>
+      <span class="gap-badge">83 years</span>
+      <p class="verdict">Boole spent his life formalizing &ldquo;the laws of thought&rdquo; with zero
+        interest in machinery. Eighty-three years later a 21-year-old grad student used it, unmodified,
+        as the wiring diagram for every computer ever built.</p>
+      <p class="confidence">Confidence: high on Shannon's thesis and dates; high that no Boole
+        &ldquo;useless&rdquo; quote exists &mdash; none is invented here.</p>
+    </div>
+
+    <div class="case">
+      <span class="field-tag">Logic</span>
+      <h3>Category theory &rarr; monads in functional programming</h3>
+      <div class="dismissal">
+        <span class="who">Norman Steenrod</span> (credited), an affectionate in-joke rather than a
+        hostile dismissal: category theory, introduced by Eilenberg and Mac Lane in 1945, was
+        nicknamed <strong>&ldquo;abstract nonsense&rdquo;</strong> by its own early practitioners for
+        how far it abstracted away from concrete mathematics &mdash; a joke later spread further by
+        Serge Lang's <em>Algebra</em> textbook.
+      </div>
+      <div class="application">
+        <strong>Monads</strong>: Eugenio Moggi's 1989&ndash;91 papers applied category-theoretic
+        monads to programming-language semantics; Philip Wadler brought the idea into practice, and
+        Haskell adopted monads as its mechanism for handling side effects &mdash; formally standardized
+        by Haskell 1.3 in 1996.
+      </div>
+      <span class="gap-badge">44 years to Moggi; 51 to Haskell 1.3</span>
+      <p class="verdict">The mathematicians who joked their own field was &ldquo;abstract nonsense&rdquo;
+        in the 1940s couldn't have guessed that fifty years later it would be the only thing standing
+        between programmers and unmanageable side effects.</p>
+      <p class="confidence">Confidence: medium on the Steenrod attribution specifically (two
+        independent secondary sources converge on him; no primary quote from Steenrod himself has
+        surfaced). High that the term was self-deprecating, not an outside attack. High on all Moggi
+        and Haskell dates.</p>
+    </div>
+
+    <h2>Analysis</h2>
+
+    <div class="case">
+      <span class="field-tag">Analysis</span>
+      <h3>Poincar&eacute;'s three-body problem &rarr; chaos theory &amp; weather prediction</h3>
+      <div class="dismissal">
+        <span class="who">Treated as a narrow curiosity.</span> Poincar&eacute;'s prize-winning 1890
+        memoir on the restricted three-body problem &mdash; which found that even a universe of three
+        gravitating bodies could be too tangled to predict &mdash; was understood by very few
+        contemporaries and treated as a specialized result in celestial mechanics, not a general
+        principle. It was obscure enough that Stephen Smale rediscovered the same ideas independently
+        in the late 1950s by browsing old collected works.
+      </div>
+      <div class="application">
+        <strong>Edward Lorenz</strong>, an MIT meteorologist, independently rediscovered sensitive
+        dependence on initial conditions in 1961 while re-running a weather simulation, publishing
+        <em>Deterministic Nonperiodic Flow</em> (1963) &mdash; the founding result behind why weather
+        forecasting has a hard physics-based predictability limit, today running out around ten days.
+      </div>
+      <span class="gap-badge">73 years</span>
+      <p class="verdict">Poincar&eacute; proved in 1890 that three gravitating bodies could be too
+        tangled to predict. Mathematicians filed it away as a curiosity for 73 years, until a
+        meteorologist rediscovered the same trap by accident and explained why your weekend forecast
+        still can't see past ten days.</p>
+      <p class="confidence">Confidence: high on all prize, error, and publication dates, and on
+        Lorenz's 1963 paper. Medium-high that this was an independent rediscovery rather than a direct
+        citation &mdash; Lorenz's own reference list cites a different, earlier Poincar&eacute; paper.</p>
+    </div>
+
+    <div class="case">
+      <span class="field-tag">Analysis</span>
+      <h3>Hilbert spaces &rarr; quantum mechanics</h3>
+      <div class="dismissal">
+        <span class="who">David Hilbert</span>, on his own work on integral equations
+        (1904&ndash;1912), widely attributed as saying: &ldquo;I developed my theory of infinitely
+        many variables from purely mathematical interests, and even called it &lsquo;spectral
+        analysis&rsquo; without any presentiment that it would later find application to the actual
+        spectrum of physics.&rdquo;
+      </div>
+      <div class="application">
+        <strong>John von Neumann</strong>'s <em>Mathematical Foundations of Quantum Mechanics</em>
+        (1932) rigorously showed that quantum states are vectors in Hilbert space, unifying
+        Heisenberg's matrix mechanics and Schr&ouml;dinger's wave mechanics under one formalism. (Von
+        Neumann, not Hilbert, coined the term &ldquo;Hilbert space&rdquo; itself, in 1929.)
+      </div>
+      <span class="gap-badge">20&ndash;28 years</span>
+      <p class="verdict">Hilbert built an abstract geometry of infinite dimensions to solve integral
+        equations, and by his own account never imagined &ldquo;spectral analysis&rdquo; would
+        describe an actual atomic spectrum. Within thirty years it was the language quantum mechanics
+        is written in.</p>
+      <p class="confidence">Confidence: medium on the Hilbert quote itself &mdash; widely repeated in
+        reputable secondary literature (Lynn Steen, 1973), but no primary source has been pinned down.
+        High on the von Neumann dates and the 1929 naming.</p>
+    </div>
+
+    <div class="next-steps">
+      <h2>Continue to</h2>
+      <ul>
+        <li><a href="./map.html">Map</a> &mdash; every theorem and application above, as a graph.</li>
+        <li><a href="./timeline.html">Timeline</a> &mdash; the same twelve cases, laid out by year.</li>
+        <li><a href="./sources.html">Sources</a> &mdash; full citations for everything on this page.</li>
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    Corrections and additional cases welcome &mdash; file an issue on
+    <a href="https://github.com/microprediction/pure">microprediction/pure</a>.
+  </footer>
+</body>
+</html>
