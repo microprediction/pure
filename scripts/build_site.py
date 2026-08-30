@@ -145,7 +145,7 @@ FIELDS = [
          one_liner="Matrices, vector spaces, linear transformations, tensors.",
          founded=dict(year=1858, event="Cayley's A Memoir on the Theory of Matrices"),
          dismissed=None,
-         dismissed_note="The famous line calling matrix algebra “an algebra of no conceivable use” could not be verified after an extensive search (including the standard scholarly history, Higham 2008) and looks apocryphal. A genuine, different Hardy quote exists: *A Mathematician's Apology* (1940) notes “no one foresaw the applications of matrices and groups… to modern physics” — a retrospective note that applications were unforeseen, not a claim they'd never come.",
+         dismissed_note="The famous line calling matrix algebra “an algebra of no conceivable use” is unattested in the standard scholarly history (Higham 2008) and looks apocryphal. A genuine, different Hardy quote exists: *A Mathematician's Apology* (1940) notes “no one foresaw the applications of matrices and groups… to modern physics” — a retrospective note that applications were unforeseen, not a claim they'd never come.",
          applications=[
              dict(name="Matrix mechanics", year=1925, note="Heisenberg, formalized by Born & Jordan — one formulation of quantum mechanics.", url="https://en.wikipedia.org/wiki/Matrix_mechanics"),
              dict(name="Google PageRank", year=1998, note="The principal eigenvector of the web link matrix.", url="https://en.wikipedia.org/wiki/PageRank"),
