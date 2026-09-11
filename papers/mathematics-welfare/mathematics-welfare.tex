@@ -94,7 +94,7 @@ A large language model is, for present purposes, a device that makes every resul
 
 \paragraph{Adoption cost.} Once the match is made, the model can also write the implementation. The cost of taking a theorem from the page to a working change in an application falls from weeks of a specialist's time to days of anyone's. By \eqref{eq:closed} the effect on value is $m^{\alpha - 1}$ for a cost reduction by factor $m$. This channel is weaker than it sounds when tails are heavy: with $\alpha$ near one, value is dominated by the few enormous uses that would have paid the old cost anyway. It is a factor of a few, not tens.
 
-\paragraph{Lag.} New results reach a training corpus, or a retrieval index, within a year or so of publication. The lag from publication to availability at every use collapses from the decades the historical record shows to a few years. At a three per cent discount rate, moving from a forty-year lag to a five-year lag multiplies present value by $e^{0.03 \times 35} \approx 2.9$. At five per cent, and from the survey median of 68 years, the multiplier exceeds twenty.
+\paragraph{Lag.} A result posted in the morning can be retrieved and read by a model in the afternoon. The lag from publication to availability at every use collapses from the decades the historical record shows to the same day. What remains is the wait for a problem the result fits to arise, and that is a property of the problem stream, not of transmission. At a three per cent discount rate, removing a forty-year lag multiplies present value by $e^{0.03 \times 40} \approx 3.3$. At five per cent, and from the survey median of 68 years, the multiplier is about thirty.
 
 \begin{proposition}[The multiplier is largest for the least motivated work]
 Let $\kappa$ denote the ratio of post-LLM to pre-LLM expected value in \eqref{eq:closed}. Then $\kappa$ is increasing in the ex-ante dispersion of uses, and equals one for a result with a single known user who already possessed it.
@@ -139,7 +139,7 @@ The argument concerns spending on the production of unmotivated mathematics, inc
 
 \section{The posterior}
 
-Table \ref{tab:channels} sets out a low, central, and high value for each channel. The reach multiplier is the ratio of uses with model access to uses that had a bilingual person present; one in ten is the share of the workforce that \citet{deloitte2013} count as mathematically occupied, and one in thirty is a guess at the share of problems where such a person was actually consulted. The adoption-cost multiplier uses $m = 3$, $10$, and $10$ with tail indices $1.2$, $1.5$, and $2$. The lag multiplier uses discount rates of three and five per cent and lag reductions of twenty, thirty-five, and sixty years.
+Table \ref{tab:channels} sets out a low, central, and high value for each channel. The reach multiplier is the ratio of uses with model access to uses that had a bilingual person present; one in ten is the share of the workforce that \citet{deloitte2013} count as mathematically occupied, and one in thirty is a guess at the share of problems where such a person was actually consulted. The adoption-cost multiplier uses $m = 3$, $10$, and $10$ with tail indices $1.2$, $1.5$, and $2$. The lag multiplier uses discount rates of three and five per cent and lag reductions of twenty-five, forty, and sixty-eight years, the transmission lag itself being gone.
 
 \begin{table}[ht]
 \centering
@@ -149,22 +149,22 @@ Channel & Low & Central & High \\
 \midrule
 Reach $n$ & 3 & 10 & 30 \\
 Adoption cost $m^{\alpha-1}$ & 1.2 & 3 & 10 \\
-Lag $e^{\rho(\tau_0 - \tau_1)}$ & 1.8 & 2.9 & 20 \\
+Lag $e^{\rho(\tau_0 - \tau_1)}$ & 2.1 & 3.3 & 30 \\
 \midrule
-Value multiplier $\kappa_M$ & 6.5 & 87 & 6000 \\
+Value multiplier $\kappa_M$ & 7.6 & 99 & 9000 \\
 Professional multiplier $\kappa_L$ & 1.0 & 0.7 & 0.5 \\
 \midrule
-Ratio multiplier, elasticity 1 & 6.5 & 124 & 12000 \\
-Ratio multiplier, elasticity 2 & 42 & $1.5 \times 10^4$ & $1.4 \times 10^8$ \\
+Ratio multiplier, elasticity 1 & 7.6 & 141 & 18000 \\
+Ratio multiplier, elasticity 2 & 58 & $2.0 \times 10^4$ & $3.2 \times 10^8$ \\
 \bottomrule
 \end{tabular}
 \caption{Channel multipliers and the implied change in the ratio of spending on unmotivated mathematics to spending on the professions. Elasticity 1 is the conservative case $\theta - \gamma = 1$; elasticity 2 is linear cost with a square-root ideas function.}
 \label{tab:channels}
 \end{table}
 
-The high column is not meant seriously as a forecast. It is there to show that the conclusion does not depend on the parameters: even the low column, with a reach multiplier of three, a nearly useless cost channel, and a modest lag improvement, moves the ratio by a factor of six or seven. The central column, at elasticity one, moves it by two orders of magnitude.
+The high column is not meant seriously as a forecast. It is there to show that the conclusion does not depend on the parameters: even the low column, with a reach multiplier of three, a nearly useless cost channel, and a modest lag improvement, moves the ratio by a factor of nearly eight. The central column, at elasticity one, moves it by two orders of magnitude.
 
-Applied to the American degree counts in Section 1, the pre-LLM ratio of mathematics doctorates to law and business degrees combined was about one to 160. The low posterior is one to 25. The central posterior, at elasticity one, is closer to one to one. Applied to a campus, six students against several thousand becomes forty against several thousand in the low case, and a lecture theatre in the central one.
+Applied to the American degree counts in Section 1, the pre-LLM ratio of mathematics doctorates to law and business degrees combined was about one to 160. The low posterior is one to 20. The central posterior, at elasticity one, is closer to one to one. Applied to a campus, six students against several thousand becomes fifty against several thousand in the low case, and a lecture theatre in the central one.
 
 \section{Objections}
 
