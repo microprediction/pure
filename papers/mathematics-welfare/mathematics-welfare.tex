@@ -46,13 +46,13 @@ This paper asks what that ratio should be, and specifically how it should change
 
 By \emph{unmotivated} mathematics we mean research whose direction is chosen by criteria internal to mathematics: generality, difficulty, elegance, the wish to see what happens. Pure mathematics is the obvious case. So is a large share of applied mathematics, where the applied label describes the vocabulary rather than the presence of a customer. Radon had no client in 1917 for the transform that now runs every CT scanner; Sinkhorn was proving a theorem about doubly stochastic matrices, not balancing betting pools.
 
-The defining property is that the eventual user is not known at the time of the work. Motivated research knows its user and is designed for that user, so its value is roughly the value of that one application. Unmotivated research has, at the time it is done, a distribution of possible users, most of whom will never hear of it. Its value is an expectation over that distribution, and the expectation is governed by how efficiently results travel.
+The defining property is that the eventual user is not known at the time of the work. \citet{wigner1960} called the eventual fit unreasonable; the economics below treats it as an expectation. Motivated research knows its user and is designed for that user, so its value is roughly the value of that one application. Unmotivated research has, at the time it is done, a distribution of possible users, most of whom will never hear of it. Its value is an expectation over that distribution, and the expectation is governed by how efficiently results travel.
 
 The historical record on travel is not encouraging. A survey of the pure-mathematics fields in the 1959 Mathematics Subject Classification finds a median gap of 68 years between a field's founding and its first documented external application, with quartiles at 37 and 107 years \citep{cotton2026pure}. Hardy's number theory took a little under a century to become public-key cryptography. Kepler's sphere packing took three centuries to become lattice cryptography. Part of each lag is waiting for a problem, or a complementary technology, to exist at all. The rest is transmission, which until recently meant a person who happened to know both the problem and the theorem. The case studies in Section 4 show that part was large.
 
 \section{Prior estimates of value}
 
-Three literatures bear on the absolute question, and all three say the number is large.
+Several literatures bear on the question, and they agree on the sign.
 
 \paragraph{Returns to research in general.} \citet{jones2020} compute the economy-wide social return to innovation investment and find a benefit-cost ratio above ten under central parameters, at least four under conservative ones, and above twenty once international spillovers and health benefits are counted. The estimate is for research and development as a whole, not mathematics, but mathematics sits at the upstream end of the chain, where the spillovers are largest.
 
@@ -60,7 +60,15 @@ Three literatures bear on the absolute question, and all three say the number is
 
 \paragraph{The underinvestment argument.} \citet{nelson1959} and \citet{arrow1962} argued that private markets underinvest in basic research because the returns cannot be appropriated by the investor. \citet{romer1990} made the mechanism explicit: ideas are non-rival, so their social value scales with the number of users while the private value does not. The argument is older than large language models and does not depend on them. It implies that the pre-LLM level of spending was a private optimum sitting below the social one.
 
-We proceed with that benchmark anyway, because the question of interest is the direction and size of the shift, and the shift can be computed without settling the level.
+\paragraph{Basic versus applied.} \citet{akcigit2021} estimate a growth model in which basic and applied research generate different spillovers and find that a uniform research subsidy oversubsidizes applied research, while support for public basic research is welfare-improving. \citet{mansfield1991} surveyed firms and found that about a tenth of their new products and processes could not have been developed without recent academic research, and put the social rate of return to that research near thirty per cent. \citet{salter2001} review the wider evidence and reach the same sign.
+
+\paragraph{Lags and intermediaries.} \citet{adams1990} measures a lag of roughly twenty years between the appearance of academic science and its effect on industrial productivity, and thirty years where the effect runs through other industries. \citet{ahmadpoor2017} link 4.8 million patents to 32 million papers and find that most cited papers eventually reach a patent, typically at a distance of two to four citation steps: the paper is rarely read by the inventor, but by someone who is read by someone who is. \citet{poege2019} find that patents which do cite science are the more valuable ones.
+
+\paragraph{Ideas do not travel freely.} \citet{jaffe1993} showed that knowledge spillovers are geographically localized, which they would not be if a paper were enough. \citet{agrawal2008} found that a fall in communication costs raised collaboration most for researchers outside the top departments, and \citet{kim2009} found the productivity premium of being at an elite university fell as the same technology spread. \citet{burt2004} found that good ideas come disproportionately from people who bridge otherwise disconnected groups. \citet{jones2009} showed that the training needed to reach a research frontier has been rising for a century, which is the cost of becoming one of those bridges.
+
+\paragraph{Machines that search.} \citet{weitzman1998} modelled growth as the recombination of existing ideas, with the binding constraint being the cost of finding the combinations worth trying. \citet{agrawal2019} argue that artificial intelligence relaxes exactly that constraint, and \citet{cockburn2019} call it the invention of a method of invention. On the ground, \citet{brynjolfsson2025} find that generative assistance raises productivity most for the least experienced workers, and \citet{noy2023} find the same for writing tasks. In mathematics itself, \citet{davies2021} and \citet{trinh2024} report machine-guided conjecture and machine proof.
+
+We take the pre-LLM allocation as a benchmark anyway, because the question of interest is the direction and size of the shift, and the shift can be computed without settling the level.
 
 \section{The value of an unmotivated result}
 
@@ -86,19 +94,19 @@ The \emph{reach} of a result is $Kq$, the expected number of uses at which the r
 
 Two assumptions sit inside \eqref{eq:closed}. The value of a use is independent of whether and when it is reached, so the uses a result reaches are drawn from the same distribution as the uses it misses; a use valuable enough to hire a mathematician was more likely to be reached under the old regime, and to that extent the reach ratio below is generous. And reach and lag are two views of one matching process: reach is ever matched within a fixed horizon, $D$ is the expected discount conditional on matching, and with those definitions the product form is exact.
 
-Before large language models, a use could encounter a result only if a person at that use was \emph{bilingual}: fluent in the problem and fluent enough in the mathematics to recognize the match. The encounter probability of an unmotivated result was the probability that such a person was present. This is the bottleneck documented case by case in \citet{cotton2026protocol}: the same invariant was defined four times under four names in four literatures because no one at any of the three later sites had encountered the first.
+Before large language models, a use could encounter a result only if a person at that use was \emph{bilingual}: fluent in the problem and fluent enough in the mathematics to recognize the match. The encounter probability of an unmotivated result was the probability that such a person was present, and \citet{burt2004} measured how rare such people are and how much of the good-idea supply runs through them. This is the bottleneck documented case by case in \citet{cotton2026protocol}: the same invariant was defined four times under four names in four literatures because no one at any of the three later sites had encountered the first.
 
 \section{What a language model changes}
 
 A large language model is, for present purposes, a device that makes every result in its training corpus or retrieval index available at every use simultaneously. Three consequences follow, one per primitive.
 
-\paragraph{Reach.} A result that enters the corpus is present in every copy of the model. The person at the use no longer needs to know the theorem. They need to describe the problem, and the model supplies the match. The encounter probability rises from the chance that a bilingual person was present to the chance that a model is consulted, which is approaching one. If bilingual people were present at one use in ten, $q$ rises by a factor of ten; if at one in thirty, thirty. Write $n = q_1 / q_0$ for this ratio, with subscripts $0$ and $1$ for the regimes before and after.
+\paragraph{Reach.} A result that enters the corpus is present in every copy of the model. The person at the use no longer needs to know the theorem. They need to describe the problem, and the model supplies the match; this is the needle-in-a-haystack search of \citet{agrawal2019}, run at every use at once. The encounter probability rises from the chance that a bilingual person was present to the chance that a model is consulted, which is approaching one. If bilingual people were present at one use in ten, $q$ rises by a factor of ten; if at one in thirty, thirty. Write $n = q_1 / q_0$ for this ratio, with subscripts $0$ and $1$ for the regimes before and after.
 
-\paragraph{Adoption cost.} Once the match is made, the model can also write the implementation. The cost of taking a theorem from the page to a working change in an application falls from weeks of a specialist's time to minutes of anyone's. By \eqref{eq:closed} the effect on value is $m^{\alpha - 1}$ for a cost reduction by factor $m$, provided the reduced cost $c/m$ still exceeds $v_0$; below that floor every use is adopted and the multiplier is smaller. This channel is weaker than it sounds when tails are heavy: with $\alpha$ near one, value is dominated by the few enormous uses that would have paid the old cost anyway. It is a factor of a few, not tens.
+\paragraph{Adoption cost.} Once the match is made, the model can also write the implementation. The cost of taking a theorem from the page to a working change in an application falls from weeks of a specialist's time to minutes of anyone's, and \citet{brynjolfsson2025} find that the gain from such assistance is largest for the least experienced, which is to say for the people who were not going to be the bilingual person. By \eqref{eq:closed} the effect on value is $m^{\alpha - 1}$ for a cost reduction by factor $m$, provided the reduced cost $c/m$ still exceeds $v_0$; below that floor every use is adopted and the multiplier is smaller. This channel is weaker than it sounds when tails are heavy: with $\alpha$ near one, value is dominated by the few enormous uses that would have paid the old cost anyway. It is a factor of a few, not tens.
 
 \paragraph{Lag.} A result posted in the morning can be retrieved and read by a model in the afternoon. The lag from publication to availability at every use collapses from the decades the historical record shows to the same day. What remains is the wait for a problem the result fits to arise, and that is a property of the problem stream, not of transmission. The lag multiplier is $D_1 / D_0 = e^{\rho(\tilde\tau_0 - \tilde\tau_1)}$. At a three per cent discount rate, removing forty years of certainty-equivalent lag multiplies present value by $e^{0.03 \times 40} \approx 3.3$. At five per cent, removing 68 years gives about thirty.
 
-The 68-year median is a field-level figure whose clock starts at the field's founding; the lag $T_i$ in \eqref{eq:value} starts when a particular result is published, and the two are different quantities. What the record establishes is that lags of decades were normal. The year counts used below are assumptions on that scale.
+The 68-year median is a field-level figure whose clock starts at the field's founding; the lag $T_i$ in \eqref{eq:value} starts when a particular result is published, and the two are different quantities. What the record establishes is that lags of decades were normal, and \citet{adams1990} finds the same scale in industrial productivity data, twenty to thirty years from academic science to measured effect. The year counts used below are assumptions on that scale.
 
 Collecting the three channels, the ratio of post to pre expected value is
 \begin{equation}
@@ -184,7 +192,7 @@ Scaling the American degree counts of Section 1 by the same multipliers, with a 
 
 \section{Objections}
 
-\paragraph{The ideas were already free.} Journals were open, or nearly so, for decades before language models, and the lags were still measured in generations. Free to read is not free to find, and not free to recognize as relevant. The scarce input was never the paper. It was the person who had read the paper and was also standing next to the problem, and that person is what the model replaces.
+\paragraph{The ideas were already free.} Journals were open, or nearly so, for decades before language models, and the lags were still measured in generations. Free to read is not free to find, and not free to recognize as relevant; \citet{jaffe1993} found spillovers localized in space long after journals were everywhere. The scarce input was never the paper. It was the person who had read the paper and was also standing next to the problem, and that person is what the model replaces.
 
 \paragraph{Ideas are getting harder to find.} \citet{bloom2020} document falling research productivity across fields. This is a statement about $a$ in \eqref{eq:foc}, the production side. The present argument is about $V$, the value side, and the two enter multiplicatively. A field can be harder to advance and, at the same time, far more valuable to advance.
 
@@ -200,7 +208,7 @@ Twenty-five Fields medalists have signed a declaration, \emph{A Severe Misalignm
 
 The model above offers a brighter reading of precisely that distinction. If understanding is the goal, cheaper access to solutions is a gift. A solved problem remains available to understand, simplify, generalise, connect to other fields, and teach. Knowing that a route exists makes exploring the landscape considerably more productive.
 
-Consider the research directions currently abandoned because investigating them would consume six months, or the connections never pursued because acquiring the background would take two years. Lower those costs and a mathematician can entertain more conjectures, investigate more examples, and venture further beyond their specialism. In the notation of \eqref{eq:foc} this raises $a$, the number of results per unit of spend, and it does so alongside the rise in $V$ that is the subject of this paper. The two effects compound.
+Consider the research directions currently abandoned because investigating them would consume six months, or the connections never pursued because acquiring the background would take two years, the burden of knowledge that \citet{jones2009} showed has been growing for a century. Lower those costs and a mathematician can entertain more conjectures, investigate more examples, and venture further beyond their specialism. In the notation of \eqref{eq:foc} this raises $a$, the number of results per unit of spend, and it does so alongside the rise in $V$ that is the subject of this paper. The two effects compound.
 
 The opportunity extends beyond established researchers. Someone outside a major university, someone returning after twenty years in industry, or a student without access to the right specialist now has a patient mathematical interlocutor. Its mistakes matter and its explanations require scrutiny. But the prospect of serious mathematics becoming accessible to far more people is the reach channel of Section 5 applied to the producers of mathematics rather than its users.
 
@@ -233,6 +241,31 @@ Academy for the Mathematical Sciences (2024).
 \newblock The economic contribution of the mathematical sciences to the UK economy.
 \newblock Report, October 2024.
 
+\bibitem[Adams(1990)]{adams1990}
+Adams, J.~D. (1990).
+\newblock Fundamental stocks of knowledge and productivity growth.
+\newblock \emph{Journal of Political Economy}, 98(4):673--702.
+
+\bibitem[Agrawal and Goldfarb(2008)]{agrawal2008}
+Agrawal, A. and Goldfarb, A. (2008).
+\newblock Restructuring research: communication costs and the democratization of university innovation.
+\newblock \emph{American Economic Review}, 98(4):1578--1590.
+
+\bibitem[Agrawal et~al.(2019)]{agrawal2019}
+Agrawal, A., McHale, J., and Oettl, A. (2019).
+\newblock Finding needles in haystacks: artificial intelligence and recombinant growth.
+\newblock In \emph{The Economics of Artificial Intelligence: An Agenda}, pp.\ 149--174. University of Chicago Press.
+
+\bibitem[Ahmadpoor and Jones(2017)]{ahmadpoor2017}
+Ahmadpoor, M. and Jones, B.~F. (2017).
+\newblock The dual frontier: patented inventions and prior scientific advance.
+\newblock \emph{Science}, 357(6351):583--587.
+
+\bibitem[Akcigit et~al.(2021)]{akcigit2021}
+Akcigit, U., Hanley, D., and Serrano-Velarde, N. (2021).
+\newblock Back to basics: basic research spillovers, innovation policy, and growth.
+\newblock \emph{Review of Economic Studies}, 88(1):1--43.
+
 \bibitem[American Bar Association(2024)]{aba2024}
 American Bar Association, Section of Legal Education and Admissions to the Bar (2024).
 \newblock Employment outcomes for the class of 2023.
@@ -258,6 +291,21 @@ Bloom, N., Jones, C.~I., Van Reenen, J., and Webb, M. (2020).
 \newblock Are ideas getting harder to find?
 \newblock \emph{American Economic Review}, 110(4):1104--1144.
 
+\bibitem[Brynjolfsson et~al.(2025)]{brynjolfsson2025}
+Brynjolfsson, E., Li, D., and Raymond, L. (2025).
+\newblock Generative AI at work.
+\newblock \emph{Quarterly Journal of Economics}, 140(2):889--942.
+
+\bibitem[Burt(2004)]{burt2004}
+Burt, R.~S. (2004).
+\newblock Structural holes and good ideas.
+\newblock \emph{American Journal of Sociology}, 110(2):349--399.
+
+\bibitem[Cockburn et~al.(2019)]{cockburn2019}
+Cockburn, I.~M., Henderson, R., and Stern, S. (2019).
+\newblock The impact of artificial intelligence on innovation: an exploratory analysis.
+\newblock In \emph{The Economics of Artificial Intelligence: An Agenda}, pp.\ 115--146. University of Chicago Press.
+
 \bibitem[Cotton(2026a)]{cotton2026pure}
 Cotton, P. (2026a).
 \newblock Pure: a field-by-field survey of dismissed mathematics and what it became.
@@ -267,6 +315,11 @@ Cotton, P. (2026a).
 Cotton, P. (2026b).
 \newblock The protocol argument.
 \newblock \url{https://pure.microprediction.org/abstraction.html}.
+
+\bibitem[Davies et~al.(2021)]{davies2021}
+Davies, A., Veli\v{c}kovi\'c, P., Buesing, L., et~al. (2021).
+\newblock Advancing mathematics by guiding human intuition with AI.
+\newblock \emph{Nature}, 600:70--74.
 
 \bibitem[Deloitte(2013)]{deloitte2013}
 Deloitte (2013).
@@ -283,10 +336,30 @@ Hardy, G.~H. (1940).
 \newblock \emph{A Mathematician's Apology}.
 \newblock Cambridge University Press.
 
+\bibitem[Jaffe et~al.(1993)]{jaffe1993}
+Jaffe, A.~B., Trajtenberg, M., and Henderson, R. (1993).
+\newblock Geographic localization of knowledge spillovers as evidenced by patent citations.
+\newblock \emph{Quarterly Journal of Economics}, 108(3):577--598.
+
+\bibitem[Jones(2009)]{jones2009}
+Jones, B.~F. (2009).
+\newblock The burden of knowledge and the ``death of the Renaissance man'': is innovation getting harder?
+\newblock \emph{Review of Economic Studies}, 76(1):283--317.
+
 \bibitem[Jones and Summers(2020)]{jones2020}
 Jones, B.~F. and Summers, L.~H. (2020).
 \newblock A calculation of the social returns to innovation.
 \newblock NBER Working Paper 27863.
+
+\bibitem[Kim et~al.(2009)]{kim2009}
+Kim, E.~H., Morse, A., and Zingales, L. (2009).
+\newblock Are elite universities losing their competitive edge?
+\newblock \emph{Journal of Financial Economics}, 93(3):353--381.
+
+\bibitem[Mansfield(1991)]{mansfield1991}
+Mansfield, E. (1991).
+\newblock Academic research and industrial innovation.
+\newblock \emph{Research Policy}, 20(1):1--12.
 
 \bibitem[National Center for Education Statistics(2023)]{nces2023}
 National Center for Education Statistics (2023).
@@ -302,10 +375,30 @@ Nelson, R.~R. (1959).
 \newblock The simple economics of basic scientific research.
 \newblock \emph{Journal of Political Economy}, 67(3):297--306.
 
+\bibitem[Noy and Zhang(2023)]{noy2023}
+Noy, S. and Zhang, W. (2023).
+\newblock Experimental evidence on the productivity effects of generative artificial intelligence.
+\newblock \emph{Science}, 381(6654):187--192.
+
+\bibitem[Poege et~al.(2019)]{poege2019}
+Poege, F., Harhoff, D., Gaessler, F., and Baruffaldi, S. (2019).
+\newblock Science quality and the value of inventions.
+\newblock \emph{Science Advances}, 5(12):eaay7323.
+
 \bibitem[Romer(1990)]{romer1990}
 Romer, P.~M. (1990).
 \newblock Endogenous technological change.
 \newblock \emph{Journal of Political Economy}, 98(5):S71--S102.
+
+\bibitem[Salter and Martin(2001)]{salter2001}
+Salter, A.~J. and Martin, B.~R. (2001).
+\newblock The economic benefits of publicly funded basic research: a critical review.
+\newblock \emph{Research Policy}, 30(3):509--532.
+
+\bibitem[Trinh et~al.(2024)]{trinh2024}
+Trinh, T.~H., Wu, Y., Le, Q.~V., He, H., and Luong, T. (2024).
+\newblock Solving olympiad geometry without human demonstrations.
+\newblock \emph{Nature}, 625:476--482.
 
 \bibitem[UNSW(2021)]{unswlaw}
 UNSW Faculty of Law and Justice (2021).
@@ -319,6 +412,16 @@ UNSW Business School (2024).
 Scherer, F.~M. and Harhoff, D. (2000).
 \newblock Technology policy for a world of skew-distributed outcomes.
 \newblock \emph{Research Policy}, 29(4--5):559--566.
+
+\bibitem[Weitzman(1998)]{weitzman1998}
+Weitzman, M.~L. (1998).
+\newblock Recombinant growth.
+\newblock \emph{Quarterly Journal of Economics}, 113(2):331--360.
+
+\bibitem[Wigner(1960)]{wigner1960}
+Wigner, E.~P. (1960).
+\newblock The unreasonable effectiveness of mathematics in the natural sciences.
+\newblock \emph{Communications on Pure and Applied Mathematics}, 13(1):1--14.
 
 \end{thebibliography}
 
