@@ -7,6 +7,7 @@
 \usepackage[round,authoryear]{natbib}
 \usepackage[colorlinks=true,allcolors=blue,pdftitle={Mathematics and Welfare: Optimal Investment Pre and Post LLMs},pdfauthor={Peter Cotton}]{hyperref}
 \usepackage{microtype}
+\usepackage{xurl}
 
 \makeatletter
 \renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
@@ -31,7 +32,7 @@
 \maketitle
 
 \begin{abstract}
-Pure mathematics, and applied mathematics pursued without a client, produce non-rival ideas whose social value depends on how many uses they reach, what each use costs to make, and how long the match takes. Large language models move all three at once. We write the value of an unmotivated result as a function of reach, adoption cost, and lag, derive the elasticity of optimal research spending with respect to that value, and compute the implied shift in the ratio of investment in mathematics to investment in the professions that train rival human capital. The channel sizes are assumptions. Under conservative ones the planner's ratio rises by nearly an order of magnitude, under central ones by two, and the shift is largest for the research whose old matching mechanism worked worst.
+Pure mathematics, and applied mathematics pursued without a client, produce non-rival ideas whose social value depends on how many uses they reach, what each use costs to make, and how long the match takes. Large language models move all three at once. We write the value of an unmotivated result as a function of reach, adoption cost, and lag, derive the elasticity of optimal research spending with respect to that value, and compute the implied shift in the ratio of investment in mathematics to investment in the professions that train rival human capital. The channel sizes are assumptions. Under the smallest of them the planner's ratio rises by nearly an order of magnitude, under the central ones by two, and the shift is largest for the research whose old matching mechanism worked worst.
 \end{abstract}
 
 \section{Six students}
@@ -52,7 +53,7 @@ The defining property is that the eventual user is not known at the time of the 
 
 The label is a misnomer. Work chosen for generality, elegance, and difficulty is not work chosen without a motive. It is work chosen by a rule that maximizes expected value over uses nobody can yet name, which is the only rule available when the user is unknown. The internal criteria of mathematics are in that sense a societal optimization, one that individual mathematicians carry out without needing to know it, and \citet{cotton2026protocol} makes the same point about abstraction built ahead of demand. Formalizing this is for another paper. We keep the word unmotivated because it is the usual one.
 
-The historical record on travel is not encouraging. A survey of the pure-mathematics fields in the 1959 Mathematics Subject Classification finds a median gap of 68 years between a field's founding and its first documented external application, with quartiles at 37 and 107 years \citep{cotton2026pure}. Hardy's number theory took a little under a century to become public-key cryptography. Boole's algebra of 1854 waited 83 years for Shannon to notice that it described relay circuits. Part of each lag is waiting for a problem, or a complementary technology, to exist at all. The rest is transmission, which until recently meant a person who happened to know both the problem and the theorem. The case studies in Section 4 show that part was large.
+The historical record on travel is not encouraging. A survey of the pure-mathematics fields in the 1959 Mathematics Subject Classification finds a median gap of 68 years between a field's founding and its first documented external application, with quartiles at 37 and 107 years \citep{cotton2026pure}. Hardy's number theory took a little under a century to become public-key cryptography. Boole's algebra of 1854 waited 83 years for Shannon to notice that it described relay circuits. Part of each lag is waiting for a problem, or a complementary technology, to exist at all. The rest is transmission, which until recently meant a person who happened to know both the problem and the theorem. The case studies in \citet{cotton2026protocol} show that part was large.
 
 \section{Existing estimates of the return}
 
@@ -76,7 +77,7 @@ We take the pre-LLM allocation as a benchmark anyway, because the question of in
 
 \section{The value of an unmotivated result}
 
-Fix a result $r$ produced by unmotivated research. Index its potential uses by $i = 1, \dots, K$. Use $i$ has gross value $v_i > 0$ if the result is applied to it, an adoption cost $c_i > 0$ covering the work of finding, understanding, and implementing the result in that context, and, if the match is ever made, a lag $T_i \ge 0$ before it happens. Whether the match is made at all is the encounter indicator $A_i \in \{0, 1\}$. The result is non-rival: use $i$ does not diminish use $j$. With social discount rate $\rho$, the realized social value is
+Fix a result $r$ produced by unmotivated research. Index its potential uses by $i = 1, \dots, K$. Use $i$ has gross value $v_i > 0$ if the result is applied to it, an adoption cost $c_i > 0$ covering the work, after the match is made, of understanding and implementing the result in that context, and, if the match is ever made, a lag $T_i \ge 0$ before it happens. Whether the match is made at all is the encounter indicator $A_i \in \{0, 1\}$; the cost of searching for the match is what determines $A_i$ and is not charged again in $c_i$. Encountered matches that are then rejected incur a verification cost that \eqref{eq:value} omits; with a model it is minutes, and before a model it was the reason encounters were rare rather than a cost paid at every use. The result is non-rival: use $i$ does not diminish use $j$. With social discount rate $\rho$, the realized social value is
 \begin{equation}
 V(r) \;=\; \sum_{i=1}^{K} A_i\,(v_i - c_i)^{+}\,e^{-\rho T_i}.
 \label{eq:value}
@@ -110,35 +111,32 @@ A large language model is, for present purposes, a device that makes every resul
 
 The common cost $c$ in \eqref{eq:closed} hides the important case, so split the uses into two segments. Segment $Q$ is the few large firms with teams of quants, for which $c_Q$ was already low; by \eqref{eq:closed} a cost reduction by factor $m$ multiplies its value by $m^{\alpha-1}$, provided $c_Q/m$ still exceeds $v_0$, and with $\alpha$ near one that is a factor of a few. Segment $H$ is the long tail of businesses with no quant, for which $c_H$ sat far above the values on offer; since $g(c) \propto c^{1-\alpha}$, its pre-LLM contribution $W_{H0}$ was not zero but negligible. A cost that falls from prohibitive to affordable does not multiply $W_{H0}$; it adds a term.
 
-Write $W_{jt}$ for the expected value from segment $j$ in regime $t$, so that $W_t = W_{Qt} + W_{Ht}$. With $W_{H0} \approx 0$,
+Write $W_{jt} = K_j\, q_{jt}\, g(c_{jt})\, D_{jt}$ for the expected value from segment $j$ in regime $t$, each segment with its own primitives, so that $W_t = W_{Qt} + W_{Ht}$. Let $\kappa_j = W_{j1}/W_{j0}$ be each segment's own multiplier and $\varepsilon = W_{H0}/W_{Q0}$ the tail's share of pre-LLM value relative to the incumbents. Then, exactly,
 \begin{equation}
-\kappa \;=\; \frac{W_{Q1} + W_{H1}}{W_{Q0}} \;=\; \kappa_Q\,(1 + \theta),
-\qquad
-\kappa_Q = \frac{W_{Q1}}{W_{Q0}},
-\qquad
-\theta = \frac{W_{H1}}{W_{Q1}},
+\kappa \;=\; \frac{W_{Q1} + W_{H1}}{W_{Q0} + W_{H0}} \;=\; \frac{\kappa_Q + \varepsilon\,\kappa_H}{1 + \varepsilon},
 \label{eq:segments}
 \end{equation}
-where $\theta$ is the post-LLM value of the tail relative to the post-LLM value of the incumbents. The channels multiply within a segment and add across segments. Most business activity has never been written down as a control problem, an allocation, or a forecast, and that is where the count of uses lives, so $\theta$ may be large; it is a separate parameter and Table \ref{tab:channels} carries it as one. The segmentation is a hypothesis about where adoption costs fell, not a measurement.
+a weighted average of the two segment multipliers with pre-LLM value as the weights. The channels multiply within a segment and average across segments. Since the tail's cost fell further and its encounter probability rose more, $\kappa_H \ge \kappa_Q$, and so $\kappa$ lies between $\kappa_Q$ and $\kappa_H$ wherever $\varepsilon$ sits; a large $\varepsilon$ moves $\kappa$ toward $\kappa_H$, not toward zero. Most business activity has never been written down as a control problem, an allocation, or a forecast, and that is where the count of uses lives, so $\kappa_H / \kappa_Q$ may be large. Table \ref{tab:channels} carries the ratio $\kappa / \kappa_Q$ as a separate row. The segmentation is a hypothesis about where adoption costs fell, not a measurement.
 
 \paragraph{Lag.} A result posted in the morning can be retrieved and read by a model in the afternoon. The lag from publication to availability at every use collapses from the decades the historical record shows to the same day. What remains is the wait for a problem the result fits to arise, and that is a property of the problem stream, not of transmission. The lag multiplier is $D_1 / D_0 = e^{\rho(\tilde\tau_0 - \tilde\tau_1)}$. At a three per cent discount rate, removing forty years of certainty-equivalent lag multiplies present value by $e^{0.03 \times 40} \approx 3.3$. At five per cent, removing 68 years gives about thirty.
 
 The 68-year median is a field-level figure whose clock starts at the field's founding; the lag $T_i$ in \eqref{eq:value} starts when a particular result is published, and the two are different quantities. What the record establishes is that lags of decades were normal, and \citet{adams1990} finds the same scale in industrial productivity data, twenty to thirty years from academic science to measured effect. The year counts used below are assumptions on that scale.
 
-Collecting the three channels for the incumbent segment, and adding the tail by \eqref{eq:segments}, the ratio of post to pre expected value is
+Collecting the three channels within the incumbent segment, with $n_Q = q_{Q1}/q_{Q0}$ and the segment's own cost and lag terms, and then averaging with the tail by \eqref{eq:segments}, the ratio of post to pre expected value is
 \begin{equation}
-\kappa_Q \;=\; n \cdot m^{\alpha - 1} \cdot \frac{D_1}{D_0} \;=\; n \cdot m^{\alpha - 1} \cdot e^{\rho(\tilde\tau_0 - \tilde\tau_1)},
+\kappa_Q \;=\; n_Q \cdot m_Q^{\alpha - 1} \cdot \frac{D_{Q1}}{D_{Q0}} \;=\; n_Q \cdot m_Q^{\alpha - 1} \cdot e^{\rho(\tilde\tau_{Q0} - \tilde\tau_{Q1})},
 \qquad
-\kappa \;=\; \kappa_Q\,(1 + \theta).
+\kappa \;=\; \frac{\kappa_Q + \varepsilon\,\kappa_H}{1 + \varepsilon}.
 \label{eq:kappa}
 \end{equation}
+The tail's multiplier $\kappa_H$ has the same product form with its own primitives.
 
 \begin{proposition}[The multiplier is largest where the old matching was worst]
-Hold $m$, $\alpha$, $\rho$, $\theta$, $q_1$, and $D_1$ fixed. Then $\kappa$ is decreasing in the pre-LLM encounter probability $q_0$ and decreasing in the pre-LLM discount factor $D_0$, that is, increasing in the pre-LLM certainty-equivalent lag $\tilde\tau_0$. For research with a single designed-in user who possessed it at the outset, $q_0 = q_1 = 1$, $D_0 = D_1$, and $\theta = 0$, so $\kappa = m^{\alpha-1}$: only the adoption-cost channel remains.
+Within a segment, hold $m$, $\alpha$, $\rho$, $q_1$, and $D_1$ fixed. Then the segment multiplier is decreasing in the pre-LLM encounter probability $q_0$ and decreasing in the pre-LLM discount factor $D_0$, that is, increasing in the pre-LLM certainty-equivalent lag $\tilde\tau_0$; and $\kappa$ in \eqref{eq:segments} is increasing in each segment multiplier. For research with a single designed-in user who possessed it at the outset, $q_0 = q_1 = 1$ and $D_0 = D_1$ in the only segment there is, so $\kappa = m^{\alpha-1}$: only the adoption-cost channel remains.
 \end{proposition}
 
 \begin{proof}
-Immediate from \eqref{eq:kappa}, since $n = q_1/q_0$, the lag factor is $D_1 / D_0$, and $1+\theta$ is a positive constant.
+Immediate from \eqref{eq:kappa}, since $n = q_1/q_0$, the lag factor is $D_1 / D_0$, and \eqref{eq:segments} is a weighted average with positive weights.
 \end{proof}
 
 Targeted research already knew its customer, and the model helps it at the margin. Untargeted research did not, and the model supplies the one thing it lacked: a matching mechanism. The gain from the mechanism is proportional to how badly the old one worked, and the historical lags say it worked badly.
@@ -157,7 +155,7 @@ S^{\star} \;=\; \left(\gamma a V\right)^{1/(1 - \gamma)},
 If the expected value of a result is multiplied by $\kappa$, optimal spending is multiplied by $\kappa^{1/(1-\gamma)}$. The elasticity is at least one, and it is larger the weaker the diminishing returns: as $\gamma \to 0$ it tends to one, and at $\gamma = \tfrac12$ it equals two.
 \end{proposition}
 
-Why does the elasticity exceed one? With diminishing returns the marginal result is cheap when spending is low and expensive when spending is high. If each result becomes ten times more valuable, the planner keeps buying until the marginal result costs ten times more, and under a square-root ideas function that means spending one hundred times more. The conservative reading is the limit $\gamma \to 0$, where results barely respond to spending and the planner's response is proportional to value. We report both ends.
+Why does the elasticity exceed one? With diminishing returns the marginal result is cheap when spending is low and expensive when spending is high. If each result becomes ten times more valuable, the planner keeps buying until the marginal result costs ten times more, and under a square-root ideas function that means spending one hundred times more. The smaller reading is the limit $\gamma \to 0$, where results barely respond to spending and the planner's response is proportional to value. We report both ends.
 
 The curvature $\gamma$ is static, the returns to more spending at a point in time. It is a different object from the fall in research productivity over calendar time that \citet{bloom2020} document, which is a statement about $a$.
 
@@ -182,20 +180,20 @@ The argument concerns spending on the production of unmotivated mathematics, inc
 
 \section{The posterior}
 
-The posterior is the benchmark ratio updated by the multipliers in \eqref{eq:ratio}. Table \ref{tab:channels} sets out a low, central, and high value for each channel and reads off the result. The reach multiplier $n$ is the ratio of the post-LLM to the pre-LLM encounter probability; one worker in ten is the share \citet{deloitte2013} count as mathematically occupied, and one problem in thirty is a guess at how often such a worker was actually in the room. The adoption-cost multiplier is for the incumbent segment: $m = 3$, $10$, and $10$ with tail indices $1.2$, $1.5$, and $2$, on the domain $c_Q \ge m v_0$. The tail entry $\theta$ is set to zero, one, and nine: no tail, a tail worth as much as the incumbents, and a tail worth nine times as much. The lag multiplier uses discount rates of three and five per cent and reductions in certainty-equivalent lag of twenty-five, forty, and sixty-eight years. Channel entries are rounded before multiplying.
+The posterior is the benchmark ratio updated by the multipliers in \eqref{eq:ratio}. Table \ref{tab:channels} sets out a low, central, and high value for each channel and reads off the result; the columns are illustrative assumptions, not estimates. The first three rows are the incumbent segment. Its reach multiplier $n_Q$ is the ratio of the post-LLM to the pre-LLM encounter probability there; one worker in ten is the share \citet{deloitte2013} count as mathematically occupied across the economy, and one problem in thirty is a guess at how often such a worker was actually in the room, and since quant firms had such workers more often than the economy did, these values are if anything generous for $Q$. The adoption-cost multiplier uses $m_Q = 3$, $10$, and $10$ with tail indices $1.2$, $1.5$, and $2$, on the domain $c_Q \ge m_Q v_0$. The lag multiplier uses discount rates of three and five per cent and reductions in certainty-equivalent lag of twenty-five, forty, and sixty-eight years. The tail row is $\kappa/\kappa_Q$ from \eqref{eq:segments}: the low column has the tail no better than the incumbents, $\kappa_H = \kappa_Q$, at any $\varepsilon$; the central column has $\varepsilon = 1$ and $\kappa_H = 3\kappa_Q$; the high column has $\varepsilon = 1$ and $\kappa_H = 19\kappa_Q$. Channel entries are rounded before multiplying.
 
-\begin{table}[ht]
+\begin{table}[tbp]
 \centering
 \begin{tabular}{lccc}
 \toprule
 Channel & Low & Central & High \\
 \midrule
-Reach $n$ & 3 & 10 & 30 \\
-Adoption cost $m^{\alpha-1}$ & 1.2 & 3 & 10 \\
-Lag $D_1/D_0$ & 2.1 & 3.3 & 30 \\
+Reach $n_Q$ & 3 & 10 & 30 \\
+Adoption cost $m_Q^{\alpha-1}$ & 1.2 & 3 & 10 \\
+Lag $D_{Q1}/D_{Q0}$ & 2.1 & 3.3 & 30 \\
 \midrule
 Incumbent multiplier $\kappa_Q$ & 7.6 & 99 & 9000 \\
-Tail entry $1+\theta$ & 1 & 2 & 10 \\
+Tail averaging $\kappa/\kappa_Q$ & 1 & 2 & 10 \\
 \midrule
 Value multiplier $\kappa_M$ & 7.6 & 200 & 90000 \\
 Professional multiplier $\kappa_L$ & 1.0 & 1.0 & 0.7 \\
@@ -204,13 +202,13 @@ Ratio multiplier, $\gamma \to 0$ & 7.6 & 200 & 130000 \\
 Ratio multiplier, $\gamma = \tfrac12$ & 58 & 40000 & $1.7 \times 10^{10}$ \\
 \bottomrule
 \end{tabular}
-\caption{Channel multipliers and the implied change in the ratio of spending on unmotivated mathematics to spending on the professions, from \eqref{eq:ratio}. The three channels multiply within the incumbent segment and the tail adds by \eqref{eq:segments}. The elasticity is $1/(1-\gamma)$: one in the limit $\gamma \to 0$, two at $\gamma = \tfrac12$.}
+\caption{Channel multipliers and the implied change in the ratio of spending on unmotivated mathematics to spending on the professions, from \eqref{eq:ratio}. The three channels multiply within the incumbent segment and the tail enters by the weighted average \eqref{eq:segments}. The elasticity is $1/(1-\gamma)$: one in the limit $\gamma \to 0$, two at $\gamma = \tfrac12$.}
 \label{tab:channels}
 \end{table}
 
-The high column is not a forecast. It is there to show the range once the channels compound. The low column, with a reach multiplier of three, a nearly useless cost channel, and a modest lag improvement, moves the ratio by a factor of nearly eight. The central column moves it by two orders of magnitude at the conservative elasticity, and by more than four at $\gamma = \tfrac12$. A reach multiplier near one would mean a bilingual person was already present at most uses, and the case studies say otherwise.
+The high column is not a forecast. It is there to show the range once the channels compound. The low column, with a reach multiplier of three, a nearly useless cost channel, and a modest lag improvement, moves the ratio by a factor of nearly eight. The central column moves it by two orders of magnitude at elasticity one, and by more than four at $\gamma = \tfrac12$. A reach multiplier near one would mean a bilingual person was already present at most uses, and the case studies say otherwise.
 
-Scaling the American degree counts of Section 1 by the same multipliers, with a degree in each sector as a unit of investment, the pre-LLM ratio of mathematics doctorates to law and business degrees combined was about one to 160. Under the low column it becomes one to 20; under the central column, at the conservative elasticity, mathematics doctorates would outnumber law and business degrees. On a campus, six students against several thousand becomes fifty under the low column and a thousand under the central one. Degree counts are proxies for spending, not measures of it.
+Equation \eqref{eq:ratio} compares two planner optima, and the observed allocation was not one, so what follows is a normalization of the observed ratio, not the post-LLM optimum. Scaling the American degree counts of Section 1 by the same multipliers, with a degree in each sector as a unit of investment, the pre-LLM ratio of mathematics doctorates to law and business degrees combined was about one to 160. Under the low column it becomes one to 20; under the central column, at elasticity one, mathematics doctorates would outnumber law and business degrees. On a campus, six students against several thousand becomes fifty under the low column and a thousand under the central one. Degree counts are proxies for spending, not measures of it.
 
 \section{Cuts in Australia and the United Kingdom}
 
