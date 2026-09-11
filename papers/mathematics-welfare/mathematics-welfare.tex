@@ -31,7 +31,7 @@
 \maketitle
 
 \begin{abstract}
-Pure mathematics, and applied mathematics pursued without a client, produce non-rival ideas whose social value depends on how many uses they reach, what each use costs to make, and how long the match takes. Large language models move all three at once. We write the value of an unmotivated result as a function of reach, adoption cost, and lag, derive the elasticity of optimal research spending with respect to that value, and compute the implied shift in the ratio of investment in mathematics to investment in the professions that train rival human capital. In the most conservative case the ratio rises by nearly an order of magnitude, in the central case by two, and the shift is largest for the research whose old matching mechanism worked worst.
+Pure mathematics, and applied mathematics pursued without a client, produce non-rival ideas whose social value depends on how many uses they reach, what each use costs to make, and how long the match takes. Large language models move all three at once. We write the value of an unmotivated result as a function of reach, adoption cost, and lag, derive the elasticity of optimal research spending with respect to that value, and compute the implied shift in the ratio of investment in mathematics to investment in the professions that train rival human capital. The channel sizes are assumed rather than estimated, so the result is a conditional thought experiment: under the conservative scenario the planner's ratio rises by nearly an order of magnitude, under the central one by two, and the shift is largest for the research whose old matching mechanism worked worst.
 \end{abstract}
 
 \section{Six students}
@@ -48,7 +48,7 @@ By \emph{unmotivated} mathematics we mean research whose direction is chosen by 
 
 The defining property is that the eventual user is not known at the time of the work. Motivated research knows its user and is designed for that user, so its value is roughly the value of that one application. Unmotivated research has, at the time it is done, a distribution of possible users, most of whom will never hear of it. Its value is an expectation over that distribution, and the expectation is governed by how efficiently results travel.
 
-The historical record on travel is not encouraging. A survey of the pure-mathematics fields in the 1959 Mathematics Subject Classification finds a median gap of 68 years between a field's founding and its first documented external application, with quartiles at 37 and 107 years \citep{cotton2026pure}. Hardy's number theory took a little under a century to become public-key cryptography. Kepler's sphere packing took three centuries to become lattice cryptography. These lags are not a property of the mathematics. They are a property of the transmission mechanism, which until recently was a person who happened to know both the problem and the theorem.
+The historical record on travel is not encouraging. A survey of the pure-mathematics fields in the 1959 Mathematics Subject Classification finds a median gap of 68 years between a field's founding and its first documented external application, with quartiles at 37 and 107 years \citep{cotton2026pure}. Hardy's number theory took a little under a century to become public-key cryptography. Kepler's sphere packing took three centuries to become lattice cryptography. Part of each lag is waiting for a problem, or a complementary technology, to exist at all. The rest is transmission, which until recently meant a person who happened to know both the problem and the theorem, and the case studies in Section 4 suggest that part was large.
 
 \section{Prior estimates of value}
 
@@ -71,20 +71,20 @@ V(r) \;=\; \sum_{i=1}^{K} A_i\,(v_i - c_i)^{+}\,e^{-\rho T_i}.
 \end{equation}
 In English: add up every use the result ever reaches, net of what each use costs to adopt, and discount each by how long it took. Four primitives enter: the number of potential uses $K$, the encounter indicators $A_i$, the adoption costs $c_i$, and the lags $T_i$. Everything that follows is about how each moves.
 
-To get closed forms, take the $v_i$ as independent draws from a Pareto distribution with minimum $v_0$ and tail index $\alpha > 1$, so that $\Pr(v > x) = (x/v_0)^{-\alpha}$ for $x \ge v_0$. Heavy tails are the empirically correct assumption for the value of innovations: a small fraction of patents carries most of the value \citep{scherer2000}. Take a common adoption cost $c \ge v_0$, a common encounter probability $q = \Pr(A_i = 1)$, and a common conditional lag $\tau = \E[T_i \mid A_i = 1]$, with the encounter and the value independent. Then
+To get closed forms, take the $v_i$ as independent draws from a Pareto distribution with minimum $v_0$ and tail index $\alpha > 1$, so that $\Pr(v > x) = (x/v_0)^{-\alpha}$ for $x \ge v_0$. Heavy tails are the empirically correct assumption for the value of innovations: a small fraction of patents carries most of the value \citep{scherer2000}. Take a common adoption cost $c \ge v_0$, a common encounter probability $q = \Pr(A_i = 1)$, and a common conditional expected discount factor $D = \E[e^{-\rho T_i} \mid A_i = 1]$, with the value $v_i$ independent of the pair $(A_i, T_i)$. Then
 \begin{equation}
 g(c) \;\coloneqq\; \E[(v - c)^+] \;=\; \frac{v_0^{\alpha}\, c^{\,1-\alpha}}{\alpha - 1},
 \qquad
-\E\,V \;=\; K \cdot q \cdot g(c) \cdot e^{-\rho\tau}.
+\E\,V \;=\; K \cdot q \cdot g(c) \cdot D.
 \label{eq:closed}
 \end{equation}
-The elasticities are immediate. Value is linear in the encounter probability, has elasticity $-(\alpha - 1)$ in adoption cost on the domain $c \ge v_0$, and falls at rate $\rho$ per year of lag.
+The discount factor is an expectation of $e^{-\rho T}$, not $e^{-\rho}$ raised to the expected lag; by Jensen's inequality the two differ, and the first is the larger. It is convenient to write $D = e^{-\rho \tilde\tau}$ with $\tilde\tau = -\rho^{-1} \log D$ the \emph{certainty-equivalent lag}, which is what the lag figures below refer to. The elasticities are immediate. Value is linear in the encounter probability, has elasticity $-(\alpha - 1)$ in adoption cost on the domain $c \ge v_0$, and falls at rate $\rho$ per year of certainty-equivalent lag.
 
 \begin{definition}[Reach]
 The \emph{reach} of a result is $Kq$, the expected number of uses at which the result is encountered at all, whether or not it is then adopted.
 \end{definition}
 
-The multipliers below depend on two assumptions in \eqref{eq:closed}. The first is that the encounter is independent of the value: the uses a result reaches are drawn from the same value distribution as the uses it misses. Before language models this was probably false in the direction that flatters the old regime, since a use valuable enough to hire a mathematician was more likely to be reached, so a raw reach ratio overstates the gain. The second is that reach and lag are treated as separate channels, when both are aspects of one matching process. The product form is exact once reach is defined as ever matched within a fixed horizon and the lag as the match time conditional on matching. We proceed under both assumptions and return to them in Section 8.
+The multipliers below depend on two assumptions in \eqref{eq:closed}. The first is that the encounter is independent of the value: the uses a result reaches are drawn from the same value distribution as the uses it misses. Before language models this was probably false in the direction that flatters the old regime, since a use valuable enough to hire a mathematician was more likely to be reached, so a raw reach ratio overstates the gain. The second is that reach and lag are treated as separate channels, when both are aspects of one matching process. The product form is exact once reach is defined as ever matched within a fixed horizon and $D$ as the expected discount conditional on matching. We proceed under both assumptions and return to them in Section 8.
 
 Before large language models, a use could encounter a result only if a person at that use was \emph{bilingual}: fluent in the problem and fluent enough in the mathematics to recognize the match. The encounter probability of an unmotivated result was the probability that such a person was present. This is the bottleneck documented case by case in \citet{cotton2026protocol}: the same invariant was defined four times under four names in four literatures because no one at any of the three later sites had encountered the first.
 
@@ -96,22 +96,22 @@ A large language model is, for present purposes, a device that makes every resul
 
 \paragraph{Adoption cost.} Once the match is made, the model can also write the implementation. The cost of taking a theorem from the page to a working change in an application falls from weeks of a specialist's time to minutes of anyone's. By \eqref{eq:closed} the effect on value is $m^{\alpha - 1}$ for a cost reduction by factor $m$, provided the reduced cost $c/m$ still exceeds $v_0$; below that floor every use is adopted and the multiplier is smaller. This channel is weaker than it sounds when tails are heavy: with $\alpha$ near one, value is dominated by the few enormous uses that would have paid the old cost anyway. It is a factor of a few, not tens.
 
-\paragraph{Lag.} A result posted in the morning can be retrieved and read by a model in the afternoon. The lag from publication to availability at every use collapses from the decades the historical record shows to the same day. What remains is the wait for a problem the result fits to arise, and that is a property of the problem stream, not of transmission. At a three per cent discount rate, removing a forty-year lag multiplies present value by $e^{0.03 \times 40} \approx 3.3$. At five per cent, and from the survey median of 68 years, the multiplier is about thirty.
+\paragraph{Lag.} A result posted in the morning can be retrieved and read by a model in the afternoon. The lag from publication to availability at every use collapses from the decades the historical record shows to the same day. What remains is the wait for a problem the result fits to arise, and that is a property of the problem stream, not of transmission. The lag multiplier is $D_1 / D_0 = e^{\rho(\tilde\tau_0 - \tilde\tau_1)}$. At a three per cent discount rate, removing forty years of certainty-equivalent lag multiplies present value by $e^{0.03 \times 40} \approx 3.3$. At five per cent, removing 68 years gives about thirty.
 
-The 68-year figure needs a caveat. It is a field-level statistic, from a field's founding to the first documented external application of anything in it, and it is not the same object as the lag $T_i$ in \eqref{eq:value}, which attaches to one result and one use. A field's first application is the minimum over many results and uses, so the field-level median understates the result-level typical lag rather than overstating it. We use the figure as a scale, not a measurement.
+Those year counts are assumptions, and the historical record cannot calibrate them. The 68-year median is a field-level statistic whose clock starts at the field's founding, whereas $T_i$ starts when a particular result is published; a field founded in year 0, a theorem published in year 67, and a use in year 68 give a field lag of 68 years and a result lag of one. There is no general ordering between the two. Nor does the statistic separate the transmission delay from the wait for a relevant problem or complementary technology to exist. The record shows that lags of decades were normal; it does not say how many of those decades a model would have removed.
 
 Collecting the three channels, the ratio of post to pre expected value is
 \begin{equation}
-\kappa \;=\; n \cdot m^{\alpha - 1} \cdot e^{\rho(\tau_0 - \tau_1)}.
+\kappa \;=\; n \cdot m^{\alpha - 1} \cdot \frac{D_1}{D_0} \;=\; n \cdot m^{\alpha - 1} \cdot e^{\rho(\tilde\tau_0 - \tilde\tau_1)}.
 \label{eq:kappa}
 \end{equation}
 
 \begin{proposition}[The multiplier is largest where the old matching was worst]
-Hold $m$, $\alpha$, $\rho$, and $\tau_1$ fixed. Then $\kappa$ is decreasing in the pre-LLM encounter probability $q_0$ and increasing in the pre-LLM lag $\tau_0$. For research with a single designed-in user who possessed it at the outset, $q_0 = q_1 = 1$ and $\tau_0 = \tau_1$, so $\kappa = m^{\alpha-1}$: only the adoption-cost channel remains.
+Hold $m$, $\alpha$, $\rho$, $q_1$, and $D_1$ fixed. Then $\kappa$ is decreasing in the pre-LLM encounter probability $q_0$ and decreasing in the pre-LLM discount factor $D_0$, that is, increasing in the pre-LLM certainty-equivalent lag $\tilde\tau_0$. For research with a single designed-in user who possessed it at the outset, $q_0 = q_1 = 1$ and $D_0 = D_1$, so $\kappa = m^{\alpha-1}$: only the adoption-cost channel remains.
 \end{proposition}
 
 \begin{proof}
-Immediate from \eqref{eq:kappa}, since $n = q_1/q_0$ and the lag factor is $e^{\rho \tau_0}$ up to a constant.
+Immediate from \eqref{eq:kappa}, since $n = q_1/q_0$ and the lag factor is $D_1 / D_0$.
 \end{proof}
 
 Targeted research already knew its customer, and the model helps it at the margin. Untargeted research did not, and the model supplies the one thing it lacked: a matching mechanism. The gain from the mechanism is proportional to how badly the old one worked, and the historical lags say it worked badly.
@@ -157,7 +157,7 @@ The argument concerns spending on the production of unmotivated mathematics, inc
 
 The word posterior is used here in a loose sense: the benchmark ratio, updated by the multipliers in \eqref{eq:ratio}. No likelihood is involved and no data on the multipliers is fitted. Table \ref{tab:channels} is a sensitivity analysis over three hand-chosen columns, and it should be read as one. Its purpose is to show what the model implies once the channel sizes are supplied, not to estimate them.
 
-Table \ref{tab:channels} sets out a low, central, and high value for each channel. The reach multiplier $n$ is the ratio of the post-LLM to the pre-LLM encounter probability; the values are assumptions, loosely motivated by the roughly one worker in ten that \citet{deloitte2013} count as mathematically occupied, though that share is a different denominator from the share of problems at which such a worker was actually consulted. The adoption-cost multiplier uses $m = 3$, $10$, and $10$ with tail indices $1.2$, $1.5$, and $2$, and requires $c \ge m v_0$. The lag multiplier uses discount rates of three and five per cent and lag reductions of twenty-five, forty, and sixty-eight years, the transmission lag itself being gone. The channel entries are rounded before multiplying.
+Table \ref{tab:channels} sets out a low, central, and high value for each channel. The reach multiplier $n$ is the ratio of the post-LLM to the pre-LLM encounter probability; the values are assumptions, loosely motivated by the roughly one worker in ten that \citet{deloitte2013} count as mathematically occupied, though that share is a different denominator from the share of problems at which such a worker was actually consulted. The adoption-cost multiplier uses $m = 3$, $10$, and $10$ with tail indices $1.2$, $1.5$, and $2$, and requires $c \ge m v_0$. The lag multiplier uses discount rates of three and five per cent and assumed reductions in certainty-equivalent lag of twenty-five, forty, and sixty-eight years; the historical record motivates the scale of these numbers but, as Section 5 says, does not identify them. The channel entries are rounded before multiplying.
 
 \begin{table}[ht]
 \centering
@@ -167,7 +167,7 @@ Channel & Low & Central & High \\
 \midrule
 Reach $n$ & 3 & 10 & 30 \\
 Adoption cost $m^{\alpha-1}$ & 1.2 & 3 & 10 \\
-Lag $e^{\rho(\tau_0 - \tau_1)}$ & 2.1 & 3.3 & 30 \\
+Lag $D_1/D_0$ & 2.1 & 3.3 & 30 \\
 \midrule
 Value multiplier $\kappa_M$ & 7.6 & 99 & 9000 \\
 Professional multiplier $\kappa_L$ & 1.0 & 1.0 & 0.7 \\
@@ -182,7 +182,7 @@ Ratio multiplier, $\gamma = \tfrac12$ & 58 & 9800 & $1.7 \times 10^8$ \\
 
 The high column is not a forecast. It is there to show the range the model spans once the channels compound. The low column, with a reach multiplier of three, a nearly useless cost channel, and a modest lag improvement, moves the ratio by a factor of nearly eight. The central column moves it by two orders of magnitude at the conservative elasticity, and by four at $\gamma = \tfrac12$. The model also contains parametrizations that move the ratio hardly at all, $n$ near one with little lag improvement, and nothing here rules them out except the historical record on lags and the case studies on reach.
 
-Applied to the American degree counts in Section 1, and treating a degree in each sector as a unit of investment of comparable cost, the pre-LLM ratio of mathematics doctorates to law and business degrees combined was about one to 160. The low posterior is one to 20. The central posterior, at the conservative elasticity, is about one to two. Applied to a campus, six students against several thousand becomes fifty against several thousand in the low case, and a lecture theatre in the central one. The degree counts are proxies: they are not commensurate measures of spending, and the conversion assumes proportional unit costs.
+Equation \eqref{eq:ratio} relates two planner optima, and Section 3 says the observed allocation was not one. Applying the multiplier to observed counts is therefore an illustration of scale, not a derivation. With that understood: treating a degree in each sector as a unit of investment of comparable cost, the pre-LLM ratio of mathematics doctorates to law and business degrees combined was about one to 160. Under the low scenario that benchmark scales to one to 20; under the central scenario, at the conservative elasticity, to about one to two. On a campus, six students against several thousand scales to fifty under the low scenario and to a lecture theatre under the central one. The degree counts are proxies, not commensurate measures of spending.
 
 \section{Objections}
 
@@ -224,7 +224,7 @@ The strongest response to a narrow benchmark culture is to demonstrate a richer 
 
 We leave to future work the measurement of the reach multiplier, which is the assumption Table \ref{tab:channels} depends on most. Two proxies suggest themselves: the share of model-assisted code changes that invoke a named mathematical result, and the lag between a mathematics preprint and its first appearance in an applied repository. Both are observable now, and neither was observable before.
 
-There were six of us. There should have been a few hundred.
+There were six of us. That was too few on the record as it already stood, before language models: every named dismissal of a pure field in the survey has failed, and the underinvestment argument is sixty years old. There should have been a hundred.
 
 \begin{thebibliography}{99}
 
