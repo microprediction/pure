@@ -529,6 +529,7 @@ NAV = """  <header class="site-header">
           </span>
         </span>
         <a href="{root}abstraction.html">Abstraction</a>
+        <a href="{root}papers.html">Papers</a>
         <a href="{root}sources.html">Sources</a>
         <a href="https://github.com/microprediction/pure">GitHub</a>
       </nav>
