@@ -19,13 +19,13 @@ Misaligned or Undersupplied? Pure Mathematics in the Age of LLMs
 
 ```
 Twenty-five Fields medalists have declared artificial intelligence and mathematics
-misaligned. The larger fact is the opposite: society is massively underinvesting in pure
-mathematics, and by more than it was. The wait between a mathematical result and its use
-was mostly transmission. A result reached a use only when someone in the room knew both
-the problem and the theorem, and a language model is now that person at every use. In a
+misaligned. We observe that the wait between a mathematical result and its use was
+mostly transmission: a result reached a use only when someone present knew both the
+problem and the theorem, and a language model is now that person at every use. In a
 minimal model of reach, adoption cost, and lag, the value of a marginal result rises by
-a multiple and the wedge between social and private returns widens. The direction is
-unmistakable, and the observed allocation is moving against it.
+a multiple and the wedge between social and private returns widens. Society is massively
+underinvesting in pure mathematics, by more than it was, and the observed allocation is
+moving the other way.
 ```
 
 ## 3. Keywords
