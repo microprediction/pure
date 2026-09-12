@@ -94,7 +94,7 @@ Fix a result $r$ produced by unmotivated research. Index its potential uses by $
 V(r) \;=\; \sum_{i=1}^{K} A_i\,(v_i - c_i)^{+}\,e^{-\rho T_i}.
 \label{eq:value}
 \end{equation}
-In English: add up every use the result ever reaches, net of what each use costs to adopt, and discount each by how long it took. Four primitives enter: the number of potential uses $K$, the encounter indicators $A_i$, the adoption costs $c_i$, and the lags $T_i$.
+The sum runs over every use the result ever reaches, net of what each use costs to adopt, discounted by how long it took. Four primitives enter: the number of potential uses $K$, the encounter indicators $A_i$, the adoption costs $c_i$, and the lags $T_i$.
 
 To get closed forms, take the $v_i$ as independent draws from a Pareto distribution with minimum $v_0$ and tail index $\alpha > 1$, so that $\Pr(v > x) = (x/v_0)^{-\alpha}$ for $x \ge v_0$. Heavy tails are the empirically correct assumption for the value of innovations: a small fraction of patents carries most of the value \citep{scherer2000}. Take a common adoption cost $c \ge v_0$, a common encounter probability $q = \Pr(A_i = 1)$, and a common conditional expected discount factor $D = \E[e^{-\rho T_i} \mid A_i = 1]$, with the value $v_i$ independent of the pair $(A_i, T_i)$. Then
 \begin{equation}
