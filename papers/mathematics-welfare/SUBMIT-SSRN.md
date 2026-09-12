@@ -10,7 +10,7 @@ Rebuild from `papers/mathematics-welfare/` with `./build.sh`.
 ## 1. Title
 
 ```
-Mathematics and Welfare: Optimal Investment Pre and Post LLMs
+Mathematics and Welfare: Optimal Societal Investment Pre and Post LLMs
 ```
 
 (matches the PDF)
@@ -18,16 +18,16 @@ Mathematics and Welfare: Optimal Investment Pre and Post LLMs
 ## 2. Abstract (plain text for the SSRN box)
 
 ```
-Pure mathematics, and applied mathematics pursued without a client, produce non-rival
-ideas whose social value depends on how many uses they reach, what each use costs to
-make, and how long the match takes. Large language models move all three at once. We
-write the value of an unmotivated result as a function of reach, adoption cost, and lag,
-derive the elasticity of optimal research spending with respect to that value, and
-compute the implied shift in the ratio of investment in mathematics to investment in the
-professions that train rival human capital. The channel sizes are assumptions. Under the
-smallest of them the planner's ratio rises by nearly an order of magnitude, under the
-central ones by two, and the shift is largest for the research whose old matching
-mechanism worked worst.
+Pure mathematics (and applied mathematics pursued without a client) produce ideas whose
+social value depends on how many uses they reach, what each use costs to make, and how
+long it takes before somebody matches the tool to the application. We examine the
+multiplicative impact of large language models on all three in a highly stylized model
+for reach, adoption cost, and lag. Whatever view one might have on current spending, the
+implication is dramatic and, notwithstanding the difficulty of estimating terms or the
+imperfection in this simplistic analysis, the conclusion is unmistakable: society is
+massively underinvesting in pure research. We place this observation in the context of
+recent cutbacks to funding, and the recently protested alignment crisis between AI and
+pure mathematics.
 ```
 
 ## 3. Keywords
