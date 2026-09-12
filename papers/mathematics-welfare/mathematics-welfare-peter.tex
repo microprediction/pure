@@ -141,7 +141,7 @@ The 68-year median is a field-level figure whose clock starts at the field's fou
 Targeted research already had its customer, so the model helps it only at the margin. Untargeted research lacked a matching mechanism, which the model supplies. The gain is proportional to how badly the old mechanism worked, and the historical lags show it worked badly.
 
 
-Written down, the value of a result is the number of uses it reaches, times the net value of a use, times a discount for the wait, and the three channels multiply within a segment of uses and average across segments. Appendix A does the writing down; Appendix C sets the channels at low, central, and high values and reads off a value multiplier of 8, 190, or 36{,}000. The direction is the same in every column because every channel moves the same way, given cheap screening and the marginal transport assumption; the size is illustrated, not measured.
+Written down, the value of a result is the number of uses it reaches, times the net value of a use, times a discount for the wait, and the three channels multiply within a segment of uses and average across segments. Appendix A does the writing down, and what it writes is a minimal talking point rather than a model: a bookkeeping identity and a power-law planner, chosen to be transparent, not realistic. Appendix C sets the channels at low, central, and high values, and the value multiplier that comes out is 8, 190, or 36{,}000. The direction is the same in every column because every channel moves the same way, given cheap screening and the marginal transport assumption; the size is illustrated, not measured.
 
 \section{Optimal investment}
 
@@ -235,6 +235,8 @@ The reach multiplier is the assumption the table depends on most. It is increasi
 \appendix
 \section{The value of a result}
 \label{app:value}
+
+The three appendices are the minimal talking point behind the multipliers in the text. Nothing in them is more than bookkeeping, and the numbers they produce are illustrations.
 
 Fix a result $r$ produced by unmotivated research. Index its potential uses by $i = 1, \dots, K$. Use $i$ has value $v_i > 0$ if the result is applied to it, measured as the gain over the best method available without it. Adopting it costs $c_i > 0$: the work of understanding and implementing the result once the match is made. $A_i \in \{0, 1\}$ indicates whether the match is made, and if it is, it happens after a lag $T_i \ge 0$. Search cost determines $A_i$ and is not charged in $c_i$. Matches that are encountered and rejected cost something to verify, and \eqref{eq:value} omits that cost. Write $C(q)$ for the expected present-value cost of screening candidates, false ones included, at reach $q$; the expected value is then $K q\, g(c) D - C(q)$, and raising reach raises welfare only where the gain in gross application value exceeds the rise in $C$. A model makes screening cheap and false candidates common, and the sign of the reach channel rests on the first outrunning the second; with a model the screening is minutes, and before a model it was the main reason encounters were rare. The result is non-rival: use $i$ does not diminish use $j$. With social discount rate $\rho$, the realized social value is
 \begin{equation}
