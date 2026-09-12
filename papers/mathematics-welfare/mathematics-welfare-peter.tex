@@ -43,7 +43,7 @@ The pure mathematics class I graduated with at the University of New South Wales
 
 The disparity is not peculiar to one campus. In the United States, departments awarded about 1{,}450 doctorates in mathematics and applied mathematics in the 2021--22 academic year \citep{ams2023}, against roughly 30{,}000 law degrees \citep{aba2024} and roughly 200{,}000 master's degrees in business \citep{nces2023}. On the research side, the National Science Foundation's Division of Mathematical Sciences requested \$248 million for fiscal year 2025 \citep{nsf2025}, about one part in a hundred thousand of national output.
 
-At the time, I recall being persuaded against further pursuit of mathematics. The professors who taught me bemoaned what they felt was a gutting of the profession - something roughly equivalent to a halving of real income over a generation. I did pursue a doctorate, as it happens, but neither myself nor anyone else from that small class went on to work on what I will term ``unmotivated mathematics''. Australia is not necessarily representative, but I suspect not entirely unusual either.
+At the time, I recall being persuaded against further pursuit of mathematics. The professors who taught me bemoaned what they felt was a gutting of the profession - something roughly equivalent to a halving of real income over a generation. I did pursue a doctorate, as it happens, but neither I nor anyone else from that small class went on to work on what I will term ``unmotivated mathematics''. Australia is not necessarily representative, but I suspect not entirely unusual either.
 
 I spent the next three decades as an applied mathematician, albeit one with a love and respect for pure mathematics. I have witnessed on countless occasions the failure of businesses to recognize the abstract structure of their operations or the benefit that might accrue from appropriate framing. Examples include the market-maker who does not realize they are solving a control problem and denies themselves a rich set of techniques, or the data teams who perform unwitting filtering or Bayesian statistics. My profession is littered with ad hoc attempts at everything from shrinkage to harmonic analysis, and yet it is regarded as one of the more quantitative fields, by far. The default is to {\em never} formalize. To suggest that mathematics has a last mile problem is, in my view, an understatement.
 
@@ -57,7 +57,7 @@ It has always been my impression - recently bolstered by a survey \citep{cotton2
 
 Conversely, it is hard to think of a major industry that does not stand upon pure mathematical foundations. It is intuitively efficient from the perspective of society at large for those with ability and drive to perform focussed work that accumulates this lattice over centuries. Waiting until the need arises makes little sense. The need might never be apparent, if the mathematics does not exist (it is hard enough when it does). Just-in-time pure mathematics is rarely viable. The odds that the beneficiary will also have the awareness, talent and time to solve the problem on the fly is remote. That would be like expecting Einstein to invent differential geometry. He did not. I speculate that he could not.
 
-The path is rarely foreseeable. Kepler's 1611 conjecture about stacking cannonballs is the mathematics under the post-quantum encryption standards the American government finalized in 2024. Hamilton's quaternions of 1843 fix the gimbal lock that jammed Apollo 11's inertial platform, and since 1985 have interpolated the rotations in every game engine. Knot theory, begun in 1847, describes how topoisomerase enzymes untangle DNA and supplies the braiding that topological quantum computing is built on. Galois's finite fields of 1830 are the arithmetic of the Reed--Solomon codes on every QR code and every Voyager transmission, and persistent homology, descended from Poincar\'e's topology of 1895, sorted 295 breast tumours into subtypes in 2011 \citep{cotton2026pure}. Not one of the people who chose those problems could have named the use.
+The path is rarely foreseeable. Kepler's 1611 conjecture about stacking cannonballs began the study of lattices on which the post-quantum encryption standards of 2024 rest. Hamilton's quaternions of 1843 are the standard fix for the gimbal lock that Apollo's three-gimbal platforms had to be flown around, and since 1985 have interpolated the rotations in computer graphics and most game engines. Knot theory, begun in 1847, describes how topoisomerase enzymes untangle DNA and supplies the braiding that topological quantum computing is built on. Galois's finite fields of 1830 are the arithmetic of the Reed--Solomon codes on every QR code and every Voyager transmission, and topological data analysis, descended from Poincar\'e's topology of 1895, sorted 295 breast tumours into subtypes in 2011 \citep{cotton2026pure}. Not one of the people who chose those problems could have named the use.
 
 The question is what the ratio of investment in {\em unmotivated} mathematics to investment in other professions should be, and how it changes now that large language models exist. By unmotivated mathematics I mean research whose direction is chosen by criteria internal to mathematics: generality, difficulty, elegance, the wish to see what happens. Pure mathematics is the obvious case. So is a large share of applied mathematics. Radon had no client in 1917 for the transform that now runs every CT scanner. Sinkhorn was proving a theorem about doubly stochastic matrices, not balancing betting pools.
 
@@ -89,7 +89,7 @@ We take the pre-LLM allocation as a benchmark anyway, because the question of in
 
 \section{The value of an unmotivated result}
 
-Fix a result $r$ produced by unmotivated research. Index its potential uses by $i = 1, \dots, K$. Use $i$ has gross value $v_i > 0$ if the result is applied to it. Adopting it costs $c_i > 0$: the work of understanding and implementing the result once the match is made. $A_i \in \{0, 1\}$ indicates whether the match is made, and if it is, it happens after a lag $T_i \ge 0$. Search cost determines $A_i$ and is not charged in $c_i$. Matches that are encountered and rejected cost something to verify, and \eqref{eq:value} omits that cost: with a model it is minutes, and before a model it was the main reason encounters were rare. The result is non-rival: use $i$ does not diminish use $j$. With social discount rate $\rho$, the realized social value is
+Fix a result $r$ produced by unmotivated research. Index its potential uses by $i = 1, \dots, K$. Use $i$ has value $v_i > 0$ if the result is applied to it, measured as the gain over the best method available without it. Adopting it costs $c_i > 0$: the work of understanding and implementing the result once the match is made. $A_i \in \{0, 1\}$ indicates whether the match is made, and if it is, it happens after a lag $T_i \ge 0$. Search cost determines $A_i$ and is not charged in $c_i$. Matches that are encountered and rejected cost something to verify, and \eqref{eq:value} omits that cost: with a model it is minutes, and before a model it was the main reason encounters were rare. The result is non-rival: use $i$ does not diminish use $j$. With social discount rate $\rho$, the realized social value is
 \begin{equation}
 V(r) \;=\; \sum_{i=1}^{K} A_i\,(v_i - c_i)^{+}\,e^{-\rho T_i}.
 \label{eq:value}
@@ -109,7 +109,7 @@ $D$ is the expectation of $e^{-\rho T}$, which by Jensen's inequality exceeds $e
 The \emph{reach} of a result is $Kq$, the expected number of uses at which the result is encountered at all, whether or not it is then adopted.
 \end{definition}
 
-Equation \eqref{eq:closed} makes two assumptions. First, the value of a use is independent of whether and when it is reached. This is generous to the argument, since a use valuable enough to hire a mathematician was more likely to be reached under the old regime. Second, reach and lag come from one matching process. Reach means matched within a fixed horizon, $D$ is the expected discount given a match, and with those definitions the product form is exact.
+Equation \eqref{eq:closed} makes two assumptions. First, the value of a use is independent of whether and when it is reached. Where that fails, replace $q$ by the value-weighted encounter probability $\tilde q = \E[(v-c)^+ A]\,/\,\E[(v-c)^+]$; everything below goes through with $\tilde q$ in place of $q$, and the reach multiplier is then a ratio of value-weighted probabilities. With a heavy tail the two can differ a great deal: if the old mechanism had found exactly the top decile of uses under the central Pareto parameters, universal reach would multiply value by about 1.5, not ten. The old mechanism did not find the top decile, because the value of a use is not observed until the match is made; it found the uses at firms that could afford a mathematician, which is a different thing. Second, reach and lag come from one matching process. Reach means matched within a fixed horizon, $D$ is the expected discount given a match, and with those definitions the product form is exact.
 
 Before large language models, a use could encounter a result only if a person at that use was \emph{bilingual}: fluent in the problem and fluent enough in the mathematics to recognize the match. The encounter probability of an unmotivated result was the probability that such a person was present, and \citet{burt2004} measured how rare such people are and how much of the supply of good ideas passes through them.
 
@@ -120,20 +120,20 @@ Marcel Grossmann is the canonical case. In 1912 Einstein needed a geometry of cu
 A large language model is, for present purposes, a device that makes every result in its training corpus available at every use simultaneously. We can enlarge this net to include anything an LLM or agentic system can reach within minutes.
 
 \paragraph{Reach.}  The discussion so far has focussed on production of mathematical truth. However a more radical change arising from the growth in sophistication of large language models is idea {\em transport}.
-A result is present in every copy of a sufficiently advanced model, one that also possesses the ability to manifest concrete instantiations. The recipient no longer needs to know the theorem. They need to describe the problem, and the model supplies the match. The model solves the needle-in-a-haystack search of \citet{agrawal2019}. The encounter probability rises from the chance that a bilingual person was present to the chance that a model is consulted, which is approaching one. If bilingual people were present at one use in ten, $q$ rises by a factor of ten; if at one in thirty, thirty. Write $n = q_1 / q_0$ for this ratio, with subscripts $0$ and $1$ for the regimes before and after.
+A result is present in every copy of a sufficiently advanced model, one that also possesses the ability to manifest concrete instantiations. The recipient no longer needs to know the theorem. They need to describe the problem, and the model supplies the match. The model solves the needle-in-a-haystack search of \citet{agrawal2019}. The encounter probability rises from the chance that a bilingual person was present to the chance that a model is consulted and makes the match. The second is below one, since retrieval and recognition both fail sometimes, but it is well above one in ten and rising. If bilingual people were present at one use in ten, $q$ rises by a factor of ten; if at one in thirty, thirty. Write $n = q_1 / q_0$ for this ratio, with subscripts $0$ and $1$ for the regimes before and after.
 
 \paragraph{Adoption cost.} Once the match is made, the model can also write the implementation. The cost of taking a theorem from the page to a working change in an application falls from weeks of a specialist's time to minutes of anyone's, and \citet{brynjolfsson2025} find that the gain from such assistance is largest for the least experienced, which is to say for the people who were not going to be the bilingual person.
 
-The common cost $c$ in \eqref{eq:closed} hides the important case, so split the uses into two segments. Segment $Q$ is the few large firms with teams of quants, for which $c_Q$ was already low; by \eqref{eq:closed} a cost reduction by factor $m$ multiplies its value by $m^{\alpha-1}$, provided $c_Q/m$ still exceeds $v_0$, and with $\alpha$ near one that is a factor of a few. Segment $H$ is the long tail of businesses with no quant, for which $c_H$ was far above any value available; since $g(c) \propto c^{1-\alpha}$, its pre-LLM contribution $W_{H0}$ was not zero but negligible. A cost that falls from prohibitive to affordable does not multiply $W_{H0}$; it adds a term.
+The common cost $c$ in \eqref{eq:closed} hides the important case, so split the uses into two segments. Segment $Q$ is the few large firms with teams of quants, for which $c_Q$ was already low; by \eqref{eq:closed} a cost reduction by factor $m$ multiplies its value by $m^{\alpha-1}$, provided $c_Q/m$ still exceeds $v_0$, and with $\alpha$ near one that is a factor of a few. Segment $H$ is the long tail of businesses with no quant, for which $c_H$ was far above any value available, so its pre-LLM contribution $W_{H0}$ was small. A cost that falls from prohibitive to affordable does not multiply $W_{H0}$; it adds a term.
 
-Write $W_{jt} = K_j\, q_{jt}\, g(c_{jt})\, D_{jt}$ for the expected value from segment $j$ in regime $t$, each segment with its own primitives, so that $W_t = W_{Qt} + W_{Ht}$. Let $\kappa_j = W_{j1}/W_{j0}$ be each segment's own multiplier and $\varepsilon = W_{H0}/W_{Q0}$ the tail's share of pre-LLM value relative to the incumbents. Then, exactly,
+Write $W_{jt} = K_j\, q_{jt}\, g(c_{jt})\, D_{jt}$ for the expected value from segment $j$ in regime $t$, each segment with its own primitives, so that $W_t = W_{Qt} + W_{Ht}$. Let $\kappa_j = W_{j1}/W_{j0}$ be each segment's own multiplier, $\varepsilon = W_{H0}/W_{Q0}$ the tail's value relative to the incumbents before, and $\delta = W_{H1}/W_{Q1}$ the same ratio after. Then, exactly,
 \begin{equation}
-\kappa \;=\; \frac{W_{Q1} + W_{H1}}{W_{Q0} + W_{H0}} \;=\; \frac{\kappa_Q + \varepsilon\,\kappa_H}{1 + \varepsilon},
+\kappa \;=\; \frac{W_{Q1} + W_{H1}}{W_{Q0} + W_{H0}} \;=\; \kappa_Q\,\frac{1 + \delta}{1 + \varepsilon} \;=\; \frac{\kappa_Q + \varepsilon\,\kappa_H}{1 + \varepsilon},
 \label{eq:segments}
 \end{equation}
-a weighted average of the two segment multipliers with pre-LLM value as the weights. The channels multiply within a segment and average across segments. Since the tail's cost fell further and its encounter probability rose more, $\kappa_H \ge \kappa_Q$, and so $\kappa$ lies between $\kappa_Q$ and $\kappa_H$ for any $\varepsilon$; a large $\varepsilon$ moves $\kappa$ toward $\kappa_H$, not toward zero. Most business activity has never been written down as a control problem, an allocation, or a forecast, and that is where most uses are, so $\kappa_H / \kappa_Q$ may be large. Table \ref{tab:channels} carries the ratio $\kappa / \kappa_Q$ as a separate row. The segmentation is a hypothesis about where adoption costs fell, not a measurement.
+a weighted average of the two segment multipliers with pre-LLM value as the weights. The channels multiply within a segment and average across segments. A small $\varepsilon$ and a large $\delta$ is the case in which the old tail was small and the new tail rivals the incumbents. Most business activity has never been written down as a control problem, an allocation, or a forecast, and that is where most uses are, so $\delta$ may be large. Table \ref{tab:channels} carries the ratio $\kappa / \kappa_Q = (1+\delta)/(1+\varepsilon)$ as a separate row. The segmentation is a hypothesis about where adoption costs fell, not a measurement.
 
-\paragraph{Lag.} A result posted in the morning can be retrieved and read by a model in the afternoon. The lag from publication to availability at every use collapses from the decades the historical record shows to the same day. What remains is waiting for a problem the result fits. That wait belongs to the problem stream, not to transmission. The lag multiplier is $D_1 / D_0 = e^{\rho(\tilde\tau_0 - \tilde\tau_1)}$. At a three per cent discount rate, removing forty years of certainty-equivalent lag multiplies present value by $e^{0.03 \times 40} \approx 3.3$. At five per cent, removing 68 years gives about thirty.
+\paragraph{Lag.} A result posted in the morning can be retrieved and read by a model in the afternoon. The lag from publication to availability at every use collapses from the decades the historical record shows to the same day. What remains is waiting for a problem the result fits. That wait belongs to the problem stream, not to transmission. The lag multiplier is $D_1 / D_0 = e^{\rho(\tilde\tau_0 - \tilde\tau_1)}$. At a three per cent discount rate, removing forty years of certainty-equivalent lag multiplies present value by $e^{0.03 \times 40} \approx 3.3$. At five per cent, removing fifty years gives about twelve.
 
 The 68-year median is a field-level figure whose clock starts at the field's founding; the lag $T_i$ in \eqref{eq:value} starts when a particular result is published, and the two are different quantities. The record establishes that lags of decades were normal, and \citet{adams1990} finds the same scale in industrial productivity data, twenty to thirty years from academic science to measured effect. The year counts used below are assumptions on that scale.
 
@@ -170,7 +170,7 @@ S^{\star} \;=\; \left(\gamma a V\right)^{1/(1 - \gamma)},
 If the expected value of a result is multiplied by $\kappa$, optimal spending is multiplied by $\kappa^{1/(1-\gamma)}$. The elasticity is at least one, and it is larger the weaker the diminishing returns: as $\gamma \to 0$ it tends to one, and at $\gamma = \tfrac12$ it equals two.
 \end{proposition}
 
-Why does the elasticity exceed one? With diminishing returns the marginal result is cheap when spending is low and expensive when spending is high. If each result becomes ten times more valuable, the planner keeps buying until the marginal result costs ten times more, and under a square-root ideas function that means spending one hundred times more. The smaller reading is the limit $\gamma \to 0$, where results barely respond to spending and the planner's response is proportional to value. We report both ends.
+Why does the elasticity exceed one? With diminishing returns the marginal result is cheap when spending is low and expensive when spending is high. If each result becomes ten times more valuable, the planner keeps buying until the marginal result costs ten times more, and under a square-root ideas function that means spending one hundred times more. This is a property of the power law, not of research spending in general: for any $I(S)$ the local elasticity is $1/\eta(S^\star)$ with $\eta = -\,d\log I'(S)/d\log S$, and the power law is the case of constant $\eta = 1-\gamma$. Extrapolating a constant $\gamma$ across orders of magnitude is not defensible, so the table uses the limit $\gamma \to 0$, where the planner's response is proportional to value, and treats anything above it as further upside.
 
 The curvature $\gamma$ is static, the returns to more spending at a point in time. It is a different object from the fall in research productivity over calendar time that \citet{bloom2020} document, which is a statement about $a$.
 
@@ -195,7 +195,7 @@ The argument concerns spending on the production of unmotivated mathematics, inc
 
 \section{The posterior}
 
-The posterior is the benchmark ratio updated by the multipliers in \eqref{eq:ratio}. Table \ref{tab:channels} sets out low, central, and high values for each channel; the columns are illustrative assumptions, not estimates. The first three rows are the incumbent segment. Its reach multiplier $n_Q$ is the ratio of the post-LLM to the pre-LLM encounter probability there; one worker in ten is the share \citet{deloitte2013} count as mathematically occupied across the economy, and one problem in thirty is a guess at how often such a worker was actually in the room, and since quant firms had such workers more often than the economy did, these values are if anything generous for $Q$. The adoption-cost multiplier uses $m_Q = 3$, $10$, and $10$ with tail indices $1.2$, $1.5$, and $2$, on the domain $c_Q \ge m_Q v_0$. The lag multiplier uses discount rates of three and five per cent and reductions in certainty-equivalent lag of twenty-five, forty, and sixty-eight years. The tail row is $\kappa/\kappa_Q$ from \eqref{eq:segments}: the low column has the tail no better than the incumbents, $\kappa_H = \kappa_Q$, at any $\varepsilon$; the central column has $\varepsilon = 1$ and $\kappa_H = 3\kappa_Q$; the high column has $\varepsilon = 1$ and $\kappa_H = 19\kappa_Q$. Channel entries are rounded before multiplying.
+The posterior is the benchmark ratio updated by the multipliers in \eqref{eq:ratio}. Table \ref{tab:channels} sets out low, central, and high values for each channel; the columns are illustrative assumptions, not estimates. The first three rows are the incumbent segment. Its reach multiplier $n_Q$ is the ratio of the post-LLM to the pre-LLM encounter probability there; one worker in ten is the share \citet{deloitte2013} count as mathematically occupied across the economy, and one problem in thirty is a guess at how often such a worker was actually in the room, and since quant firms had such workers more often than the economy did, these values are if anything generous for $Q$. The adoption-cost multiplier uses $m_Q = 3$, $10$, and $10$ with tail indices $1.2$, $1.5$, and $2$, on the domain $c_Q \ge m_Q v_0$. The lag multiplier uses discount rates of three and five per cent and reductions in certainty-equivalent lag of twenty-five, forty, and fifty years; the last is short of the 68-year median because part of every historical lag was waiting for the problem to exist. The tail row is $(1+\delta)/(1+\varepsilon)$ from \eqref{eq:segments} with $\varepsilon = 0.1$ throughout: the low column has $\delta = \varepsilon$, a tail no better than the incumbents; the central column has $\delta = 1.1$, a new tail equal to the incumbents; the high column has $\delta = 10$. Channel entries are rounded before multiplying.
 
 \begin{table}[tbp]
 \centering
@@ -205,23 +205,22 @@ Channel & Low & Central & High \\
 \midrule
 Reach $n_Q$ & 3 & 10 & 30 \\
 Adoption cost $m_Q^{\alpha-1}$ & 1.2 & 3 & 10 \\
-Lag $D_{Q1}/D_{Q0}$ & 2.1 & 3.3 & 30 \\
+Lag $D_{Q1}/D_{Q0}$ & 2.1 & 3.3 & 12 \\
 \midrule
-Incumbent multiplier $\kappa_Q$ & 7.6 & 99 & 9000 \\
-Tail averaging $\kappa/\kappa_Q$ & 1 & 2 & 10 \\
+Incumbent multiplier $\kappa_Q$ & 7.6 & 99 & 3600 \\
+Tail $(1+\delta)/(1+\varepsilon)$ & 1 & 1.9 & 10 \\
 \midrule
-Value multiplier $\kappa_M$ & 7.6 & 200 & 90000 \\
+Value multiplier $\kappa_M$ & 7.6 & 190 & 36000 \\
 Professional multiplier $\kappa_L$ & 1.0 & 1.0 & 0.7 \\
 \midrule
-Ratio multiplier, $\gamma \to 0$ & 7.6 & 200 & 130000 \\
-Ratio multiplier, $\gamma = \tfrac12$ & 58 & 40000 & $1.7 \times 10^{10}$ \\
+Ratio multiplier, elasticity one & 7.6 & 190 & 51000 \\
 \bottomrule
 \end{tabular}
-\caption{Channel multipliers and the implied change in the ratio of spending on unmotivated mathematics to spending on the professions, from \eqref{eq:ratio}. The three channels multiply within the incumbent segment and the tail enters by the weighted average \eqref{eq:segments}. The elasticity is $1/(1-\gamma)$: one in the limit $\gamma \to 0$, two at $\gamma = \tfrac12$.}
+\caption{Channel multipliers and the implied change in the ratio of spending on unmotivated mathematics to spending on the professions, from \eqref{eq:ratio}. The three channels multiply within the incumbent segment and the tail enters by the weighted average \eqref{eq:segments}. The ratio row uses elasticity one, the limit $\gamma \to 0$ of \eqref{eq:ratio}.}
 \label{tab:channels}
 \end{table}
 
-The high column is not a forecast; it shows the range once the channels compound. The low column, with a reach multiplier of three, a weak cost channel, and a modest lag improvement, moves the ratio by a factor of nearly eight. The central column moves it by two orders of magnitude at elasticity one, and by more than four at $\gamma = \tfrac12$. A reach multiplier near one would mean a bilingual person was already present at most uses, and the case studies say otherwise.
+The high column is not a forecast; it shows the range once the channels compound. The low column, with a reach multiplier of three, a weak cost channel, and a modest lag improvement, moves the ratio by a factor of nearly eight. The central column moves it by two orders of magnitude at elasticity one; any $\gamma$ above zero moves it further. A reach multiplier near one would mean a bilingual person was already present at most uses, and the case studies say otherwise.
 
 Equation \eqref{eq:ratio} compares two planner optima and the observed allocation was not one, so the figures below normalize the observed ratio rather than locate the post-LLM optimum. Scaling the American degree counts by the same multipliers, with a degree in each sector as a unit of investment, the pre-LLM ratio of mathematics doctorates to law and business degrees combined was about one to 160. Under the low column it becomes one to 20; under the central column, at elasticity one, mathematics doctorates would outnumber law and business degrees. On a campus, six students against several thousand becomes fifty under the low column and a thousand under the central one. Degree counts are proxies for spending, not measures of it.
 
@@ -244,6 +243,8 @@ None of this is surprising given Nelson and Arrow. A university facing a fee cap
 \paragraph{Ideas are getting harder to find.} \citet{bloom2020} document falling research productivity across fields. This is a statement about $a$ in \eqref{eq:foc}, the production side. The present argument is about $V$, the value side, and the two enter multiplicatively. A field can be harder to advance and, at the same time, far more valuable to advance.
 
 \paragraph{The model will do the mathematics too.} Perhaps. If it does, $a$ rises, and by \eqref{eq:foc} optimal spending rises with it, by the same elasticity as for a rise in $V$. The question is how much unmotivated mathematics society should want, and a cheaper production technology increases both the quantity and the optimal spend. Who or what produces it is a separate matter, and the human share of the pipeline is a question about labour markets rather than about welfare.
+
+\paragraph{The model will invent the mathematics on demand.} If a system can produce the needed result when the application arises, the option value of producing it decades ahead falls. Two things stand against this. Grossmann needed a library that already held Riemann, Ricci, and Levi-Civita; on-demand invention at the frontier is a harder task than on-demand retrieval, and the frontier is where unmotivated work sits. And a result invented on demand is invented at every use, whereas a result produced once is non-rival. Paying $K$ times for what could be paid for once is the opposite of what non-rivalry recommends.
 
 \paragraph{The benchmark was not an equilibrium.} Agreed. The Nelson--Arrow argument says the pre-LLM level of spending on mathematics already sat below the social optimum, so the posterior multiplies a number that was too small to begin with.
 
@@ -279,18 +280,13 @@ The strongest response to a narrow benchmark culture is to demonstrate a richer 
 
 \section{Closing}
 
-I have editorialized by means of a simple model that society needs more investment in pure mathematics. Less than $0.0001\%$ of the world's population is attempting to race ahead of the applications needed by the rest. For every Einstein we need a Gauss, a Riemann, a Levi-Civita and a Grossmann. The opportunity cost without them is unseen, censored evidence.
+I have editorialized by means of a simple model that society needs more investment in pure mathematics. Fewer than one person in a hundred thousand is attempting to race ahead of the applications needed by the rest. For every Einstein we need a Gauss, a Riemann, a Levi-Civita and a Grossmann. The opportunity cost without them is unseen, censored evidence.
 
-This need has risen by a multiple. Whether that multiple is 8, 200, or 130000 is a question about the channel sizes, and the columns of Table \ref{tab:channels} disagree about it by four orders of magnitude. They do not disagree about the direction.
+This need has risen by a multiple. Whether that multiple is 8, 200, or 50000 is a question about the channel sizes, and the columns of Table \ref{tab:channels} disagree about it by four orders of magnitude. They do not disagree about the direction.
 
 The reach multiplier is the assumption the table depends on most. It is increasingly measurable and two proxies suggest themselves for tracking it over time: the share of model-assisted code changes that invoke a named mathematical result, and the lag between a mathematics preprint and its first appearance in an applied repository. The accumulation of this kind of data may sharpen the diagnosis.
 
 \begin{thebibliography}{99}
-
-\bibitem[Academy for the Mathematical Sciences(2024)]{acadmathsci2024}
-Academy for the Mathematical Sciences (2024).
-\newblock The economic contribution of the mathematical sciences to the UK economy.
-\newblock Report, October 2024.
 
 \bibitem[ABC News(2025a)]{abc2025}
 ABC News (2025a).
@@ -306,6 +302,11 @@ ABC News (2025b).
 ABC News (2025c).
 \newblock UTS to axe 1,100 subjects across education and public health, cuts 134 full-time jobs.
 \newblock 17 September 2025. \url{https://www.abc.net.au/news/2025-09-17/uts-cuts-subjects-job-cuts-restructure/105783978}.
+
+\bibitem[Academy for the Mathematical Sciences(2024)]{acadmathsci2024}
+Academy for the Mathematical Sciences (2024).
+\newblock The economic contribution of the mathematical sciences to the UK economy.
+\newblock Report, October 2024.
 
 \bibitem[Adams(1990)]{adams1990}
 Adams, J.~D. (1990).
@@ -382,11 +383,6 @@ Cockburn, I.~M., Henderson, R., and Stern, S. (2019).
 \newblock The impact of artificial intelligence on innovation: an exploratory analysis.
 \newblock In \emph{The Economics of Artificial Intelligence: An Agenda}, pp.\ 115--146. University of Chicago Press.
 
-\bibitem[House of Commons Education Committee(2025)]{commons2025}
-House of Commons Education Committee (2025).
-\newblock Higher education and funding: threat of insolvency and international students.
-\newblock \url{https://publications.parliament.uk/pa/cm5901/cmselect/cmeduc/807/report.html}.
-
 \bibitem[Cotton(2026a)]{cotton2026pure}
 Cotton, P. (2026a).
 \newblock Pure: a field-by-field survey of dismissed mathematics and what it became.
@@ -432,20 +428,25 @@ Hardy, G.~H. (1940).
 \newblock \emph{A Mathematician's Apology}.
 \newblock Cambridge University Press.
 
+\bibitem[House of Commons Education Committee(2025)]{commons2025}
+House of Commons Education Committee (2025).
+\newblock Higher education and funding: threat of insolvency and international students.
+\newblock \url{https://publications.parliament.uk/pa/cm5901/cmselect/cmeduc/807/report.html}.
+
 \bibitem[Jaffe et~al.(1993)]{jaffe1993}
 Jaffe, A.~B., Trajtenberg, M., and Henderson, R. (1993).
 \newblock Geographic localization of knowledge spillovers as evidenced by patent citations.
 \newblock \emph{Quarterly Journal of Economics}, 108(3):577--598.
 
-\bibitem[Jones(2009)]{jones2009}
-Jones, B.~F. (2009).
-\newblock The burden of knowledge and the ``death of the Renaissance man'': is innovation getting harder?
-\newblock \emph{Review of Economic Studies}, 76(1):283--317.
-
 \bibitem[Jones and Summers(2020)]{jones2020}
 Jones, B.~F. and Summers, L.~H. (2020).
 \newblock A calculation of the social returns to innovation.
 \newblock NBER Working Paper 27863.
+
+\bibitem[Jones(2009)]{jones2009}
+Jones, B.~F. (2009).
+\newblock The burden of knowledge and the ``death of the Renaissance man'': is innovation getting harder?
+\newblock \emph{Review of Economic Studies}, 76(1):283--317.
 
 \bibitem[Kim et~al.(2009)]{kim2009}
 Kim, E.~H., Morse, A., and Zingales, L. (2009).
@@ -506,6 +507,11 @@ Salter, A.~J. and Martin, B.~R. (2001).
 \newblock The economic benefits of publicly funded basic research: a critical review.
 \newblock \emph{Research Policy}, 30(3):509--532.
 
+\bibitem[Scherer and Harhoff(2000)]{scherer2000}
+Scherer, F.~M. and Harhoff, D. (2000).
+\newblock Technology policy for a world of skew-distributed outcomes.
+\newblock \emph{Research Policy}, 29(4--5):559--566.
+
 \bibitem[Times Higher Education(2025)]{the2025}
 Times Higher Education (2025).
 \newblock Labour scraps UK's planned national academy for mathematics.
@@ -523,11 +529,6 @@ UNSW Faculty of Law and Justice (2021).
 \bibitem[UNSW(2024)]{unswbiz}
 UNSW Business School (2024).
 \newblock 9{,}166 undergraduate and 14{,}532 postgraduate students, 2024 enrolment data, as reported at \url{https://en.wikipedia.org/wiki/UNSW_Business_School}.
-
-\bibitem[Scherer and Harhoff(2000)]{scherer2000}
-Scherer, F.~M. and Harhoff, D. (2000).
-\newblock Technology policy for a world of skew-distributed outcomes.
-\newblock \emph{Research Policy}, 29(4--5):559--566.
 
 \bibitem[Weitzman(1998)]{weitzman1998}
 Weitzman, M.~L. (1998).
