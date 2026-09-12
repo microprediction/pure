@@ -18,15 +18,17 @@ Misaligned or Undersupplied? Pure Mathematics in the Age of LLMs
 ## 2. Abstract (plain text for the SSRN box)
 
 ```
-Pure mathematics produces ideas whose social value depends on how many uses they reach,
-what each use costs to realize, and how long it takes before somebody matches the tool
-to the application. We examine the multiplicative impact of large language models on all
-three in a highly stylized model of reach, adoption cost, and lag. Whatever view one
-holds on current spending, the implication is dramatic. Notwithstanding the difficulty
-of estimating the terms and the imperfections of so simple an analysis, the conclusion
-is unmistakable: society is massively underinvesting in pure research. We place this
-observation in the context of current cuts to university funding and the recently
-protested misalignment between AI and pure mathematics.
+Twenty-five Fields medalists have declared artificial intelligence and mathematics
+misaligned. I argue that the larger fact is the opposite: society is massively
+underinvesting in pure mathematics, and by more than it was. The historical wait between
+a mathematical result and its use was mostly transmission, a person in the room who knew
+both the problem and the theorem, and a language model is now that person at every use,
+performing abstraction rather than retrieval; three tests bear this out. In a minimal
+model of reach, adoption cost, and lag, the value of a marginal result rises by a
+multiple and the gap between what society should spend and what private returns will pay
+for widens. Notwithstanding the difficulty of estimating the terms, the direction is
+unmistakable, and the observed allocation, in Australia and the United Kingdom, is
+moving against it.
 ```
 
 ## 3. Keywords
