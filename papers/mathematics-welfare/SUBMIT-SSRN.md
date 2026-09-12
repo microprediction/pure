@@ -18,16 +18,15 @@ Mathematics and Welfare: Optimal Societal Investment Pre and Post LLMs
 ## 2. Abstract (plain text for the SSRN box)
 
 ```
-Pure mathematics (and applied mathematics pursued without a client) produce ideas whose
-social value depends on how many uses they reach, what each use costs to make, and how
-long it takes before somebody matches the tool to the application. We examine the
-multiplicative impact of large language models on all three in a highly stylized model
-for reach, adoption cost, and lag. Whatever view one might have on current spending, the
-implication is dramatic and, notwithstanding the difficulty of estimating terms or the
-imperfection in this simplistic analysis, the conclusion is unmistakable: society is
-massively underinvesting in pure research. We place this observation in the context of
-recent cutbacks to funding, and the recently protested alignment crisis between AI and
-pure mathematics.
+Pure mathematics produces ideas whose social value depends on how many uses they reach,
+what each use costs to make, and how long it takes before somebody matches the tool to
+the application. We examine the multiplicative impact of large language models on all
+three in a highly stylized model for reach, adoption cost, and lag. Whatever view one
+might have on current spending, the implication is dramatic and, notwithstanding the
+difficulty of estimating terms or the imperfection in this simplistic analysis, the
+conclusion is unmistakable: society is massively underinvesting in pure research. We
+place this observation in the context of recent cutbacks to funding, and the recently
+protested alignment crisis between AI and pure mathematics.
 ```
 
 ## 3. Keywords

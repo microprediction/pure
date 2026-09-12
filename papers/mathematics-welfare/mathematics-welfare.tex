@@ -32,10 +32,12 @@
 \maketitle
 
 \begin{abstract}
-Pure mathematics (and applied mathematics pursued without a client) produce ideas whose social value depends on how many uses they reach, what each use costs to make, and how long it takes before somebody matches the tool to the application. We examine the multiplicative impact of large language models on all three in a highly stylized model for reach, adoption cost, and lag. Whatever view one might have on current spending, the implication is dramatic and, notwithstanding the difficulty of estimating terms or the imperfection in this simplistic analysis, the conclusion is unmistakable: society is massively underinvesting in pure research. We place this observation in the context of recent cutbacks to funding, and the recently protested alignment crisis between AI and pure mathematics.
+Pure mathematics produces ideas whose social value depends on how many uses they reach, what each use costs to make, and how long it takes before somebody matches the tool to the application. We examine the multiplicative impact of large language models on all three in a highly stylized model for reach, adoption cost, and lag. Whatever view one might have on current spending, the implication is dramatic and, notwithstanding the difficulty of estimating terms or the imperfection in this simplistic analysis, the conclusion is unmistakable: society is massively underinvesting in pure research. We place this observation in the context of recent cutbacks to funding, and the recently protested alignment crisis between AI and pure mathematics.
 \end{abstract}
 
 \section{A personal aside}
+
+This note is directed at an old question: how much should society invest in pure mathematical research? I will argue mainly for a {\em relative} adjustment to whatever one's pre-standing opinion might be, due to the arrival of large language models. However I confess to a strong prejudice regarding the absolute level as well.
 
 The pure mathematics class I graduated with at the University of New South Wales numbered about half a dozen. Down the hill, law and commerce enrolled students by the thousand; today the law faculty has about 2{,}600 students \citep{unswlaw} and the business school about 24{,}000 \citep{unswbiz}. Nobody found this odd. The ratio looked like a market outcome: the professions paid, and pure mathematics, on the whole, did not.
 
@@ -43,11 +45,11 @@ The disparity is not peculiar to one campus. In the United States, departments a
 
 At the time, I recall being persuaded against further pursuit of mathematics. The professors who taught me bemoaned what they felt was a gutting of the profession - something roughly equivalent to a halving of real income over a generation. I did pursue a doctorate, as it happens, but neither myself nor anyone else from that small class went on to work on what I will term ``unmotivated mathematics''. Australia is not necessarily representative, but I suspect not entirely unusual either.
 
-I spent the next three decades as an applied mathematician, albeit one with a love and respect for pure mathematics. I have witnessed on countless occasions the failure of businesses to recognize the abstract structure of their operations or the benefit that might accrue from appropriate framing. Examples include the market-maker who does not realize they are solving a control problem and denying themselves that rich set of techniques, or the data teams who perform unwitting ad-hoc filtering or Bayesian statistics. My profession is littered with ad hoc attempts at everything from shrinkage to harmonic analysis, and yet it is regarded as one of the more quantitative fields by far. The default is to {\em never} formalize.
+I spent the next three decades as an applied mathematician, albeit one with a love and respect for pure mathematics. I have witnessed on countless occasions the failure of businesses to recognize the abstract structure of their operations or the benefit that might accrue from appropriate framing. Examples include the market-maker who does not realize they are solving a control problem and denies themselves a rich set of techniques, or the data teams who perform unwitting filtering or Bayesian statistics. My profession is littered with ad hoc attempts at everything from shrinkage to harmonic analysis, and yet it is regarded as one of the more quantitative fields, by far. The default is to {\em never} formalize. To suggest that mathematics has a last mile problem is, in my view, an understatement.
 
-What is really new? Consider backpropagation, gaussian process regression, softmax classifiers, Kalman filtering, attention, message passing, random features, contrastive learning, learning to rank, synthetic controls, value iteration, mirror descent, ensemble uncertainty ... are any of these truly original mathematical structures? All had identical or near-identical predecessors by another name. Finding and inventing new structure is difficult. Working at the highest level of abstraction is physically hard. Too hard for me, as it happens. I moved to applied work early on in my Ph.D.
+Mathematics fails even to travel to adjacent theoretical fields. Consider backpropagation, gaussian process regression, softmax classifiers, Kalman filtering, attention, message passing, random features, contrastive learning, learning to rank, synthetic controls, reinforcement learning value iteration, or mirror descent. Are any of these truly original? All had identical or near-identical predecessors by another name.
 
-Given the societal debt, the irritation to pure mathematicians caused by nonchalant announcements of AI-generated counter-examples from technologists is more than understandable.
+Our old topic has unusual new urgency. Given the societal debt, the irritation to pure mathematicians caused by nonchalant announcements of AI-generated counter-examples is more than understandable. Finding and inventing new structure is difficult. Working at the highest level of abstraction is physically hard. (Too hard for me, as it happens. I moved to applied work early on in my Ph.D.)
 
 \section{Unmotivated mathematics}
 
@@ -275,11 +277,11 @@ The strongest response to a narrow benchmark culture is to demonstrate a richer 
 
 \section{Closing}
 
-Society needs more investment in pure mathematics. Whether the right multiple on the old ratio is 7.6, 200, or 130000 is a question about the channel sizes, and the columns of Table \ref{tab:channels} disagree about it by four orders of magnitude. They do not disagree about the direction. Every channel moves the same way, the cheapest of them is already worth a factor of several, and the observed allocation is moving against all of them.
+I have editorialized by means of a simple model that society needs more investment in pure mathematics. Less than $0.0001\%$ of the world's population is attempting to race ahead of the applications needed by the rest. For every Einstein we need a Gauss, a Riemann, a Levi-Civita and a Grossmann. The opportunity cost without them is unseen, censored evidence.
 
-The reach multiplier is the assumption the table depends on most, and it is now measurable. Two proxies suggest themselves: the share of model-assisted code changes that invoke a named mathematical result, and the lag between a mathematics preprint and its first appearance in an applied repository. Both are observable now, and neither was observable before.
+This need has risen by a multiple. Whether that multiple is 8, 200, or 130000 is a question about the channel sizes, and the columns of Table \ref{tab:channels} disagree about it by four orders of magnitude. They do not disagree about the direction.
 
-There were six of us in the pure mathematics class at the University of New South Wales, and none of us became pure mathematicians. Six was still too few on the record as it already stood, before language models: every named dismissal of a pure field in the survey has failed, and the underinvestment argument is sixty years old. There should have been a hundred.
+The reach multiplier is the assumption the table depends on most. It is increasingly measurable and two proxies suggest themselves for tracking it over time: the share of model-assisted code changes that invoke a named mathematical result, and the lag between a mathematics preprint and its first appearance in an applied repository. The arrival of this kind of data may sharpen the diagnosis.
 
 \begin{thebibliography}{99}
 
