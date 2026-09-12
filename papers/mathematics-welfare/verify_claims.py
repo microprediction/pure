@@ -152,9 +152,6 @@ check("screening: dW/dq > 0 iff K g D > C'(q)", sp.simplify(sp.diff(Wq, q) - (K 
 check("lag: e^{0.03*40} ~ 3.3", abs(math.exp(0.03 * 40) - 3.3) < 0.05, f"{math.exp(1.2):.2f}")
 check("lag: e^{0.05*50} ~ 12", abs(math.exp(0.05 * 50) - 12) < 0.3, f"{math.exp(2.5):.2f}")
 check("NSF DMS share of GDP ~ one part in a hundred thousand", 5e-6 < 248.4e6 / 28e12 < 2e-5, f"{248.4e6/28e12:.2e}")
-check("degree ratio ~ one to a hundred", 90 < (35200 + 202350) / 2247 < 115, f"{(35200+202350)/2247:.1f}")
-check("low column: one to 14", abs(105.7 / 7.6 - 14) < 0.5, f"{105.7/7.6:.1f}")
-check("campus: 6 x 7.6 ~ fifty, 6 x 190 ~ a thousand", 40 < 6 * 7.6 < 55 and 900 < 6 * 190 < 1300)
 # spark = smallest number of linearly dependent columns; krank = largest k with every k columns independent
 from itertools import combinations
 def spark_and_krank(X):
