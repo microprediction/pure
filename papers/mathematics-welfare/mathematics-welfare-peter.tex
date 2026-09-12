@@ -8,6 +8,8 @@
 \usepackage[colorlinks=true,allcolors=blue,pdftitle={Misaligned or Undersupplied? Pure Mathematics in the Age of LLMs},pdfauthor={Peter Cotton}]{hyperref}
 \usepackage{microtype}
 \usepackage{xurl}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
 
 \makeatletter
 \renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
@@ -80,6 +82,48 @@ so that a hardness theorem for one is a hardness theorem for all, and uniqueness
 \paragraph{Kriging and Gaussian processes.} Geostatistics speaks of kriging and variograms, machine learning of Gaussian-process regression and kernels, statistics of smoothing splines, learning theory of reproducing-kernel Hilbert spaces. In standard settings the predictors coincide, and comparative studies report that the vocabularies still inhibit transfer. This one is unresolved, and it is presumably being translated by a model somewhere as this is read.
 
 \paragraph{Spectral factorization.} The matrix Fej\'er-Riesz theorem, Wiener-Hopf factorization, spectral factorization, and polynomial sum-of-squares factorization are closely related results that operator theory, control, signal processing, and algebra developed apart for decades. Symbolic and numerical mathematicians held complementary parts of the solution. Connecting the literatures produced bit-complexity results that neither side could have reached alone.
+
+The reinventions are one object under two names. A second failure says more about abstraction itself. A theorem about $A$ is known. An instance $A'$ of $A$ turns up in another field, and the corresponding $B'$ follows at no cost, but nobody recognizes $A'$ as an instance of $A$, so $B'$ is proved again by hand or left open. Figure~\ref{fig:descent} draws five cases. The minimum distance of a linear code, which is the girth of a vector matroid, was proved NP-hard in 1997; spark is the same invariant over the reals, and compressed sensing proved it NP-hard separately in 2014. The collapsed-strata variance estimator and its bias theorem date from 1953; a 2025 paper on finely stratified experiments derived both again. Additive segment-cost objectives have had an exact quadratic-time solution since 1989; a 2024 paper solved one by mixed-integer programming and called exact optimality its contribution. The relative-entropy variational identity is 1970s large deviations; a 2026 control paper proved its control-affine instance as a new equivalence. Against these, Grossmann recognized Einstein's problem as an instance of Riemannian geometry in 1912, and the whole theory transferred at once. Recognizing an instance is the act of abstraction, and the drop in the figure is free for anyone who performs it.
+
+\begin{figure}[tbp]
+\centering
+\begin{tikzpicture}[x=1cm, y=1cm, >=Stealth, font=\footnotesize]
+  \draw[->] (0,0) -- (2.9,0);
+  \draw (3.05,-0.12) -- (3.25,0.12); \draw (3.15,-0.12) -- (3.35,0.12);
+  \draw[->] (3.4,0) -- (12.6,0) node[right] {year};
+  \draw[->] (0,0) -- (0,3.6) node[above] {abstraction};
+  \draw (0.35,0) -- (0.35,-0.08) node[below] {1850};
+  \draw (2.10,0) -- (2.10,-0.08) node[below] {1900};
+  \draw (3.60,0) -- (3.60,-0.08) node[below] {1950};
+  \draw (6.30,0) -- (6.30,-0.08) node[below] {1975};
+  \draw (9.00,0) -- (9.00,-0.08) node[below] {2000};
+  \draw (11.70,0) -- (11.70,-0.08) node[below] {2025};
+  \node[left] at (0,3.00) {theorem};
+  \node[left] at (0,1.00) {instance};
+  \fill (0.49,3.00) circle (1.6pt); \node[above] at (0.49,3.00) {Riemann 1854};
+  \draw[->,thick] (0.49,3.00) -- (2.52,1.15);
+  \fill (2.52,1.00) circle (1.6pt); \node[below] at (2.52,1.00) {Grossmann 1912};
+  \fill (3.92,3.00) circle (1.6pt); \node[above,yshift=0pt] at (3.92,3.00) {collapsed strata 1953};
+  \draw[dashed,->] (3.92,3.00) -- (3.92,1.27);
+  \draw[very thick] (3.92,1.12) -- (11.70,1.12); \fill (11.70,1.12) circle (1.6pt);
+  \fill (6.30,3.00) circle (1.6pt); \node[above,yshift=9pt] at (6.30,3.00) {entropy duality 1975};
+  \draw[dashed,->] (6.30,3.00) -- (6.30,1.19);
+  \draw[very thick] (6.30,1.04) -- (11.81,1.04); \fill (11.81,1.04) circle (1.6pt);
+  \fill (7.81,3.00) circle (1.6pt); \node[above,yshift=0pt] at (7.81,3.00) {optimal partitioning 1989};
+  \draw[dashed,->] (7.81,3.00) -- (7.81,1.11);
+  \draw[very thick] (7.81,0.96) -- (11.59,0.96); \fill (11.59,0.96) circle (1.6pt);
+  \fill (8.68,3.00) circle (1.6pt); \node[above,yshift=20pt] at (8.68,3.00) {girth NP-hard 1997};
+  \draw[dashed,->] (8.68,3.00) -- (8.68,1.03);
+  \draw[very thick] (8.68,0.88) -- (10.51,0.88); \fill (10.51,0.88) circle (1.6pt);
+  \node[below,yshift=-9pt] at (10.51,0.88) {spark 2014};
+  \node[below] at (11.70,0.88) {re-derived 2024--26};
+  \draw[dashed,->] (9.9,2.7) -- (10.7,2.7) node[right] {descent available, not taken};
+  \draw[->,thick] (9.9,2.35) -- (10.7,2.35) node[right] {descent taken};
+  \draw[very thick] (9.9,2.0) -- (10.7,2.0) node[right] {wait until proved by hand};
+\end{tikzpicture}
+\caption{Abstraction against time. A theorem at the top; an instance of it, later and lower, in another field. The dashed drop from theorem to instance costs nothing once the instance is recognized; the thick line is how long the field waited before proving the instance by hand. Grossmann's line is the drop taken at once.}
+\label{fig:descent}
+\end{figure}
 
 In every case the result had been published, indexed, and searchable for years. What was missing was not the text but the recognition that two objects described in different vocabularies were one object, and until recently only a person could supply it. That recognition is an act of abstraction, not of retrieval, and it is what has changed: a model that has read four literatures can be asked whether spark and girth are the same thing and answer with the identity. Every earlier information technology, from the journal to the search engine, organized text and left the abstraction to the reader. This is the part of the change most likely to be undercounted, because it is the part no earlier technology touched.
 
