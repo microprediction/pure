@@ -10,7 +10,7 @@ Rebuild from `papers/mathematics-welfare/` with `./build.sh`.
 ## 1. Title
 
 ```
-Mathematics and Welfare: Optimal Societal Investment Pre and Post LLMs
+Misaligned or Undersupplied? Pure Mathematics in the Age of LLMs
 ```
 
 (matches the PDF)
@@ -18,15 +18,15 @@ Mathematics and Welfare: Optimal Societal Investment Pre and Post LLMs
 ## 2. Abstract (plain text for the SSRN box)
 
 ```
-Pure mathematics produces ideas whose social value depends on how many uses they reach,
-what each use costs to realize, and how long it takes before somebody matches the tool
-to the application. We examine the multiplicative impact of large language models on all
-three in a highly stylized model of reach, adoption cost, and lag. Whatever view one
-holds on current spending, the implication is dramatic. Notwithstanding the difficulty
-of estimating the terms and the imperfections of so simple an analysis, the conclusion
-is unmistakable: society is massively underinvesting in pure research. We place this
-observation in the context of current cuts to university funding and the recently
-protested misalignment between AI and pure mathematics.
+Twenty-five Fields medalists have declared artificial intelligence and mathematics
+misaligned. I observe that the wait between a mathematical result and its use was mostly
+transmission: a result reached a use only when someone present knew both the problem and
+the theorem, and a language model is now that person at every use. In a minimal model of
+reach, adoption cost, and lag, the value of a marginal result rises by a multiple and
+the wedge between social and private returns widens. Before language models could match
+and implement, elementary economics already said underinvestment was likely. With a
+delay measured in decades removed, it becomes very hard to argue that the present level
+could be optimal, and the observed allocation is moving the other way.
 ```
 
 ## 3. Keywords
