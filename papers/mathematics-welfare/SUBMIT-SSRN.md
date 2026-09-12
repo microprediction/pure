@@ -1,4 +1,4 @@
-# SSRN submission packet — Mathematics and Welfare
+# SSRN submission packet — Misaligned or Undersupplied? Pure Mathematics in the Age of LLMs
 
 ---
 
