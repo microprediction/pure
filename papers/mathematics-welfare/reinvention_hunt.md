@@ -47,7 +47,12 @@ The same hunt, pointed at home.microprediction.org, with the same verification.
 | 5 | Trading Illiquid Goods 2022 | Guéant 2017 δ* = p + Λ/(−Λ′); Ho–Stoll 1981 | Identical up to notation | Confirmed, high (home #7) |
 | 6 | Herd Immunity Convexity Adjustments 2020 | Karev / Vaupel–Yashin MGF identity; Novozhilov 2008 exact threshold | Identical growth identity; threshold related | Confirmed (home #8); priority dating weakened |
 | 7 | Horse Race Problem 2021 §1.7 | Lo and Bacon-Shone discount model 1992/1995 | Identical; wrong Lo–Bacon-Shone paper cited, with a misprinted year | Confirmed (winning #39) |
-| 8–11 | Two Sides of Schur Damping; Schur Complementary Allocation | Noisy-conditioning identity and residual-risk variance; Thompson 1968 / Vasicek 1973 for γ*; Tola et al. 2008 and NCO; Johnson 1960 / Ederington 1979 / Stein–Chi–Welty 2004 | See precise #70–73 | Verification pending |
+| 8 | Two Sides of Schur Damping: γ* | Thompson 1968 (exact); Vasicek 1973 (form only, needs zero prior mean); paper says James–Stein and Ledoit–Wolf | γ* = t²/(1+t²) exactly; James–Stein and Ledoit–Wolf match to first order only; "Wiener" is exact | Confirmed; Vasicek weakened (precise #70) |
+| 9 | Two Sides; SCA: the damping pair | Gaussian conditioning on a sibling observed with proportional nugget ((1−γ)/γ)D; response Vecchia, Datta et al. 2016 | Exact; and the hedged residual has variance A − (2γ−γ²)BD⁻¹Bᵀ, not S(γ), which the paper implies but never writes | Confirmed, high (precise #71) |
+| 10 | SCA: hierarchical minimum variance | Tola, Lillo, Gallegati, Mantegna 2008 (Markowitz on hierarchically filtered covariance); NCO 2019 | Related; uncited in both papers | Confirmed (precise #72) |
+| 11 | Two Sides: the two readings; block pseudo-likelihood | Johnson 1960, Ederington 1979; Stein, Chi, Welty 2004 for the block form | Citation gap; Vecchia attribution incomplete; with c = all other blocks the product is Besag's pseudo-likelihood, not a factorization | Confirmed (precise #73) |
+
+Tally on the author's side: eleven findings, eleven confirmed, three weakened in part, none rejected.
 
 Cleared by the hunters on the author's side: Harville, Plackett–Luce, Henery, Stern, Vovk's
 conformal transducers and predictive distributions, and the 2026 contests paper's literature
