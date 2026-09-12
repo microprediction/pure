@@ -321,21 +321,21 @@ const FIELDS = [
     },
     "applications": [
       {
-        "name": "3D computer graphics (SLERP)",
-        "year": 1985,
-        "note": "Ken Shoemake's quaternion interpolation, SIGGRAPH. Standard in every game engine since.",
-        "url": "https://en.wikipedia.org/wiki/Slerp"
+        "name": "Spacecraft attitude representation",
+        "year": 1968,
+        "note": "Davenport's quaternion parameterization for attitude determination (NASA TN D-4696, 1968); the Space Shuttle's flight software carried attitude as a quaternion (Yazell, AIAA 2009-43). Apollo's IMU was a mechanical three-gimbal platform, and the spacecraft rotated into gimbal lock once each on Apollo 7 and Apollo 9 (Hoag, MIT/IL E-2411, 1969). Quaternions remove the equivalent singularity in software attitude; they do not fix a physical gimbal.",
+        "url": "https://web.mit.edu/digitalapollo/Documents/Chapter6/hoagprogreport.pdf"
       },
       {
-        "name": "Gimbal-lock-free attitude control",
+        "name": "3D computer graphics (SLERP)",
         "year": 1985,
-        "note": "Fixes the exact failure Apollo 11's inertial platform hit in 1969.",
-        "url": "https://en.wikipedia.org/wiki/Gimbal_lock"
+        "note": "Ken Shoemake's quaternion interpolation, SIGGRAPH. Standard in computer graphics and most game engines since.",
+        "url": "https://en.wikipedia.org/wiki/Slerp"
       }
     ],
     "verdict": "a",
-    "gap_basis": "founding (1843) to graphics/aerospace adoption (1985)",
-    "gap_years": 142,
+    "gap_basis": "founding (1843) to Davenport's attitude method (1968)",
+    "gap_years": 125,
     "confidence": "high"
   },
   {
