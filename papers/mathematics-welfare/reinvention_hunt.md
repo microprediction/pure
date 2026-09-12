@@ -49,10 +49,10 @@ The same hunt, pointed at home.microprediction.org, with the same verification.
 | 7 | Horse Race Problem 2021 §1.7 | Lo and Bacon-Shone discount model 1992/1995 | Identical; wrong Lo–Bacon-Shone paper cited, with a misprinted year | Confirmed (winning #39) |
 | 8 | Two Sides of Schur Damping: γ* | Thompson 1968 (exact); Vasicek 1973 (form only, needs zero prior mean); paper says James–Stein and Ledoit–Wolf | γ* = t²/(1+t²) exactly; James–Stein and Ledoit–Wolf match to first order only; "Wiener" is exact | Confirmed; Vasicek weakened (precise #70) |
 | 9 | Two Sides; SCA: the damping pair | Gaussian conditioning on a sibling observed with proportional nugget ((1−γ)/γ)D; response Vecchia, Datta et al. 2016 | Exact; and the hedged residual has variance A − (2γ−γ²)BD⁻¹Bᵀ, not S(γ), which the paper implies but never writes | Confirmed, high (precise #71) |
-| 10 | SCA: hierarchical minimum variance | Tola, Lillo, Gallegati, Mantegna 2008 (Markowitz on hierarchically filtered covariance); NCO 2019 | Related; uncited in both papers | Confirmed (precise #72) |
+| 10 | SCA: hierarchical minimum variance | Tola, Lillo, Gallegati, Mantegna 2008 (Markowitz on hierarchically filtered covariance); NCO 2019 | A different construction: the matrix is filtered and then optimized, with no sub-block recursion, so it does not bear on the SCA claim | Rejected by the author; related is not a finding (precise #72, closed) |
 | 11 | Two Sides: the two readings; block pseudo-likelihood | Johnson 1960, Ederington 1979; Stein, Chi, Welty 2004 for the block form | Citation gap; Vecchia attribution incomplete; with c = all other blocks the product is Besag's pseudo-likelihood, not a factorization | Confirmed (precise #73) |
 
-Tally on the author's side: eleven findings, eleven confirmed, three weakened in part, none rejected.
+Tally on the author's side: eleven findings, ten confirmed, three weakened in part, one rejected on the author's review.
 
 Cleared by the hunters on the author's side: Harville, Plackett–Luce, Henery, Stern, Vovk's
 conformal transducers and predictive distributions, and the 2026 contests paper's literature
