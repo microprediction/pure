@@ -62,12 +62,12 @@ check("Remark 1: single known user (q0=q1, D0=D1) leaves m^(alpha-1)",
       sp.simplify(kappa_seg.subs({q0: q1, D0: D1}) - m**(alpha - 1)) == 0)
 
 # ---------------------------------------------------------------- Table 1 arithmetic
-rows = {"low": dict(n=3, mcost=(3, 1.2), rho=0.03, dt=25, eps=0.1, dlt=0.1, kL=1.0),
-        "central": dict(n=10, mcost=(10, 1.5), rho=0.03, dt=40, eps=0.1, dlt=1.1, kL=1.0),
-        "high": dict(n=30, mcost=(10, 2.0), rho=0.05, dt=50, eps=0.1, dlt=10, kL=0.7)}
-stated = {"low": dict(cost=1.2, lag=2.1, kQ=7.6, tail=1, kM=7.6, ratio=7.6),
-          "central": dict(cost=3, lag=3.3, kQ=99, tail=1.9, kM=190, ratio=190),
-          "high": dict(cost=10, lag=12, kQ=3600, tail=10, kM=36000, ratio=51000)}
+rows = {"mild": dict(n=3, mcost=(3, 1.2), rho=0.03, dt=25, eps=0.1, dlt=0.1, kL=1.0),
+        "large": dict(n=10, mcost=(10, 1.5), rho=0.03, dt=40, eps=0.1, dlt=1.1, kL=1.0),
+        "extreme": dict(n=30, mcost=(10, 2.0), rho=0.05, dt=50, eps=0.1, dlt=10, kL=0.7)}
+stated = {"mild": dict(cost=1.2, lag=2.1, kQ=7.6, tail=1, kM=7.6, ratio=7.6),
+          "large": dict(cost=3, lag=3.3, kQ=99, tail=1.9, kM=190, ratio=190),
+          "extreme": dict(cost=10, lag=12, kQ=3600, tail=10, kM=36000, ratio=51000)}
 def close(x, y, tol=0.06):  # entries are rounded before multiplying
     return abs(x - y) / y <= tol
 for col, r in rows.items():

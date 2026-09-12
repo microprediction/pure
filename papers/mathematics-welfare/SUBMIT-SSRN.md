@@ -18,15 +18,7 @@ Misaligned or Undersupplied? Pure Mathematics in the Age of LLMs
 ## 2. Abstract (plain text for the SSRN box)
 
 ```
-Twenty-five Fields medalists have declared artificial intelligence and mathematics
-misaligned. I observe that the wait between a mathematical result and its use was mostly
-transmission: a result reached a use only when someone present knew both the problem and
-the theorem, and a language model is now that person at every use. In a minimal model of
-reach, adoption cost, and lag, the value of a marginal result rises by a multiple and
-the wedge between social and private returns widens. Before language models could match
-and implement, elementary economics already said underinvestment was likely. With a
-delay measured in decades removed, it becomes very hard to argue that the present level
-could be optimal, and the observed allocation is moving the other way.
+Twenty-five Fields medalists have declared artificial intelligence and mathematics misaligned. I observe that the wait between a mathematical result and its use was in large part transmission: a result reached a use only when someone along the way knew both the problem and the theorem, and a language model can now be that person at every use. In a minimal model of reach, adoption cost, and lag, the value of a marginal result rises by a multiple and the wedge between social and private returns widens. Before language models could match and implement, elementary economics already said underinvestment was likely. With a delay measured in decades removed, it becomes very hard to argue that the present level could be optimal, and the observed allocation is moving the other way.
 ```
 
 ## 3. Keywords
