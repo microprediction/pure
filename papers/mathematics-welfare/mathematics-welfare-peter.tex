@@ -34,7 +34,7 @@
 \maketitle
 
 \begin{abstract}
-Twenty-five Fields medalists have declared artificial intelligence and mathematics misaligned. I observe that the wait between a mathematical result and its use was in large part transmission: a result reached a use only when someone along the way knew both the problem and the theorem, and a language model can now be that person at every use. In a minimal model of reach, adoption cost, and lag, the value of a marginal result rises by a multiple and the wedge between social and private returns widens. Before language models could match and implement, elementary economics already said underinvestment was likely. With a delay measured in decades removed, it becomes very hard to argue that the present level could be optimal, and the observed allocation is moving the other way.
+Twenty-five Fields medalists have declared artificial intelligence and mathematics misaligned. I observe that the wait between a mathematical result and its use was in large part transmission: a result reached a use only when someone along the way knew both the problem and the theorem, and a language model can now be that person at every use. In a minimal model of reach, adoption cost, and lag, the value of a marginal result rises by a multiple and the wedge between social and private returns widens. Before language models could match and implement, elementary economics already said underinvestment was likely. If language models remove a substantial part of a delay measured in decades, it becomes very hard to argue that the present level could be optimal, and the observed allocation is moving the other way.
 \end{abstract}
 
 \section{Misaligned, or undersupplied}
@@ -51,7 +51,7 @@ The label ``unmotivated'' is a deliberate misnomer. Work chosen for generality, 
 
 The argument runs as follows.
 \begin{enumerate}
-\item Transmission was the bottleneck, not the mathematics. All eight named dismissals of a pure field found in the survey have failed, the median wait from a field's founding to first external use was 68 years across 33 dated fields, and nine documented reinventions show why: a result reached a use only when someone along the way knew both the problem and the theorem, a bilingual person.
+\item Transmission was the bottleneck, not the mathematics. All eight fields in the survey with a named dismissal later found use, the median wait from a field's founding to first external use was 68 years across 33 dated fields, and nine documented reinventions show why: a result reached a use only when someone along the way knew both the problem and the theorem, a bilingual person.
 \item A language model is that person, at every use, the same day. What it performs is abstraction, not retrieval, and because it names the same thing the same it is one bilingual person for every pair of fields at once. It is tested three ways.
 \item So the marginal result is worth a multiple, and the gap between what society should spend and what private returns will pay for has widened, since the new uses are unpriced. The multiple is illustrated, not measured, and the direction follows under assumptions the note states: cheap screening, transport that carries to the marginal result, and social value that rises faster than what producers capture.
 \item Meanwhile the supply is being cut, and the medalists' letter aims at the wrong target. Their misalignment is real and is inside mathematics, in incentives and attribution. The larger fact is outside it.
@@ -192,7 +192,7 @@ The model solves the needle-in-a-haystack search of \citet{agrawal2019}. The enc
 
 Reach counts understate the saving. When $k$ fields hold the same result under $k$ names, transfer between any two of them needs its own translation, $k(k-1)/2$ in all, and the reinventions above are the record of translations never built. A common name reduces the count to $k$: each field translates once, to the hub, and the hub translates onward. That is what abstraction does for mathematics, and \citet{cotton2026protocol} makes the arithmetic explicit.
 
-A model that names the same thing the same is that hub. It is one bilingual person for every pair of fields at once, rather than one per pair, and the reach multiplier does not see the difference, since it counts uses reached per result and not translations built per field. The reach multiplier counts uses reached per result, not translations built per field, so it does not credit the saving in search cost.
+A model that names the same thing the same is that hub. It is one bilingual person for every pair of fields at once, rather than one per pair, and the reach multiplier does not see the difference, since it counts uses reached per result and not translations built per field. It therefore does not credit the saving in search cost.
 
 The objection that the ideas were already free is contradicted by the record. Journals were open, or nearly so, for decades before language models, and the lags were still measured in generations. Free to read is not the same as easy to find, or easy to recognize as relevant; \citet{jaffe1993} found spillovers localized in space long after journals were everywhere. The scarce input was the person who had read the paper and was also standing next to the problem, and that person is what the model replaces.
 
@@ -215,10 +215,10 @@ Appendix C sets the channels at mild, large, and extreme values, and the multipl
 A planner spends $S$ dollars on unmotivated mathematics and obtains $I(S) = a S^{\gamma}$ results, $0 < \gamma < 1$. Each result has expected value $V$, the value of one more result given the results already reachable. The model also makes the existing stock of results reachable, which raises the value realized from that stock and may substitute for some new production; that stock effect is not part of $V$. The multipliers of Appendix A are computed for a typical result, and the scenarios assume they apply to the marginal result as well.
 
 \begin{assumption}[Marginal transport]\label{ass:transport}
-Write the multiplier on the expected application value of a marginal new result as $\lambda\kappa$, where $\kappa$ is the multiplier on a representative existing result and $\lambda$ is a marginal-stock factor that absorbs substitution from newly accessible existing mathematics. A new result enters the same matching process as an old one. The direction of the results below requires only $\lambda\kappa > 1$, that substitution does not outweigh transport; the sizes in Table \ref{tab:channels} set $\lambda = 1$.
+Write the multiplier on the expected application value of a marginal new result as $\lambda\kappa$, where $\kappa$ is the multiplier on a representative existing result and $\lambda$ is a marginal-stock factor that absorbs substitution from newly accessible existing mathematics. A new result enters the same matching process as an old one. The direction of the results below requires only that the net marginal multiplier $\mu_M = \lambda\kappa^G_M\sigma$ of Table \ref{tab:channels} exceed one, that substitution and screening together do not outweigh transport; the sizes in the table set $\lambda = 1$ and $\sigma = 1$.
 \end{assumption}
 
-With diminishing returns of the power-law kind, a planner who values each result more spends more than proportionately (Appendix B), so the ratio of spending on mathematics to spending on the professions rises by 8, 190, or 51{,}000 across the three scenarios, once the professions' own multiplier is allowed for and with the screening adjustment and $\lambda$ both at one.
+With diminishing returns of the power-law kind, a planner who values each result more spends more than proportionately (Appendix B), so the ratio of spending on mathematics to spending on the professions rises by 8, 190, or 51{,}000 across the three scenarios, once the professions' own multiplier is allowed for and with the screening adjustment and $\lambda$ both at one; the ratio rises whenever the net marginal multiplier exceeds the professions' multiplier.
 
 The multiplier for mathematics and the multiplier for the professions, $\kappa_L$, may move in opposite directions. The product of mathematics is a non-rival idea, and the model raises its reach. The product of a law or commerce degree is a person's capacity to perform tasks, and the model performs a share of those tasks itself. \citet{eloundou2023} rate legal services among the occupations most exposed to language models. Exposure is not substitution, so I take $\kappa_L = 1$ as the baseline and $\kappa_L < 1$ as the sensitivity.
 
@@ -407,7 +407,7 @@ Now let the planner split a fixed budget $B$ between mathematics, $M$, and a pro
 \frac{M^{\star}}{L^{\star}} \;=\; \left(\frac{a_M V_M}{a_L V_L}\right)^{1/(1-\gamma)}.
 \label{eq:ratio}
 \end{equation}
-This is the same elasticity as \eqref{eq:foc}. If a language model multiplies $V_M$ by $\kappa_M$ and $V_L$ by $\kappa_L$, the ratio is multiplied by $(\kappa_M / \kappa_L)^{1/(1-\gamma)}$; a change in either sector's productivity $a$ enters the same way, and the scenarios hold both fixed.
+This is the same elasticity as \eqref{eq:foc}. If a language model multiplies the net value of a marginal result in mathematics by $\mu_M$ and $V_L$ by $\kappa_L$, the ratio is multiplied by $(\mu_M / \kappa_L)^{1/(1-\gamma)}$; the ratio rises when $\mu_M > \kappa_L$; a change in either sector's productivity $a$ enters the same way, and the scenarios hold both fixed.
 
 \section{Scenarios}
 
@@ -432,16 +432,16 @@ Lag $D_{Q1}/D_{Q0}$ & 2.1 & 3.3 & 12 \\
 Incumbent multiplier $\kappa_Q$ & 7.6 & 99 & 3600 \\
 Tail $(1+\delta)/(1+\varepsilon)$ & 1 & 1.9 & 10 \\
 \midrule
-Gross value multiplier $\kappa_M$ & 7.6 & 190 & 36000 \\
-Screening adjustment $(1-s_1)/(1-s_0)$, assumed & 1 & 1 & 1 \\
+Gross value multiplier $\kappa_M^G$ & 7.6 & 190 & 36000 \\
+Screening adjustment $\sigma = (1-s_1)/(1-s_0)$, assumed & 1 & 1 & 1 \\
 Marginal-stock factor $\lambda$, assumed & 1 & 1 & 1 \\
-Net marginal multiplier $\lambda\kappa_M(1-s_1)/(1-s_0)$ & 7.6 & 190 & 36000 \\
+Net marginal multiplier $\mu_M = \lambda\kappa_M^G\sigma$ & 7.6 & 190 & 36000 \\
 Professional multiplier $\kappa_L$ & 1.0 & 1.0 & 0.7 \\
 \midrule
 Ratio multiplier, elasticity one & 7.6 & 190 & 51000 \\
 \bottomrule
 \end{tabular}
-\caption{Channel multipliers and the implied change in the ratio of spending on unmotivated mathematics to spending on the professions, from \eqref{eq:ratio}. The three channels multiply within the incumbent segment and the tail enters by the weighted average \eqref{eq:segments}. The two assumed rows are the screening adjustment of Appendix A and the marginal-stock factor of Assumption \ref{ass:transport}; the net marginal multiplier is the product of the three rows above it and is what enters \eqref{eq:ratio}. The ratio row uses elasticity one, the limit $\gamma \to 0$ of \eqref{eq:ratio}.}
+\caption{Channel multipliers and the implied change in the ratio of spending on unmotivated mathematics to spending on the professions, from \eqref{eq:ratio}. The three channels multiply within the incumbent segment and the tail enters by the weighted average \eqref{eq:segments}. The two assumed rows are the screening adjustment of Appendix A and the marginal-stock factor of Assumption \ref{ass:transport}; the net marginal multiplier $\mu_M$ is the product of the three rows above it and is what enters \eqref{eq:ratio} in place of $\kappa_M$. Optimal spending on mathematics rises when $\mu_M > 1$, and the ratio rises when $\mu_M > \kappa_L$. The ratio row uses elasticity one, the limit $\gamma \to 0$ of \eqref{eq:ratio}.}
 \label{tab:channels}
 \end{table}
 
