@@ -15,7 +15,6 @@
   {\normalfont\normalsize\itshape}}
 \makeatother
 
-\newtheorem{proposition}{Proposition}
 \newtheorem{assumption}{Assumption}
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}
@@ -142,7 +141,7 @@ The 68-year median is a field-level figure whose clock starts at the field's fou
 Targeted research already had its customer, so the model helps it only at the margin. Untargeted research lacked a matching mechanism, which the model supplies. The gain is proportional to how badly the old mechanism worked, and the historical lags show it worked badly.
 
 
-Written down, the value of a result is the number of uses it reaches, times the net value of a use, times a discount for the wait, and the three channels multiply within a segment of uses and average across segments. Appendix A does the writing down; Appendix C sets the channels at low, central, and high values and reads off a value multiplier of 8, 190, or 36{,}000. The direction is the same in every column because every channel moves the same way, given cheap screening and the assumption of the next section; the size is illustrated, not measured.
+Written down, the value of a result is the number of uses it reaches, times the net value of a use, times a discount for the wait, and the three channels multiply within a segment of uses and average across segments. Appendix A does the writing down; Appendix C sets the channels at low, central, and high values and reads off a value multiplier of 8, 190, or 36{,}000. The direction is the same in every column because every channel moves the same way, given cheap screening and the marginal transport assumption; the size is illustrated, not measured.
 
 \section{Optimal investment}
 
@@ -156,9 +155,9 @@ With diminishing returns of the power-law kind, a planner who values each result
 
 The same first-order condition gives the underinvestment wedge in the paper's own terms. Let $W$ be the social value of a result and $P$ the part of it a producer can appropriate, and let the model multiply them by $\kappa_W$ and $\kappa_P$.
 
-\begin{proposition}[The wedge]
+\begin{remark}[The wedge]
 Social and private optima are $S^{\mathrm{soc}} = (\gamma a W)^{1/(1-\gamma)}$ and $S^{\mathrm{priv}} = (\gamma a P)^{1/(1-\gamma)}$, so their ratio is $(W/P)^{1/(1-\gamma)}$, and the model multiplies it by $(\kappa_W / \kappa_P)^{1/(1-\gamma)}$.
-\end{proposition}
+\end{remark}
 
 This is Nelson and Arrow restated for the mechanism at hand. Transport raises the number of uses of a result far faster than it raises what the result's author is paid, since the uses are unpriced and the author is not in the room; $\kappa_W$ exceeds $\kappa_P$, and the wedge that public funding exists to close grows by the ratio. The case for funding pure mathematics rests on that wedge, and the ratio to the professions is an illustration of its size.
 
@@ -285,13 +284,11 @@ Collecting the three channels within the incumbent segment, with $n_Q = q_{Q1}/q
 \end{equation}
 The tail's multiplier $\kappa_H$ has the same product form with its own primitives.
 
-\begin{proposition}[The multiplier is largest where the old matching was worst]
+\begin{remark}[The multiplier is largest where the old matching was worst]
 Within a segment, hold $m$, $\alpha$, $\rho$, $q_1$, and $D_1$ fixed. Then the segment multiplier is decreasing in the pre-LLM encounter probability $q_0$ and decreasing in the pre-LLM discount factor $D_0$, that is, increasing in the pre-LLM certainty-equivalent lag $\tilde\tau_0$; and $\kappa$ in \eqref{eq:segments} is increasing in each segment multiplier. For research with a single designed-in user who possessed it at the outset, $q_0 = q_1 = 1$ and $D_0 = D_1$ in the only segment there is, so $\kappa = m^{\alpha-1}$: only the adoption-cost channel remains.
-\end{proposition}
+\end{remark}
 
-\begin{proof}
-Immediate from \eqref{eq:kappa}, since $n = q_1/q_0$, the lag factor is $D_1 / D_0$, and \eqref{eq:segments} is a weighted average with positive weights.
-\end{proof}
+This is immediate from \eqref{eq:kappa}, since $n = q_1/q_0$, the lag factor is $D_1 / D_0$, and \eqref{eq:segments} is a weighted average with positive weights.
 
 \section{The planner's problem}
 
@@ -303,9 +300,9 @@ S^{\star} \;=\; \left(\gamma a V\right)^{1/(1 - \gamma)},
 \label{eq:foc}
 \end{equation}
 
-\begin{proposition}[Spending elasticity]
+\begin{remark}[Spending elasticity]
 Under the marginal transport assumption, if the expected value of a result is multiplied by $\kappa$, optimal spending is multiplied by $\kappa^{1/(1-\gamma)}$. The elasticity is at least one, and it is larger the weaker the diminishing returns: as $\gamma \to 0$ it tends to one, and at $\gamma = \tfrac12$ it equals two.
-\end{proposition}
+\end{remark}
 
 Why does the elasticity exceed one? With diminishing returns the marginal result is cheap when spending is low and expensive when spending is high. If each result becomes ten times more valuable, the planner keeps buying until the marginal result costs ten times more, and under a square-root ideas function that means spending one hundred times more. This is a property of the power law, not of research spending in general: for any $I(S)$ the local elasticity is $1/\eta(S^\star)$ with $\eta = -\,d\log I'(S)/d\log S$, and the power law is the case of constant $\eta = 1-\gamma$. Extrapolating a constant $\gamma$ across orders of magnitude is not defensible, so the scenarios use the limit $\gamma \to 0$, where the planner's response is proportional to value. That is the smallest elasticity within the power-law family, not a floor in general: a saturating $I(S) = 1 - e^{-S}$ gives $S^\star = \log V$ and an elasticity of $1/\log V$, below one for $V > e$.
 

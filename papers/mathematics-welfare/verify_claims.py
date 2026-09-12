@@ -56,9 +56,9 @@ check("Eq (3): weighted average lies between kQ and kH",
 # ---------------------------------------------------------------- Eq (4): within-segment product and Prop 1 comparative statics
 n, m, q0, q1, D0, D1 = sp.symbols("n m q_0 q_1 D_0 D_1", positive=True)
 kappa_seg = (q1 / q0) * m**(alpha - 1) * (D1 / D0)
-check("Prop 1: segment multiplier decreasing in q0", sp.simplify(sp.diff(kappa_seg, q0)).is_negative)
-check("Prop 1: segment multiplier decreasing in D0", sp.simplify(sp.diff(kappa_seg, D0)).is_negative)
-check("Prop 1: single known user (q0=q1, D0=D1) leaves m^(alpha-1)",
+check("Remark 1: segment multiplier decreasing in q0", sp.simplify(sp.diff(kappa_seg, q0)).is_negative)
+check("Remark 1: segment multiplier decreasing in D0", sp.simplify(sp.diff(kappa_seg, D0)).is_negative)
+check("Remark 1: single known user (q0=q1, D0=D1) leaves m^(alpha-1)",
       sp.simplify(kappa_seg.subs({q0: q1, D0: D1}) - m**(alpha - 1)) == 0)
 
 # ---------------------------------------------------------------- Table 1 arithmetic
@@ -121,7 +121,7 @@ elas_sat = sp.simplify(sp.diff(Ssat, V) * V / Ssat)
 check("saturating I: elasticity 1/log V, below one for V > e",
       sp.simplify(elas_sat - 1 / sp.log(V)) == 0 and float(elas_sat.subs(V, 10)) < 1)
 
-# ---------------------------------------------------------------- Prop 3: the wedge
+# ---------------------------------------------------------------- Remark: the wedge
 W, P, kW, kP = sp.symbols("W P kappa_W kappa_P", positive=True)
 Ssoc = (gam * a * W) ** (1 / (1 - gam)); Spriv = (gam * a * P) ** (1 / (1 - gam))
 check("wedge: S_soc/S_priv = (W/P)^(1/(1-gamma))", sp.simplify(Ssoc / Spriv - (W / P) ** (1 / (1 - gam))) == 0)
