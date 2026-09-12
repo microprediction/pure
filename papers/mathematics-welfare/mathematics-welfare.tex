@@ -16,6 +16,7 @@
 \makeatother
 
 \newtheorem{proposition}{Proposition}
+\newtheorem{assumption}{Assumption}
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}
 \theoremstyle{remark}
@@ -81,7 +82,7 @@ Several literatures bear on the question, and they agree on the sign.
 
 \paragraph{Gross attribution to the mathematical sciences.} \citet{deloitte2013} attribute 2.8 million UK jobs and \pounds 208 billion of gross value added, about sixteen per cent of the total, to occupations that use tools derived from mathematical-science research. The Academy for the Mathematical Sciences updated the figure to \pounds 495 billion for 2023 \citep{acadmathsci2024}. These are gross measures with an occupational attribution rule, not marginal returns to another pound of research, and they bound the total from above rather than estimate the return to one more pound.
 
-\paragraph{The underinvestment argument.} \citet{nelson1959} and \citet{arrow1962} argued that private markets underinvest in basic research because the returns cannot be appropriated by the investor. \citet{romer1990} made the mechanism explicit: ideas are non-rival, so their social value scales with the number of users while the private value does not. The argument is older than large language models and does not depend on them. It implies that the pre-LLM level of spending was privately optimal and socially too low.
+\paragraph{The underinvestment argument.} \citet{nelson1959} and \citet{arrow1962} argued that private markets underinvest in basic research because the returns cannot be appropriated by the investor. \citet{romer1990} made the mechanism explicit: ideas are non-rival, so their social value scales with the number of users while the private value does not. The argument is older than large language models and does not depend on them. It implies that spending set by private returns, absent a policy correction, falls below the social optimum.
 
 \paragraph{Basic versus applied.} \citet{akcigit2021} estimate a growth model in which basic and applied research generate different spillovers and find that a uniform research subsidy oversubsidizes applied research, while support for public basic research is welfare-improving. \citet{mansfield1991} surveyed firms and found that about a tenth of their new products and processes could not have been developed without recent academic research, and put the social rate of return to that research near thirty per cent. \citet{salter2001} review the wider evidence and reach the same conclusion.
 
@@ -95,7 +96,7 @@ We take the pre-LLM allocation as a benchmark anyway, because the question of in
 
 \section{The value of an unmotivated result}
 
-Fix a result $r$ produced by unmotivated research. Index its potential uses by $i = 1, \dots, K$. Use $i$ has value $v_i > 0$ if the result is applied to it, measured as the gain over the best method available without it. Adopting it costs $c_i > 0$: the work of understanding and implementing the result once the match is made. $A_i \in \{0, 1\}$ indicates whether the match is made, and if it is, it happens after a lag $T_i \ge 0$. Search cost determines $A_i$ and is not charged in $c_i$. Matches that are encountered and rejected cost something to verify, and \eqref{eq:value} omits that cost. With a verification cost $s$ per encounter the expected value becomes $K q\,(g(c) D - s)$, and raising reach lowers welfare wherever the average encounter is worth less than its verification. A model makes verification cheap and false matches common, and the sign of the reach channel rests on the first outrunning the second; with a model the verification is minutes, and before a model it was the main reason encounters were rare. The result is non-rival: use $i$ does not diminish use $j$. With social discount rate $\rho$, the realized social value is
+Fix a result $r$ produced by unmotivated research. Index its potential uses by $i = 1, \dots, K$. Use $i$ has value $v_i > 0$ if the result is applied to it, measured as the gain over the best method available without it. Adopting it costs $c_i > 0$: the work of understanding and implementing the result once the match is made. $A_i \in \{0, 1\}$ indicates whether the match is made, and if it is, it happens after a lag $T_i \ge 0$. Search cost determines $A_i$ and is not charged in $c_i$. Matches that are encountered and rejected cost something to verify, and \eqref{eq:value} omits that cost. Write $C(q)$ for the expected present-value cost of screening candidates, false ones included, at reach $q$; the expected value is then $K q\, g(c) D - C(q)$, and raising reach raises welfare only where the gain in gross application value exceeds the rise in $C$. A model makes screening cheap and false candidates common, and the sign of the reach channel rests on the first outrunning the second; with a model the screening is minutes, and before a model it was the main reason encounters were rare. The result is non-rival: use $i$ does not diminish use $j$. With social discount rate $\rho$, the realized social value is
 \begin{equation}
 V(r) \;=\; \sum_{i=1}^{K} A_i\,(v_i - c_i)^{+}\,e^{-\rho T_i}.
 \label{eq:value}
@@ -164,7 +165,11 @@ Targeted research already had its customer, so the model helps it only at the ma
 
 \section{Optimal investment}
 
-Let a planner spend $S$ dollars on unmotivated mathematics and obtain $I(S) = a S^{\gamma}$ results, $0 < \gamma < 1$, each of expected value $V$. Here $V$ is the marginal value of a newly produced result, conditional on the stock already reachable through the model. The model also unlocks that stock, which raises the level of realized value and may substitute for some new production. The assumption below is that the multiplier $\kappa$ applies to the marginal result as it does to the stock, since a new result enters the same matching process as an old one. The planner maximizes $a V S^{\gamma} - S$. The first-order condition $\gamma a V S^{\gamma-1} = 1$ gives
+Let a planner spend $S$ dollars on unmotivated mathematics and obtain $I(S) = a S^{\gamma}$ results, $0 < \gamma < 1$, each of expected value $V$. Here $V$ is the marginal value of a newly produced result, conditional on the stock already reachable through the model. The model also unlocks that stock, which raises the level of realized value and may substitute for some new production. What follows rests on an assumption that the multiplier carries over to the margin.
+
+\begin{assumption}[Marginal transport]
+After substitution from newly accessible existing mathematics, the expected application value of a marginal new result is multiplied by the same $\kappa$ as an existing one, because a new result enters the same matching process as an old one.
+\end{assumption} The planner maximizes $a V S^{\gamma} - S$. The first-order condition $\gamma a V S^{\gamma-1} = 1$ gives
 \begin{equation}
 S^{\star} \;=\; \left(\gamma a V\right)^{1/(1 - \gamma)},
 \qquad
@@ -173,7 +178,7 @@ S^{\star} \;=\; \left(\gamma a V\right)^{1/(1 - \gamma)},
 \end{equation}
 
 \begin{proposition}[Spending elasticity]
-If the expected value of a result is multiplied by $\kappa$, optimal spending is multiplied by $\kappa^{1/(1-\gamma)}$. The elasticity is at least one, and it is larger the weaker the diminishing returns: as $\gamma \to 0$ it tends to one, and at $\gamma = \tfrac12$ it equals two.
+Under the marginal transport assumption, if the expected value of a result is multiplied by $\kappa$, optimal spending is multiplied by $\kappa^{1/(1-\gamma)}$. The elasticity is at least one, and it is larger the weaker the diminishing returns: as $\gamma \to 0$ it tends to one, and at $\gamma = \tfrac12$ it equals two.
 \end{proposition}
 
 Why does the elasticity exceed one? With diminishing returns the marginal result is cheap when spending is low and expensive when spending is high. If each result becomes ten times more valuable, the planner keeps buying until the marginal result costs ten times more, and under a square-root ideas function that means spending one hundred times more. This is a property of the power law, not of research spending in general: for any $I(S)$ the local elasticity is $1/\eta(S^\star)$ with $\eta = -\,d\log I'(S)/d\log S$, and the power law is the case of constant $\eta = 1-\gamma$. Extrapolating a constant $\gamma$ across orders of magnitude is not defensible, so the table uses the limit $\gamma \to 0$, where the planner's response is proportional to value, and treats anything above it as further upside.
