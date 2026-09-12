@@ -10,7 +10,7 @@ Rebuild from `papers/mathematics-welfare/` with `./build.sh`.
 ## 1. Title
 
 ```
-Mathematics and Welfare: Optimal Societal Investment Pre and Post LLMs
+Misaligned or Undersupplied? Pure Mathematics in the Age of LLMs
 ```
 
 (matches the PDF)
