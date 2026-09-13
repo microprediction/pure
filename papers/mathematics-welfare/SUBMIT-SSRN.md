@@ -53,7 +53,7 @@ Peter Cotton, peter.cotton@microprediction.com (as in the skaters and fan-note p
 
 ## 7. After approval
 
-1. Note the SSRN number.
+1. SSRN number: 7452281, submitted 12 September 2026, CC BY. https://ssrn.com/abstract=7452281
 2. Add the SSRN link to the paper card on `docs/papers.html` and to the Papers line in
    `README.md`, keeping the PDF and tex links.
 3. If the paper is cited from `schur`, `skaters`, or `conformalprediction`, update those
