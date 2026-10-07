@@ -78,6 +78,7 @@ const x = d3.scaleLinear().domain([1600, 2028]).range([M.l, W - M.r]);
 const truncateLabel = (s, n=42) => s.length > n ? s.slice(0, n-1).trimEnd() + "…" : s;
 
 // Build one "thread" per field: founded -> (dismissed, if distinct) -> applications, in year order.
+const AS_OF = 2026;
 const THREADS = FIELDS.map(f => {
   const pts = [];
   pts.push({year: f.founded.year, kind: "founded", label: "Founded", url: "./fields/"+f.slug+".html",
@@ -90,6 +91,11 @@ const THREADS = FIELDS.map(f => {
     pts.push({year: a.year, kind: "application", label: truncateLabel(a.name), fullLabel: a.name,
       url: a.url, note: a.note});
   });
+  // A field with no application gets a censored endpoint at the as-of year.
+  if ((f.applications || []).length === 0) {
+    pts.push({year: AS_OF, kind: "none", label: "no application documented", fullLabel: "No application documented",
+      url: "./fields/"+f.slug+".html", note: "No external application documented as of " + AS_OF + "."});
+  }
   pts.sort((a,b) => a.year - b.year);
   return {slug: f.slug, name: f.name, cluster: f.cluster, noApplication: (f.applications||[]).length===0, pts};
 });
@@ -210,9 +216,9 @@ THREADS.forEach(t => {
   gsel.append("circle").attr("cx",d=>d.x).attr("cy",y)
     .attr("r", d=> d.kind==="application" ? 6.5 : 6)
     .attr("fill", d=> d.kind==="application" ? color : "#fff")
-    .attr("stroke", d => (d.kind==="application" && t.noApplication) ? "#c0392b" : color)
+    .attr("stroke", d => d.kind==="none" ? "#c0392b" : color)
     .attr("stroke-width", d=>d.kind==="application"?1.5:2)
-    .attr("stroke-dasharray", d => (d.kind==="application" && t.noApplication) ? "2,2" : null);
+    .attr("stroke-dasharray", d => d.kind==="none" ? "2,2" : null);
 
   gsel.append("text").attr("class","evlabel")
     .attr("x", d=>d._labelX).attr("y", d=>d._dy).attr("text-anchor", d=>d._anchor)

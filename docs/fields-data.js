@@ -62,8 +62,8 @@ const FIELDS = [
       {
         "name": "Formally verified software (seL4)",
         "year": 2009,
-        "note": "Curry–Howard-based proof assistants; seL4's machine-checked correctness proof is deployed in Qualcomm chipsets and DARPA's HACMS drone program.",
-        "url": "https://en.wikipedia.org/wiki/L4_microkernel_family#seL4"
+        "note": "Curry–Howard-based proof assistants; the machine-checked seL4 kernel underpinned DARPA's HACMS vehicle demonstrations. A different L4-family kernel, L4-embedded/OKL4, shipped in Qualcomm modem chipsets and was not verified.",
+        "url": "https://doi.org/10.1145/2517349.2522720"
       }
     ],
     "verdict": "a",
@@ -104,6 +104,7 @@ const FIELDS = [
     },
     "dismissed": null,
     "dismissed_note": "Retrospectives repeat only a vague, unattributed folk memory that combinatorics was “unserious” mid-century, with no named person or exact quote. One narrow, dated anecdote: Mittag-Leffler shelved 18th-century “combinatorial school” texts under a library label “Dekadenter” (decadent) — targets one obsolete pre-1900 formalist tradition, not the modern field.",
+    "dismissed_note_source": "Donald E. Knuth, “Two Thousand Years of Combinatorics,” in Robin Wilson and John J. Watkins (eds.), *Combinatorics: Ancient & Modern*, Oxford University Press, 2013 (the Mittag-Leffler “Dekadenter” shelf).",
     "applications": [
       {
         "name": "Design of experiments",
@@ -227,7 +228,7 @@ const FIELDS = [
       {
         "name": "NIST post-quantum standards",
         "year": 2024,
-        "note": "Ring-LWE (2012) underlies CRYSTALS-Kyber/Dilithium, finalized as FIPS 203/204.",
+        "note": "ML-KEM (FIPS 203, formerly Kyber) rests on Module-LWE and ML-DSA (FIPS 204, formerly Dilithium) on module-lattice assumptions; both descend from Ring-LWE, a lattice problem over polynomial rings.",
         "url": "https://csrc.nist.gov/pubs/fips/203/final"
       }
     ],
@@ -248,7 +249,7 @@ const FIELDS = [
     },
     "dismissed": {
       "kind": "self-description",
-      "who": "Koblitz, Menezes & Vanstone (retrospective)",
+      "who": "Ann Hibner Koblitz, Neal Koblitz & Alfred Menezes (retrospective)",
       "year": 2008,
       "quote": "“Research into number theoretic questions concerning elliptic curves was originally pursued mainly for aesthetic reasons.”",
       "source": "Koblitz et al., IACR ePrint 2008/390.",
@@ -437,7 +438,7 @@ const FIELDS = [
       {
         "name": "Crystallography",
         "year": 1891,
-        "note": "Fedorov & Schoenflies's 230 space groups classify every possible crystal structure.",
+        "note": "Fedorov and Schoenflies independently enumerated the 230 three-dimensional space-group types, which classify the possible symmetries of periodic crystal structures.",
         "url": "https://en.wikipedia.org/wiki/Space_group"
       },
       {
@@ -472,15 +473,21 @@ const FIELDS = [
     "dismissed_note": "Real controversy existed (Borel's constructivist objections, du Bois-Reymond's rigor arguments) but concerned legitimacy, not usefulness.",
     "applications": [
       {
+        "name": "Measure-theoretic probability",
+        "year": 1909,
+        "note": "Borel's strong law for coin tossing brings countable additivity into probability. Documented in Shafer and Vovk, *The Sources of Kolmogorov's Grundbegriffe*, Statistical Science 21 (2006).",
+        "url": "https://doi.org/10.1214/088342305000000467"
+      },
+      {
         "name": "Axiomatic probability theory",
         "year": 1933,
-        "note": "Kolmogorov's Grundbegriffe — the now-universal measure-theoretic foundation of probability.",
+        "note": "Kolmogorov's Grundbegriffe — the synthesis that became the standard measure-theoretic foundation of probability.",
         "url": "https://en.wikipedia.org/wiki/Probability_axioms"
       }
     ],
     "verdict": "b",
-    "gap_basis": "founding (1902) to Kolmogorov's axiomatization (1933)",
-    "gap_years": 31,
+    "gap_basis": "founding (1902) to Borel's strong law (1909)",
+    "gap_years": 7,
     "confidence": "medium-high"
   },
   {

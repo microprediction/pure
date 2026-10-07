@@ -42,7 +42,7 @@ FIELDS = [
              confidence="medium-high"),
          applications=[
              dict(name="Model checking", year=1981, note="Clarke, Emerson & Sifakis — 2007 Turing Award; industry-standard hardware/protocol verification.", url="https://en.wikipedia.org/wiki/Model_checking"),
-             dict(name="Formally verified software (seL4)", year=2009, note="Curry–Howard-based proof assistants; seL4's machine-checked correctness proof is deployed in Qualcomm chipsets and DARPA's HACMS drone program.", url="https://en.wikipedia.org/wiki/L4_microkernel_family#seL4"),
+             dict(name="Formally verified software (seL4)", year=2009, note="Curry–Howard-based proof assistants; the machine-checked seL4 kernel underpinned DARPA's HACMS vehicle demonstrations. A different L4-family kernel, L4-embedded/OKL4, shipped in Qualcomm modem chipsets and was not verified.", url="https://doi.org/10.1145/2517349.2522720"),
          ],
          verdict="a", gap_basis="founding (1879) to first real-world technique (model checking, 1981)", gap_years=102,
          confidence="medium-high"),
@@ -65,6 +65,7 @@ FIELDS = [
          founded=dict(year=1900, event="No single founding event — ancient roots (Pascal's triangle, Euler's Königsberg bridges); became a systematically organized field with Fisher's design theory in the 1920s", low_confidence=True),
          dismissed=None,
          dismissed_note="Retrospectives repeat only a vague, unattributed folk memory that combinatorics was “unserious” mid-century, with no named person or exact quote. One narrow, dated anecdote: Mittag-Leffler shelved 18th-century “combinatorial school” texts under a library label “Dekadenter” (decadent) — targets one obsolete pre-1900 formalist tradition, not the modern field.",
+         dismissed_note_source="Donald E. Knuth, “Two Thousand Years of Combinatorics,” in Robin Wilson and John J. Watkins (eds.), *Combinatorics: Ancient & Modern*, Oxford University Press, 2013 (the Mittag-Leffler “Dekadenter” shelf).",
          applications=[
              dict(name="Design of experiments", year=1925, note="R. A. Fisher's combinatorial design theory underlies randomized agricultural and clinical-trial methodology.", url="https://en.wikipedia.org/wiki/Design_of_experiments"),
              dict(name="Reed–Solomon codes", year=1960, note="Enumerative/finite combinatorics underlying error-correcting codes; Voyager, CDs, QR codes.", url="https://en.wikipedia.org/wiki/Reed%E2%80%93Solomon_error_correction"),
@@ -119,7 +120,7 @@ FIELDS = [
          dismissed_note="Krull's ideal theory (1920s–30s) was, per MacTutor, “quickly recognised as a decisive advance.”",
          applications=[
              dict(name="McEliece cryptosystem", year=1978, note="Uses algebraic-geometry (Goppa) codes built on this machinery.", url="https://en.wikipedia.org/wiki/McEliece_cryptosystem"),
-             dict(name="NIST post-quantum standards", year=2024, note="Ring-LWE (2012) underlies CRYSTALS-Kyber/Dilithium, finalized as FIPS 203/204.", url="https://csrc.nist.gov/pubs/fips/203/final"),
+             dict(name="NIST post-quantum standards", year=2024, note="ML-KEM (FIPS 203, formerly Kyber) rests on Module-LWE and ML-DSA (FIPS 204, formerly Dilithium) on module-lattice assumptions; both descend from Ring-LWE, a lattice problem over polynomial rings.", url="https://csrc.nist.gov/pubs/fips/203/final"),
          ],
          verdict="b", gap_basis="founding (1871) to first cryptographic use (1978)", gap_years=107,
          confidence="medium-high"),
@@ -128,7 +129,7 @@ FIELDS = [
          cluster="numtheory",
          one_liner="Solution sets of polynomial systems — varieties, and in the modern language, schemes.",
          founded=dict(year=1830, event="Abel & Jacobi's elliptic-integral theory, the ancestor of elliptic curves (classical algebraic geometry itself traces further back, to 17th-century curve classification)"),
-         dismissed=dict(kind="self-description", who="Koblitz, Menezes & Vanstone (retrospective)", year=2008,
+         dismissed=dict(kind="self-description", who="Ann Hibner Koblitz, Neal Koblitz & Alfred Menezes (retrospective)", year=2008,
              quote="“Research into number theoretic questions concerning elliptic curves was originally pursued mainly for aesthetic reasons.”",
              source="Koblitz et al., IACR ePrint 2008/390.",
              note="A 2008/2011 retrospective characterization by ECC's own historians, not a contemporaneous 19th-century dismissal. No credible dismissal of algebraic geometry more broadly — including the ultra-abstract Grothendieck/scheme-theoretic reformulation of the 1950s–60s — was found.",
@@ -215,7 +216,7 @@ FIELDS = [
          dismissed=None,
          dismissed_note="Weaker than it's often told. Burnside's 1897 preface to *Theory of Groups of Finite Order* explains an omission — given the results then known to him, he found it hard to name a result more directly reached via linear-transformation groups than via substitution groups — which is a narrow, time-qualified editorial judgment, not a forecast that the topic would never produce anything. Scholarship also cautions he may not even have meant Frobenius's brand-new representation theory: the relevant Frobenius paper connecting character theory to linear substitutions appears to have followed Burnside's preface within the same year. By the 1911 second edition, new results had changed Burnside's assessment. Separately, physicists in the late 1920s coined “Gruppenpest” (the group-plague) for group-representation methods arriving in quantum mechanics, commonly traced to Paul Ehrenfest's circle in Leiden (1928) — but Ehrenfest himself did not reject the theory and ran seminars on it; the episode was a mix of enthusiasm, skepticism, fashion, and pedagogical frustration, not a clean dismissal.",
          applications=[
-             dict(name="Crystallography", year=1891, note="Fedorov & Schoenflies's 230 space groups classify every possible crystal structure.", url="https://en.wikipedia.org/wiki/Space_group"),
+             dict(name="Crystallography", year=1891, note="Fedorov and Schoenflies independently enumerated the 230 three-dimensional space-group types, which classify the possible symmetries of periodic crystal structures.", url="https://en.wikipedia.org/wiki/Space_group"),
              dict(name="Quantum mechanics", year=1928, note="Wigner, Weyl, Hund apply group representation theory to QM, amid the mixed reception nicknamed “Gruppenpest.”", url="https://en.wikipedia.org/wiki/Standard_Model"),
              dict(name="The Standard Model", year=1973, note="Gauge symmetry, SU(3)×SU(2)×U(1), is representation theory.", url="https://en.wikipedia.org/wiki/Standard_Model"),
          ],
@@ -229,9 +230,10 @@ FIELDS = [
          dismissed=None,
          dismissed_note="Real controversy existed (Borel's constructivist objections, du Bois-Reymond's rigor arguments) but concerned legitimacy, not usefulness.",
          applications=[
-             dict(name="Axiomatic probability theory", year=1933, note="Kolmogorov's Grundbegriffe — the now-universal measure-theoretic foundation of probability.", url="https://en.wikipedia.org/wiki/Probability_axioms"),
+             dict(name="Measure-theoretic probability", year=1909, note="Borel's strong law for coin tossing brings countable additivity into probability. Documented in Shafer and Vovk, *The Sources of Kolmogorov's Grundbegriffe*, Statistical Science 21 (2006).", url="https://doi.org/10.1214/088342305000000467"),
+             dict(name="Axiomatic probability theory", year=1933, note="Kolmogorov's Grundbegriffe — the synthesis that became the standard measure-theoretic foundation of probability.", url="https://en.wikipedia.org/wiki/Probability_axioms"),
          ],
-         verdict="b", gap_basis="founding (1902) to Kolmogorov's axiomatization (1933)", gap_years=31,
+         verdict="b", gap_basis="founding (1902) to Borel's strong law (1909)", gap_years=7,
          confidence="medium-high"),
 
     dict(slug="complex-analysis", msc="30", name="Complex analysis",
@@ -698,7 +700,9 @@ def render_ledger():
     stats = compute_stats()
     rows = []
     for f in sorted(FIELDS, key=lambda f: f["msc"]):
-        dismissed_str = "Yes" if f.get("dismissed") else "No"
+        # A rigor critique is recorded in the field narrative but is not a dismissal of usefulness.
+        d = f.get("dismissed")
+        dismissed_str = "Yes" if d and d.get("kind") != "rigor-rejection" else "No"
         if f["verdict"] == "s":
             app_str = "Yes (specialized)"
         elif f["verdict"] == "d":
@@ -749,6 +753,7 @@ def render_ledger():
       <div class="stat"><div class="n">{stats['dismissed_applied']}</div><div class="label">named dismissal, later applied</div></div>
       <div class="stat"><div class="n">{stats['never_dismissed_applied']}</div><div class="label">never dismissed, applied anyway</div></div>
       <div class="stat"><div class="n">{stats['specialized']}</div><div class="label">real application, but specialized</div></div>
+      <div class="stat"><div class="n">{stats['mixed']}</div><div class="label">mixed, fits no single pattern</div></div>
       <div class="stat"><div class="n zero">{stats['no_application']}</div><div class="label">no external application documented</div></div>
     </div>
 
@@ -850,6 +855,8 @@ def render_sources():
         items = []
         if f.get("dismissed"):
             items.append(f"<li>{md(f['dismissed'].get('source',''))}</li>")
+        if f.get("dismissed_note_source"):
+            items.append(f"<li>{md(f['dismissed_note_source'])}</li>")
         for a in (f.get("applications") or []):
             if a.get("url"):
                 items.append(f"<li>{a['name']} ({a['year']}): <a href=\"{a['url']}\">{a['url']}</a></li>")
