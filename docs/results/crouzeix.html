@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pure: A function of a matrix is at most twice its size on the numerical range</title>
+  <meta name="description" content="The Crouzeix conjecture of 2004 holds with the sharp constant 2, for every matrix and every bounded operator.">
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-inner">
+      <a class="brand" href="../index.html">pure</a>
+      <nav>
+        <a href="../intro.html">Methodology</a>
+        <span class="menu" tabindex="0">
+          <span class="menu-label">Explore</span>
+          <span class="drop">
+            <span class="drop-panel">
+              <a href="../ledger.html">The Ledger</a>
+              <a href="../map.html">Map</a>
+              <a href="../timeline.html">Timeline</a>
+              <a href="../survival.html">Survival</a>
+            </span>
+          </span>
+        </span>
+        <a href="../abstraction.html">Abstraction</a>
+        <a href="../results.html">OpenAI results</a>
+        <a href="../papers.html">Papers</a>
+        <a href="../sources.html">Sources</a>
+        <a href="https://github.com/microprediction/pure">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <span class="field-tag muted">OpenAI release &middot; No. 325 &middot; Functional analysis</span>
+    <h1>A function of a matrix is at most twice its size on the numerical range</h1>
+    <p class="subtitle">The Crouzeix conjecture of 2004 holds with the sharp constant 2, for every matrix and every bounded operator.</p>
+
+    <h2>The result in plain terms</h2>
+    <p>
+      Numerical computing applies functions to matrices all the time. An iterative solver applies a
+      polynomial of the matrix to a starting error. A time-stepping scheme applies a rational function of it
+      once per step. The practical question is how large the result can be, because that size is the error
+      or the growth.
+    </p>
+    <p>
+      For a symmetric matrix the eigenvalues answer the question: the size of $f(A)$ is the largest value
+      of $|f|$ on the eigenvalues. For a matrix that is not symmetric, the eigenvalues can mislead badly.
+      A matrix whose eigenvalues are all zero need not be zero, and a system whose eigenvalues all say
+      "decay" can grow a thousandfold before it decays.
+    </p>
+    <p>
+      The <em>numerical range</em> $W(A)$ is a safer region to look at. It is the set of numbers $x^*Ax$
+      over all unit vectors $x$. It is a convex region of the complex plane, it contains the eigenvalues,
+      and its outline can be computed from a few dozen symmetric eigenvalue problems. The theorem says
+    </p>
+    <p>$$\lVert f(A)\rVert \;\le\; 2\,\max_{z\in W(A)} |f(z)|$$</p>
+    <p>
+      for every square matrix $A$ of any size and every polynomial $f$, and by extension every function
+      analytic near $W(A)$. A function of a matrix is never more than twice as large as the function is on
+      the numerical range. The same bound holds when the coefficients of $f$ are themselves matrices, and
+      for bounded operators in infinite dimensions.
+    </p>
+    <p>
+      The constant 2 cannot be lowered. The matrix $\begin{pmatrix}0&amp;2\\0&amp;0\end{pmatrix}$ has
+      norm 2, its numerical range is the unit disc, and $f(z)=z$ is at most 1 there.
+    </p>
+
+    <h2>What was known</h2>
+    <p>
+      Michel Crouzeix conjectured the constant 2 in 2004 and proved the bound with 11.08 in place of 2 in
+      2007. In 2017 Crouzeix and C&eacute;sar Palencia brought the constant down to $1+\sqrt2\approx 2.414$.
+      The gap between 2.414 and 2 stayed open, with the conjecture confirmed only for special classes of
+      matrices.
+    </p>
+
+    <h2>Why it is usable today</h2>
+    <p>
+      The theorem is an inequality. There is no algorithm to implement and no running time to worry about.
+      Every published estimate that carries the factor $1+\sqrt2$ now holds with 2, a tightening of 17 per cent.
+    </p>
+    <ul>
+      <li>
+        <em>Iterative solvers.</em> After $k$ steps of GMRES on $Ax=b$, the residual satisfies
+        $\lVert r_k\rVert/\lVert r_0\rVert \le 2\min_p \max_{z\in W(A)}|p(z)|$, the minimum being over
+        polynomials of degree $k$ with $p(0)=1$. The right-hand side is a problem about one complex
+        variable on a convex region.
+      </li>
+      <li>
+        <em>Functions of matrices.</em> If a polynomial or rational function $p$ approximates $f$ to
+        within $\delta$ on $W(A)$, then $p(A)$ approximates $f(A)$ to within $2\delta$. Any scalar
+        approximation result on a convex region becomes a matrix result at the cost of a factor of two.
+        Rational approximations to the matrix exponential are analysed this way.
+      </li>
+      <li>
+        <em>Time stepping.</em> A scheme that advances a linear system by $u_{n+1}=r(hA)u_n$ is stable
+        when $|r(hz)|\le 1$ on $W(A)$, with the solution bounded by twice its starting size for all time.
+      </li>
+    </ul>
+
+    <h2>What it does not give</h2>
+    <p>
+      The gain over the 2017 bound is a constant factor of 1.2, and no computation becomes faster.
+      Bounds built on the numerical range are weak when the numerical range is much larger than the
+      region where the eigenvalues sit, and the GMRES bound says nothing when $W(A)$ contains zero.
+      Those limits belong to the numerical range and are unchanged.
+    </p>
+
+    <h2>Scores and sources</h2>
+    <p>
+      Applied score 5 of 5, difficulty score 4 of 5. The problem dates from about 2004.
+      A main theorem of this family is in OpenAI's Lean formalization catalogue. The scores take the theorem as stated.
+    </p>
+    <ul>
+      <li><a href="https://github.com/openai/math/blob/main/preprints/A-direct-proof-of-the-complete-Crouzeix-inequality-September-26-2026/paper.pdf">A direct proof of the complete Crouzeix inequality</a></li>
+      <li><a href="https://github.com/openai/math/blob/main/preprints/The-complete-Crouzeix-theorem-September-23-2026/paper.pdf">The complete Crouzeix theorem: optimal similarity and a common positive boundary representation</a></li>
+    </ul>
+  </main>
+
+  <footer>
+    One of the <a href="../results.html">372 result families</a> in the OpenAI release &mdash;
+    <a href="https://github.com/microprediction/pure">microprediction/pure</a>.
+  </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script>
+renderMathInElement(document.querySelector('main'), {
+  delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}],
+  throwOnError: false });
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+    <h2>The result in plain terms</h2>
+    <p>
+      Models in chemistry, cell biology and epidemiology are often written as reactions: species combine
+      and convert at rates proportional to the product of their concentrations. That is mass action, and
+      it turns a reaction diagram into a system of differential equations. The rate constants are rarely
+      known. A modeller wants to know what the diagram alone guarantees.
+    </p>
+    <p>
+      Two things can go wrong in such a model. A species can run down towards zero, or a concentration can
+      grow without limit. Checking by simulation means trying one set of rates and one starting point at
+      a time.
+    </p>
+    <p>
+      Write each side of each reaction as a node, such as <em>A + B</em> or <em>2C</em>, and each
+      reaction as an arrow between nodes. The network is <em>weakly reversible</em> when every arrow lies
+      on a closed loop of arrows. <em>A + B &rarr; C &rarr; A + B</em> qualifies, and so does
+      <em>A &rarr; B &rarr; C &rarr; A</em>. The theorem says that for a weakly reversible network, with
+      any positive rate constants and any positive starting concentrations, every concentration
+      eventually lies between a positive floor and a finite ceiling and stays there. The floor and
+      ceiling depend on the network, the rates and the conserved totals. They do not depend on where the
+      system started. Nothing dies out and nothing blows up.
+    </p>
+
+    <h2>What was known</h2>
+    <p>
+      The structural theory began with Horn, Jackson and Feinberg in 1972, who showed that networks
+      satisfying a balance condition on the rates settle to a unique equilibrium. Weak reversibility is a
+      condition on the diagram alone, and whether it prevents extinction was left open. Craciun, Nazarov
+      and Pantea proved the bounded-and-persistent conclusion for two species in 2013. Gopalkrishnan,
+      Miller and Shiu proved it in 2014 for networks whose diagram is a single connected piece, and
+      Boros and Hofbauer gave another proof of that case in 2020. Networks with several pieces and more
+      than two species were not covered.
+    </p>
+
+    <h2>Why it is usable today</h2>
+    <p>
+      The hypothesis is checked on the diagram. Finding whether every arrow lies on a loop is a standard
+      graph computation that takes time proportional to the size of the network, and for a small model
+      it is done by eye. No rate constant has to be measured and no simulation run.
+    </p>
+    <ul>
+      <li>
+        <em>Screening models.</em> A weakly reversible model cannot lose a species or diverge under
+        any parameter fit, so those failure modes need not be searched for.
+      </li>
+      <li>
+        <em>Designing circuits.</em> A synthetic reaction network built to be weakly reversible carries
+        the guarantee whatever rates the laboratory achieves.
+      </li>
+      <li>
+        <em>Reading failures.</em> The Lotka&ndash;Volterra predator and prey reactions
+        <em>X &rarr; 2X</em>, <em>X + Y &rarr; 2Y</em>, <em>Y &rarr; &empty;</em> are not weakly
+        reversible, and their populations cycle as close to zero as the starting point dictates.
+      </li>
+    </ul>
+
+    <h2>What it does not give</h2>
+    <p>
+      Many working models contain one-way steps, such as degradation with no matching production, and
+      fall outside the hypothesis. The theorem is for fixed rate constants and for the differential
+      equation. In a cell with a handful of molecules, the count of a species can still hit zero for a time. Staying in a bounded region is weaker than settling down: a weakly reversible
+      network can oscillate for ever. The size of the floor and ceiling is not given by a formula.
+    </p>

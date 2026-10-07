@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Generates docs/results-data.js and docs/results.html from
+Generates docs/results-data.js, docs/results.html and docs/results/<slug>.html from
 scripts/openai_math/catalog.json (a parsed snapshot of github.com/openai/math,
 CONTENTS.md + overview.tex + lean/formalization.yaml, taken 2026-10-07) and
 scripts/openai_math/scores.tsv (the applied and difficulty scores).
@@ -18,13 +18,39 @@ from build_site import NAV, DOCS
 HERE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "openai_math")
 SOURCE_REPO = "https://github.com/openai/math"
 
+# Families with a plain-language page: scripts/openai_math/pages/<id>.html holds
+# the body, written to docs/results/<slug>.html.
+PAGES = {
+    "325": dict(
+        slug="crouzeix",
+        title="A function of a matrix is at most twice its size on the numerical range",
+        subtitle="The Crouzeix conjecture of 2004 holds with the sharp constant 2, for every matrix and every bounded operator.",
+    ),
+    "131": dict(
+        slug="switch-chain",
+        title="Edge swapping reaches a uniformly random network for every degree sequence",
+        subtitle="The swap process used to build null-model networks mixes in at most 2n<sup>8</sup> steps, with no condition on the degrees.",
+    ),
+    "149": dict(
+        slug="permanence",
+        title="A reaction network in which every reaction lies on a loop never loses a species",
+        subtitle="Weakly reversible mass-action systems stay between fixed positive bounds for every choice of rate constants.",
+    ),
+}
+NUMBER_WORDS = {1: "One", 2: "Two", 3: "Three", 4: "Four", 5: "Five"}
+LEAN_TEXT = {
+    2: "A main theorem of this family is in OpenAI's Lean formalization catalogue.",
+    1: "OpenAI's Lean formalization covers supporting statements of this family, not the main theorem.",
+    0: "This family has no Lean formalization.",
+}
+
 # Base URL of the vote service (worker/). Empty string hides the vote column.
 VOTE_API = ""
 
 APPLIED_LABELS = {
-    5: "An algorithm, bound or hardness result that practitioners would cite directly.",
-    4: "Settles a question inside a field with working applications, with a short path to methods.",
-    3: "A sharp tool or limit with a plausible but indirect path.",
+    5: "Usable as stated today: an inequality to quote, a guarantee for a method already in use, or a condition checked by hand.",
+    4: "Settles a question practitioners face, with a short path to methods or a clear change in where effort goes.",
+    3: "A sharp tool or limit with an indirect path, including algorithms that are polynomial on paper and out of reach in code.",
     2: "A path exists only through further theory, or the result confirms what practice already assumes.",
     1: "No route to computation, algorithms or modelling is visible today.",
 }
@@ -68,6 +94,7 @@ def load():
             lean=2 if f["lean_main"] else 1 if f["lean"] else 0,
             applied=a, difficulty=d, year=y, note=html.escape(note),
             papers=[dict(title=clean(p["title"]), path=p["path"]) for p in f["papers"]],
+            page=PAGES[f["id"]]["slug"] if f["id"] in PAGES else None,
         ))
     return rows
 
@@ -97,6 +124,77 @@ def rubric(labels):
     return "\n".join(f"        <li><em>{k}.</em> {labels[k]}</li>" for k in range(5, 0, -1))
 
 
+def top_list(rows):
+    by_id = {r["id"]: r for r in rows}
+    return "\n".join(
+        f'        <li><a href="./results/{p["slug"]}.html">{p["title"]}</a> (No. {fid}, '
+        f'{html.escape(by_id[fid]["subject"]).lower()}).</li>'
+        for fid, p in PAGES.items())
+
+
+def render_page(r):
+    p = PAGES[r["id"]]
+    assert r["applied"] == 5, "plain-language pages are for results scored 5"
+    body = open(os.path.join(HERE, "pages", r["id"] + ".html"), encoding="utf-8").read()
+    papers = "\n".join(
+        f'      <li><a href="{SOURCE_REPO}/blob/main/{html.escape(q["path"])}">{q["title"]}</a></li>'
+        for q in r["papers"])
+    posed = f" The problem dates from about {r['year']}." if r["year"] else ""
+    desc = html.escape(re.sub(r"<[^>]+>|\$", "", p["subtitle"]), quote=True)
+    return f"""<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pure: {html.escape(p["title"])}</title>
+  <meta name="description" content="{desc}">
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+</head>
+<body>
+{NAV.format(root="../")}
+  <main>
+    <span class="field-tag muted">OpenAI release &middot; No. {r["id"]} &middot; {html.escape(r["subject"])}</span>
+    <h1>{p["title"]}</h1>
+    <p class="subtitle">{p["subtitle"]}</p>
+
+{body}
+    <h2>Scores and sources</h2>
+    <p>
+      Applied score {r["applied"]} of 5, difficulty score {r["difficulty"]} of 5.{posed}
+      {LEAN_TEXT[r["lean"]]} The scores take the theorem as stated.
+    </p>
+    <ul>
+{papers}
+    </ul>
+  </main>
+
+  <footer>
+    One of the <a href="../results.html">{{n}} result families</a> in the OpenAI release &mdash;
+    <a href="https://github.com/microprediction/pure">microprediction/pure</a>.
+  </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script>
+renderMathInElement(document.querySelector('main'), {{
+  delimiters: [{{left: '$$', right: '$$', display: true}}, {{left: '$', right: '$', display: false}}],
+  throwOnError: false }});
+</script>
+</body>
+</html>
+"""
+
+
+def write_pages(rows):
+    out = os.path.join(DOCS, "results")
+    os.makedirs(out, exist_ok=True)
+    for r in rows:
+        if r["id"] in PAGES:
+            with open(os.path.join(out, PAGES[r["id"]]["slug"] + ".html"), "w", encoding="utf-8") as fh:
+                fh.write(render_page(r).replace("{n}", str(len(rows))))
+
+
 def render(rows):
     n = len(rows)
     papers = sum(len(r["papers"]) for r in rows)
@@ -106,6 +204,8 @@ def render(rows):
     high = sum(r["applied"] >= 4 for r in rows)
     one = sum(r["applied"] == 1 for r in rows)
     hard = sum(r["difficulty"] == 5 for r in rows)
+    five = sum(r["applied"] == 5 for r in rows)
+    assert {r["id"] for r in rows if r["applied"] == 5} == set(PAGES)
     tcs_high = sum(r["applied"] >= 4 and r["subject"] == "Theoretical computer science" for r in rows)
     hard_low = sum(r["difficulty"] == 5 and r["applied"] <= 2 for r in rows)
     subjects = sorted({r["subject"] for r in rows})
@@ -186,6 +286,19 @@ def render(rows):
     <p>
       A score of 1 describes today. <a href="./ledger.html">The Ledger</a> lists fields that sat at that
       point for a century before an application arrived.
+    </p>
+
+    <h2>Usable today</h2>
+    <p>
+      {NUMBER_WORDS[five]} results score 5. Each can be used as stated, with no new algorithm to implement.
+    </p>
+    <ul>
+{top_list(rows)}
+    </ul>
+    <p>
+      Several results that read as faster algorithms score 3 or lower. The manuscripts on contingency tables,
+      edit distance and log-concave sampling state that their bounds are asymptotic or are not practical
+      running times, and almost-linear matching is built on almost-linear maximum flow.
     </p>
 
     <h2>Difficulty score</h2>
@@ -311,7 +424,8 @@ function voteCell(r) {{
 function detail(r) {{
   const papers = r.papers.map(p => '<li><a href="' + SRC + '/blob/main/' + encodeURI(p.path) + '">' + p.title + '</a></li>').join('');
   const lean = r.lean ? ' <a href="' + SRC + '/blob/main/lean/docs/' + r.id + '.md">Scope of the Lean formalization</a>.' : '';
-  return '<tr class="detail"><td colspan="8"><p>' + r.desc + '</p><p><em>Applied route.</em> ' + r.note + lean +
+  const page = r.page ? ' <a href="./results/' + r.page + '.html">In plain terms</a>.' : '';
+  return '<tr class="detail"><td colspan="8"><p>' + r.desc + '</p><p><em>Applied route.</em> ' + r.note + page + lean +
     '</p><ul>' + papers + '</ul></td></tr>';
 }}
 function render() {{
@@ -384,4 +498,5 @@ loadVotes();
 if __name__ == "__main__":
     rows = load()
     write_data(rows)
+    write_pages(rows)
     print(json.dumps(render(rows), indent=2))

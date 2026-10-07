@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pure: Edge swapping reaches a uniformly random network for every degree sequence</title>
+  <meta name="description" content="The swap process used to build null-model networks mixes in at most 2n8 steps, with no condition on the degrees.">
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-inner">
+      <a class="brand" href="../index.html">pure</a>
+      <nav>
+        <a href="../intro.html">Methodology</a>
+        <span class="menu" tabindex="0">
+          <span class="menu-label">Explore</span>
+          <span class="drop">
+            <span class="drop-panel">
+              <a href="../ledger.html">The Ledger</a>
+              <a href="../map.html">Map</a>
+              <a href="../timeline.html">Timeline</a>
+              <a href="../survival.html">Survival</a>
+            </span>
+          </span>
+        </span>
+        <a href="../abstraction.html">Abstraction</a>
+        <a href="../results.html">OpenAI results</a>
+        <a href="../papers.html">Papers</a>
+        <a href="../sources.html">Sources</a>
+        <a href="https://github.com/microprediction/pure">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <span class="field-tag muted">OpenAI release &middot; No. 131 &middot; Theoretical computer science</span>
+    <h1>Edge swapping reaches a uniformly random network for every degree sequence</h1>
+    <p class="subtitle">The swap process used to build null-model networks mixes in at most 2n<sup>8</sup> steps, with no condition on the degrees.</p>
+
+    <h2>The result in plain terms</h2>
+    <p>
+      A network analyst who finds many triangles in a social network, or a recurring wiring pattern in a
+      gene network, has to ask whether the finding is surprising. The standard comparison is against
+      random networks in which every node keeps exactly the number of connections it has in the real one.
+      If such random networks show the same pattern, the pattern follows from the degrees alone.
+    </p>
+    <p>
+      The usual way to produce such a network is edge swapping. Start from the real network. Pick two
+      edges, <em>a&ndash;b</em> and <em>c&ndash;d</em>, and replace them by <em>a&ndash;c</em> and
+      <em>b&ndash;d</em>, unless that would duplicate an existing edge or join a node to itself. Every node keeps its degree.
+      Repeat many times. This is <code>double_edge_swap</code> in NetworkX and degree-preserving
+      <code>rewire</code> in igraph.
+    </p>
+    <p>
+      The method rests on a hope: that after a reasonable number of swaps the network is a fair draw
+      from <em>all</em> networks with those degrees, each equally likely. The process could instead stay
+      for an astronomically long time in one corner of the possibilities, and the comparison would be biased
+      with no outward sign. The theorem rules that out. For every list of degrees that some simple network
+      can have, the swap process is within a fixed distance of the uniform distribution after at most
+      $2n^8$ steps, where $n$ is the number of nodes.
+    </p>
+
+    <h2>What was known</h2>
+    <p>
+      Kannan, Tetali and Vempala posed the question in 1999. Cooper, Dyer and Greenhill proved polynomial
+      mixing in 2007 when every node has the same degree. Later work by Greenhill and Sfragara, and by
+      Erd&#337;s, Greenhill, Mezei, Mikl&oacute;s, Solt&eacute;sz and Soukup, extended this to families
+      of degree sequences satisfying a stability condition. A degree sequence outside those families had no guarantee.
+    </p>
+
+    <h2>Why it is usable today</h2>
+    <p>
+      The algorithm is the one already installed. The theorem adds the missing statement about it: swap
+      long enough and the sample is uniform, with no condition on the degrees to check first. An analyst
+      no longer has to ask whether a particular network falls inside a proved class.
+    </p>
+    <p>
+      The manuscript also gives a sampler whose output is <em>exactly</em> uniform, with expected
+      polynomial running time, for cases where an approximate draw is not acceptable.
+    </p>
+
+    <h2>What it does not give</h2>
+    <p>
+      The bound $2n^8$ is not a stopping rule. For a thousand nodes it is $2\times10^{24}$ steps.
+      Practice runs a small multiple of the number of edges, often ten to a hundred swaps per edge, and
+      the theorem does not certify that budget. It certifies that the process has no hidden exponential
+      trap.
+    </p>
+    <p>
+      The proof analyses a version that proposes four nodes at random, where toolkits propose two edges.
+      Both have the uniform distribution as their limit; the speeds differ. The theorem covers simple
+      undirected networks. The directed and bipartite forms of the conjecture are separate statements.
+    </p>
+
+    <h2>Scores and sources</h2>
+    <p>
+      Applied score 5 of 5, difficulty score 4 of 5. The problem dates from about 1999.
+      OpenAI's Lean formalization covers supporting statements of this family, not the main theorem. The scores take the theorem as stated.
+    </p>
+    <ul>
+      <li><a href="https://github.com/openai/math/blob/main/preprints/Polynomial-Mixing-of-the-Switch-Chain-for-Every-Graphical-Degree-Sequence-September-25-2026/main.pdf">Polynomial mixing of the switch chain for every graphical degree sequence</a></li>
+    </ul>
+  </main>
+
+  <footer>
+    One of the <a href="../results.html">372 result families</a> in the OpenAI release &mdash;
+    <a href="https://github.com/microprediction/pure">microprediction/pure</a>.
+  </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script>
+renderMathInElement(document.querySelector('main'), {
+  delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}],
+  throwOnError: false });
+</script>
+</body>
+</html>

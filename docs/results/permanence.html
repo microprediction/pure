@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pure: A reaction network in which every reaction lies on a loop never loses a species</title>
+  <meta name="description" content="Weakly reversible mass-action systems stay between fixed positive bounds for every choice of rate constants.">
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-inner">
+      <a class="brand" href="../index.html">pure</a>
+      <nav>
+        <a href="../intro.html">Methodology</a>
+        <span class="menu" tabindex="0">
+          <span class="menu-label">Explore</span>
+          <span class="drop">
+            <span class="drop-panel">
+              <a href="../ledger.html">The Ledger</a>
+              <a href="../map.html">Map</a>
+              <a href="../timeline.html">Timeline</a>
+              <a href="../survival.html">Survival</a>
+            </span>
+          </span>
+        </span>
+        <a href="../abstraction.html">Abstraction</a>
+        <a href="../results.html">OpenAI results</a>
+        <a href="../papers.html">Papers</a>
+        <a href="../sources.html">Sources</a>
+        <a href="https://github.com/microprediction/pure">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <span class="field-tag muted">OpenAI release &middot; No. 149 &middot; Dynamical systems and ergodic theory</span>
+    <h1>A reaction network in which every reaction lies on a loop never loses a species</h1>
+    <p class="subtitle">Weakly reversible mass-action systems stay between fixed positive bounds for every choice of rate constants.</p>
+
+    <h2>The result in plain terms</h2>
+    <p>
+      Models in chemistry, cell biology and epidemiology are often written as reactions: species combine
+      and convert at rates proportional to the product of their concentrations. That is mass action, and
+      it turns a reaction diagram into a system of differential equations. The rate constants are rarely
+      known. A modeller wants to know what the diagram alone guarantees.
+    </p>
+    <p>
+      Two things can go wrong in such a model. A species can run down towards zero, or a concentration can
+      grow without limit. Checking by simulation means trying one set of rates and one starting point at
+      a time.
+    </p>
+    <p>
+      Write each side of each reaction as a node, such as <em>A + B</em> or <em>2C</em>, and each
+      reaction as an arrow between nodes. The network is <em>weakly reversible</em> when every arrow lies
+      on a closed loop of arrows. <em>A + B &rarr; C &rarr; A + B</em> qualifies, and so does
+      <em>A &rarr; B &rarr; C &rarr; A</em>. The theorem says that for a weakly reversible network, with
+      any positive rate constants and any positive starting concentrations, every concentration
+      eventually lies between a positive floor and a finite ceiling and stays there. The floor and
+      ceiling depend on the network, the rates and the conserved totals. They do not depend on where the
+      system started. Nothing dies out and nothing blows up.
+    </p>
+
+    <h2>What was known</h2>
+    <p>
+      The structural theory began with Horn, Jackson and Feinberg in 1972, who showed that networks
+      satisfying a balance condition on the rates settle to a unique equilibrium. Weak reversibility is a
+      condition on the diagram alone, and whether it prevents extinction was left open. Craciun, Nazarov
+      and Pantea proved the bounded-and-persistent conclusion for two species in 2013. Gopalkrishnan,
+      Miller and Shiu proved it in 2014 for networks whose diagram is a single connected piece, and
+      Boros and Hofbauer gave another proof of that case in 2020. Networks with several pieces and more
+      than two species were not covered.
+    </p>
+
+    <h2>Why it is usable today</h2>
+    <p>
+      The hypothesis is checked on the diagram. Finding whether every arrow lies on a loop is a standard
+      graph computation that takes time proportional to the size of the network, and for a small model
+      it is done by eye. No rate constant has to be measured and no simulation run.
+    </p>
+    <ul>
+      <li>
+        <em>Screening models.</em> A weakly reversible model cannot lose a species or diverge under
+        any parameter fit, so those failure modes need not be searched for.
+      </li>
+      <li>
+        <em>Designing circuits.</em> A synthetic reaction network built to be weakly reversible carries
+        the guarantee whatever rates the laboratory achieves.
+      </li>
+      <li>
+        <em>Reading failures.</em> The Lotka&ndash;Volterra predator and prey reactions
+        <em>X &rarr; 2X</em>, <em>X + Y &rarr; 2Y</em>, <em>Y &rarr; &empty;</em> are not weakly
+        reversible, and their populations cycle as close to zero as the starting point dictates.
+      </li>
+    </ul>
+
+    <h2>What it does not give</h2>
+    <p>
+      Many working models contain one-way steps, such as degradation with no matching production, and
+      fall outside the hypothesis. The theorem is for fixed rate constants and for the differential
+      equation. In a cell with a handful of molecules, the count of a species can still hit zero for a time. Staying in a bounded region is weaker than settling down: a weakly reversible
+      network can oscillate for ever. The size of the floor and ceiling is not given by a formula.
+    </p>
+
+    <h2>Scores and sources</h2>
+    <p>
+      Applied score 5 of 5, difficulty score 4 of 5. The problem dates from about 1974.
+      OpenAI's Lean formalization covers supporting statements of this family, not the main theorem. The scores take the theorem as stated.
+    </p>
+    <ul>
+      <li><a href="https://github.com/openai/math/blob/main/preprints/Uniform-Permanence-in-Weakly-Reversible-Mass-Action-Systems-October-5-2026/permanence.pdf">Uniform Permanence in Weakly Reversible Mass-Action Systems</a></li>
+      <li><a href="https://github.com/openai/math/blob/main/preprints/Boundedness-and-persistence-of-weakly-reversible-mass-action-systems-September-25-2026/paper.pdf">Boundedness and persistence of weakly reversible mass-action systems</a></li>
+    </ul>
+  </main>
+
+  <footer>
+    One of the <a href="../results.html">372 result families</a> in the OpenAI release &mdash;
+    <a href="https://github.com/microprediction/pure">microprediction/pure</a>.
+  </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script>
+renderMathInElement(document.querySelector('main'), {
+  delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}],
+  throwOnError: false });
+</script>
+</body>
+</html>
