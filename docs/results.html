@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pure: The OpenAI release</title>
+  <meta name="description" content="The 372 result families OpenAI published on 6 October 2026, each scored for likely effect on applied mathematics and algorithms and for the effort the problem had absorbed.">
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+  <style>
+    main { max-width: 1100px; }
+    table.impl th[data-key] { cursor: pointer; user-select: none; white-space: nowrap; }
+    table.impl th[data-key]:hover { color: var(--ink); }
+    table.impl th.sort-asc::after { content: " \25B2"; }
+    table.impl th.sort-desc::after { content: " \25BC"; }
+    table.xtab { width: auto; }
+    table.xtab td, table.xtab th { text-align: right; padding: 7px 16px; }
+    .controls { display: flex; gap: 10px 14px; flex-wrap: wrap; align-items: center; margin: 14px 0; font-size: 0.9rem; color: var(--muted); }
+    .controls select, .controls input { font: inherit; padding: 5px 8px; border: 1px solid var(--border); border-radius: 6px; background: #fff; }
+    .controls input { min-width: 220px; }
+    #results-table td { padding: 9px 10px; }
+    #results-table td.num { text-align: center; white-space: nowrap; }
+    #results-table tr.row { cursor: pointer; }
+    #results-table tr.row:hover td { background: #f6f6fb; }
+    #results-table td.title { font-weight: 400; }
+    #results-table tbody td:first-child { color: var(--muted); font-weight: 400; }
+    .score { display: inline-block; min-width: 1.7em; padding: 1px 0; border-radius: 4px; text-align: center; font-weight: 600; }
+    .a1 { color: var(--faint); } .a2 { background: #f1f0fb; } .a3 { background: #dedbfa; }
+    .a4 { background: #a9a1f7; } .a5 { background: var(--accent); color: #fff; }
+    .d1, .d2 { color: var(--faint); } .d3 { background: #eeeeee; } .d4 { background: #cfcfd6; }
+    .d5 { background: var(--ink); color: #fff; }
+    .lean { font-size: 0.8rem; color: var(--muted); white-space: nowrap; }
+    #results-table tbody tr.detail td { background: #fff; padding: 4px 22px 18px 58px; font-size: 0.93rem;
+      white-space: normal; color: var(--text); font-weight: 400; }
+    tr.detail p { margin: 0.5em 0; }
+    tr.detail ul { margin: 0.3em 0; }
+    tr.detail li { margin-bottom: 3px; }
+    .vote { white-space: nowrap; font-size: 0.85rem; }
+    .vote button { border: 1px solid var(--border); background: #fff; border-radius: 4px; cursor: pointer; padding: 0 5px; color: var(--muted); }
+    .vote button.on { background: var(--ink); color: #fff; border-color: var(--ink); }
+    .count { color: var(--muted); font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-inner">
+      <a class="brand" href="./index.html">pure</a>
+      <nav>
+        <a href="./intro.html">Methodology</a>
+        <span class="menu" tabindex="0">
+          <span class="menu-label">Explore</span>
+          <span class="drop">
+            <span class="drop-panel">
+              <a href="./ledger.html">The Ledger</a>
+              <a href="./map.html">Map</a>
+              <a href="./timeline.html">Timeline</a>
+              <a href="./survival.html">Survival</a>
+            </span>
+          </span>
+        </span>
+        <a href="./abstraction.html">Abstraction</a>
+        <a href="./results.html">OpenAI results</a>
+        <a href="./papers.html">Papers</a>
+        <a href="./sources.html">Sources</a>
+        <a href="https://github.com/microprediction/pure">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h1>The OpenAI release</h1>
+    <p class="subtitle">372 result families published by OpenAI on 6 October 2026, each scored for its likely effect on applied mathematics and algorithms and for the effort the problem had absorbed.</p>
+
+    <p class="lead">
+      The <a href="https://github.com/openai/math">collection</a> holds 722 manuscripts written by an unreleased OpenAI model.
+      Its README reports about 4,000 problems posed and about three hours of compute per result.
+      127 families have a main theorem in the Lean formalization catalogue, 108 have Lean
+      proofs of supporting statements only, and 137 have none.
+    </p>
+
+    <div class="scoreboard">
+      <div class="stat"><div class="n">372</div><div class="label">result families</div></div>
+      <div class="stat"><div class="n">22</div><div class="label">applied score 4 or 5</div></div>
+      <div class="stat"><div class="n">248</div><div class="label">applied score 1</div></div>
+      <div class="stat"><div class="n">105</div><div class="label">difficulty score 5</div></div>
+      <div class="stat"><div class="n">127</div><div class="label">main theorem in Lean catalogue</div></div>
+    </div>
+
+    <h2>Applied score</h2>
+    <p>
+      The applied score rates the route from the theorem to a computation, an algorithm or a model.
+      It takes each result as stated and says nothing about whether the proof is correct.
+    </p>
+    <ul>
+        <li><em>5.</em> An algorithm, bound or hardness result that practitioners would cite directly.</li>
+        <li><em>4.</em> Settles a question inside a field with working applications, with a short path to methods.</li>
+        <li><em>3.</em> A sharp tool or limit with a plausible but indirect path.</li>
+        <li><em>2.</em> A path exists only through further theory, or the result confirms what practice already assumes.</li>
+        <li><em>1.</em> No route to computation, algorithms or modelling is visible today.</li>
+    </ul>
+    <p>
+      A score of 1 describes today. <a href="./ledger.html">The Ledger</a> lists fields that sat at that
+      point for a century before an application arrived.
+    </p>
+
+    <h2>Difficulty score</h2>
+    <p>
+      The difficulty score rates how long the problem stood and how much work it drew. The year in the
+      Posed column is approximate and is blank where the origin of the problem is diffuse.
+    </p>
+    <ul>
+        <li><em>5.</em> A famous problem, typically open fifty years or more, or the central conjecture of its field.</li>
+        <li><em>4.</em> A well-known open problem with decades of partial results.</li>
+        <li><em>3.</em> A recognised conjecture with its own literature.</li>
+        <li><em>2.</em> A recent or specialist question.</li>
+        <li><em>1.</em> A new question with little prior work.</li>
+    </ul>
+
+    <h2>Applied score against difficulty</h2>
+    <div class="table-wrap">
+<table class="impl xtab"><thead><tr><th>Applied</th>
+<th>Difficulty 1</th>
+<th>Difficulty 2</th>
+<th>Difficulty 3</th>
+<th>Difficulty 4</th>
+<th>Difficulty 5</th>
+<th>All</th></tr></thead><tbody>
+<tr><td>5</td><td>&middot;</td><td>&middot;</td><td>&middot;</td><td>2</td><td>2</td><td>4</td></tr>
+<tr><td>4</td><td>&middot;</td><td>&middot;</td><td>1</td><td>11</td><td>6</td><td>18</td></tr>
+<tr><td>3</td><td>&middot;</td><td>2</td><td>18</td><td>13</td><td>10</td><td>43</td></tr>
+<tr><td>2</td><td>&middot;</td><td>2</td><td>17</td><td>18</td><td>22</td><td>59</td></tr>
+<tr><td>1</td><td>&middot;</td><td>27</td><td>66</td><td>90</td><td>65</td><td>248</td></tr>
+</tbody></table>
+    </div>
+    <p>
+      Theoretical computer science accounts for 12 of the 22 results scored 4 or 5.
+      Of the 105 problems at difficulty 5, 87 have an applied score of 1 or 2.
+    </p>
+
+    <h2>The results</h2>
+    <p>
+      Click a column header to sort and a row to open the catalogue description, the scoring note and the
+      manuscripts. Descriptions are OpenAI's, reproduced under the Apache 2.0 licence of the collection.
+      Lean: <em>main</em> means a main theorem is in the formalization catalogue, <em>part</em> means
+      supporting statements only.
+    </p>
+    <p id="vote-note" hidden>
+      The Votes column records readers' views of how important each result is. One vote per result.
+    </p>
+
+    <div class="controls">
+      <label>Subject
+        <select id="f-subject">
+          <option value="">All</option>
+          <option value="Algebra">Algebra</option>
+          <option value="Algebraic and complex geometry">Algebraic and complex geometry</option>
+          <option value="Combinatorics">Combinatorics</option>
+          <option value="Convex and metric geometry">Convex and metric geometry</option>
+          <option value="Differential geometry">Differential geometry</option>
+          <option value="Dynamical systems and ergodic theory">Dynamical systems and ergodic theory</option>
+          <option value="Functional analysis">Functional analysis</option>
+          <option value="Group theory">Group theory</option>
+          <option value="Mathematical logic">Mathematical logic</option>
+          <option value="Mathematical physics">Mathematical physics</option>
+          <option value="Number theory">Number theory</option>
+          <option value="Operator algebras">Operator algebras</option>
+          <option value="Partial differential equations">Partial differential equations</option>
+          <option value="Probability and statistical mechanics">Probability and statistical mechanics</option>
+          <option value="Real and complex analysis">Real and complex analysis</option>
+          <option value="Theoretical computer science">Theoretical computer science</option>
+          <option value="Topology">Topology</option>
+        </select>
+      </label>
+      <label>Applied at least
+        <select id="f-applied"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+      </label>
+      <label>Difficulty at least
+        <select id="f-difficulty"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+      </label>
+      <label>Lean
+        <select id="f-lean"><option value="0">Any</option><option value="1">Main or part</option><option value="2">Main</option></select>
+      </label>
+      <input id="f-text" type="search" placeholder="Search titles and descriptions" />
+      <span class="count" id="count"></span>
+    </div>
+
+    <div class="table-wrap">
+      <table class="impl" id="results-table">
+        <thead>
+          <tr>
+            <th data-key="id">No.</th>
+            <th data-key="title">Result</th>
+            <th data-key="subject">Subject</th>
+            <th data-key="lean">Lean</th>
+            <th data-key="applied">Applied</th>
+            <th data-key="difficulty">Difficulty</th>
+            <th data-key="year">Posed</th>
+            <th data-key="votes" id="th-votes" hidden>Votes</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </main>
+
+  <footer>
+    Disagree with a score? File an issue on
+    <a href="https://github.com/microprediction/pure">microprediction/pure</a>.
+    Source catalogue: <a href="https://github.com/openai/math">openai/math</a>, snapshot of 7 October 2026.
+  </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script src="./results-data.js"></script>
+<script>
+const VOTE_API = "";
+const SRC = "https://github.com/openai/math";
+const LEAN = ['\u2014', 'part', 'main'];
+const tbody = document.querySelector('#results-table tbody');
+const tallies = {};   // id -> [up, down]
+let mine = {};        // id -> 1 | -1
+try { mine = JSON.parse(localStorage.getItem('pure-votes') || '{}'); } catch (e) {}
+let sortKey = 'applied', sortDir = -1, open = new Set();
+
+function math(el) {
+  if (window.renderMathInElement) renderMathInElement(el, {
+    delimiters: [{left: '$', right: '$', display: false}], throwOnError: false });
+}
+function net(id) { const t = tallies[id]; return t ? t[0] - t[1] : 0; }
+function plain(s) { return s.replace(/<[^>]+>/g, '').toLowerCase(); }
+RESULTS.forEach(r => { r._text = plain(r.title + ' ' + r.desc + ' ' + r.note); });
+
+function visible() {
+  const subj = document.getElementById('f-subject').value;
+  const amin = +document.getElementById('f-applied').value;
+  const dmin = +document.getElementById('f-difficulty').value;
+  const lmin = +document.getElementById('f-lean').value;
+  const q = document.getElementById('f-text').value.trim().toLowerCase();
+  return RESULTS.filter(r => (!subj || r.subject === subj) && r.applied >= amin &&
+    r.difficulty >= dmin && r.lean >= lmin && (!q || r._text.includes(q)));
+}
+function compare(a, b) {
+  let va, vb;
+  if (sortKey === 'votes') { va = net(a.id); vb = net(b.id); }
+  else if (sortKey === 'title') { va = plain(a.title); vb = plain(b.title); }
+  else { va = a[sortKey]; vb = b[sortKey]; }
+  if (va == null && vb == null) return 0;
+  if (va == null) return 1;          // blanks last in either direction
+  if (vb == null) return -1;
+  const c = typeof va === 'string' ? va.localeCompare(vb) : va - vb;
+  return c * sortDir || (b.applied - a.applied) || (b.difficulty - a.difficulty) || a.id.localeCompare(b.id);
+}
+function voteCell(r) {
+  const t = tallies[r.id] || [0, 0], m = mine[r.id] || 0;
+  return '<td class="vote num"><button data-v="1" class="' + (m === 1 ? 'on' : '') + '" aria-label="Vote up">\u25B2</button> ' +
+    t[0] + ' <button data-v="-1" class="' + (m === -1 ? 'on' : '') + '" aria-label="Vote down">\u25BC</button> ' + t[1] + '</td>';
+}
+function detail(r) {
+  const papers = r.papers.map(p => '<li><a href="' + SRC + '/blob/main/' + encodeURI(p.path) + '">' + p.title + '</a></li>').join('');
+  const lean = r.lean ? ' <a href="' + SRC + '/blob/main/lean/docs/' + r.id + '.md">Scope of the Lean formalization</a>.' : '';
+  return '<tr class="detail"><td colspan="8"><p>' + r.desc + '</p><p><em>Applied route.</em> ' + r.note + lean +
+    '</p><ul>' + papers + '</ul></td></tr>';
+}
+function render() {
+  const rows = visible().sort(compare);
+  document.getElementById('count').textContent = rows.length + ' of ' + RESULTS.length;
+  tbody.innerHTML = rows.map(r =>
+    '<tr class="row" data-id="' + r.id + '"><td>' + r.id + '</td><td class="title">' + r.title + '</td><td>' + r.subject +
+    '</td><td class="lean">' + LEAN[r.lean] + '</td><td class="num"><span class="score a' + r.applied + '">' + r.applied +
+    '</span></td><td class="num"><span class="score d' + r.difficulty + '">' + r.difficulty + '</span></td><td class="num">' +
+    (r.year || '') + '</td>' + (VOTE_API ? voteCell(r) : '') + '</tr>' + (open.has(r.id) ? detail(r) : '')).join('');
+  math(tbody);
+}
+tbody.addEventListener('click', e => {
+  const tr = e.target.closest('tr.row');
+  if (!tr) return;
+  const id = tr.dataset.id, btn = e.target.closest('.vote button');
+  if (btn) { vote(id, +btn.dataset.v); return; }
+  if (e.target.closest('a')) return;
+  open.has(id) ? open.delete(id) : open.add(id);
+  render();
+});
+document.querySelectorAll('#results-table th[data-key]').forEach(th => {
+  th.addEventListener('click', () => {
+    const key = th.dataset.key;
+    sortDir = (sortKey === key) ? -sortDir : (['applied', 'difficulty', 'votes', 'lean'].includes(key) ? -1 : 1);
+    sortKey = key;
+    document.querySelectorAll('#results-table th').forEach(h => h.classList.remove('sort-asc', 'sort-desc'));
+    th.classList.add(sortDir === 1 ? 'sort-asc' : 'sort-desc');
+    render();
+  });
+});
+document.querySelectorAll('.controls select, .controls input').forEach(el => el.addEventListener('input', render));
+
+async function vote(id, v) {
+  const next = mine[id] === v ? 0 : v;      // clicking the same arrow withdraws the vote
+  try {
+    const res = await fetch(VOTE_API + '/vote', { method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({id: id, value: next}) });
+    if (!res.ok) return;
+    const t = await res.json();
+    tallies[id] = [t.up, t.down];
+    if (next) mine[id] = next; else delete mine[id];
+    try { localStorage.setItem('pure-votes', JSON.stringify(mine)); } catch (e) {}
+    render();
+  } catch (e) {}
+}
+async function loadVotes() {
+  if (!VOTE_API) return;
+  document.getElementById('th-votes').hidden = false;
+  document.getElementById('vote-note').hidden = false;
+  render();
+  try {
+    const res = await fetch(VOTE_API + '/tallies');
+    if (res.ok) { Object.assign(tallies, await res.json()); render(); }
+  } catch (e) {}
+}
+document.querySelector('th[data-key="applied"]').classList.add('sort-desc');
+render();
+loadVotes();
+</script>
+</body>
+</html>
