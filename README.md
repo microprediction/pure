@@ -14,6 +14,7 @@ relativity became the correction every GPS satellite needs to stay accurate.
 - [The Ledger](https://pure.microprediction.org/ledger.html) — all twelve cases, receipts included.
 - [Map](https://pure.microprediction.org/map.html) — an interactive graph linking theorem to application.
 - [Timeline](https://pure.microprediction.org/timeline.html) — the dismissal-to-application gap, by field.
+- [OpenAI results](https://pure.microprediction.org/results.html) — the 372 result families OpenAI published in October 2026, scored for applied impact and difficulty.
 - [Papers](https://pure.microprediction.org/papers.html) — *Misaligned or Undersupplied? Pure Mathematics in the Age of LLMs* ([SSRN 7452281](https://ssrn.com/abstract=7452281), [PDF](https://pure.microprediction.org/mathematics-welfare.pdf)).
 - [Sources](https://pure.microprediction.org/sources.html) — full citations.
 

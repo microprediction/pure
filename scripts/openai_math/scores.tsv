@@ -1,0 +1,373 @@
+# id|applied (1-5)|difficulty (1-5)|year posed (approximate, blank if unsure)|route to applied mathematics or algorithms
+001|1|3||Cohomology of abelian varieties. No route to computation or modelling identified.
+002|1|5|1965|Arithmetic of elliptic curves. Curve cryptography does not depend on the formula.
+003|3|5|1859|A zero-free half-plane gives power-saving error terms for primes in short intervals and progressions, which the analysis of number-theoretic algorithms uses.
+004|2|5|1970|Rules out a general algorithm for rational solutions of polynomial equations. A negative result for computer algebra.
+005|1|5||Transcendence theory. No route identified.
+006|1|4|1979|Rank statistics of elliptic curves. No route identified.
+007|1|5|1965|Pseudorandomness of the Liouville function. No algorithmic use identified.
+008|1|4|1990|Structure of a Lie algebra from Galois theory. No route identified.
+009|1|3||Anabelian geometry. No route identified.
+010|1|3||Galois representations. No route identified.
+011|2|2||The factor structure of p-1 enters the analysis of the Pollard p-1 method and smoothness assumptions in discrete-logarithm algorithms.
+012|1|4|1978|Statistics of largest prime factors. A weak link to smoothness heuristics in factoring.
+013|1|4|1956|Additive structure of the primes. No route identified.
+014|1|4||Geometric Langlands. No route identified.
+015|1|3||Homogeneous dynamics. No route identified.
+016|1|4|2002|Unlikely intersections. No route identified.
+017|1|5|1953|Diophantine approximation of a single constant. No route identified.
+018|1|4||Normal subgroups of arithmetic groups. No route identified.
+019|1|4|1983|Anabelian geometry. No route identified.
+020|1|4||Squarefree values of polynomials. No route identified.
+021|1|4|1960|Sieve bound. A weak link to gaps between coprime residues in sieving algorithms.
+022|1|3||Metric Diophantine approximation. No route identified.
+023|1|4|1978|Exponential sums. No route identified.
+024|1|3||Distribution of totient values. No route identified.
+025|1|4|1950|Representation of rationals. No route identified.
+026|1|3||Distribution of prime gaps. No route identified.
+027|1|2||Character varieties. No route identified.
+028|1|4|1962|Geometry of Gaussian primes. No route identified.
+029|2|5|1927|Discrete-logarithm cryptography picks generators on the assumption that a fixed base is a primitive root for many primes. The theorem confirms it without the Riemann hypothesis.
+030|1|4||Modularity. No route identified.
+031|1|3||Anabelian geometry. No route identified.
+032|1|5|1950|Algebraic cycles. No route identified.
+033|1|4|1972|Birational classification. No route identified.
+034|1|5||Minimal model program. No route identified.
+035|1|3||Minimal model program in positive characteristic. No route identified.
+036|1|3||Minimal model program. No route identified.
+037|1|2||Singularity invariants. No route identified.
+038|1|4|1985|Positivity of line bundles. No route identified.
+039|1|5|1959|Bounds the degree of plane curves through prescribed points with multiplicity. A weak link to multivariate interpolation.
+040|1|5|1975|Algebraic cycles. No route identified.
+041|1|3||Hyperkähler geometry. No route identified.
+042|1|2||Complex surfaces. No route identified.
+043|1|3|2010|Cohomology of moduli spaces. No route identified.
+044|1|2||Geometric representation theory. No route identified.
+046|1|4|1972|Universal covers of projective varieties. No route identified.
+047|1|4|1949|Affine algebraic geometry. No route identified.
+048|1|4|1965|Singularity theory. No route identified.
+049|1|3||Polynomial automorphisms. No route identified.
+050|1|4|1969|Positivity of vector bundles. No route identified.
+051|1|4|1970|Complex hyperbolicity. No route identified.
+052|1|3|2000|Kähler geometry. No route identified.
+053|1|2|2012|Moduli of curves. No route identified.
+054|1|5||Rationality of cubic fourfolds. No route identified.
+055|1|2||Stability conditions. No route identified.
+056|1|4||Minimal model program. No route identified.
+057|1|3|2004|Fundamental groups of Kähler manifolds. No route identified.
+058|1|2||Universal covers of projective varieties. No route identified.
+059|1|5|1971|Singularity theory. No route identified.
+060|1|4|1984|Complex surfaces. No route identified.
+062|1|4|1994|Quaternionic-Kähler geometry. No route identified.
+063|1|3||Fano manifolds. No route identified.
+064|1|4|1976|Singularity theory. No route identified.
+065|1|4|1997|Gromov-Witten theory. No route identified.
+066|1|2||Birational geometry. No route identified.
+067|1|3|1991|Fano manifolds. No route identified.
+068|1|2||Positivity in complex geometry. No route identified.
+069|1|3||Geometric Langlands. No route identified.
+071|2|5|1908|Circle-domain uniformization is the continuous model behind circle-packing methods for conformal maps of multiply connected regions. The theorem is existence only.
+072|1|4|1978|Integrability of conformal maps. A weak link to boundary behaviour in planar growth models.
+073|1|4|1985|Geometric measure theory. No route identified.
+074|2|5|1971|Kakeya estimates feed Fourier restriction and dispersive wave bounds. The route to computation runs through that further theory.
+075|2|5|1966|Pointwise convergence of Fourier series at the sharp integrability scale. It does not change how series are computed.
+076|4|5|1966|Binary sequences with a flat spectrum and high merit factor are what radar pulse compression and low peak-power signalling search for. The construction is explicit.
+077|2|5|1967|Restriction estimates control dispersive and wave equations. The route to computation runs through that further theory.
+078|2|5||Summability of multidimensional Fourier series. An indirect link to spectral methods.
+079|2|4|1991|Regularity of wave-equation solutions. An indirect link to wave propagation analysis.
+080|1|3|1980|Endpoint case of pointwise convergence for the Schrödinger equation. No route identified.
+081|1|4|1991|Geometric measure theory. No route identified.
+082|1|4||Multilinear harmonic analysis. No route identified.
+083|1|4||Singular integrals along vector fields. No route identified.
+084|1|4|1974|Measure theory. No route identified.
+085|1|3|2004|Regularity of maximal functions. No route identified.
+086|1|4||Multilinear harmonic analysis. No route identified.
+087|2|5|1939|Volume-product bounds supply constants in the geometry of numbers and in lattice algorithms. The asymptotic form already known suffices for most uses.
+088|1|4|1971|Affine isoperimetric inequalities. No route identified.
+089|4|4|1999|Constant-distortion embedding of planar metrics into L1 gives a constant flow-cut gap for multicommodity flow and constant-factor sparsest cut on planar networks.
+090|3|4|2007|Ground states of planar particle systems. Supports the hexagonal choice in two-dimensional quantization, sampling and point-set design.
+091|2|3|2012|Inequalities for log-concave measures. An indirect link to concentration bounds used in high-dimensional statistics.
+092|2|4|1957|Covering density bounds bear on lattice quantizers and covering codes. The result is existential.
+093|3|3||The log-Sobolev constant sets mixing-time bounds for Langevin samplers. A dimension-free constant enters those bounds directly.
+094|3|3||A Johnson-Lindenstrauss type reduction outside Euclidean space would serve sketching and nearest-neighbour search in other norms. The target dimension is subpolynomial, not logarithmic.
+095|4|4||Hyperbolic programming is strictly more expressive than semidefinite programming. Solvers for hyperbolicity cones cannot be replaced by semidefinite reformulations.
+096|3|3|2008|With the Unique Games theorem it gives the exact hardness threshold for kernel clustering problems.
+097|3|4||Prefix discrepancy bounds drive vector balancing, scheduling and online rounding arguments. The statement is existential.
+098|2|3|2001|A limit on dimension reduction for doubling data sets.
+099|3|3||Fixes the limit of embedding-based sketching for edit distance.
+100|1|3|1951|Covering problems in convex geometry. No route identified.
+101|2|4||The isotropic constant enters complexity bounds for volume computation and sampling from convex bodies. The sharp value changes constants only.
+102|5|5|2002|Fixes the approximation threshold of Max-Cut, Vertex Cover and every constraint satisfaction problem at the ratio of the basic semidefinite relaxation. Algorithm designers learn where to stop.
+103|4|5|1979|Every randomized logarithmic-space algorithm has a deterministic equivalent in the same space, with an explicit compiler.
+104|4|4|1992|Mean-payoff, parity and stochastic games are the core of reactive synthesis and model checking. A deterministic quasipolynomial bound covers all three.
+105|3|4|2002|Hardness of approximation with perfect completeness. Strengthens inapproximability results for colouring and related problems.
+106|3|5|1976|No polynomial algorithm colours a three-colourable graph with any fixed number of colours unless P = NP. Closes the search for one.
+107|4|5|1969|Lowers the exponent from about 2.37. The consequence reaches every algorithm reduced to matrix multiplication, although such methods carry large constants.
+108|2|4|1979|Algebraic complexity lower bound. Evidence on the cost of computing the permanent.
+109|2|5|1971|Shows n log n is not a barrier. The saving is a factor of (log n) to the power 2^-182, which has no computational use.
+110|3|4|1990|Online resource allocation and caching. Settles the randomized competitive ratio at order log squared k.
+111|2|3||Online selection without knowledge of the distributions. The constant is 2^-310 and no polynomial-time rule is given.
+112|1|4|1986|Circuit lower bounds. No route to algorithms identified.
+113|4|5|1986|Counting perfect matchings in general graphs is the monomer-dimer partition function. An approximation scheme has been sought since the bipartite case.
+114|3|3||Approximate counting for a wide class of combinatorial structures, including common bases of two matroids.
+115|5|4|1985|Exact conditional tests on contingency tables need uniform samples with fixed margins. Statisticians have used heuristics; this is a polynomial sampler for all margins.
+116|2|3||Derandomized identity testing for noncommutative formulas. A link to symbolic computation.
+117|3|4||No constant-factor approximation for a standard graph-partitioning objective unless P = NP.
+118|4|4|1997|Cutting-stock solvers lean on the linear-programming bound being within one or two of the optimum. The gap is unbounded in general and additive approximation is hard.
+119|3|3|2014|Information retained by a Boolean summary of noisy data. Feeds bounds in information theory and learning.
+120|5|5|1980|Maximum matching is a standard subroutine. Almost-linear time replaces the square-root barrier that has stood for general graphs.
+121|5|4||Sequence comparison at genomic scale. Exact edit distance is quadratic under standard hypotheses; this approximates within any fixed factor in almost-linear time.
+122|3|3|2004|Reading data back from DNA storage is a trace reconstruction problem. Polynomially many reads do not suffice in the worst case.
+124|3|5|1979|One of the original open scheduling problems of Garey and Johnson. The model is narrow: unit jobs, precedence constraints, three machines.
+125|4|4|2002|Tight approximation factor for a standard clustering objective.
+126|3|3|2014|No compact semidefinite formulation of matching exists. A limit on what convex relaxation can do.
+127|3|4|1994|Controls noise sensitivity and learnability of polynomial threshold classifiers.
+128|3|4|1991|String assembly and compression primitive. Improves the best known factor from about 2.47 to 2.
+129|1|5|1978|State complexity of automata. No route to practice identified.
+130|2|5|1965|Shows n log n is not a barrier for the Fourier transform. The saving exponent is 10^-13, which has no numerical use.
+131|4|4|1999|The switch chain is the standard way to sample null-model networks with fixed degrees. The proof covers every degree sequence, with a bound of order n^8.
+132|1|3|1992|Boolean function complexity measures. No route identified.
+133|2|3||Lower bounds for the colour-refinement procedure behind graph isomorphism heuristics and the expressive power of graph neural networks.
+134|1|5||Regular expressions with complement. No route to practice identified.
+135|1|3||Algebraic circuit lower bounds. No route identified.
+136|2|3|2016|Hardness of approximate equilibrium computation.
+137|1|4|1968|Time-space simulation of Turing machines. No route identified.
+138|3|5|1974|Breaks the meet-in-the-middle bound for Subset Sum, with consequences for knapsack-type cryptanalysis.
+139|4|3||Query complexity of sampling for Bayesian computation. Assumes a known minimizer, condition number two and unlimited computation between queries.
+140|3|3|2019|A memory budget below d squared bits forces more samples in streaming regression.
+141|2|3|1988|Places the existential theory of the reals, the home of many geometric and robotics decision problems, lower in the complexity hierarchy.
+142|3|5|1967|Removes randomness from polynomial factoring over finite fields without the Riemann hypothesis. Practice already uses fast randomized methods.
+143|2|5|1900|Limit cycles of polynomial vector fields model oscillators. A uniform bound exists; the result is qualitative.
+144|1|5||Spectral theory of dynamical systems. No route identified.
+145|1|5|1949|Ergodic theory. No route identified.
+146|2|5|1994|The standard map is the model for chaos in accelerators and plasma confinement. The theorem confirms a chaotic region of positive area at large parameter.
+147|1|3||Integrable billiards. No route identified.
+148|1|4||Fractal measures. No route identified.
+149|4|4|1974|Mass-action networks model chemistry and systems biology. Weakly reversible networks can neither go extinct nor blow up, whatever the rate constants.
+150|1|4||Polygonal billiards. No route identified.
+151|1|4|1974|Topological entropy. No route identified.
+152|1|4||Smooth realization in ergodic theory. No route identified.
+153|1|5|1939|Bernoulli convolutions. A weak link to digital expansions.
+154|1|4||Ergodic theory. No route identified.
+155|1|3|1996|Tilings. A weak link to aperiodic order.
+156|1|4|1933|Combinatorial geometry. No route identified.
+157|1|5|1943|Graph colouring theory. No route identified.
+158|1|5|1950|Combinatorial geometry. No route identified.
+159|1|5||Additive combinatorics. No route identified.
+160|1|3||Ramsey theory. No route identified.
+161|1|4|1993|Subgraph density inequalities. No route identified.
+162|1|4|1971|Hypergraph covering. No route identified.
+164|1|4|1979|Ramsey theory. No route identified.
+165|2|5|1944|Crossing numbers bound circuit layout area and measure drawing quality. Exact values for complete graphs are benchmarks.
+166|1|5|1946|Combinatorial geometry. No route identified.
+167|1|5|1946|Combinatorial geometry. No route identified.
+168|1|4||Kazhdan-Lusztig theory. No route identified.
+169|1|3|2012|Symmetric functions. No route identified.
+170|1|4||Ramsey theory. No route identified.
+171|1|4|1975|Ramsey theory. No route identified.
+172|1|4|1973|Ramsey theory. No route identified.
+173|1|4|1990|Directed graphs. No route identified.
+174|4|4|2004|Thin spanning trees give constant-factor approximation for the asymmetric travelling salesman problem. The construction is deterministic and polynomial.
+175|2|3|2010|Thresholds in random structures. An indirect link to the analysis of random instances.
+176|1|3|2006|Thresholds in random graphs. No route identified.
+177|3|3||Coboundary expanders are ingredients of locally testable codes and quantum low-density parity-check codes.
+178|4|5|1988|Explicit optimal expanders of every degree and size serve error-correcting codes, derandomization and network design.
+179|3|5|1963|No Barker sequence exists beyond length 13. Radar and synchronization design has assumed this.
+180|1|5|1969|Hamiltonian cycles. No route identified.
+181|1|5|1966|Graph decompositions. No route identified.
+182|1|3||Additive combinatorics. No route identified.
+183|2|4|1971|The number of k-sets bounds the complexity of levels in arrangements, which geometric algorithms use.
+184|1|3|1999|Graph colouring. No route identified.
+185|1|3||Infinite matroids. No route identified.
+186|2|3|1996|Sharpness of phase transitions in random graphs. An indirect link to the analysis of random instances.
+187|1|3||Positional games. No route identified.
+188|1|4||Random graph processes. No route identified.
+189|1|4|1978|Ramsey theory. No route identified.
+190|2|2||A limit on the sample complexity of testing ordered matrices for a forbidden pattern.
+191|1|4||Combinatorial geometry. A weak link to point sets for numerical integration.
+192|1|2||Analysis of Boolean functions. No route identified.
+193|1|5|1957|Commutative algebra. No route identified.
+194|1|5|1960|Commutative algebra. No route identified.
+195|1|4||Commutative algebra. No route identified.
+196|1|5||Group rings. No route identified.
+197|1|5|1969|Group rings. No route identified.
+198|1|5|1960|Representation theory of algebras. No route identified.
+199|1|4|1975|Homological algebra. No route identified.
+200|1|4|1993|Hilbert functions of ideals. A weak link to bounds in computational algebra.
+201|1|5|1941|Division rings. No route identified.
+202|1|5|1987|Modular representation theory. No route identified.
+203|1|4||Modular representation theory. No route identified.
+204|1|3||Tensor product multiplicities. No route identified.
+205|1|3|2012|Representations of symmetric groups. No route identified.
+206|1|5|1963|Universal algebra. No route identified.
+207|1|4|1976|K-theory of group algebras. No route identified.
+208|1|2||Tensor categories. No route identified.
+209|1|4|1973|Algebraic K-theory. No route identified.
+210|1|3|1950|Plethysm coefficients. A weak link to geometric complexity theory.
+211|1|3||Random planar maps. No route identified.
+212|1|4||First-passage percolation models growth and shortest paths in random media. The result is structural.
+213|2|5|1996|Continuity of the percolation transition, including the cubic lattice. Physical modelling assumes it.
+214|1|4|1996|Percolation on nonamenable graphs. No route identified.
+215|2|5|1975|Constructs a two-dimensional field theory with a mass gap. Mathematical physics; no computational consequence.
+216|1|4||Critical behaviour of the XY model. No route identified.
+217|1|3||Spin glass fluctuations. No route identified.
+218|1|3||Universality for Ising models. No route identified.
+219|2|4||Eigenvalue statistics of sparse random graphs, which spectral methods for networks rely on.
+220|1|4|1981|Random walks in random environments. No route identified.
+221|3|4|2001|Diluted spin glass formulas are the source of predicted thresholds for random constraint satisfaction and of performance predictions for sparse-graph codes.
+222|3|3|1988|Perceptron capacity is the storage problem for a single-layer network. The jamming exponents concern the same constraint satisfaction transition.
+223|1|4||Scaling limits of lattice interfaces. No route identified.
+224|1|3||Percolation scaling limits. No route identified.
+225|1|3||Six-vertex model. No route identified.
+226|1|3|2011|Dimer models. No route identified.
+227|3|3||Heat-bath dynamics on the Sherrington-Kirkpatrick model is a sampling algorithm. The theorem gives its running time at high, critical and low temperature.
+228|2|4||Existence of a first-order phase transition for particles in the continuum. Physical modelling assumes it.
+229|3|3|2001|Gives the exact threshold below which three communities in a sparse network cannot be detected. Community-detection methods are measured against it.
+230|1|3||Fractal geometry of random curves. No route identified.
+231|1|2||Spanning forests as local algorithms. A weak link to distributed computing.
+232|1|2||Random height functions. No route identified.
+233|1|2||Ashkin-Teller model. No route identified.
+234|3|3||Rotationally invariant couplings are the model behind message-passing algorithms for inference with structured matrices.
+235|3|5|1992|The satisfiability threshold is the benchmark regime for SAT solvers. The limit exists for every clause length.
+236|1|2||Ising model on trees. A weak link to local algorithms.
+237|2|5|1982|The exponent for the size of a polymer chain in two dimensions, predicted in physics and used in polymer modelling.
+238|3|4|1973|The number of rounds needed by Thorp-shuffle ciphers and permutation networks. Asymptotic, for power-of-two sizes.
+239|2|3|2006|Invertibility of random symmetric discrete matrices. The quantitative version needed in numerical analysis is not addressed.
+240|1|5||Model theory. No route identified.
+241|1|5|1967|Computability theory. No route identified.
+242|1|4||Diophantine representations. No route identified.
+243|2|4|1999|A candidate logic for polynomial time fails to capture it. Bears on database query languages.
+244|1|5|1902|Set theory without choice. No route identified.
+245|2|4||Type systems underlie proof assistants and typed programming languages. The theorem relates two termination properties across all pure type systems.
+246|1|5|1994|Geometric group theory. No route identified.
+247|1|5||Burnside-type problems. No route identified.
+248|1|5|1979|Amenability. No route identified.
+249|1|5|1957|Cohomological dimension of groups. No route identified.
+250|1|5|1973|Word problem and simple groups. No route identified.
+251|1|5|1950|Representation theory of groups. No route identified.
+252|1|5|1987|Hyperbolic groups. No route identified.
+253|1|4||Amenable groups. No route identified.
+254|1|5||Artin groups. No route identified.
+255|1|4||Quasi-isometric rigidity. No route identified.
+256|1|4|1981|Equations over groups. No route identified.
+257|1|4||Hyperbolic groups. No route identified.
+258|1|4|1992|One-relator groups. No route identified.
+259|1|4|2000|Measured group theory. No route identified.
+260|1|5|1973|General relativity. No computational consequence identified.
+261|3|5|1958|Localization and extended states are the mathematical basis of the metal-insulator transition and of wave transport in disordered media.
+262|2|4|1976|Bounds on bound-state energies of Schrödinger operators. Sharp constants enter stability-of-matter estimates.
+263|2|5|1984|Bounds how many extra electrons an atom or molecule can bind. A constraint for quantum chemistry.
+264|1|5||General relativity. No computational consequence identified.
+265|4|5|2007|An area law in two dimensions justifies tensor-network representations of gapped ground states, the basis of tensor-network simulation.
+266|3|4|1999|Mutually unbiased bases are used in quantum state tomography and key distribution. Six is the smallest dimension that is not a prime power.
+267|2|5|1925|Proof of condensation for an interacting gas. Physical modelling assumes it.
+268|2|5|1983|Spectral gap of the spin-one chain. Physical modelling assumes it.
+269|2|4|1983|Spectral gap in the fractional quantum Hall effect. Physical modelling assumes it.
+270|1|4||Matrix models of string theory. No route identified.
+271|2|5|1930|Low-temperature magnetization of a ferromagnet. Physical modelling assumes the law.
+272|2|4|2005|Whether every entangled state can yield a secret key. The statement covers a specified class of protocols.
+273|4|4|2008|The inequality gives the capacity region of the optical broadcast channel and the secrecy capacity of the optical wiretap channel.
+274|2|4|1999|A limit on what constant-depth quantum circuits compute.
+275|3|3||Ground-state energy of electrons, the target of quantum chemistry, has no efficient general algorithm even on a quantum computer unless QMA collapses.
+276|3|3||Capacity of a standard noise model for qubits with thermal relaxation.
+277|2|3||Repetition of entangled games, used in device-independent cryptography.
+278|3|4||Density functional calculations assume the interacting density can be reproduced by a noninteracting system. The assumption fails for a three-electron molecule.
+279|2|3|1994|Removes the failure probability from quantum factoring. No practical change.
+280|1|3||Conformal field theory. No route identified.
+281|3|2|2019|The quantum approximate optimization algorithm reaches the optimum of a standard spin-glass benchmark when size grows before depth.
+282|1|4|1988|Quantum field theory. No route identified.
+283|2|3|2007|Circuit synthesis for arbitrary unitaries relative to an oracle.
+284|1|2|2020|Query complexity. No route identified.
+285|1|5|1982|Operator K-theory. No route identified.
+286|1|3||Von Neumann algebras. No route identified.
+287|1|5|1943|Von Neumann algebras. No route identified.
+288|1|5|1955|Operator algebras. No route identified.
+289|1|4|1972|Perturbation of operator algebras. No route identified.
+290|1|5||Type III factors. No route identified.
+291|1|3||Classification of C*-algebras. No route identified.
+292|1|3||C*-algebras. No route identified.
+293|1|5||Invariant subspaces. No route identified.
+294|1|5||C*-algebras. No route identified.
+295|1|5|1971|Cohomology of operator algebras. No route identified.
+296|1|5|1967|Von Neumann algebras. No route identified.
+297|1|2|1951|C*-algebras. An alternative to a construction already published. No route identified.
+298|1|3||Free probability. A weak link to random matrix theory.
+299|1|3||Classification of C*-algebras. No route identified.
+300|1|3||Paving in operator algebras. A weak link to frame theory.
+301|1|2||Classification of C*-algebras. No route identified.
+302|1|3||Crossed products and mean dimension. No route identified.
+303|1|3||C*-algebras. No route identified.
+304|1|5|1941|Transformation groups. No route identified.
+305|1|5|1982|Four-manifold topology. No route identified.
+306|1|4|1990|Knot theory. No route identified.
+307|1|3||Coarse geometry. No route identified.
+308|1|4|1971|Stable homotopy theory. No route identified.
+309|1|4|1978|Stable homotopy theory. No route identified.
+310|1|5|1978|Subgroup posets of finite groups. No route identified.
+311|1|3||Chromatic homotopy theory. No route identified.
+312|1|5|1983|Higher category theory. A weak link to foundations of homotopy type theory.
+313|1|3||Chromatic homotopy theory. No route identified.
+314|1|2||Equivariant homotopy theory. No route identified.
+315|1|4||L2 invariants. No route identified.
+316|1|4|1975|Stable homotopy theory. No route identified.
+317|1|2||Higher category theory. No route identified.
+318|1|4||Chromatic homotopy theory. No route identified.
+319|1|2||Chromatic homotopy theory. No route identified.
+320|1|5|1953|Topological rigidity. No route identified.
+321|1|5|1965|Low-dimensional homotopy theory. No route identified.
+322|1|4|1987|Geometry of Banach spaces. No route identified.
+323|1|5||Banach spaces and set theory. No route identified.
+324|1|4||Nonlinear geometry of Banach spaces. No route identified.
+325|4|4|2004|The Crouzeix bound controls functions of a matrix by their values on the numerical range. Convergence estimates for GMRES and matrix-function approximation use it; the constant drops from 1 + √2 to 2.
+326|1|3||Banach space geometry. No route identified.
+327|1|3||Metric geometry of Banach spaces. No route identified.
+328|2|5|1965|Existence of fixed points for nonexpansive maps underlies iterative splitting methods outside Hilbert space. The theorem is existence only.
+329|2|4|1972|Duality of covering numbers is used in learning-theory bounds. The dimension-free form fails.
+330|1|2||Lipschitz-free spaces. No route identified.
+331|1|2||Banach space geometry. No route identified.
+332|2|3||Extension of Lipschitz maps from Hilbert space into L1. An indirect link to metric embedding methods.
+333|1|4||Isometric immersions. No route identified.
+334|1|5||Isometric embedding of surfaces. A weak link to shape modelling.
+335|1|4||Scalar curvature. No route identified.
+336|1|3||Scalar curvature. No route identified.
+337|1|5|1976|Isoperimetric inequalities in negative curvature. No route identified.
+338|1|5|1974|Kähler geometry. No route identified.
+339|1|4|1982|Geodesic flows. No route identified.
+340|1|4|1986|Symplectic topology. No route identified.
+341|1|3|2006|Four-dimensional geometry. No route identified.
+342|1|3|2006|Symplectic geometry. No route identified.
+343|1|2||Symplectic packing. No route identified.
+344|1|5|1921|Riemannian geometry. No route identified.
+345|1|5||Closed geodesics. No route identified.
+346|1|5|1972|Regularity of minimal surfaces. A weak link to soap-film models.
+347|1|3||Hamiltonian dynamics. No route identified.
+348|1|3||Einstein manifolds. No route identified.
+349|1|3||Minimal hypersurfaces. No route identified.
+350|1|4|1982|Nodal sets of eigenfunctions. A weak link to spectral geometry of vibrating surfaces.
+351|1|4||Ricci flow. No route identified.
+352|1|3||Calabi flow. No route identified.
+353|1|4||Affine differential geometry. No route identified.
+354|2|4||The periodic isoperimetric problem models the sphere, cylinder and lamella morphologies of phase-separated materials.
+355|1|3||Mean curvature flow. A weak link to interface evolution models.
+356|1|2||Metric measure geometry. No route identified.
+357|1|2||Metric measure geometry. No route identified.
+358|1|3||Riemannian geometry. No route identified.
+359|1|2||Kähler geometry. No route identified.
+360|3|3|2008|Regularity of optimal transport maps on curved domains, which decides when numerical transport returns a smooth map.
+361|1|3||Harmonic functions on manifolds. No route identified.
+362|3|5|1986|Vlasov-Maxwell is the kinetic model of collisionless plasma used in fusion and space physics. Smooth solutions exist for all time, so solvers face no singularity.
+363|3|4||Entropy solutions of the Boltzmann equation are not unique, so the weak-solution framework does not select the physical flow.
+364|2|4|1975|Derivation of the Boltzmann equation from particle dynamics over long times. Justifies the kinetic model.
+365|2|3||Recovery of a metric and a connection from boundary measurements on a patch. Theory of inverse problems.
+366|3|5|1989|The Mumford-Shah functional is the variational model for image segmentation and fracture. Edge sets of planar minimizers are arcs, crack tips or triple junctions.
+367|2|4||Regularity of free boundaries in jet and cavity flow models up to dimension six.
+368|3|4|2001|Nonlinear elasticity needs deformations approximated by smooth invertible maps. The theorem supplies that in three dimensions.
+369|2|5|1974|Location of the hottest point of an insulated plate at long times.
+370|1|4|1996|Nonexistence for elliptic systems. A weak link to astrophysical models.
+371|2|3||Blowup for a defocusing wave equation in high dimension. A caution for numerical continuation.
+372|4|4|1994|Both elastic moduli of a body are determined by boundary measurements. This is the identifiability question behind elastography and static seismic inversion.
+373|3|3||Strictly correlated electron methods in density functional theory assume a deterministic transport map. It need not exist for three electrons.
+374|3|2||The stability exponent sets convergence rates when optimal transport maps are estimated from samples.
+375|1|5|1978|Phase-transition models. The endpoint dimension has no modelling consequence.
+376|2|3|2014|Forced viscous flows can simulate any computation, so long-time prediction of such flows is undecidable in general.
+377|2|4||The infinity Laplacian arises in tug-of-war games and image interpolation. Regularity in every dimension.

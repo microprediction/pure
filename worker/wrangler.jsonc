@@ -1,0 +1,12 @@
+{
+  // Vote service for docs/results.html. Deploy: see README.md in this directory.
+  "name": "pure-votes",
+  "main": "src/index.js",
+  "compatibility_date": "2026-10-07",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": { "enabled": true },
+  "vars": { "ALLOWED_ORIGIN": "https://pure.microprediction.org" },
+  "d1_databases": [
+    { "binding": "DB", "database_name": "pure-votes", "database_id": "REPLACE_WITH_ID_FROM_d1_create" }
+  ]
+}
