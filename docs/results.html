@@ -80,7 +80,7 @@
 
     <div class="scoreboard">
       <div class="stat"><div class="n">372</div><div class="label">result families</div></div>
-      <div class="stat"><div class="n">22</div><div class="label">applied score 4 or 5</div></div>
+      <div class="stat"><div class="n">8</div><div class="label">applied score 4 or 5</div></div>
       <div class="stat"><div class="n">248</div><div class="label">applied score 1</div></div>
       <div class="stat"><div class="n">105</div><div class="label">difficulty score 5</div></div>
       <div class="stat"><div class="n">127</div><div class="label">main theorem in Lean catalogue</div></div>
@@ -92,15 +92,30 @@
       It takes each result as stated and says nothing about whether the proof is correct.
     </p>
     <ul>
-        <li><em>5.</em> An algorithm, bound or hardness result that practitioners would cite directly.</li>
-        <li><em>4.</em> Settles a question inside a field with working applications, with a short path to methods.</li>
-        <li><em>3.</em> A sharp tool or limit with a plausible but indirect path.</li>
+        <li><em>5.</em> Usable as stated today: an inequality to quote, a guarantee for a method already in use, or a condition checked by hand.</li>
+        <li><em>4.</em> Settles a question practitioners face, with a short path to methods or a clear change in where effort goes.</li>
+        <li><em>3.</em> A sharp tool or limit with an indirect path, including algorithms that are polynomial on paper and out of reach in code.</li>
         <li><em>2.</em> A path exists only through further theory, or the result confirms what practice already assumes.</li>
         <li><em>1.</em> No route to computation, algorithms or modelling is visible today.</li>
     </ul>
     <p>
       A score of 1 describes today. <a href="./ledger.html">The Ledger</a> lists fields that sat at that
       point for a century before an application arrived.
+    </p>
+
+    <h2>Usable today</h2>
+    <p>
+      Three results score 5. Each can be used as stated, with no new algorithm to implement.
+    </p>
+    <ul>
+        <li><a href="./results/crouzeix.html">A function of a matrix is at most twice its size on the numerical range</a> (No. 325, functional analysis).</li>
+        <li><a href="./results/switch-chain.html">Edge swapping reaches a uniformly random network for every degree sequence</a> (No. 131, theoretical computer science).</li>
+        <li><a href="./results/permanence.html">A reaction network in which every reaction lies on a loop never loses a species</a> (No. 149, dynamical systems and ergodic theory).</li>
+    </ul>
+    <p>
+      Several results that read as faster algorithms score 3 or lower. The manuscripts on contingency tables,
+      edit distance and log-concave sampling state that their bounds are asymptotic or are not practical
+      running times, and almost-linear matching is built on almost-linear maximum flow.
     </p>
 
     <h2>Difficulty score</h2>
@@ -125,15 +140,15 @@
 <th>Difficulty 4</th>
 <th>Difficulty 5</th>
 <th>All</th></tr></thead><tbody>
-<tr><td>5</td><td>&middot;</td><td>&middot;</td><td>&middot;</td><td>2</td><td>2</td><td>4</td></tr>
-<tr><td>4</td><td>&middot;</td><td>&middot;</td><td>1</td><td>11</td><td>6</td><td>18</td></tr>
-<tr><td>3</td><td>&middot;</td><td>2</td><td>18</td><td>13</td><td>10</td><td>43</td></tr>
-<tr><td>2</td><td>&middot;</td><td>2</td><td>17</td><td>18</td><td>22</td><td>59</td></tr>
+<tr><td>5</td><td>&middot;</td><td>&middot;</td><td>&middot;</td><td>3</td><td>&middot;</td><td>3</td></tr>
+<tr><td>4</td><td>&middot;</td><td>1</td><td>&middot;</td><td>3</td><td>1</td><td>5</td></tr>
+<tr><td>3</td><td>&middot;</td><td>1</td><td>18</td><td>20</td><td>17</td><td>56</td></tr>
+<tr><td>2</td><td>&middot;</td><td>2</td><td>18</td><td>18</td><td>22</td><td>60</td></tr>
 <tr><td>1</td><td>&middot;</td><td>27</td><td>66</td><td>90</td><td>65</td><td>248</td></tr>
 </tbody></table>
     </div>
     <p>
-      Theoretical computer science accounts for 12 of the 22 results scored 4 or 5.
+      Theoretical computer science accounts for 4 of the 8 results scored 4 or 5.
       Of the 105 problems at difficulty 5, 87 have an applied score of 1 or 2.
     </p>
 
@@ -258,7 +273,8 @@ function voteCell(r) {
 function detail(r) {
   const papers = r.papers.map(p => '<li><a href="' + SRC + '/blob/main/' + encodeURI(p.path) + '">' + p.title + '</a></li>').join('');
   const lean = r.lean ? ' <a href="' + SRC + '/blob/main/lean/docs/' + r.id + '.md">Scope of the Lean formalization</a>.' : '';
-  return '<tr class="detail"><td colspan="8"><p>' + r.desc + '</p><p><em>Applied route.</em> ' + r.note + lean +
+  const page = r.page ? ' <a href="./results/' + r.page + '.html">In plain terms</a>.' : '';
+  return '<tr class="detail"><td colspan="8"><p>' + r.desc + '</p><p><em>Applied route.</em> ' + r.note + page + lean +
     '</p><ul>' + papers + '</ul></td></tr>';
 }
 function render() {

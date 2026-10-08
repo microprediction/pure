@@ -1,0 +1,54 @@
+    <h2>The result in plain terms</h2>
+    <p>
+      A network analyst who finds many triangles in a social network, or a recurring wiring pattern in a
+      gene network, has to ask whether the finding is surprising. The standard comparison is against
+      random networks in which every node keeps exactly the number of connections it has in the real one.
+      If such random networks show the same pattern, the pattern follows from the degrees alone.
+    </p>
+    <p>
+      The usual way to produce such a network is edge swapping. Start from the real network. Pick two
+      edges, <em>a&ndash;b</em> and <em>c&ndash;d</em>, and replace them by <em>a&ndash;c</em> and
+      <em>b&ndash;d</em>, unless that would duplicate an existing edge or join a node to itself. Every node keeps its degree.
+      Repeat many times. This is <code>double_edge_swap</code> in NetworkX and degree-preserving
+      <code>rewire</code> in igraph.
+    </p>
+    <p>
+      The method rests on a hope: that after a reasonable number of swaps the network is a fair draw
+      from <em>all</em> networks with those degrees, each equally likely. The process could instead stay
+      for an astronomically long time in one corner of the possibilities, and the comparison would be biased
+      with no outward sign. The theorem rules that out. For every list of degrees that some simple network
+      can have, the swap process is within a fixed distance of the uniform distribution after at most
+      $2n^8$ steps, where $n$ is the number of nodes.
+    </p>
+
+    <h2>What was known</h2>
+    <p>
+      Kannan, Tetali and Vempala posed the question in 1999. Cooper, Dyer and Greenhill proved polynomial
+      mixing in 2007 when every node has the same degree. Later work by Greenhill and Sfragara, and by
+      Erd&#337;s, Greenhill, Mezei, Mikl&oacute;s, Solt&eacute;sz and Soukup, extended this to families
+      of degree sequences satisfying a stability condition. A degree sequence outside those families had no guarantee.
+    </p>
+
+    <h2>Why it is usable today</h2>
+    <p>
+      The algorithm is the one already installed. The theorem adds the missing statement about it: swap
+      long enough and the sample is uniform, with no condition on the degrees to check first. An analyst
+      no longer has to ask whether a particular network falls inside a proved class.
+    </p>
+    <p>
+      The manuscript also gives a sampler whose output is <em>exactly</em> uniform, with expected
+      polynomial running time, for cases where an approximate draw is not acceptable.
+    </p>
+
+    <h2>What it does not give</h2>
+    <p>
+      The bound $2n^8$ is not a stopping rule. For a thousand nodes it is $2\times10^{24}$ steps.
+      Practice runs a small multiple of the number of edges, often ten to a hundred swaps per edge, and
+      the theorem does not certify that budget. It certifies that the process has no hidden exponential
+      trap.
+    </p>
+    <p>
+      The proof analyses a version that proposes four nodes at random, where toolkits propose two edges.
+      Both have the uniform distribution as their limit; the speeds differ. The theorem covers simple
+      undirected networks. The directed and bipartite forms of the conjecture are separate statements.
+    </p>

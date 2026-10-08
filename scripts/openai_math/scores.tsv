@@ -71,7 +71,7 @@
 073|1|4|1985|Geometric measure theory. No route identified.
 074|2|5|1971|Kakeya estimates feed Fourier restriction and dispersive wave bounds. The route to computation runs through that further theory.
 075|2|5|1966|Pointwise convergence of Fourier series at the sharp integrability scale. It does not change how series are computed.
-076|4|5|1966|Binary sequences with a flat spectrum and high merit factor are what radar pulse compression and low peak-power signalling search for. The construction is explicit.
+076|3|5|1966|Binary sequences with a flat spectrum and high merit factor are what radar pulse compression looks for. The theorem covers every sufficiently large length, with no stated threshold, so it does not supply sequences at the lengths engineers use.
 077|2|5|1967|Restriction estimates control dispersive and wave equations. The route to computation runs through that further theory.
 078|2|5||Summability of multidimensional Fourier series. An indirect link to spectral methods.
 079|2|4|1991|Regularity of wave-equation solutions. An indirect link to wave propagation analysis.
@@ -84,48 +84,48 @@
 086|1|4||Multilinear harmonic analysis. No route identified.
 087|2|5|1939|Volume-product bounds supply constants in the geometry of numbers and in lattice algorithms. The asymptotic form already known suffices for most uses.
 088|1|4|1971|Affine isoperimetric inequalities. No route identified.
-089|4|4|1999|Constant-distortion embedding of planar metrics into L1 gives a constant flow-cut gap for multicommodity flow and constant-factor sparsest cut on planar networks.
+089|3|4|1999|Constant-distortion embedding of planar metrics into L1 bounds the flow-cut gap for multicommodity flow on planar networks. A statement about worst-case gaps, not a routing method.
 090|3|4|2007|Ground states of planar particle systems. Supports the hexagonal choice in two-dimensional quantization, sampling and point-set design.
 091|2|3|2012|Inequalities for log-concave measures. An indirect link to concentration bounds used in high-dimensional statistics.
 092|2|4|1957|Covering density bounds bear on lattice quantizers and covering codes. The result is existential.
 093|3|3||The log-Sobolev constant sets mixing-time bounds for Langevin samplers. A dimension-free constant enters those bounds directly.
 094|3|3||A Johnson-Lindenstrauss type reduction outside Euclidean space would serve sketching and nearest-neighbour search in other norms. The target dimension is subpolynomial, not logarithmic.
-095|4|4||Hyperbolic programming is strictly more expressive than semidefinite programming. Solvers for hyperbolicity cones cannot be replaced by semidefinite reformulations.
+095|3|4||Hyperbolic programming is strictly more expressive than semidefinite programming. Practical modelling is unaffected, since the counterexamples are constructed for the purpose.
 096|3|3|2008|With the Unique Games theorem it gives the exact hardness threshold for kernel clustering problems.
 097|3|4||Prefix discrepancy bounds drive vector balancing, scheduling and online rounding arguments. The statement is existential.
 098|2|3|2001|A limit on dimension reduction for doubling data sets.
 099|3|3||Fixes the limit of embedding-based sketching for edit distance.
 100|1|3|1951|Covering problems in convex geometry. No route identified.
 101|2|4||The isotropic constant enters complexity bounds for volume computation and sampling from convex bodies. The sharp value changes constants only.
-102|5|5|2002|Fixes the approximation threshold of Max-Cut, Vertex Cover and every constraint satisfaction problem at the ratio of the basic semidefinite relaxation. Algorithm designers learn where to stop.
-103|4|5|1979|Every randomized logarithmic-space algorithm has a deterministic equivalent in the same space, with an explicit compiler.
+102|4|5|2002|No fast algorithm can guarantee better than 87.8% of the optimum for Max-Cut, or better than twice the minimum for Vertex Cover, on worst-case inputs. Effort moves to heuristics and to structured or typical inputs, where solvers already do better.
+103|3|5|1979|Every randomized logarithmic-space algorithm has a deterministic equivalent in the same space. A statement about complexity classes; nobody is short of random bits in practice.
 104|4|4|1992|Mean-payoff, parity and stochastic games are the core of reactive synthesis and model checking. A deterministic quasipolynomial bound covers all three.
 105|3|4|2002|Hardness of approximation with perfect completeness. Strengthens inapproximability results for colouring and related problems.
 106|3|5|1976|No polynomial algorithm colours a three-colourable graph with any fixed number of colours unless P = NP. Closes the search for one.
-107|4|5|1969|Lowers the exponent from about 2.37. The consequence reaches every algorithm reduced to matrix multiplication, although such methods carry large constants.
+107|3|5|1969|Lowers the exponent from about 2.37. Methods of this type carry constants that rule out any matrix that fits in a computer.
 108|2|4|1979|Algebraic complexity lower bound. Evidence on the cost of computing the permanent.
 109|2|5|1971|Shows n log n is not a barrier. The saving is a factor of (log n) to the power 2^-182, which has no computational use.
 110|3|4|1990|Online resource allocation and caching. Settles the randomized competitive ratio at order log squared k.
 111|2|3||Online selection without knowledge of the distributions. The constant is 2^-310 and no polynomial-time rule is given.
 112|1|4|1986|Circuit lower bounds. No route to algorithms identified.
-113|4|5|1986|Counting perfect matchings in general graphs is the monomer-dimer partition function. An approximation scheme has been sought since the bipartite case.
+113|3|5|1986|Counting perfect matchings in general graphs is the monomer-dimer partition function. An approximation scheme has been sought since the bipartite case, whose own algorithm is rarely run.
 114|3|3||Approximate counting for a wide class of combinatorial structures, including common bases of two matroids.
-115|5|4|1985|Exact conditional tests on contingency tables need uniform samples with fixed margins. Statisticians have used heuristics; this is a polynomial sampler for all margins.
+115|3|4|1985|Uniform sampling of tables with fixed margins serves the Diaconis-Efron volume test and tables with structural zeros, where shuffling the data does not work. The paper states that its exponents are deliberately large and that the result is not a practical running-time estimate.
 116|2|3||Derandomized identity testing for noncommutative formulas. A link to symbolic computation.
 117|3|4||No constant-factor approximation for a standard graph-partitioning objective unless P = NP.
 118|4|4|1997|Cutting-stock solvers lean on the linear-programming bound being within one or two of the optimum. The gap is unbounded in general and additive approximation is hard.
 119|3|3|2014|Information retained by a Boolean summary of noisy data. Feeds bounds in information theory and learning.
-120|5|5|1980|Maximum matching is a standard subroutine. Almost-linear time replaces the square-root barrier that has stood for general graphs.
-121|5|4||Sequence comparison at genomic scale. Exact edit distance is quadratic under standard hypotheses; this approximates within any fixed factor in almost-linear time.
+120|3|5|1980|Maximum matching is a standard subroutine. The algorithm rests on almost-linear maximum flow, which nobody has made competitive with the blossom algorithm in code.
+121|3|4||Sequence comparison at genomic scale. The paper states that the input-length thresholds at which its bound applies are very large, so the scheme is asymptotic.
 122|3|3|2004|Reading data back from DNA storage is a trace reconstruction problem. Polynomially many reads do not suffice in the worst case.
 124|3|5|1979|One of the original open scheduling problems of Garey and Johnson. The model is narrow: unit jobs, precedence constraints, three machines.
-125|4|4|2002|Tight approximation factor for a standard clustering objective.
+125|3|4|2002|Tight approximation factor for a standard clustering objective. The polynomial running time depends on the accuracy.
 126|3|3|2014|No compact semidefinite formulation of matching exists. A limit on what convex relaxation can do.
 127|3|4|1994|Controls noise sensitivity and learnability of polynomial threshold classifiers.
 128|3|4|1991|String assembly and compression primitive. Improves the best known factor from about 2.47 to 2.
 129|1|5|1978|State complexity of automata. No route to practice identified.
 130|2|5|1965|Shows n log n is not a barrier for the Fourier transform. The saving exponent is 10^-13, which has no numerical use.
-131|4|4|1999|The switch chain is the standard way to sample null-model networks with fixed degrees. The proof covers every degree sequence, with a bound of order n^8.
+131|5|4|1999|The switch chain is already the standard way to draw null-model networks with fixed degrees. It is now proved to reach the uniform distribution in polynomial time for every degree sequence, so the method in every network toolkit needs no condition on the degrees. The n^8 bound is not a stopping rule.
 132|1|3|1992|Boolean function complexity measures. No route identified.
 133|2|3||Lower bounds for the colour-refinement procedure behind graph isomorphism heuristics and the expressive power of graph neural networks.
 134|1|5||Regular expressions with complement. No route to practice identified.
@@ -133,7 +133,7 @@
 136|2|3|2016|Hardness of approximate equilibrium computation.
 137|1|4|1968|Time-space simulation of Turing machines. No route identified.
 138|3|5|1974|Breaks the meet-in-the-middle bound for Subset Sum, with consequences for knapsack-type cryptanalysis.
-139|4|3||Query complexity of sampling for Bayesian computation. Assumes a known minimizer, condition number two and unlimited computation between queries.
+139|2|3||Query complexity of sampling for Bayesian computation. The paper states that it targets oracle complexity and not practical running time; it assumes a known minimizer, condition number two and unlimited computation between queries.
 140|3|3|2019|A memory budget below d squared bits forces more samples in streaming regression.
 141|2|3|1988|Places the existential theory of the reals, the home of many geometric and robotics decision problems, lower in the complexity hierarchy.
 142|3|5|1967|Removes randomness from polynomial factoring over finite fields without the Riemann hypothesis. Practice already uses fast randomized methods.
@@ -143,7 +143,7 @@
 146|2|5|1994|The standard map is the model for chaos in accelerators and plasma confinement. The theorem confirms a chaotic region of positive area at large parameter.
 147|1|3||Integrable billiards. No route identified.
 148|1|4||Fractal measures. No route identified.
-149|4|4|1974|Mass-action networks model chemistry and systems biology. Weakly reversible networks can neither go extinct nor blow up, whatever the rate constants.
+149|5|4|1974|Mass-action networks model chemistry and systems biology, where rate constants are rarely known. If every reaction lies on a cycle of reactions, concentrations stay bounded and no species dies out, whatever the rates. The condition is checked on the reaction diagram.
 150|1|4||Polygonal billiards. No route identified.
 151|1|4|1974|Topological entropy. No route identified.
 152|1|4||Smooth realization in ergodic theory. No route identified.
@@ -167,11 +167,11 @@
 171|1|4|1975|Ramsey theory. No route identified.
 172|1|4|1973|Ramsey theory. No route identified.
 173|1|4|1990|Directed graphs. No route identified.
-174|4|4|2004|Thin spanning trees give constant-factor approximation for the asymmetric travelling salesman problem. The construction is deterministic and polynomial.
+174|3|4|2004|Thin spanning trees give constant-factor approximation for the asymmetric travelling salesman problem. The construction is deterministic and polynomial, with loosely stated bounds.
 175|2|3|2010|Thresholds in random structures. An indirect link to the analysis of random instances.
 176|1|3|2006|Thresholds in random graphs. No route identified.
 177|3|3||Coboundary expanders are ingredients of locally testable codes and quantum low-density parity-check codes.
-178|4|5|1988|Explicit optimal expanders of every degree and size serve error-correcting codes, derandomization and network design.
+178|3|5|1988|Explicit optimal expanders of every degree and size serve error-correcting codes and derandomization. The running-time exponent grows with the degree.
 179|3|5|1963|No Barker sequence exists beyond length 13. Radar and synchronization design has assumed this.
 180|1|5|1969|Hamiltonian cycles. No route identified.
 181|1|5|1966|Graph decompositions. No route identified.
@@ -258,7 +258,7 @@
 262|2|4|1976|Bounds on bound-state energies of Schrödinger operators. Sharp constants enter stability-of-matter estimates.
 263|2|5|1984|Bounds how many extra electrons an atom or molecule can bind. A constraint for quantum chemistry.
 264|1|5||General relativity. No computational consequence identified.
-265|4|5|2007|An area law in two dimensions justifies tensor-network representations of gapped ground states, the basis of tensor-network simulation.
+265|3|5|2007|An area law in two dimensions justifies the tensor-network representations already used to simulate gapped ground states. The bond dimension is polynomial in the system size.
 266|3|4|1999|Mutually unbiased bases are used in quantum state tomography and key distribution. Six is the smallest dimension that is not a prime power.
 267|2|5|1925|Proof of condensation for an interacting gas. Physical modelling assumes it.
 268|2|5|1983|Spectral gap of the spin-one chain. Physical modelling assumes it.
@@ -318,7 +318,7 @@
 322|1|4|1987|Geometry of Banach spaces. No route identified.
 323|1|5||Banach spaces and set theory. No route identified.
 324|1|4||Nonlinear geometry of Banach spaces. No route identified.
-325|4|4|2004|The Crouzeix bound controls functions of a matrix by their values on the numerical range. Convergence estimates for GMRES and matrix-function approximation use it; the constant drops from 1 + √2 to 2.
+325|5|4|2004|Bounds the norm of any function of a matrix by twice its largest value on the numerical range. Convergence estimates for GMRES, matrix exponentials and time-stepping schemes quote this constant, which drops from 1 + √2 to 2 with nothing to implement.
 326|1|3||Banach space geometry. No route identified.
 327|1|3||Metric geometry of Banach spaces. No route identified.
 328|2|5|1965|Existence of fixed points for nonexpansive maps underlies iterative splitting methods outside Hilbert space. The theorem is existence only.
@@ -365,9 +365,9 @@
 369|2|5|1974|Location of the hottest point of an insulated plate at long times.
 370|1|4|1996|Nonexistence for elliptic systems. A weak link to astrophysical models.
 371|2|3||Blowup for a defocusing wave equation in high dimension. A caution for numerical continuation.
-372|4|4|1994|Both elastic moduli of a body are determined by boundary measurements. This is the identifiability question behind elastography and static seismic inversion.
+372|3|4|1994|Both elastic moduli of a body are determined by boundary measurements, the identifiability question behind elastography. Uniqueness alone gives no reconstruction method and no stability under noise.
 373|3|3||Strictly correlated electron methods in density functional theory assume a deterministic transport map. It need not exist for three electrons.
-374|3|2||The stability exponent sets convergence rates when optimal transport maps are estimated from samples.
+374|4|2||Optimal transport maps are used as coordinates for comparing distributions and are computed from samples. For a uniform source on a convex body the theorem gives the exact rate at which the map moves when the target is perturbed, with an explicit constant, and shows the conjectured faster rate is false.
 375|1|5|1978|Phase-transition models. The endpoint dimension has no modelling consequence.
 376|2|3|2014|Forced viscous flows can simulate any computation, so long-time prediction of such flows is undecidable in general.
 377|2|4||The infinity Laplacian arises in tug-of-war games and image interpolation. Regularity in every dimension.
