@@ -186,9 +186,9 @@ FIELDS = [
          one_liner="Objects, morphisms, and composition — the structural patterns common to all of mathematics.",
          founded=dict(year=1945, event="Eilenberg & Mac Lane's General Theory of Natural Equivalences"),
          dismissed=dict(kind="self-label", who="attributed to Norman Steenrod", year=1945,
-             quote="“Abstract nonsense” — an affectionate in-joke, not a hostile dismissal.",
+             quote="“Abstract nonsense” — possibly an affectionate in-joke more than a hostile dismissal.",
              source="Attribution via Rotman (Bull. AMS 33:4, 1996) and McLarty (Br. J. Philos. Sci. 41, 1990); no primary quote from Steenrod himself has surfaced.",
-             note="Coined by, and popular among, its own early practitioners — the opposite of an outside attack.",
+             note="The label was popular among the field's own early practitioners, and McLarty and Rotman describe it as a joke or self-deprecating. It is counted as a named dismissal with that caveat.",
              confidence="medium"),
          applications=[
              dict(name="Monads in functional programming", year=1989, note="Moggi applies category-theoretic monads to programming-language semantics; standardized as Haskell's I/O mechanism by 1996.", url="https://en.wikipedia.org/wiki/Monad_(functional_programming)"),

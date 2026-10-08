@@ -378,9 +378,9 @@ const FIELDS = [
       "kind": "self-label",
       "who": "attributed to Norman Steenrod",
       "year": 1945,
-      "quote": "“Abstract nonsense” — an affectionate in-joke, not a hostile dismissal.",
+      "quote": "“Abstract nonsense” — possibly an affectionate in-joke more than a hostile dismissal.",
       "source": "Attribution via Rotman (Bull. AMS 33:4, 1996) and McLarty (Br. J. Philos. Sci. 41, 1990); no primary quote from Steenrod himself has surfaced.",
-      "note": "Coined by, and popular among, its own early practitioners — the opposite of an outside attack.",
+      "note": "The label was popular among the field's own early practitioners, and McLarty and Rotman describe it as a joke or self-deprecating. It is counted as a named dismissal with that caveat.",
       "confidence": "medium"
     },
     "applications": [
