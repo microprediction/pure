@@ -534,6 +534,7 @@ NAV = """  <header class="site-header">
         <a href="{root}results.html">OpenAI results</a>
         <a href="{root}papers.html">Papers</a>
         <a href="{root}sources.html">Sources</a>
+        <a href="{root}others.html">Other sites</a>
         <a href="https://github.com/microprediction/pure">GitHub</a>
       </nav>
     </div>
